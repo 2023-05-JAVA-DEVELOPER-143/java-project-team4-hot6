@@ -3,7 +3,7 @@ DROP TABLE orders CASCADE CONSTRAINTS;
 DROP TABLE cart CASCADE CONSTRAINTS;
 DROP TABLE product CASCADE CONSTRAINTS;
 DROP TABLE userinfo CASCADE CONSTRAINTS;
-
+--Ä¿¹Ô
 CREATE TABLE userinfo(
 		user_id                       		VARCHAR2(100)		 NULL ,
 		user_pw                       		VARCHAR2(100)		 NULL ,

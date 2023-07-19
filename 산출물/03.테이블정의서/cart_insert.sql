@@ -1,2 +1,2 @@
-insert into userinfo(user_id, user_pw, user_pw_check, user_name, user_email, user_email_send, user_jumin, user_phone, user_gender)
-			values('guard1', '1111', '1111', '경호원', 'guard1@naver.com', 'T', '750719', '010-1234-5678', 'M');
+insert into cart(cart_no, cart_qty, user_id, product_no)
+			values(0, 1, 'guard1', 1);

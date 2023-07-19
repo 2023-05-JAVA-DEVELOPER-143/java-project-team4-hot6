@@ -50,6 +50,15 @@ delete from order_item where o_no in(select o_no from orders where userid='guard
 delete from orders where userid='guard1';
 
 --rollback;
+--메인페이지
+--1. 키워드 검색기능
+select * from product where product_name like '%크림마들렌%';
+
+--2. select 조건
+select * from product where product_no=3;
+
+--3. 카테고리별 표시
+select product_category from product where product_category='요리';
 
 
 

@@ -1,4 +1,4 @@
-DROP TABLE userinfo CASCADE CONSTRAINTS;
+/////////DROP TABLE userinfo CASCADE CONSTRAINTS;
 
 CREATE TABLE userinfo(
 		user_id                       		VARCHAR2(100)		 NULL ,

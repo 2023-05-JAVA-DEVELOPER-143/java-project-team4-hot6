@@ -21,6 +21,48 @@ update user set
     
 where user_id='user4';
 
+update user set 
+    user_pw='9090',
+    user_pw_check='9090',
+    user_name='유리', 
+    user_email='유리@email.com',
+    user_email_send='F',
+    user_phone='010-4455-1341'
+    
+where user_id='user2';
+
+
+update user set 
+    user_pw='9090',
+    user_pw_check='9090',
+    user_name='유리', 
+    user_email='유리@email.com',
+    user_email_send='F',
+    user_phone='010-4455-1341'
+    
+where user_id='user10';
+
+
+update user set 
+    user_pw='1111',
+    user_pw_check='1111',
+    user_name='옥지', 
+    user_email='옥지@email.com',
+    user_email_send='F',
+    user_phone='010-4123-2354'
+    
+where user_id='user9';
+
+update user set 
+    user_pw='4343',
+    user_pw_check='4343',
+    user_name='빵빵이', 
+    user_email='빵빵이@email.com',
+    user_email_send='F',
+    user_phone='010-4123-2354'
+    
+where user_id='user6';
+
 
 
 

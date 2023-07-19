@@ -3,7 +3,7 @@ DROP TABLE orders CASCADE CONSTRAINTS;
 DROP TABLE cart CASCADE CONSTRAINTS;
 DROP TABLE product CASCADE CONSTRAINTS;
 DROP TABLE userinfo CASCADE CONSTRAINTS;
---Ä¿¹Ô
+
 CREATE TABLE userinfo(
 		user_id                       		VARCHAR2(100)		 NULL ,
 		user_pw                       		VARCHAR2(100)		 NULL ,
@@ -30,18 +30,16 @@ DROP SEQUENCE product_product_no_SEQ;
 CREATE SEQUENCE product_product_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
-
 CREATE TABLE cart(
 		cart_no                       		NUMBER(10)		 NULL ,
 		cart_qty                      		NUMBER(10)		 NULL ,
-		user_no                       		NUMBER(10)		 NULL ,
+		user_id                       		VARCHAR2(100)		 NULL ,
 		product_no                    		NUMBER(10)		 NULL 
 );
 
 DROP SEQUENCE cart_cart_no_SEQ;
 
 CREATE SEQUENCE cart_cart_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 
 CREATE TABLE orders(
@@ -58,7 +56,6 @@ DROP SEQUENCE orders_order_no_SEQ;
 CREATE SEQUENCE orders_order_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
-
 CREATE TABLE order_item(
 		oi_no                         		NUMBER(10)		 NULL ,
 		oi_qty                        		NUMBER(10)		 NULL ,
@@ -72,13 +69,13 @@ CREATE SEQUENCE order_item_oi_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
-
 ALTER TABLE userinfo ADD CONSTRAINT IDX_userinfo_PK PRIMARY KEY (user_id);
 
 ALTER TABLE product ADD CONSTRAINT IDX_product_PK PRIMARY KEY (product_no);
 
 ALTER TABLE cart ADD CONSTRAINT IDX_cart_PK PRIMARY KEY (cart_no);
-ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK1 FOREIGN KEY (product_no) REFERENCES product (product_no);
+ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK0 FOREIGN KEY (product_no) REFERENCES product (product_no);
+ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK1 FOREIGN KEY (user_id) REFERENCES userinfo (user_id);
 
 ALTER TABLE orders ADD CONSTRAINT IDX_orders_PK PRIMARY KEY (order_no);
 ALTER TABLE orders ADD CONSTRAINT IDX_orders_FK0 FOREIGN KEY (user_id) REFERENCES userinfo (user_id);

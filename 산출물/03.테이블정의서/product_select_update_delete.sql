@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 --guard1 멤버한사람의  카트에 제품번호 존재여부
 select count(*)  as p_count from cart c join userinfo u on c.userid=u.userid where u.userid='guard1' and c.p_no=1;
 
@@ -65,7 +64,7 @@ select product_category from product where product_category='요리';
 
 --update
 --1. 조회수 증가
-update product set product_read_count=product_read_count+1 where product_no=#{product_no};
+update product set product_read_count=product_read_count+1 where product_no=1;
 
 
 

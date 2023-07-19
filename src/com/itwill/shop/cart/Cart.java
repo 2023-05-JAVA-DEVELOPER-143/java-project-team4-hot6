@@ -1,4 +1,10 @@
 package com.itwill.shop.cart;
+
+import java.sql.Date;
+
+import com.itwill.shop.product.Product;
+import com.itwill.shop.userinfo.User;
+
 /*
 이름         널?       유형            
 ---------- -------- ------------- 
@@ -10,19 +16,21 @@ PRODUCT_NO          NUMBER(10)    FK
 public class Cart {
 	private int cart_no;
 	private int cart_qty;
-	private String user_id;
 	private int product_no;
+	private User user;
+	private Product product;
 	
 	public Cart() {
-
+		
 	}
 
-	public Cart(int cart_no, int cart_qty, String user_id, int product_no) {
+	public Cart(int cart_no, int cart_qty, int product_no, User user, Product product) {
 		super();
 		this.cart_no = cart_no;
 		this.cart_qty = cart_qty;
-		this.user_id = user_id;
 		this.product_no = product_no;
+		this.user = user;
+		this.product = product;
 	}
 
 	public int getCart_no() {
@@ -41,14 +49,6 @@ public class Cart {
 		this.cart_qty = cart_qty;
 	}
 
-	public String getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-
 	public int getProduct_no() {
 		return product_no;
 	}
@@ -57,11 +57,28 @@ public class Cart {
 		this.product_no = product_no;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	@Override
 	public String toString() {
-		return "Cart [cart_no=" + cart_no + ", cart_qty=" + cart_qty + ", user_id=" + user_id + ", product_no="
-				+ product_no + "]";
+		return "Cart [cart_no=" + cart_no + ", cart_qty=" + cart_qty + ", product_no=" + product_no + ", user=" + user
+				+ ", product=" + product + "]";
 	}
+	
 
 	
 	

@@ -1,39 +1,35 @@
 package com.itwill.shop.ui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.JLabel;
-import javax.swing.JInternalFrame;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JCheckBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JPasswordField;
-import javax.swing.JSeparator;
-import javax.swing.JMenuBar;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JList;
-import javax.swing.ImageIcon;
-import javax.swing.JTable;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
-
-import javax.swing.SwingConstants;
-import javax.swing.ListSelectionModel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.Color;
 
 public class MainFrameUser extends JFrame {
 
@@ -209,11 +205,11 @@ public class MainFrameUser extends JFrame {
 
 		});
 		
-		userLoginButton.setBounds(129, 150, 97, 23);
+		userLoginButton.setBounds(65, 148, 97, 23);
 		userLoginPanel.add(userLoginButton);
 		
 		JButton noUserLoginButton = new JButton("비회원 로그인");
-		noUserLoginButton.setBounds(121, 321, 133, 23);
+		noUserLoginButton.setBounds(88, 325, 182, 23);
 		userLoginPanel.add(noUserLoginButton);
 		
 		userPasswordTF = new JPasswordField();
@@ -224,29 +220,6 @@ public class MainFrameUser extends JFrame {
 		separator.setBounds(12, 181, 330, 15);
 		userLoginPanel.add(separator);
 		
-		JButton btnNewButton_4 = new JButton("중복확인");
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Boolean isUser = true;
-				try {
-					isUser = userService.isDuplicatedId(userIdTF.getText());
-					if(isUser == true) {
-						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다.");
-						userIdTF.setText("");
-						userIdTF.requestFocus();
-					}else {
-						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
-					}
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnNewButton_4.setFont(new Font("굴림", Font.PLAIN, 12));
-		btnNewButton_4.setBounds(247, 42, 95, 23);
-		userLoginPanel.add(btnNewButton_4);
-		
 		userIdTextLabel = new JLabel("");
 		userIdTextLabel.setForeground(Color.RED);
 		userIdTextLabel.setBounds(119, 69, 151, 15);
@@ -256,6 +229,14 @@ public class MainFrameUser extends JFrame {
 		userPwTextLabel.setForeground(Color.RED);
 		userPwTextLabel.setBounds(119, 125, 151, 15);
 		userLoginPanel.add(userPwTextLabel);
+		
+		JButton userJoinNewButton = new JButton("가입");
+		userJoinNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		userJoinNewButton.setBounds(185, 148, 97, 23);
+		userLoginPanel.add(userJoinNewButton);
 		
 		JPanel userSignUpPanel = new JPanel();
 		tabbedPane_1.addTab("회원가입", null, userSignUpPanel, null);
@@ -386,6 +367,27 @@ public class MainFrameUser extends JFrame {
 		userSignUpPanel.add(userSignUpPwCheckTF);
 		
 		JButton btnNewButton_41 = new JButton("중복");
+		btnNewButton_41.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/***************/
+				Boolean isUser = true;
+				try {
+					isUser = userService.isDuplicatedId(userIdTF.getText());
+					if(isUser == true) {
+						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다.");
+						userIdTF.setText("");
+						userIdTF.requestFocus();
+					}else {
+						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+			
+		
 		btnNewButton_41.setBounds(282, 24, 60, 23);
 		userSignUpPanel.add(btnNewButton_41);
 		

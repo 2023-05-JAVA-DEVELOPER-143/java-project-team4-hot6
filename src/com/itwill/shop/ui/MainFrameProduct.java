@@ -458,57 +458,6 @@ public class MainFrameProduct extends JFrame {
 		tabbedPane_2.setBounds(0, 0, 359, 423);
 		productTabPannel.add(tabbedPane_2);
 		
-		JPanel productMainPanel = new JPanel();
-		tabbedPane_2.addTab("메인", null, productMainPanel, null);
-		productMainPanel.setLayout(null);
-		
-		productSearchTF = new JTextField();
-		productSearchTF.setBounds(117, 10, 116, 21);
-		productMainPanel.add(productSearchTF);
-		productSearchTF.setColumns(10);
-		
-		JButton productSearchButton = new JButton("취미찾기");
-		productSearchButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					
-					productService.productSearch(productSearchTF.getText());
-					
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				
-				
-			}
-		});
-		productSearchButton.setBounds(245, 9, 97, 23);
-		productMainPanel.add(productSearchButton);
-		
-		JLabel lblNewLabel_12 = new JLabel("수공예");
-		lblNewLabel_12.setBounds(56, 140, 57, 15);
-		productMainPanel.add(lblNewLabel_12);
-		
-		JLabel lblNewLabel_13 = new JLabel("요리");
-		lblNewLabel_13.setBounds(244, 130, 57, 15);
-		productMainPanel.add(lblNewLabel_13);
-		
-		JLabel lblNewLabel_14 = new JLabel("미술");
-		lblNewLabel_14.setBounds(56, 290, 57, 15);
-		productMainPanel.add(lblNewLabel_14);
-		
-		JLabel lblNewLabel_27 = new JLabel("플라워");
-		lblNewLabel_27.setBounds(244, 290, 57, 15);
-		productMainPanel.add(lblNewLabel_27);
-		
-		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\flower (1).png"));
-		btnNewButton_3.setBounds(207, 189, 94, 91);
-		productMainPanel.add(btnNewButton_3);
-		
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
@@ -601,6 +550,84 @@ public class MainFrameProduct extends JFrame {
 		productCategoryTF.setBounds(201, 14, 116, 21);
 		productDetailPanel.add(productCategoryTF);
 		productCategoryTF.setColumns(10);
+		
+		JPanel productMainPanel = new JPanel();
+		tabbedPane_2.addTab("메인", null, productMainPanel, null);
+		productMainPanel.setLayout(null);
+		
+		productSearchTF = new JTextField();
+		productSearchTF.setBounds(117, 10, 116, 21);
+		productMainPanel.add(productSearchTF);
+		productSearchTF.setColumns(10);
+		
+		JButton productSearchButton = new JButton("취미찾기");
+		productSearchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					
+					productService.productSearch(productSearchTF.getText());
+					
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
+		productSearchButton.setBounds(245, 9, 97, 23);
+		productMainPanel.add(productSearchButton);
+		
+		JLabel lblNewLabel_12 = new JLabel("수공예");
+		lblNewLabel_12.setBounds(69, 173, 57, 15);
+		productMainPanel.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_13 = new JLabel("요리");
+		lblNewLabel_13.setBounds(245, 173, 57, 15);
+		productMainPanel.add(lblNewLabel_13);
+		
+		JLabel lblNewLabel_14 = new JLabel("미술");
+		lblNewLabel_14.setBounds(82, 308, 57, 15);
+		productMainPanel.add(lblNewLabel_14);
+		
+		JLabel lblNewLabel_27 = new JLabel("플라워");
+		lblNewLabel_27.setBounds(245, 308, 57, 15);
+		productMainPanel.add(lblNewLabel_27);
+		
+		JButton productFlowerButton = new JButton("");
+		productFlowerButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		productFlowerButton.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\flower-bouquet (1) (1).png"));
+		productFlowerButton.setBounds(212, 198, 100, 100);
+		productMainPanel.add(productFlowerButton);
+		
+		JButton productDrawingButton = new JButton("");
+		productDrawingButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		productDrawingButton.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\drawing (1).png"));
+		productDrawingButton.setBounds(41, 198, 100, 100);
+		productMainPanel.add(productDrawingButton);
+		
+		JButton productHandcraftButton = new JButton("");
+		productHandcraftButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		productHandcraftButton.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\handcraft (1).png"));
+		productHandcraftButton.setBounds(39, 63, 100, 100);
+		productMainPanel.add(productHandcraftButton);
+		
+		JButton productCookButton = new JButton("");
+		productCookButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		productCookButton.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\cooking (1).png"));
+		productCookButton.setBounds(212, 63, 100, 100);
+		productMainPanel.add(productCookButton);
 		
 		JPanel orderTabPannel = new JPanel();
 		tabbedPane.addTab("주문", null, orderTabPannel, null);

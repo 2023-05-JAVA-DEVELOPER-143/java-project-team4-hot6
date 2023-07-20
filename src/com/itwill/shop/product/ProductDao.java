@@ -75,6 +75,7 @@ public class ProductDao {
 		Product product = null;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NAME);
+		pstmt.setString(1, product_name);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
 			 		product = new Product(rs.getInt("product_no"),

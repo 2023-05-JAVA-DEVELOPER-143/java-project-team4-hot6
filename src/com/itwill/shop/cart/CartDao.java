@@ -57,19 +57,15 @@ public class CartDao {
 		return rowCount;
 	}
 	
-	
-	
-	
-	public int updateQtyUp(Cart cart) throws Exception {
+	//카트 수량 증가		
+	public int updateQtyUp(int cart_no) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		int rowCount=0;	
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(CartSQL.CART_UPDATE_QTY_UP);
-			pstmt.setInt(1, cart.getCart_qty());
-			pstmt.setString(2, cart.getUser_id());
-			pstmt.setInt(3, cart.getProduct().getProduct_no());
+			pstmt.setInt(1, cart_no);
 			rowCount=pstmt.executeUpdate();
 		}finally {
 			if(con!=null) {
@@ -78,17 +74,15 @@ public class CartDao {
 		}
 		return rowCount;
 	}
-	
-	public int updateQtyDown(Cart cart) throws Exception {
+	//카트 수량 감소
+	public int updateQtyDown(int cart_no) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		int rowCount=0;	
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(CartSQL.CART_UPDATE_QTY_DOWN);
-			pstmt.setInt(1, cart.getCart_qty());
-			pstmt.setString(2, cart.getUser_id());
-			pstmt.setInt(3, cart.getProduct().getProduct_no());
+			pstmt.setInt(1, cart_no);
 			rowCount=pstmt.executeUpdate();
 		}finally {
 			if(con!=null) {

@@ -17,21 +17,21 @@ public class UserService {
 	public boolean addUser(User newUser) throws Exception {
 		boolean isSuccess=false;
 
-	/*
-	 * 아이디존재여부 
-	 */
-	User findUser=userDao.findByUserId(newUser.getUserId());
-	if(findUser==null) {
-		int rowCount=userDao.insert(newUser);
-		isSuccess=true;//아이디 중복 안될시에 
-		
-	}else {
-		isSuccess=false;
-	}
 	
-		return isSuccess;
+	 //아이디존재여부 
+	 
+		User findUser=userDao.findByUserId(newUser.getUserId());
+		if(findUser==null) {
+			int rowCount=userDao.insert(newUser);
+			isSuccess=true;//아이디 중복 안될시에 
+			
+		}else {
+			isSuccess=false;
+		}
 		
-	}
+			return isSuccess;
+			
+		}
 	
 	/*
 	 * 로그인하기
@@ -58,10 +58,14 @@ public class UserService {
 		}
 		return result;
 	}
+	
+	
+	
 	/*
 	 * 비회원 로그인하기
 	 */
-	public void noUserLogin(String phoneNo) {
+
+	public void noUserLogin(String name, String phoneNo) {
 		/*
 		 * true: 1
 		 * false: 0
@@ -75,11 +79,30 @@ public class UserService {
 		    System.out.println("올바른 휴대전화 형식이 아닙니다.");
 		}
 		
-		
-		
-		
 	}
-		
+		/*
+		 * 비회원 가입하기
+		 */
+	public int noUserInsert(User newUser) throws Exception {
+		       int rowCount=userDao.insert1(newUser);
+		       return rowCount;
+
+	}
+	/*
+	 * 비회원 정보 업데이트 
+	 */
+	public int noUserUpdate(User newUser) throws Exception {
+		int rowCount=userDao.update1(newUser);
+		return rowCount;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*
 	 * 로그아웃 하기
@@ -95,12 +118,7 @@ public class UserService {
 		User userInfo = userDao.findByUserId(userId);
 		return userInfo;
 	}
-	/*
-	public User findUser(String userId) throws Exception {
-		User userInfo = userDao.findByUserId(userId);
-		return userInfo;
-	}
-	*/
+	
 	
 	/*
 	 * 회원수정

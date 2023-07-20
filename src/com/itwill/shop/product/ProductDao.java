@@ -86,7 +86,7 @@ public class ProductDao {
 	public Product findByProductCategory(String product_category) throws Exception{
 		Product product=null;
 		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(product_category);
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_CATEGORY);
 		pstmt.setString(1, product_category);
 		ResultSet rs=pstmt.executeQuery();
 		if(rs.next()) {

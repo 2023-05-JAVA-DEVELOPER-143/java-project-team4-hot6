@@ -2,25 +2,37 @@ package com.itwill.shop.product;
 
 import java.sql.Date;
 
+/*
+이름                 널?       유형            
+------------------ -------- ------------- 
+PRODUCT_NO         NOT NULL NUMBER(10)    
+PRODUCT_START_DATE          DATE          
+PRODUCT_CATEGORY            VARCHAR2(100) 
+PRODUCT_NAME                VARCHAR2(100) 
+PRODUCT_DETAIL              VARCHAR2(100) 
+PRODUCT_IMAGE               VARCHAR2(100) 
+PRODUCT_READ_COUNT          NUMBER(10)  
+ */
 public class Product {
 	private int product_no;
 	private Date product_start_date;
 	private String product_category;
 	private String product_name;
+	private String product_detail;
 	private String product_image;
 	private int product_read_count;
 	
 	public Product() {
-		super();
 	}
 
 	public Product(int product_no, Date product_start_date, String product_category, String product_name,
-			String product_image, int product_read_count) {
+			String product_detail, String product_image, int product_read_count) {
 		super();
 		this.product_no = product_no;
 		this.product_start_date = product_start_date;
 		this.product_category = product_category;
 		this.product_name = product_name;
+		this.product_detail = product_detail;
 		this.product_image = product_image;
 		this.product_read_count = product_read_count;
 	}
@@ -57,6 +69,14 @@ public class Product {
 		this.product_name = product_name;
 	}
 
+	public String getProduct_detail() {
+		return product_detail;
+	}
+
+	public void setProduct_detail(String product_detail) {
+		this.product_detail = product_detail;
+	}
+
 	public String getProduct_image() {
 		return product_image;
 	}
@@ -76,8 +96,11 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [product_no=" + product_no + ", product_start_date=" + product_start_date
-				+ ", product_category=" + product_category + ", product_name=" + product_name + ", product_image="
-				+ product_image + ", product_read_count=" + product_read_count + "]";
+				+ ", product_category=" + product_category + ", product_name=" + product_name + ", product_detail="
+				+ product_detail + ", product_image=" + product_image + ", product_read_count=" + product_read_count
+				+ "]";
 	}
-
+	
+	
+	
 }

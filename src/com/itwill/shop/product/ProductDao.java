@@ -32,6 +32,7 @@ public class ProductDao {
 							rs.getDate("product_start_date"),
 							rs.getString("product_category"),
 							rs.getString("product_name"),
+							rs.getString("product_detail"),
 							rs.getString("product_image"),
 							rs.getInt("product_read_count"));
 			productList.add(product);
@@ -51,11 +52,12 @@ public class ProductDao {
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
 			 		product = new Product(rs.getInt("product_no"),
-										  rs.getDate("product_start_date"),
-					                      rs.getString("product_category"),
-					                      rs.getString("product_name"),
-					                      rs.getString("product_image"),
-					                      rs.getInt("product_read_count"));
+			 							  rs.getDate("product_start_date"),
+							              rs.getString("product_category"),
+							              rs.getString("product_name"),
+							              rs.getString("product_detail"),
+							              rs.getString("product_image"),
+							              rs.getInt("product_read_count"));
 		}
 		
 		return product;
@@ -73,11 +75,12 @@ public class ProductDao {
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
 			 		product = new Product(rs.getInt("product_no"),
-										  rs.getDate("product_start_date"),
-					                      rs.getString("product_category"),
-					                      rs.getString("product_name"),
-					                      rs.getString("product_image"),
-					                      rs.getInt("product_read_count"));
+							              rs.getDate("product_start_date"),
+				                          rs.getString("product_category"),
+				                          rs.getString("product_name"),
+				                          rs.getString("product_detail"),
+				                          rs.getString("product_image"),
+				                          rs.getInt("product_read_count"));
 		}
 		
 		return product;
@@ -96,11 +99,12 @@ public class ProductDao {
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
 			 		product = new Product(rs.getInt("product_no"),
-										  rs.getDate("product_start_date"),
-					                      rs.getString("product_category"),
-					                      rs.getString("product_name"),
-					                      rs.getString("product_image"),
-					                      rs.getInt("product_read_count"));
+							  			  rs.getDate("product_start_date"),
+							  			  rs.getString("product_category"),
+							  			  rs.getString("product_name"),
+							  			  rs.getString("product_detail"),
+							  			  rs.getString("product_image"),
+							  			  rs.getInt("product_read_count"));
 		}
 		
 		return product;

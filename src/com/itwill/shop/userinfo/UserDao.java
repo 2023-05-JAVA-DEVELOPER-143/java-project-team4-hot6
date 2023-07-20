@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.itwill.shop.common.DataSource;
 
+
 public class UserDao {
 
 	private DataSource dataSource;
@@ -34,10 +35,10 @@ public class UserDao {
 		int insertRowCount=pstmt.executeUpdate();
 		return insertRowCount;
 		
-		/*
-		 * update
-		 */
 	}
+	/*
+	 * update
+	 */
 	public int update(User updateUser) throws Exception {
 			Connection con=dataSource.getConnection();
 			PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_UPDATE);
@@ -119,5 +120,16 @@ public class UserDao {
 					 );
 		}
 		return userList;
+	}
+	
+	public int countByUserId(String userId) throws Exception {
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_SELECT_BY_NO_COUNT);
+		pstmt.setString(1, userId);
+		ResultSet rs=pstmt.executeQuery();
+		rs.next();
+		int userCount = rs.getInt(1);
+		return userCount;
+		
 	}
 }

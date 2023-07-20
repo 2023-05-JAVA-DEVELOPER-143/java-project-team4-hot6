@@ -23,6 +23,9 @@ public class Order {
 	private String userId;
 	private List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 	
+	public Order() {
+	}
+	
 	public Order(int orderNo, String orderName, String orderPhone, int orderPrice, Date orderDate, String userId,
 			ArrayList<OrderItem> orderItemList) {
 		super();

@@ -28,8 +28,12 @@ import com.itwill.shop.userinfo.User;
 
 import javax.swing.SwingConstants;
 import javax.swing.ListSelectionModel;
+<<<<<<< HEAD
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+=======
+import java.awt.Font;
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-dddd.git
 
 public class MainFrame extends JFrame {
 
@@ -132,7 +136,7 @@ public class MainFrame extends JFrame {
 		userLoginPanel.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(150, 43, 116, 21);
+		textField.setBounds(119, 43, 116, 21);
 		userLoginPanel.add(textField);
 		textField.setColumns(10);
 		
@@ -147,12 +151,12 @@ public class MainFrame extends JFrame {
 		userLoginPanel.add(lblNewLabel_8);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(150, 231, 116, 21);
+		textField_2.setBounds(119, 231, 116, 21);
 		userLoginPanel.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(150, 277, 116, 21);
+		textField_3.setBounds(119, 277, 116, 21);
 		userLoginPanel.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -167,20 +171,25 @@ public class MainFrame extends JFrame {
 		userLoginPanel.add(lblNewLabel_10);
 		
 		JButton btnNewButton = new JButton("로그인");
-		btnNewButton.setBounds(120, 135, 97, 23);
+		btnNewButton.setBounds(138, 137, 97, 23);
 		userLoginPanel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("비회원 로그인");
-		btnNewButton_1.setBounds(102, 321, 133, 23);
+		btnNewButton_1.setBounds(121, 321, 133, 23);
 		userLoginPanel.add(btnNewButton_1);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(150, 94, 116, 21);
+		passwordField.setBounds(119, 94, 116, 21);
 		userLoginPanel.add(passwordField);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(12, 181, 330, 15);
 		userLoginPanel.add(separator);
+		
+		JButton btnNewButton_4 = new JButton("중복확인");
+		btnNewButton_4.setFont(new Font("굴림", Font.PLAIN, 12));
+		btnNewButton_4.setBounds(247, 42, 95, 23);
+		userLoginPanel.add(btnNewButton_4);
 		
 		JPanel userSignUpPanel = new JPanel();
 		tabbedPane_1.addTab("회원가입", null, userSignUpPanel, null);

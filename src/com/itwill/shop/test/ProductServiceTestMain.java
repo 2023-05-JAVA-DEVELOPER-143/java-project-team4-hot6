@@ -11,7 +11,7 @@ public class ProductServiceTestMain {
 		System.out.println("2.findByPrimaryKey");
 		System.out.println(productService.productDetail(1));
 		System.out.println("3.findByKeyword");
-		System.out.println(productService.productSearch("베이킹"));
+		System.out.println(productService.productSearch("마들렌"));
 		System.out.println("4.findByCategory");
 		System.out.println(productService.productCategorySearch("미술"));
 		System.out.println("5.updateByReadCount");

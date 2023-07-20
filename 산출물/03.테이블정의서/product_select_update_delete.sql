@@ -63,7 +63,7 @@ select product_category from product where product_category='요리';
 --1. 조회수 증가
 
 
-
+select * from product where product_name like '%플라워%';
 
 
 

@@ -1,6 +1,6 @@
 package com.itwill.shop.product;
 
-import java.util.List;
+import java.util.List;//
 
 public class ProductService {
 	private ProductDao productDao;
@@ -10,6 +10,7 @@ public class ProductService {
 	/*
 	 * product 전체출력
 	 */
+
 
 	public List<Product> productList() throws Exception{
 		return productDao.findAll();
@@ -42,9 +43,7 @@ public class ProductService {
 	 *  product 조회수 증가 기능
 	 */
 
-	
 	public int productReadCount(int product_no) throws Exception{
-		
 		return productDao.updateByReadCount(product_no);
 
 	

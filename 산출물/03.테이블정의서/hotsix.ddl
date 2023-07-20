@@ -22,6 +22,7 @@ CREATE TABLE product(
 		product_start_date            		DATE		 DEFAULT sysdate		 NULL ,
 		product_category              		VARCHAR2(100)		 NULL ,
 		product_name                  		VARCHAR2(100)		 NULL ,
+		product_price                 		NUMBER(10)		 NULL ,
 		product_detail                		VARCHAR2(100)		 NULL ,
 		product_image                 		VARCHAR2(100)		 NULL ,
 		product_read_count            		NUMBER(10)		 DEFAULT 0		 NULL 
@@ -46,6 +47,7 @@ CREATE SEQUENCE cart_cart_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
+
 CREATE TABLE orders(
 		order_no                      		NUMBER(10)		 NULL ,
 		order_name                    		VARCHAR2(100)		 NULL ,
@@ -61,6 +63,7 @@ CREATE SEQUENCE orders_order_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
+
 CREATE TABLE order_item(
 		oi_no                         		NUMBER(10)		 NULL ,
 		oi_qty                        		NUMBER(10)		 NULL ,
@@ -71,6 +74,7 @@ CREATE TABLE order_item(
 DROP SEQUENCE order_item_oi_no_SEQ;
 
 CREATE SEQUENCE order_item_oi_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 
 

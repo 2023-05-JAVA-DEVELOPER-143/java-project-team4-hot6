@@ -1,43 +1,42 @@
 package com.itwill.shop.ui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.JLabel;
-import javax.swing.JInternalFrame;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JCheckBox;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
-import javax.swing.JSeparator;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JList;
 import javax.swing.ImageIcon;
-import javax.swing.JTable;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
-import com.itwill.shop.userinfo.UserService;
 
-import javax.swing.SwingConstants;
-import javax.swing.ListSelectionModel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.Color;
-
-public class MainFrame extends JFrame {
-	private UserService userService;
-
+public class MainFrameProduct extends JFrame {
+	
+	//서비스 객체 멤버변수 선언
+	private ProductService productService;
+	
+	
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
 	private JTextField userSignupNameTF;
@@ -60,7 +59,7 @@ public class MainFrame extends JFrame {
 	private JTextField textField_1;
 	private JTextField userFindidTF;
 	private JTextField userFindPwTF;
-	private JTextField textField_4;
+	private JTextField productSearchTF;
 	private JTextField productNameTF;
 	private JTextField productPriceTF;
 	private JTextField productReadCountTF;
@@ -87,7 +86,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					MainFrameProduct frame = new MainFrameProduct();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -99,7 +98,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
+	public MainFrameProduct() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 380, 495);
 		
@@ -298,18 +297,12 @@ public class MainFrame extends JFrame {
 						idCheckMsgLabel.setText("");
 					}
 					
-					User user = new User(id, password,
-							passwordCheck, name, email, emailSend, birthdate, phone, sex);
-					Boolean isAdd = userService.addUser(user);
-					if(isAdd) {
-						tabbedPane.setSelectedIndex(0);
-					} else {
-						JOptionPane.showMessageDialog(null, id + "당신의 가입은 실패하였습니다.");
-						
-					}
-					System.out.println(user);
+					User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone, sex);
+					
+					
+					
+					
 				} catch (Exception e1){
-					e1.printStackTrace();
 					System.out.println("회원가입에러 --> " + e1.getMessage());
 				}
 				//아이디 유효성 체크
@@ -467,14 +460,25 @@ public class MainFrame extends JFrame {
 		tabbedPane_2.addTab("메인", null, productMainPanel, null);
 		productMainPanel.setLayout(null);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(117, 10, 116, 21);
-		productMainPanel.add(textField_4);
-		textField_4.setColumns(10);
+		productSearchTF = new JTextField();
+		productSearchTF.setBounds(117, 10, 116, 21);
+		productMainPanel.add(productSearchTF);
+		productSearchTF.setColumns(10);
 		
-		JButton btnNewButton_3 = new JButton("취미찾기");
-		btnNewButton_3.setBounds(245, 9, 97, 23);
-		productMainPanel.add(btnNewButton_3);
+		JButton productSearchButton = new JButton("취미찾기");
+		productSearchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					productService.productSearch(productSearchTF.getText());
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
+		productSearchButton.setBounds(245, 9, 97, 23);
+		productMainPanel.add(productSearchButton);
 		
 		JLabel lblNewLabel_12 = new JLabel("수공예");
 		lblNewLabel_12.setBounds(56, 130, 57, 15);
@@ -557,7 +561,7 @@ public class MainFrame extends JFrame {
 		
 		JLabel productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		productImageLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/images/nothing.jpg")));
+		productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
 		productImageLabel.setBounds(12, 14, 158, 218);
 		productDetailPanel.add(productImageLabel);
 		
@@ -791,14 +795,5 @@ public class MainFrame extends JFrame {
 			}
 		));
 		orderListScrollPane.setViewportView(orderListTable);
-		
-		try {
-			userService = new UserService();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		//생성자
-		
 	}
 }

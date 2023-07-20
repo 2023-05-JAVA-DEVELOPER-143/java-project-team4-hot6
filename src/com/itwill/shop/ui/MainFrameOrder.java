@@ -18,7 +18,6 @@ import javax.swing.JSeparator;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -26,7 +25,6 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.itwill.shop.userinfo.User;
-import com.itwill.shop.userinfo.UserService;
 
 import javax.swing.SwingConstants;
 import javax.swing.ListSelectionModel;
@@ -35,8 +33,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 
-public class MainFrame extends JFrame {
-	private UserService userService;
+public class MainFrameOrder extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
@@ -87,7 +84,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					MainFrameOrder frame = new MainFrameOrder();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -99,7 +96,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
+	public MainFrameOrder() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 380, 495);
 		
@@ -298,18 +295,12 @@ public class MainFrame extends JFrame {
 						idCheckMsgLabel.setText("");
 					}
 					
-					User user = new User(id, password,
-							passwordCheck, name, email, emailSend, birthdate, phone, sex);
-					Boolean isAdd = userService.addUser(user);
-					if(isAdd) {
-						tabbedPane.setSelectedIndex(0);
-					} else {
-						JOptionPane.showMessageDialog(null, id + "당신의 가입은 실패하였습니다.");
-						
-					}
-					System.out.println(user);
+					User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone, sex);
+					
+					
+					
+					
 				} catch (Exception e1){
-					e1.printStackTrace();
 					System.out.println("회원가입에러 --> " + e1.getMessage());
 				}
 				//아이디 유효성 체크
@@ -557,7 +548,7 @@ public class MainFrame extends JFrame {
 		
 		JLabel productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		productImageLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/images/nothing.jpg")));
+		productImageLabel.setIcon(new ImageIcon(MainFrameOrder.class.getResource("/images/nothing.jpg")));
 		productImageLabel.setBounds(12, 14, 158, 218);
 		productDetailPanel.add(productImageLabel);
 		
@@ -791,14 +782,5 @@ public class MainFrame extends JFrame {
 			}
 		));
 		orderListScrollPane.setViewportView(orderListTable);
-		
-		try {
-			userService = new UserService();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		//생성자
-		
 	}
 }

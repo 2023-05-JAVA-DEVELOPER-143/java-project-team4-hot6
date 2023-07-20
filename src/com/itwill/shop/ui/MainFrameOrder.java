@@ -605,8 +605,8 @@ public class MainFrameOrder extends JFrame {
 		orderCartScrollPane.setViewportView(orderCartTable);
 		
 		orderCartPriceTF = new JTextField();
-		orderCartPriceTF.setEditable(false);
 		orderCartPriceTF.setBounds(201, 177, 116, 21);
+		orderCartPriceTF.setEditable(false);
 		orderCartPanel.add(orderCartPriceTF);
 		orderCartPriceTF.setColumns(10);
 		
@@ -619,50 +619,55 @@ public class MainFrameOrder extends JFrame {
 		orderCartPanel.add(lblNewLabel_17);
 		
 		orderCartNameTF = new JTextField();
-		orderCartNameTF.setEditable(false);
 		orderCartNameTF.setBounds(102, 208, 215, 21);
+		orderCartNameTF.setEditable(false);
 		orderCartPanel.add(orderCartNameTF);
 		orderCartNameTF.setColumns(10);
 		
 		orderCartDetailTF = new JTextField();
-		orderCartDetailTF.setEditable(false);
 		orderCartDetailTF.setBounds(102, 239, 215, 21);
+		orderCartDetailTF.setEditable(false);
 		orderCartPanel.add(orderCartDetailTF);
 		orderCartDetailTF.setColumns(10);
 		
 		orderCartDateTF = new JTextField();
-		orderCartDateTF.setEditable(false);
 		orderCartDateTF.setBounds(102, 270, 215, 21);
+		orderCartDateTF.setEditable(false);
 		orderCartPanel.add(orderCartDateTF);
 		orderCartDateTF.setColumns(10);
 		
 		JLabel lblNewLabel_18 = new JLabel("강의명 :");
-		lblNewLabel_18.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_18.setBounds(33, 211, 57, 15);
+		lblNewLabel_18.setHorizontalAlignment(SwingConstants.CENTER);
 		orderCartPanel.add(lblNewLabel_18);
 		
 		JLabel lblNewLabel_19 = new JLabel("강의상세 :");
-		lblNewLabel_19.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_19.setBounds(33, 242, 57, 15);
+		lblNewLabel_19.setHorizontalAlignment(SwingConstants.CENTER);
 		orderCartPanel.add(lblNewLabel_19);
 		
 		JLabel lblNewLabel_20 = new JLabel("강의일자 :");
-		lblNewLabel_20.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_20.setBounds(33, 273, 57, 15);
+		lblNewLabel_20.setHorizontalAlignment(SwingConstants.CENTER);
 		orderCartPanel.add(lblNewLabel_20);
 		
 		JComboBox orderCartQtyComboBox = new JComboBox();
-		orderCartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
 		orderCartQtyComboBox.setBounds(153, 301, 113, 23);
+		orderCartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
 		orderCartPanel.add(orderCartQtyComboBox);
 		
 		JLabel lblNewLabel_21 = new JLabel("수강인원 :");
-		lblNewLabel_21.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_21.setBounds(20, 305, 70, 15);
+		lblNewLabel_21.setHorizontalAlignment(SwingConstants.CENTER);
 		orderCartPanel.add(lblNewLabel_21);
 		
 		JButton orderCartQtyMinusButton = new JButton("-");
 		orderCartQtyMinusButton.setBounds(102, 301, 39, 23);
+		orderCartQtyMinusButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		orderCartPanel.add(orderCartQtyMinusButton);
 		
 		JButton orderCartQtyPlusButton = new JButton("+");
@@ -671,15 +676,24 @@ public class MainFrameOrder extends JFrame {
 		
 		JButton orderCartEditButton = new JButton("주문 수정");
 		orderCartEditButton.setBounds(30, 330, 97, 23);
+		orderCartEditButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		orderCartPanel.add(orderCartEditButton);
-		
-		JButton orderCartDeleteButton = new JButton("주문 삭제");
-		orderCartDeleteButton.setBounds(136, 330, 97, 23);
-		orderCartPanel.add(orderCartDeleteButton);
 		
 		JButton orderCartPayButton = new JButton("결제하기");
 		orderCartPayButton.setBounds(245, 330, 97, 23);
 		orderCartPanel.add(orderCartPayButton);
+		
+		JButton orderCartDeleteButton = new JButton("주문 취소");
+		orderCartDeleteButton.setBounds(136, 330, 97, 23);
+		orderCartDeleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		orderCartPanel.add(orderCartDeleteButton);
 		
 		JPanel orderPayPanel = new JPanel();
 		orderPayPanel.setLayout(null);

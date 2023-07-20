@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -28,6 +29,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 
@@ -469,7 +471,9 @@ public class MainFrameProduct extends JFrame {
 		productSearchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					
 					productService.productSearch(productSearchTF.getText());
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -481,7 +485,7 @@ public class MainFrameProduct extends JFrame {
 		productMainPanel.add(productSearchButton);
 		
 		JLabel lblNewLabel_12 = new JLabel("수공예");
-		lblNewLabel_12.setBounds(56, 130, 57, 15);
+		lblNewLabel_12.setBounds(56, 140, 57, 15);
 		productMainPanel.add(lblNewLabel_12);
 		
 		JLabel lblNewLabel_13 = new JLabel("요리");
@@ -492,9 +496,18 @@ public class MainFrameProduct extends JFrame {
 		lblNewLabel_14.setBounds(56, 290, 57, 15);
 		productMainPanel.add(lblNewLabel_14);
 		
-		JLabel lblNewLabel_27 = new JLabel("스포츠");
+		JLabel lblNewLabel_27 = new JLabel("플라워");
 		lblNewLabel_27.setBounds(244, 290, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
+		
+		JButton btnNewButton_3 = new JButton("New button");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\flower (1).png"));
+		btnNewButton_3.setBounds(207, 189, 94, 91);
+		productMainPanel.add(btnNewButton_3);
 		
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
@@ -571,6 +584,10 @@ public class MainFrameProduct extends JFrame {
 		productDetailPanel.add(productQtyComboBox);
 		
 		JButton productCartButton = new JButton("장바구니 담기");
+		productCartButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		productCartButton.setBounds(201, 303, 116, 23);
 		productDetailPanel.add(productCartButton);
 		
@@ -795,5 +812,13 @@ public class MainFrameProduct extends JFrame {
 			}
 		));
 		orderListScrollPane.setViewportView(orderListTable);
+		
+		try {
+			productService = new ProductService();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 	}
 }

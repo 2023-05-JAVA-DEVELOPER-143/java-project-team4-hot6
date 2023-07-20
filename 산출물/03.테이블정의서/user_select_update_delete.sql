@@ -81,4 +81,3 @@ select user_id, user_pw, user_pw_check, user_name, user_email, user_email_send, 
 
 commit;
 
-desc userinfo;

@@ -20,7 +20,8 @@ public class UserServiceTestMain {
 		System.out.println("실패: " + result);
 		
 		System.out.println("3.비회원 로그인");
-		userService.noUserLogin("010-1234-5678");
+		userService.noUserLogin("김경미","010-1234-5678");
+		
 		
 		
 		System.out.println("4.수정");
@@ -31,6 +32,9 @@ public class UserServiceTestMain {
 		System.out.println("5.삭제");
 		result = userService.remove("user11");
 		System.out.println("성공: "+ result);
+		
+		System.out.println("6.비회원 insert:"+userService.noUserInsert(new User(null,null, null, "카즈하", null, null, null, "010-7777-8888", null)));
+		System.out.println("7.비회원 update:"+userService.noUserUpdate(new User(null,null, null,"감자", null, null, null, "010-3477-5555", null)));
 		
 	}
 }

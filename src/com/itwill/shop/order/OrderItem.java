@@ -1,4 +1,7 @@
 package com.itwill.shop.order;
+
+import com.itwill.shop.product.Product;
+
 /*
   이름         널?       유형         
 ---------- -------- ---------- 
@@ -10,14 +13,14 @@ ORDER_NO            NUMBER(10)
 public class OrderItem {
 	private int oiNo;
 	private int oiQty;
-	private int productNo;
+	private Product product;
 	private int orderNo;
 	
-	public OrderItem(int oiNo, int oiQty, int productNo, int orderNo) {
+	public OrderItem(int oiNo, int oiQty, Product product, int orderNo) {
 		super();
 		this.oiNo = oiNo;
 		this.oiQty = oiQty;
-		this.productNo = productNo;
+		this.product = product;
 		this.orderNo = orderNo;
 	}
 	
@@ -33,11 +36,11 @@ public class OrderItem {
 	public void setOiQty(int oiQty) {
 		this.oiQty = oiQty;
 	}
-	public int getProductNo() {
-		return productNo;
+	public Product getProduct() {
+		return product;
 	}
-	public void setProductNo(int productNo) {
-		this.productNo = productNo;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	public int getOrderNo() {
 		return orderNo;
@@ -48,9 +51,9 @@ public class OrderItem {
 	
 	@Override
 	public String toString() {
-		return "OrderItem [oiNo=" + oiNo + ", oiQty=" + oiQty + ", productNo=" + productNo + ", orderNo=" + orderNo
-				+ "]";
+		return "OrderItem [oiNo=" + oiNo + ", oiQty=" + oiQty + ", product=" + product + ", orderNo=" + orderNo + "]";
 	}
+	
 	
 	
 	

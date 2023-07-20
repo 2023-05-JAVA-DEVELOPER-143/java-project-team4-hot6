@@ -1,5 +1,7 @@
 package com.itwill.shop.userinfo;
 
+import java.util.regex.Pattern;
+
 public class UserService {
 	
 	private UserDao userDao;
@@ -59,19 +61,25 @@ public class UserService {
 	/*
 	 * 비회원 로그인하기
 	 */
-	public int noUserLogin(String phoneNo) {
+	public void noUserLogin(String phoneNo) {
 		/*
-		 * 0: 실패
-		 * 1: 성공
+		 * true: 1
+		 * false: 0
 		 */
-		int result = 0;
-		if(phoneNo.equals("")) {
-			result =1;
-		}else {
-			result=0;
+		
+		String pattern2="";
+		pattern2 = "^\\d{3}-\\d{3,4}-\\d{4}$";
+		if(Pattern.matches(pattern2, phoneNo)) {
+		    System.out.println("로그인 성공 ");
+		} else {            
+		    System.out.println("올바른 휴대전화 형식이 아닙니다.");
 		}
-		return result;
+		
+		
+		
+		
 	}
+		
 	
 	/*
 	 * 로그아웃 하기
@@ -87,6 +95,13 @@ public class UserService {
 		User userInfo = userDao.findByUserId(userId);
 		return userInfo;
 	}
+	/*
+	public User findUser(String userId) throws Exception {
+		User userInfo = userDao.findByUserId(userId);
+		return userInfo;
+	}
+	*/
+	
 	/*
 	 * 회원수정
 	 */

@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-
-
 import com.itwill.shop.common.DataSource;
 
 
@@ -72,7 +70,7 @@ public class UserDao {
 	
 	
 		/*
-		 * select
+		 * select (회원가입한 회원들에 한정 메소드)
 		 */
 	public User findByUserId(String user_id)throws Exception {
 		Connection con = dataSource.getConnection();
@@ -85,18 +83,49 @@ public class UserDao {
 			findUser=new User( 
 						rs.getString("user_id"),
 						rs.getString("user_pw"),
-						rs.getString("user_pw"),
 						rs.getString("user_pw_check"),
 						rs.getString("user_name"),
 						rs.getString("user_email"),
 						rs.getString("user_email_send"),
 						rs.getString("user_jumin"),
+						rs.getString("user_phone"),
 						rs.getString("user_gender")
 						
 					);
 		}
 		return findUser;
 	}
+	/*
+	 * select (비회원 한정 메소드)
+	 */
+	public User findByUserNO(String user_id)throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_SELECT_BY_ID);
+		pstmt.setString(1,user_id);
+		ResultSet rs=pstmt.executeQuery();
+		
+		User findUser=null;
+		if(rs.next()) {
+			findUser=new User( 
+					rs.getString("user_id"),
+					rs.getString("user_pw"),
+					rs.getString("user_pw_check"),
+					rs.getString("user_name"),
+					rs.getString("user_email"),
+					rs.getString("user_email_send"),
+					rs.getString("user_jumin"),
+					rs.getString("user_phone"),
+					rs.getString("user_gender")
+					
+					);
+		}
+		return findUser;
+	}
+	
+	
+	
+	
+	
 	
 	  /*
 	   * selectAll

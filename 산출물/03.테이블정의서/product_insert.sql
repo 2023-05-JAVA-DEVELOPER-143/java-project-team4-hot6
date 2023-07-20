@@ -18,9 +18,9 @@ insert into product(product_no, product_start_date, product_category, product_na
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
 			values(product_product_no_SEQ.nextval, '2023-08-10', '요리', 230000, '[마포] 포실포실 크림마들렌 8개 만들기, 미니 플라워 바구니 원데이클래스', '크림마들렌이 8개입니다.', 'images/nothing.jpg', 0);		
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
-			values(product_product_no_SEQ.nextval, '2023-08-23', '미술', '[마포] 초보자도 쉽고 즐겁게 하는 브릭베어 아크릴화', '아크릴로 만듭니다.','images/nothing.jpg', 0);
+			values(product_product_no_SEQ.nextval, '2023-08-23', '미술', 300000, '[마포] 초보자도 쉽고 즐겁게 하는 브릭베어 아크릴화', '아크릴로 만듭니다.','images/nothing.jpg', 0);
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
-			values(product_product_no_SEQ.nextval, '2023-08-09', '미술', '[서울] 하루만에 나만의 이모티콘 만들기', '용돈벌이가 쏠쏠합니다.','images/nothing.jpg', 0);			
+			values(product_product_no_SEQ.nextval, '2023-08-09', '미술', 80000, '[서울] 하루만에 나만의 이모티콘 만들기', '용돈벌이가 쏠쏠합니다.','images/nothing.jpg', 0);			
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
-			values(product_product_no_SEQ.nextval, '2023-08-09', '미술', '[합정] 나이프화, 아크릴화','나이프화입니다.', 'images/nothing.jpg', 0);	
+			values(product_product_no_SEQ.nextval, '2023-08-09', '미술', 150000, '[합정] 나이프화, 아크릴화','나이프화입니다.', 'images/nothing.jpg', 0);	
 

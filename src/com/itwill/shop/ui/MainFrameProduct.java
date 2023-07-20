@@ -464,6 +464,11 @@ public class MainFrameProduct extends JFrame {
 		textField_4.setColumns(10);
 		
 		JButton btnNewButton_3 = new JButton("취미찾기");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnNewButton_3.setBounds(245, 9, 97, 23);
 		productMainPanel.add(btnNewButton_3);
 		

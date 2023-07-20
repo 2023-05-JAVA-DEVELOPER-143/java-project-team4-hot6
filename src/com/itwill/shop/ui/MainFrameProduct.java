@@ -598,7 +598,7 @@ public class MainFrameProduct extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		productFlowerButton.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\flower-bouquet (1) (1).png"));
+		productFlowerButton.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/flower-bouquet (1) (1).png")));
 		productFlowerButton.setBounds(212, 198, 100, 100);
 		productMainPanel.add(productFlowerButton);
 		
@@ -607,7 +607,7 @@ public class MainFrameProduct extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		productDrawingButton.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\drawing (1).png"));
+		productDrawingButton.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/drawing (1).png")));
 		productDrawingButton.setBounds(41, 198, 100, 100);
 		productMainPanel.add(productDrawingButton);
 		
@@ -616,7 +616,7 @@ public class MainFrameProduct extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		productHandcraftButton.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\handcraft (1).png"));
+		productHandcraftButton.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/handcraft (1).png")));
 		productHandcraftButton.setBounds(39, 63, 100, 100);
 		productMainPanel.add(productHandcraftButton);
 		
@@ -625,7 +625,7 @@ public class MainFrameProduct extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		productCookButton.setIcon(new ImageIcon("C:\\Users\\itwill\\Downloads\\cooking (1).png"));
+		productCookButton.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/cooking (1).png")));
 		productCookButton.setBounds(212, 63, 100, 100);
 		productMainPanel.add(productCookButton);
 		

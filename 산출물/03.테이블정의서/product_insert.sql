@@ -12,7 +12,7 @@ insert into product(product_no, product_start_date, product_category, product_na
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
 			values(product_product_no_SEQ.nextval, '2023-08-10', '수공예', '[연남] 가죽 공예 데일리 카드 지갑 만들기 원데이 클래스', 110000,  '나만의 이니셜 각인도 해드려요!', 'images/nothing.jpg', 0);		
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
-			values(product_product_no_SEQ.nextval, '2023-08-08', '요리', '[종로/서촌] 고급재료 듬뿍 피낭시에 구움과자','고급재료로 만드는 피낭시에입니다.', 130000, 'images/nothing.jpg', 0);
+			values(product_product_no_SEQ.nextval, '2023-08-08', '요리', '[종로/서촌] 고급재료 듬뿍 피낭시에 구움과자', 130000, '고급재료로 만드는 피낭시에입니다.', 'images/nothing.jpg', 0);
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
 			values(product_product_no_SEQ.nextval, '2023-08-05', '요리','[망원] 다양한 베이킹', 140000, '원하는 빵을 만들 수 있습니다!','images/nothing.jpg', 0);
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)

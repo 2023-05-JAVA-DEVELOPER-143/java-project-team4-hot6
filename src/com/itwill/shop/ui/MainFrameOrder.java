@@ -18,6 +18,7 @@ import javax.swing.JSeparator;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -674,6 +675,11 @@ public class MainFrameOrder extends JFrame {
 		orderCartPanel.add(orderCartQtyMinusButton);
 		
 		JButton orderCartQtyPlusButton = new JButton("+");
+		orderCartQtyPlusButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		orderCartQtyPlusButton.setBounds(278, 301, 39, 23);
 		orderCartPanel.add(orderCartQtyPlusButton);
 		
@@ -693,15 +699,16 @@ public class MainFrameOrder extends JFrame {
 		orderCartDeleteButton.setBounds(136, 330, 97, 23);
 		orderCartDeleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int selectedRow=orderCartTable.getSelectedRow();
-				int selectedId=(Integer)orderCartTable.getValueAt(selectedRow, 0);
-				System.out.println(selectedRow);
-				System.out.println(selectedId);
 				try {
-					cartService.deleteCartItemByCartNo(selectedId);
+					int selectedRow=orderCartTable.getSelectedRow();
+					int selectedNo=(Integer)orderCartTable.getValueAt(selectedRow, 1);
+					System.out.println(selectedRow);
+					System.out.println(selectedNo);
+					cartService.deleteCartItemByCartNo(selectedNo);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "장바구니가 비었습니다.");
 				}	
 				}
 		

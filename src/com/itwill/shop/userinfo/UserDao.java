@@ -34,10 +34,10 @@ public class UserDao {
 		int insertRowCount=pstmt.executeUpdate();
 		return insertRowCount;
 		
-		/*
-		 * update
-		 */
 	}
+	/*
+	 * update
+	 */
 	public int update(User updateUser) throws Exception {
 			Connection con=dataSource.getConnection();
 			PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_UPDATE);

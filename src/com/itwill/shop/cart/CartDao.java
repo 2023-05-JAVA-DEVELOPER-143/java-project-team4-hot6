@@ -38,6 +38,28 @@ public class CartDao {
 	}
 	
 	//update
+	//카트리스트 수정
+	public int updateByCartNo(int cart_no,int cart_qty) throws Exception {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rowCount=0;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_UPDATE_BY_CARTNO);
+			pstmt.setInt(1, cart_qty);
+			pstmt.setInt(2, cart_no);
+			rowCount=pstmt.executeUpdate();
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return rowCount;
+	}
+	
+	
+	
+	
 	public int updateQtyUp(Cart cart) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -173,7 +195,7 @@ public class CartDao {
 		int deleteRowCount=0;
 		try {
 			con=dataSource.getConnection();
-			pstmt=con.prepareStatement(CartSQL.CART_DELETE_BY_CART_NO);
+			pstmt=con.prepareStatement(CartSQL.CART_DELETE_BY_USERID);
 			pstmt.setString(1, user_id);
 			deleteRowCount=pstmt.executeUpdate();
 		}finally {

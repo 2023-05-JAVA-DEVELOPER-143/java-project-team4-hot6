@@ -25,9 +25,6 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
-import com.itwill.member.Member;
-import com.itwill.shop.order.Order;
-import com.itwill.shop.order.OrderService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
 
@@ -37,15 +34,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
 
 public class MainFrame extends JFrame {
 	private UserService userService;
-	private OrderService orderService;
 
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
@@ -122,11 +113,6 @@ public class MainFrame extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("종료");
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -200,6 +186,11 @@ public class MainFrame extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(12, 181, 330, 15);
 		userLoginPanel.add(separator);
+		
+		JButton btnNewButton_4 = new JButton("중복확인");
+		btnNewButton_4.setFont(new Font("굴림", Font.PLAIN, 12));
+		btnNewButton_4.setBounds(247, 42, 95, 23);
+		userLoginPanel.add(btnNewButton_4);
 		
 		JPanel userSignUpPanel = new JPanel();
 		tabbedPane_1.addTab("회원가입", null, userSignUpPanel, null);
@@ -770,12 +761,6 @@ public class MainFrame extends JFrame {
 		
 		JPanel orderListPanel = new JPanel();
 		tabbedPane_3.addTab("주문내역", null, orderListPanel, null);
-		tabbedPane_3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				displayOrderList();
-			}
-		});
 		orderListPanel.setLayout(null);
 		
 		orderListIdTF = new JTextField();
@@ -807,45 +792,13 @@ public class MainFrame extends JFrame {
 		));
 		orderListScrollPane.setViewportView(orderListTable);
 		
-		
 		try {
 			userService = new UserService();
-			orderService = new OrderService();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		//생성자
 		
-		
-	}
-	private void displayOrderList() {
-		try {
-			List<Order> memberList = orderService.list("user12");
-			
-			
-			Vector tableVector = new Vector();
-			columVector.add("아이디");
-			columVector.add("패스워드");
-			columVector.add("이름");
-			columVector.add("주소");
-			Vector tableVector = new Vector();
-			
-			for(Order order : orderList) {
-			Vector rowVector = new Vector();
-			rowVector.add(order.getOrderDate());
-			rowVector.add(order.getOrderItemList().get(0).getProduct().getProduct_name());
-			rowVector.add(order.getOrderItemList().get(0).getOiQty());
-			rowVector.add(order.getOrderItemList().get(0).getProduct().getProduct_price());
-			tableVector.add(rowVector);
-			}
-			
-			DefaultTableModel tableModel = new DefaultTableModel(tableVector, columVector);
-			orderListTable.setModel(tableModel);
-			
-		}catch(Exception e1) {
-			System.out.println("회원리스트보기에러-->"+e1.getMessage());
-			
-		}
 	}
 }

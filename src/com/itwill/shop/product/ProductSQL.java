@@ -3,7 +3,7 @@ package com.itwill.shop.product;
 public class ProductSQL {
 	//product 전체출력
 	public final static String PRODUCT_SELECT_ALL = "select * from product";
-	//product 출력
+	//product 번호에 따른 출력
 	public final static String PRODUCT_SELECT_BY_NO = "select * from product where product_no=?";
 	//product 이름에 따른 검색
 	public final static String PRODUCT_SELECT_BY_NAME = "select * from product where product_name like '%?%'"; //'%'||?||'%'";

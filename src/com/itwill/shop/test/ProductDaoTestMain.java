@@ -15,7 +15,8 @@ public class ProductDaoTestMain {
 	System.out.println("4.findByCategory");
 	System.out.println(productDao.findByCategory(null));
 	System.out.println("5.updateByReadCount");
-	productDao.updateByReadCount(0);
+	//productDao.updateByReadCount(0);
+	System.out.println(productDao.updateByReadCount(0));
 	}
 	
 	

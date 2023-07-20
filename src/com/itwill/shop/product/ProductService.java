@@ -1,6 +1,6 @@
 package com.itwill.shop.product;
 
-import java.util.List;
+import java.util.List;//
 
 public class ProductService {
 	private ProductDao productDao;
@@ -27,7 +27,7 @@ public class ProductService {
 	 *  product 이름에 따른 검색
 	 */
 
-	public Product productSearch(String product_name) throws Exception{
+	public List<Product> productSearch(String product_name) throws Exception{
 		return productDao.findByKeyword(product_name);
 	}
 	
@@ -35,7 +35,7 @@ public class ProductService {
 	 *  product 카테고리에 따른 검색
 	 */
 
-	public Product productCategorySearch(String product_category) throws Exception{
+	public List<Product> productCategorySearch(String product_category) throws Exception{
 		return productDao.findByCategory(product_category);
 	}
 	

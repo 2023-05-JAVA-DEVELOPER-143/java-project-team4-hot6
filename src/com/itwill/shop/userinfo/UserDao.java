@@ -16,7 +16,7 @@ public class UserDao {
 		dataSource = new DataSource();
 	}
 	/*
-	 * insert
+	 * insert(회원가입 회원)
 	 */
 	public int insert(User newuser) throws Exception {
 		Connection con = dataSource.getConnection();
@@ -34,8 +34,26 @@ public class UserDao {
 		return insertRowCount;
 		
 	}
+	
+	public int insert1(User nonuser) throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_INSERT);
+		pstmt.setString(1,"dummy");
+		pstmt.setString(2,null);
+		pstmt.setString(3,null);
+		pstmt.setString(4,nonuser.getUserName());
+		pstmt.setString(5,null);
+		pstmt.setString(6,null);
+		pstmt.setString(7,null);
+		pstmt.setString(8,nonuser.getUserPhone());
+		pstmt.setString(9,null);
+		int insertRowCount=pstmt.executeUpdate();
+		return insertRowCount;
+	}
+	
+	
 	/*
-	 * update
+	 * update(회원)
 	 */
 	public int update(User updateUser) throws Exception {
 			Connection con=dataSource.getConnection();
@@ -51,6 +69,32 @@ public class UserDao {
 			return updateRowCount;
 			
 		}
+	
+	/*
+	 * update(비회원으로)
+	 */
+	public int update1(User updateUser) throws Exception {
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_UPDATE);
+		pstmt.setString(1,null);
+		pstmt.setString(2, null);
+		pstmt.setString(3,updateUser.getUserName());
+		pstmt.setString(4,null);
+		pstmt.setString(5, null);
+		pstmt.setString(6, updateUser.getUserPhone());
+		pstmt.setString(7,"dummy");
+		int updateRowCount=pstmt.executeUpdate();
+		return updateRowCount;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * delete
 	 */
@@ -63,10 +107,6 @@ public class UserDao {
 		int deleteRowCount=pstmt.executeUpdate();
 		return deleteRowCount;
 	}
-	
-	
-	
-	
 	
 	
 		/*
@@ -95,36 +135,6 @@ public class UserDao {
 		}
 		return findUser;
 	}
-	/*
-	 * select (비회원 한정 메소드)
-	 */
-	public User findByUserNO(String user_id)throws Exception {
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_SELECT_BY_ID);
-		pstmt.setString(1,user_id);
-		ResultSet rs=pstmt.executeQuery();
-		
-		User findUser=null;
-		if(rs.next()) {
-			findUser=new User( 
-					rs.getString("user_id"),
-					rs.getString("user_pw"),
-					rs.getString("user_pw_check"),
-					rs.getString("user_name"),
-					rs.getString("user_email"),
-					rs.getString("user_email_send"),
-					rs.getString("user_jumin"),
-					rs.getString("user_phone"),
-					rs.getString("user_gender")
-					
-					);
-		}
-		return findUser;
-	}
-	
-	
-	
-	
 	
 	
 	  /*

@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.spi.DirStateFactory.Result;
-
-import com.itwill.shop.cart.CartSQL;
 import com.itwill.shop.common.DataSource;
 
 
@@ -71,14 +68,14 @@ public class ProductDao {
 	 * selectByKeyword
 	 */
 	
-	public  Product findByKeyword(String product_name) throws Exception{
-		Product product = null;
+	public List<Product> findByKeyword(String product_name) throws Exception{
+		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NAME);
 		pstmt.setString(1, product_name);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
-			 		product = new Product(rs.getInt("product_no"),
+			 	Product product = new Product(rs.getInt("product_no"),
 							              rs.getDate("product_start_date"),
 				                          rs.getString("product_category"),
 				                          rs.getString("product_name"),
@@ -86,9 +83,10 @@ public class ProductDao {
 				                          rs.getString("product_detail"),
 				                          rs.getString("product_image"),
 				                          rs.getInt("product_read_count"));
+			 				productList.add(product);
 		}
 		
-		return product;
+		return productList;
 		
 	}
 	
@@ -96,14 +94,14 @@ public class ProductDao {
 	 * selectByCategory
 	 */
 
-	public Product findByCategory(String product_category) throws Exception{
-		Product product = null;
+	public List<Product> findByCategory(String product_category) throws Exception{
+		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_CATEGORY);
 		pstmt.setString(1, product_category);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
-			 		product = new Product(rs.getInt("product_no"),
+			 		Product product = new Product(rs.getInt("product_no"),
 							  			  rs.getDate("product_start_date"),
 							  			  rs.getString("product_category"),
 							  			  rs.getString("product_name"),
@@ -111,9 +109,10 @@ public class ProductDao {
 							  			  rs.getString("product_detail"),
 							  			  rs.getString("product_image"),
 							  			  rs.getInt("product_read_count"));
+			 				productList.add(product);
 		}
 		
-		return product;
+		return productList;
 		
 	}
 

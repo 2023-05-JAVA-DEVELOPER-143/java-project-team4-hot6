@@ -1,6 +1,6 @@
 package com.itwill.shop.test;
 
-import com.itwill.shop.product.ProductService;
+import com.itwill.shop.product.ProductService;//
 
 public class ProductServiceTestMain {
 	public static void main(String[] args) throws Exception  {

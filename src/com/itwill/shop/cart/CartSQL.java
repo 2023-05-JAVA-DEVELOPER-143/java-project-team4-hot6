@@ -17,7 +17,8 @@ public class CartSQL {
 			"update cart set cart_qty=cart_qty+1 where cart_no=?";
 	public static final String CART_UPDATE_QTY_DOWN=
 			"update cart set cart_qty=cart_qty-1 where cart_no=?";
-	
+	public static final String CART_UPDATE_BY_CARTNO=
+			"update cart set cart_qty=? where cart_no=?";
 
 
 

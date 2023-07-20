@@ -77,7 +77,8 @@ public class CartDao {
 	}
 	
 	//select
-	public List<Cart> findByUserId(User user) throws Exception {
+	//user_id
+	public List<Cart> findByUserId(String user_id) throws Exception {
 		List<Cart> cartList=new ArrayList<Cart>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -85,13 +86,12 @@ public class CartDao {
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(CartSQL.CART_SELECT_BY_USERID);
-			pstmt.setString(1, user.getUserId());
+			pstmt.setString(1, user_id);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				cartList.add(new Cart(rs.getInt("cart_no"),
 										rs.getInt("cart_qty"),
 										rs.getString("user_id"),
-										rs.getInt("product_no"),
 										new Product(rs.getInt("product_no"),
 													rs.getDate("product_start_date"),
 													rs.getString("product_category"),
@@ -108,9 +108,79 @@ public class CartDao {
 		}
 	}
 	return cartList;
+	}
 	
+	//select
+	//cart_no
+	public Cart findByCartNo(int cart_no) throws Exception {
+		Cart cart=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_SELECT_BY_CART_NO);
+			pstmt.setInt(1, cart_no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				cart=new Cart(rs.getInt("cart_no"),
+						rs.getInt("cart_qty"),
+						rs.getString("user_id"),
+						new Product(rs.getInt("product_no"),
+									rs.getDate("product_start_date"),
+									rs.getString("product_category"),
+									rs.getString("product_name"),
+									rs.getString("product_detail"),
+									rs.getString("product_image"),
+									rs.getInt("product_read_count"))
+						);
 	
+			}
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return cart;
+	}
 	
+	//delete
+	//cart_no
+	public int deleteByCartNo(int cart_no) throws Exception {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int deleteRowCount=0;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_DELETE_BY_CART_NO);
+			pstmt.setInt(1, cart_no);
+			deleteRowCount=pstmt.executeUpdate();
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return deleteRowCount;
+	}
+	
+	//delete
+	//user_id
+	public int deleteByCartUserId(String user_id) throws Exception {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int deleteRowCount=0;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_DELETE_BY_CART_NO);
+			pstmt.setString(1, user_id);
+			deleteRowCount=pstmt.executeUpdate();
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return deleteRowCount;
+	}
 	
 	
 	

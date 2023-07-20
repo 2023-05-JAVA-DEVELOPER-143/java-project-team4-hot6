@@ -121,7 +121,6 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 
 		int readCount=0;
-		
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(ProductSQL.PRODUCT_UPDATE_READ_COUNT);
@@ -130,7 +129,6 @@ public class ProductDao {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		return readCount;
 	}
 	

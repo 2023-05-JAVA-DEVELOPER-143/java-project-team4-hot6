@@ -2,8 +2,6 @@ package com.itwill.shop.product;
 
 import java.util.List;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
 public class ProductService {
 	private ProductDao productDao;
 	public ProductService() throws Exception{
@@ -44,7 +42,9 @@ public class ProductService {
 	 *  product 조회수 증가 기능
 	 */
 
-	private int productReadCount(int product_no) throws Exception{
+	
+	public int productReadCount(int product_no) throws Exception{
+		
 		return productDao.updateByReadCount(product_no);
 
 	

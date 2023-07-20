@@ -15,19 +15,17 @@ public class Cart {
 	private int cart_no;
 	private int cart_qty;
 	private String user_id;
-	private User user;
 	private Product product;
 	
 	public Cart() {
 
 	}
 
-	public Cart(int cart_no, int cart_qty, String user_id, User user, Product product) {
+	public Cart(int cart_no, int cart_qty, String user_id, Product product) {
 		super();
 		this.cart_no = cart_no;
 		this.cart_qty = cart_qty;
 		this.user_id = user_id;
-		this.user = user;
 		this.product = product;
 	}
 
@@ -55,14 +53,6 @@ public class Cart {
 		this.user_id = user_id;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public Product getProduct() {
 		return product;
 	}
@@ -73,9 +63,11 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Cart [cart_no=" + cart_no + ", cart_qty=" + cart_qty + ", user_id=" + user_id + ", user=" + user
-				+ ", product=" + product + "]";
+		return "Cart [cart_no=" + cart_no + ", cart_qty=" + cart_qty + ", user_id=" + user_id + ", product=" + product
+				+ "]";
 	}
+
+	
 	
 	
 }

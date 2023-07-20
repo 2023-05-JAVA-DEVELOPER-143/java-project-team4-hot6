@@ -25,7 +25,10 @@ public class OrderService {
 	}
 
 	// 결제버튼 (cart -> order_item -> order)
-	
+	public int create() throws Exception {
+		
+		return 0;
+	}
 	
 	// 주문내역 (결제완료 조회)
 	public ArrayList<Order> list(String selectUserId) throws Exception{

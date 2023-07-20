@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.spi.DirStateFactory.Result;
-
-import com.itwill.shop.cart.CartSQL;
 import com.itwill.shop.common.DataSource;
 
 
@@ -71,10 +68,11 @@ public class ProductDao {
 	 * selectByKeyword
 	 */
 	
-	public  Product findByKeyword(String product_name) throws Exception{
+	public Product findByKeyword(String product_name) throws Exception{
 		Product product = null;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NAME);
+		pstmt.setString(1, product_name);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
 			 		product = new Product(rs.getInt("product_no"),

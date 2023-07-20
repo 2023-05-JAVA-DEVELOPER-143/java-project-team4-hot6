@@ -13,8 +13,8 @@ public class ProductServiceTestMain {
 		System.out.println("3.findByKeyword");
 		System.out.println(productService.productSearch("베이킹"));
 		System.out.println("4.findByCategory");
-//		System.out.println(productService.productCategorySearch("미술"));
+		System.out.println(productService.productCategorySearch("미술"));
 		System.out.println("5.updateByReadCount");
-		System.out.println(productService.productReadCount(0)); 
+		System.out.println(productService.productReadCount(2)); 
 	}
 }

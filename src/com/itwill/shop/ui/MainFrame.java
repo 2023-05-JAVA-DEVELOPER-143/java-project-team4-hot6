@@ -63,6 +63,8 @@ public class MainFrame extends JFrame {
 	private JTextField orderCartDateTF;
 	private JTextField orderPayPriceTF;
 	private JTable table;
+	private JTextField orderPayNameTF;
+	private JTextField orderPayPhoneTF;
 
 	/**
 	 * Launch the application.
@@ -572,7 +574,7 @@ public class MainFrame extends JFrame {
 		tabbedPane_3.addTab("결제", null, orderPayPanel, null);
 		
 		JScrollPane orderPayScrollPane = new JScrollPane();
-		orderPayScrollPane.setBounds(12, 10, 330, 216);
+		orderPayScrollPane.setBounds(12, 10, 330, 142);
 		orderPayPanel.add(orderPayScrollPane);
 		
 		table = new JTable();
@@ -593,29 +595,47 @@ public class MainFrame extends JFrame {
 		orderPayPriceTF = new JTextField();
 		orderPayPriceTF.setEditable(false);
 		orderPayPriceTF.setColumns(10);
-		orderPayPriceTF.setBounds(201, 236, 116, 21);
+		orderPayPriceTF.setBounds(202, 165, 116, 21);
 		orderPayPanel.add(orderPayPriceTF);
 		
 		JLabel lblNewLabel_16_1 = new JLabel("총 결제금액 :");
-		lblNewLabel_16_1.setBounds(122, 239, 90, 15);
+		lblNewLabel_16_1.setBounds(123, 168, 90, 15);
 		orderPayPanel.add(lblNewLabel_16_1);
 		
 		JLabel lblNewLabel_17_1 = new JLabel("원");
-		lblNewLabel_17_1.setBounds(320, 239, 22, 15);
+		lblNewLabel_17_1.setBounds(321, 168, 22, 15);
 		orderPayPanel.add(lblNewLabel_17_1);
 		
 		JButton orderPayPayButton = new JButton("결제");
-		orderPayPayButton.setBounds(122, 323, 97, 23);
+		orderPayPayButton.setBounds(123, 335, 97, 23);
 		orderPayPanel.add(orderPayPayButton);
 		
 		JComboBox orderPayPaymentComboBox = new JComboBox();
 		orderPayPaymentComboBox.setModel(new DefaultComboBoxModel(new String[] {"신용카드", "무통장입금", "현장결제"}));
-		orderPayPaymentComboBox.setBounds(109, 278, 200, 23);
+		orderPayPaymentComboBox.setBounds(109, 290, 200, 23);
 		orderPayPanel.add(orderPayPaymentComboBox);
 		
 		JLabel lblNewLabel_22 = new JLabel("결제수단 :");
-		lblNewLabel_22.setBounds(26, 282, 57, 15);
+		lblNewLabel_22.setBounds(26, 294, 57, 15);
 		orderPayPanel.add(lblNewLabel_22);
+		
+		orderPayNameTF = new JTextField();
+		orderPayNameTF.setBounds(109, 206, 198, 21);
+		orderPayPanel.add(orderPayNameTF);
+		orderPayNameTF.setColumns(10);
+		
+		orderPayPhoneTF = new JTextField();
+		orderPayPhoneTF.setBounds(109, 247, 198, 21);
+		orderPayPanel.add(orderPayPhoneTF);
+		orderPayPhoneTF.setColumns(10);
+		
+		JLabel lblNewLabel_23 = new JLabel("수강자 :");
+		lblNewLabel_23.setBounds(26, 209, 57, 15);
+		orderPayPanel.add(lblNewLabel_23);
+		
+		JLabel lblNewLabel_24 = new JLabel("연락처 :");
+		lblNewLabel_24.setBounds(26, 250, 57, 15);
+		orderPayPanel.add(lblNewLabel_24);
 		
 		JPanel orderListPanel = new JPanel();
 		tabbedPane_3.addTab("주문내역", null, orderListPanel, null);

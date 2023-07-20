@@ -2,6 +2,7 @@ DROP TABLE product CASCADE CONSTRAINTS;
 
 CREATE TABLE product(
 		product_no                    		NUMBER(10)		 NULL ,
+		product_start_date            		DATE		 DEFAULT sysdate		 NULL ,
 		product_category              		VARCHAR2(100)		 NULL ,
 		product_name                  		VARCHAR2(100)		 NULL ,
 		product_image                 		VARCHAR2(100)		 NULL ,

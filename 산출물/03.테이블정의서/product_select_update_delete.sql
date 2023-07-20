@@ -1,31 +1,28 @@
+<<<<<<< HEAD
+--select
+=======
 --guard1 멤버한사람의  카트에 제품번호 존재여부
 select count(*)  as p_count from cart c join userinfo u on c.userid=u.userid where u.userid='guard1' and c.p_no=1;
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6
 
---guard1 멤버한사람의 카트아이템리스트
-select * 
-from cart c join userinfo u
-on c.userid=u.userid 
-join product p 
-on p.p_no=c.p_no
-where u.userid='guard1';
+--전체 제품 리스트
+select * from product
 
---카트아이템 1개의 제품정보(guard1 멤버한사람)
-select * from cart c join product p on c.p_no=p.p_no where cart_no=1 ;
+--제품 상세보기(상품 클릭시 상품 페이지로 이동)
+select * from product where product_no=?;
 
---guard1 카트에 있는 1번제품의 수량증가
-update cart set cart_qty=cart_qty+1 where userid='guard1' and p_no=1;
---guard1 카트에 있는 cart_no 1번의 수량3개 수정
-update cart set cart_qty=3 where cart_no=1
+--제품 검색
+select * from product where product_name like '%*test%'
 
---guard1님 카트아이템1개삭제
-delete from cart where cart_no=1;
---guard1님 카트아이템모두삭제
-delete from cart where userid='guard1';
+--조회수 최고 상품정보 제공
 
+select * from product order by product_read_count desc;
 
---1. 멤버 한사람의 주문전체목록
-select * from orders where userid='guard1';
+--장바구니로의 이동
 
+<<<<<<< HEAD
+select * from product
+=======
 --2. 주문한개(멤버 한사람의) 
 select * from orders where o_no=1;
 
@@ -75,6 +72,7 @@ select product_category from product where product_category='요리';
 
 
 
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6
 
 
 

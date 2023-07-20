@@ -31,7 +31,10 @@ DROP SEQUENCE product_product_no_SEQ;
 
 CREATE SEQUENCE product_product_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6
 
 CREATE TABLE cart(
 		cart_no                       		NUMBER(10)		 NULL ,
@@ -59,7 +62,10 @@ DROP SEQUENCE orders_order_no_SEQ;
 
 CREATE SEQUENCE orders_order_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6
 
 CREATE TABLE order_item(
 		oi_no                         		NUMBER(10)		 NULL ,

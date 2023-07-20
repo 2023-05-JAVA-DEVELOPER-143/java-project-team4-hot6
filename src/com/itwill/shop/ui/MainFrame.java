@@ -69,6 +69,20 @@ public class MainFrame extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, panel_2, null);
+		panel_2.setLayout(null);
+		
+		JTabbedPane tabbedPane_4 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_4.setBounds(-1, 1, 354, 391);
+		panel_2.add(tabbedPane_4);
+		
+		JPanel panel_7 = new JPanel();
+		tabbedPane_4.addTab("수공예", null, panel_7, null);
+		
+		JPanel panel_8 = new JPanel();
+		tabbedPane_4.addTab("요리", null, panel_8, null);
+		
+		JPanel panel_9 = new JPanel();
+		tabbedPane_4.addTab("미술", null, panel_9, null);
 		
 		JPanel panel_3 = new JPanel();
 		tabbedPane_2.addTab("제품상세", null, panel_3, null);

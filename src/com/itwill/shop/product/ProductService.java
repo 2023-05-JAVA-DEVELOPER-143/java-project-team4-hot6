@@ -13,7 +13,7 @@ public class ProductService {
 	 * product 전체출력
 	 */
 	//public List<Product> productList() throws Exception{
-	public List<Product> productList() throws Exception{
+	public List<Product> findAll() throws Exception{
 		return productDao.findAll();
 	}
 	/*

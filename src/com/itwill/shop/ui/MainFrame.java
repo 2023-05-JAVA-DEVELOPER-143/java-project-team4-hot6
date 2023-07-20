@@ -142,12 +142,12 @@ public class MainFrame extends JFrame {
 		userLoginPanel.add(lblNewLabel_8);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(138, 231, 116, 21);
+		textField_2.setBounds(119, 231, 116, 21);
 		userLoginPanel.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(138, 277, 116, 21);
+		textField_3.setBounds(119, 277, 116, 21);
 		userLoginPanel.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -162,11 +162,11 @@ public class MainFrame extends JFrame {
 		userLoginPanel.add(lblNewLabel_10);
 		
 		JButton btnNewButton = new JButton("로그인");
-		btnNewButton.setBounds(120, 135, 97, 23);
+		btnNewButton.setBounds(138, 137, 97, 23);
 		userLoginPanel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("비회원 로그인");
-		btnNewButton_1.setBounds(102, 321, 133, 23);
+		btnNewButton_1.setBounds(121, 321, 133, 23);
 		userLoginPanel.add(btnNewButton_1);
 		
 		passwordField = new JPasswordField();

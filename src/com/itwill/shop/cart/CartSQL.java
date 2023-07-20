@@ -5,7 +5,7 @@ public class CartSQL {
 			"insert into cart(cart_no,cart_qty,user_id,product_no) values (cart_cart_no_SEQ.nextval,?,?,?)";
 	public static final String CART_SELECT=
 			"select * from cart where user_id=?";
-	public static final String CART_SELECT_BY_USERINFO=
+	public static final String CART_SELECT_BY_USERID=
 			"select * from cart c join userinfo u on u.user_id=c.user_id where c.user_id=?";
 	public static final String CART_SELECT_BY_PRODUCT_=
 			"select * from cart c join product p on c.product_no=p.product_no where c.user_id=?";

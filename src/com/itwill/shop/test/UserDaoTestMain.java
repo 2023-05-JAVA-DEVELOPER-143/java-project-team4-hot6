@@ -11,7 +11,7 @@ public class UserDaoTestMain {
 		
 		System.out.println("2.findUser:"+userDao.findByUserId("user11"));
 		System.out.println("3.update:"+userDao.update(new User("user10", "7777", "7777","이효민", "tenten@naver.com", "F", null, "010-7777-5665", null)));
-		System.out.println("4.remove:"+ userDao.delete("guard7"));
+		System.out.println("4.remove:"+ userDao.delete("user11"));
 		
 	}
 }

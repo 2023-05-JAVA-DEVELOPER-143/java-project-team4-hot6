@@ -20,7 +20,7 @@ public class UserServiceTestMain {
 		System.out.println("실패: " + result);
 		
 		System.out.println("3.비회원 로그인");
-		userService.noUserLogin("010-1234-5678");
+		userService.noUserLogin("김경호","010-1234-5678");
 		
 		
 		System.out.println("4.수정");

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 import com.itwill.shop.common.DataSource;
-import com.itwill.shop.user.UserSQL;
+
 
 public class UserDao {
 

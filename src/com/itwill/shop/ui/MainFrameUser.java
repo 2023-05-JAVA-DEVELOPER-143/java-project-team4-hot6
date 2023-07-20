@@ -34,6 +34,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainFrameUser extends JFrame {
 
@@ -86,6 +88,7 @@ public class MainFrameUser extends JFrame {
 	private User loginUser = null;
 	private JLabel userIdTextLabel;
 	private JLabel userPwTextLabel;
+	private JComboBox userEditSexComboBox;
 	/**
 	 * Launch the application.
 	 */
@@ -225,6 +228,24 @@ public class MainFrameUser extends JFrame {
 		userLoginPanel.add(separator);
 		
 		JButton btnNewButton_4 = new JButton("중복확인");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Boolean isUser = true;
+				try {
+					isUser = userService.isDuplicatedId(userIdTF.getText());
+					if(isUser == true) {
+						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다.");
+						userIdTF.setText("");
+						userIdTF.requestFocus();
+					}else {
+						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnNewButton_4.setFont(new Font("굴림", Font.PLAIN, 12));
 		btnNewButton_4.setBounds(247, 42, 95, 23);
 		userLoginPanel.add(btnNewButton_4);
@@ -377,6 +398,14 @@ public class MainFrameUser extends JFrame {
 		userSignUpPanel.add(idCheckMsgLabel);
 		
 		JPanel userEditPanel = new JPanel();
+		userEditPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			
+				
+			}
+		});
 		userEditPanel.setLayout(null);
 		tabbedPane_1.addTab("회원정보", null, userEditPanel, null);
 		
@@ -406,7 +435,7 @@ public class MainFrameUser extends JFrame {
 		userEditPhoneTF.setBounds(128, 221, 142, 21);
 		userEditPanel.add(userEditPhoneTF);
 		
-		JComboBox userEditSexComboBox = new JComboBox();
+		userEditSexComboBox = new JComboBox();
 		userEditSexComboBox.setEditable(true);
 		userEditSexComboBox.setBounds(128, 252, 142, 23);
 		userEditPanel.add(userEditSexComboBox);
@@ -448,6 +477,17 @@ public class MainFrameUser extends JFrame {
 		userEditPanel.add(userEditEmailCheckBox);
 		
 		JButton userEditButton = new JButton("회원정보 수정");
+		userEditButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String id = userEditIDTF.getText();
+				String password = new String(userEditPwTF.getPassword());
+				String name = userEditNameTF.getText();
+				String email = userEditEmailTF.getText();
+				String jumin = userEditBDTF.getText();
+				String phone = userEditPhoneTF.getText();
+				
+			}
+		});
 		userEditButton.setBounds(110, 305, 131, 23);
 		userEditPanel.add(userEditButton);
 		
@@ -832,11 +872,30 @@ public class MainFrameUser extends JFrame {
 			}
 		));
 		orderListScrollPane.setViewportView(orderListTable);
+		
+		try {
+			userService = new UserService();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 	}
 	public void loginProcess(User loginUser){
 		this.loginUser = loginUser;
 		setTitle(loginUser.getUserId() + " 님 로그인");
+	}
 		
+		private void displayUserInfo(User user) {
+			/****로그인한 회원상세데이타 보여주기*****/
+			userEditIDTF.setText(user.getUserId());
+			userEditPwTF.setText(user.getUserPw());
+			userEditPwTF.setText(user.getUserPwCheck());
+			userEditEmailTF.setText(user.getUserEmail());
+			userEditBDTF.setText(user.getUserJumin());
+			userEditPhoneTF.setText(user.getUserPhone());
+			userEditSexComboBox.setSelectedItem(user.getUserGender());
+			
 		
 	}
 }

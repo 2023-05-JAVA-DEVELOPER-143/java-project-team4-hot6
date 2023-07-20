@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 --select
-=======
+
 --guard1 멤버한사람의  카트에 제품번호 존재여부
 select count(*)  as p_count from cart c join userinfo u on c.userid=u.userid where u.userid='guard1' and c.p_no=1;
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6
+
 
 --전체 제품 리스트
 select * from product
@@ -20,9 +20,9 @@ select * from product order by product_read_count desc;
 
 --장바구니로의 이동
 
-<<<<<<< HEAD
+
 select * from product
-=======
+
 --2. 주문한개(멤버 한사람의) 
 select * from orders where o_no=1;
 

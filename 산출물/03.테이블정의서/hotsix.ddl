@@ -22,22 +22,15 @@ CREATE TABLE product(
 		product_start_date            		DATE		 DEFAULT sysdate		 NULL ,
 		product_category              		VARCHAR2(100)		 NULL ,
 		product_name                  		VARCHAR2(100)		 NULL ,
+		product_detail                		VARCHAR2(100)		 NULL ,
 		product_image                 		VARCHAR2(100)		 NULL ,
-		product_read_count            		NUMBER(10)		 NULL 
+		product_read_count            		NUMBER(10)		 DEFAULT 0		 NULL 
 );
 
 DROP SEQUENCE product_product_no_SEQ;
 
 CREATE SEQUENCE product_product_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
-CREATE TRIGGER product_product_no_TRG
-BEFORE INSERT ON product
-FOR EACH ROW
-BEGIN
-IF :NEW.product_no IS NOT NULL THEN
-  SELECT product_product_no_SEQ.NEXTVAL INTO :NEW.product_no FROM DUAL;
-END IF;
-END;
 
 
 CREATE TABLE cart(
@@ -51,14 +44,6 @@ DROP SEQUENCE cart_cart_no_SEQ;
 
 CREATE SEQUENCE cart_cart_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
-CREATE TRIGGER cart_cart_no_TRG
-BEFORE INSERT ON cart
-FOR EACH ROW
-BEGIN
-IF :NEW.cart_no IS NOT NULL THEN
-  SELECT cart_cart_no_SEQ.NEXTVAL INTO :NEW.cart_no FROM DUAL;
-END IF;
-END;
 
 
 CREATE TABLE orders(
@@ -74,14 +59,6 @@ DROP SEQUENCE orders_order_no_SEQ;
 
 CREATE SEQUENCE orders_order_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
-CREATE TRIGGER orders_order_no_TRG
-BEFORE INSERT ON orders
-FOR EACH ROW
-BEGIN
-IF :NEW.order_no IS NOT NULL THEN
-  SELECT orders_order_no_SEQ.NEXTVAL INTO :NEW.order_no FROM DUAL;
-END IF;
-END;
 
 
 CREATE TABLE order_item(
@@ -94,15 +71,6 @@ CREATE TABLE order_item(
 DROP SEQUENCE order_item_oi_no_SEQ;
 
 CREATE SEQUENCE order_item_oi_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
-CREATE TRIGGER order_item_oi_no_TRG
-BEFORE INSERT ON order_item
-FOR EACH ROW
-BEGIN
-IF :NEW.oi_no IS NOT NULL THEN
-  SELECT order_item_oi_no_SEQ.NEXTVAL INTO :NEW.oi_no FROM DUAL;
-END IF;
-END;
 
 
 

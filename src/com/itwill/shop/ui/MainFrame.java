@@ -20,6 +20,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 public class MainFrame extends JFrame {
 
@@ -51,6 +54,15 @@ public class MainFrame extends JFrame {
 	private JTextField productReadCountTF;
 	private JTextField productDetailTF;
 	private JTextField productDateTF;
+	private JTextField orderListIdTF;
+	private JTable orderListTable;
+	private JTable orderCartTable;
+	private JTextField orderCartPriceTF;
+	private JTextField orderCartNameTF;
+	private JTextField orderCartDetailTF;
+	private JTextField orderCartDateTF;
+	private JTextField orderPayPriceTF;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -465,11 +477,177 @@ public class MainFrame extends JFrame {
 		
 		JPanel orderCartPanel = new JPanel();
 		tabbedPane_3.addTab("장바구니", null, orderCartPanel, null);
+		orderCartPanel.setLayout(null);
+		
+		JScrollPane orderCartScrollPane = new JScrollPane();
+		orderCartScrollPane.setBounds(12, 10, 330, 157);
+		orderCartPanel.add(orderCartScrollPane);
+		
+		orderCartTable = new JTable();
+		orderCartTable.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"\uBC88\uD638", "\uAC15\uC758\uBA85", "\uC778\uC6D0", "\uAC00\uACA9", "\uCD1D\uAE08\uC561"
+			}
+		));
+		orderCartScrollPane.setViewportView(orderCartTable);
+		
+		orderCartPriceTF = new JTextField();
+		orderCartPriceTF.setEditable(false);
+		orderCartPriceTF.setBounds(201, 177, 116, 21);
+		orderCartPanel.add(orderCartPriceTF);
+		orderCartPriceTF.setColumns(10);
+		
+		JLabel lblNewLabel_16 = new JLabel("총 결제금액 :");
+		lblNewLabel_16.setBounds(122, 180, 90, 15);
+		orderCartPanel.add(lblNewLabel_16);
+		
+		JLabel lblNewLabel_17 = new JLabel("원");
+		lblNewLabel_17.setBounds(320, 180, 22, 15);
+		orderCartPanel.add(lblNewLabel_17);
+		
+		orderCartNameTF = new JTextField();
+		orderCartNameTF.setEditable(false);
+		orderCartNameTF.setBounds(102, 215, 215, 21);
+		orderCartPanel.add(orderCartNameTF);
+		orderCartNameTF.setColumns(10);
+		
+		orderCartDetailTF = new JTextField();
+		orderCartDetailTF.setEditable(false);
+		orderCartDetailTF.setBounds(102, 246, 215, 21);
+		orderCartPanel.add(orderCartDetailTF);
+		orderCartDetailTF.setColumns(10);
+		
+		orderCartDateTF = new JTextField();
+		orderCartDateTF.setEditable(false);
+		orderCartDateTF.setBounds(102, 277, 215, 21);
+		orderCartPanel.add(orderCartDateTF);
+		orderCartDateTF.setColumns(10);
+		
+		JLabel lblNewLabel_18 = new JLabel("강의명 :");
+		lblNewLabel_18.setBounds(33, 218, 57, 15);
+		orderCartPanel.add(lblNewLabel_18);
+		
+		JLabel lblNewLabel_19 = new JLabel("강의상세 :");
+		lblNewLabel_19.setBounds(33, 249, 57, 15);
+		orderCartPanel.add(lblNewLabel_19);
+		
+		JLabel lblNewLabel_20 = new JLabel("강의일자 :");
+		lblNewLabel_20.setBounds(33, 280, 57, 15);
+		orderCartPanel.add(lblNewLabel_20);
+		
+		JComboBox orderCartQtyComboBox = new JComboBox();
+		orderCartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		orderCartQtyComboBox.setBounds(153, 317, 113, 23);
+		orderCartPanel.add(orderCartQtyComboBox);
+		
+		JLabel lblNewLabel_21 = new JLabel("수강인원 :");
+		lblNewLabel_21.setBounds(33, 321, 70, 15);
+		orderCartPanel.add(lblNewLabel_21);
+		
+		JButton orderCartQtyMinusButton = new JButton("-");
+		orderCartQtyMinusButton.setBounds(102, 317, 39, 23);
+		orderCartPanel.add(orderCartQtyMinusButton);
+		
+		JButton orderCartQtyPlusButton = new JButton("+");
+		orderCartQtyPlusButton.setBounds(278, 317, 39, 23);
+		orderCartPanel.add(orderCartQtyPlusButton);
+		
+		JButton orderCartEditButton = new JButton("주문 수정");
+		orderCartEditButton.setBounds(63, 350, 97, 23);
+		orderCartPanel.add(orderCartEditButton);
+		
+		JButton orderCartDeleteButton = new JButton("주문 삭제");
+		orderCartDeleteButton.setBounds(201, 350, 97, 23);
+		orderCartPanel.add(orderCartDeleteButton);
 		
 		JPanel orderPayPanel = new JPanel();
+		orderPayPanel.setLayout(null);
 		tabbedPane_3.addTab("결제", null, orderPayPanel, null);
+		
+		JScrollPane orderPayScrollPane = new JScrollPane();
+		orderPayScrollPane.setBounds(12, 10, 330, 216);
+		orderPayPanel.add(orderPayScrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"\uBC88\uD638", "\uAC15\uC758\uBA85", "\uC778\uC6D0", "\uAC00\uACA9", "\uCD1D\uAE08\uC561"
+			}
+		));
+		orderPayScrollPane.setViewportView(table);
+		
+		orderPayPriceTF = new JTextField();
+		orderPayPriceTF.setEditable(false);
+		orderPayPriceTF.setColumns(10);
+		orderPayPriceTF.setBounds(201, 236, 116, 21);
+		orderPayPanel.add(orderPayPriceTF);
+		
+		JLabel lblNewLabel_16_1 = new JLabel("총 결제금액 :");
+		lblNewLabel_16_1.setBounds(122, 239, 90, 15);
+		orderPayPanel.add(lblNewLabel_16_1);
+		
+		JLabel lblNewLabel_17_1 = new JLabel("원");
+		lblNewLabel_17_1.setBounds(320, 239, 22, 15);
+		orderPayPanel.add(lblNewLabel_17_1);
+		
+		JButton orderPayPayButton = new JButton("결제");
+		orderPayPayButton.setBounds(122, 323, 97, 23);
+		orderPayPanel.add(orderPayPayButton);
+		
+		JComboBox orderPayPaymentComboBox = new JComboBox();
+		orderPayPaymentComboBox.setModel(new DefaultComboBoxModel(new String[] {"신용카드", "무통장입금", "현장결제"}));
+		orderPayPaymentComboBox.setBounds(109, 278, 200, 23);
+		orderPayPanel.add(orderPayPaymentComboBox);
+		
+		JLabel lblNewLabel_22 = new JLabel("결제수단 :");
+		lblNewLabel_22.setBounds(26, 282, 57, 15);
+		orderPayPanel.add(lblNewLabel_22);
 		
 		JPanel orderListPanel = new JPanel();
 		tabbedPane_3.addTab("주문내역", null, orderListPanel, null);
+		orderListPanel.setLayout(null);
+		
+		orderListIdTF = new JTextField();
+		orderListIdTF.setEditable(false);
+		orderListIdTF.setBounds(47, 10, 116, 21);
+		orderListPanel.add(orderListIdTF);
+		orderListIdTF.setColumns(10);
+		
+		JLabel lblNewLabel_15 = new JLabel("님의 주문내역 입니다.");
+		lblNewLabel_15.setBounds(175, 13, 136, 15);
+		orderListPanel.add(lblNewLabel_15);
+		
+		JScrollPane orderListScrollPane = new JScrollPane();
+		orderListScrollPane.setBounds(12, 41, 330, 308);
+		orderListPanel.add(orderListScrollPane);
+		
+		orderListTable = new JTable();
+		orderListTable.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"\uC8FC\uBB38\uC77C\uC790", "\uAC15\uC758\uBA85", "\uC218\uB7C9", "\uAE08\uC561"
+			}
+		));
+		orderListScrollPane.setViewportView(orderListTable);
 	}
 }

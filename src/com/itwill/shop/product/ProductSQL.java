@@ -6,8 +6,7 @@ public class ProductSQL {
 	//product 번호에 따른 출력
 	public final static String PRODUCT_SELECT_BY_NO = "select * from product where product_no=?";
 	//product 이름에 따른 검색
-	public final static String PRODUCT_SELECT_BY_NAME = 
-			"select * from product where product_name like '%'||?||'%'"; //'%'||?||'%'
+	public final static String PRODUCT_SELECT_BY_NAME = "select * from product where product_name like '%'||?||'%'"; //'%'||?||'%'; 
 	//product 카테고리에 따른 검색
 	public final static String PRODUCT_SELECT_BY_CATEGORY = "select * from product where product_category=?";
 	//product 조회수 증가 기능

@@ -23,8 +23,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
+import com.itwill.shop.userinfo.User;
+
 import javax.swing.SwingConstants;
 import javax.swing.ListSelectionModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
 
@@ -68,6 +73,7 @@ public class MainFrame extends JFrame {
 	private JTextField orderPayNameTF;
 	private JTextField orderPayPhoneTF;
 	private JTextField productCategoryTF;
+	private JLabel idCheckMsgLabel;
 
 	/**
 	 * Launch the application.
@@ -181,82 +187,136 @@ public class MainFrame extends JFrame {
 		userSignUpPanel.setLayout(null);
 		
 		userSignUpIdTF = new JTextField();
-		userSignUpIdTF.setBounds(128, 10, 142, 21);
+		userSignUpIdTF.setBounds(128, 25, 142, 21);
 		userSignUpPanel.add(userSignUpIdTF);
 		userSignUpIdTF.setColumns(10);
 		
 		userSignupNameTF = new JTextField();
-		userSignupNameTF.setBounds(128, 103, 142, 21);
+		userSignupNameTF.setBounds(128, 147, 142, 21);
 		userSignUpPanel.add(userSignupNameTF);
 		userSignupNameTF.setColumns(10);
 		
 		userSignupEmailTF = new JTextField();
-		userSignupEmailTF.setBounds(128, 134, 142, 21);
+		userSignupEmailTF.setBounds(128, 178, 142, 21);
 		userSignUpPanel.add(userSignupEmailTF);
 		userSignupEmailTF.setColumns(10);
 		
 		userSignupBDTF = new JTextField();
-		userSignupBDTF.setBounds(128, 190, 142, 21);
+		userSignupBDTF.setBounds(128, 231, 142, 21);
 		userSignUpPanel.add(userSignupBDTF);
 		userSignupBDTF.setColumns(10);
 		
 		userSignupPhoneTF = new JTextField();
-		userSignupPhoneTF.setBounds(128, 221, 142, 21);
+		userSignupPhoneTF.setBounds(128, 262, 142, 21);
 		userSignUpPanel.add(userSignupPhoneTF);
 		userSignupPhoneTF.setColumns(10);
 		
 		JComboBox userSignupSexComboBox = new JComboBox();
 		userSignupSexComboBox.setModel(new DefaultComboBoxModel(new String[] {"남자", "여자"}));
-		userSignupSexComboBox.setBounds(128, 252, 142, 23);
+		userSignupSexComboBox.setBounds(128, 293, 142, 23);
 		userSignUpPanel.add(userSignupSexComboBox);
 		
 		JLabel lblNewLabel = new JLabel("아이디");
-		lblNewLabel.setBounds(66, 13, 57, 15);
+		lblNewLabel.setBounds(58, 28, 57, 15);
 		userSignUpPanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
-		lblNewLabel_1.setBounds(53, 41, 57, 15);
+		lblNewLabel_1.setBounds(58, 88, 57, 15);
 		userSignUpPanel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("비밀번호 확인");
-		lblNewLabel_1_1.setBounds(30, 75, 86, 15);
+		lblNewLabel_1_1.setBounds(29, 119, 86, 15);
 		userSignUpPanel.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("이름");
-		lblNewLabel_2.setBounds(66, 106, 57, 15);
+		lblNewLabel_2.setBounds(66, 150, 57, 15);
 		userSignUpPanel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("이메일");
-		lblNewLabel_3.setBounds(59, 137, 57, 15);
+		lblNewLabel_3.setBounds(53, 184, 57, 15);
 		userSignUpPanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("생년월일");
-		lblNewLabel_4.setBounds(53, 193, 57, 15);
+		lblNewLabel_4.setBounds(53, 234, 57, 15);
 		userSignUpPanel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("휴대전화");
-		lblNewLabel_5.setBounds(53, 224, 57, 15);
+		lblNewLabel_5.setBounds(53, 265, 57, 15);
 		userSignUpPanel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("성별");
-		lblNewLabel_6.setBounds(59, 256, 57, 15);
+		lblNewLabel_6.setBounds(59, 297, 57, 15);
 		userSignUpPanel.add(lblNewLabel_6);
 		
 		JCheckBox userSignUpEmailCheckBox = new JCheckBox("이메일 수신 동의");
-		userSignUpEmailCheckBox.setBounds(128, 161, 142, 23);
+		userSignUpEmailCheckBox.setBounds(128, 202, 142, 23);
 		userSignUpPanel.add(userSignUpEmailCheckBox);
 		
 		JButton userSignUpButton = new JButton("회원가입");
-		userSignUpButton.setBounds(120, 301, 97, 23);
+		userSignUpButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					// 회원가입 버튼
+					String id = userSignUpIdTF.getText();
+					String password = new String(userSignUpPwTF.getPassword());
+					String passwordCheck = new String(userSignUpPwCheckTF.getPassword());
+					String name = userSignupNameTF.getText();
+					String email = userSignupEmailTF.getText();
+					String emailSend = "";
+					if(userSignUpEmailCheckBox.isSelected()) {
+						emailSend = "T";
+					} else {
+						emailSend = "F";
+					}
+					String birthdate = userSignupBDTF.getText();
+					String phone = userSignupPhoneTF.getText();
+					String sex = (String)userSignupSexComboBox.getSelectedItem();
+					
+					if(id.equals("")) {
+						idCheckMsgLabel.setText("아이디를 입력하세요.");
+						userSignUpIdTF.requestFocus();
+						return;
+					} else {
+						idCheckMsgLabel.setText("");
+					}
+					
+					if(password.equals("")) {
+						idCheckMsgLabel.setText("패스워드를 입력하세요.");
+						userSignUpPwTF.requestFocus();
+						return;
+					} else {
+						idCheckMsgLabel.setText("");
+					}
+					
+					User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone, sex)
+					
+					
+					
+					
+				} catch (Exception e1){
+					System.out.println("회원가입에러 --> " + e1.getMessage());
+				}
+				//아이디 유효성 체크
+			}
+		});
+		userSignUpButton.setBounds(109, 339, 97, 23);
 		userSignUpPanel.add(userSignUpButton);
 		
 		userSignUpPwTF = new JPasswordField();
-		userSignUpPwTF.setBounds(128, 41, 142, 21);
+		userSignUpPwTF.setBounds(128, 85, 142, 21);
 		userSignUpPanel.add(userSignUpPwTF);
 		
 		userSignUpPwCheckTF = new JPasswordField();
-		userSignUpPwCheckTF.setBounds(127, 72, 143, 21);
+		userSignUpPwCheckTF.setBounds(128, 116, 143, 21);
 		userSignUpPanel.add(userSignUpPwCheckTF);
+		
+		JButton btnNewButton_4 = new JButton("중복");
+		btnNewButton_4.setBounds(282, 24, 60, 23);
+		userSignUpPanel.add(btnNewButton_4);
+		
+		idCheckMsgLabel = new JLabel("");
+		idCheckMsgLabel.setBounds(68, 60, 240, 15);
+		userSignUpPanel.add(idCheckMsgLabel);
 		
 		JPanel userEditPanel = new JPanel();
 		userEditPanel.setLayout(null);
@@ -289,6 +349,7 @@ public class MainFrame extends JFrame {
 		userEditPanel.add(userEditPhoneTF);
 		
 		JComboBox userEditSexComboBox = new JComboBox();
+		userEditSexComboBox.setEditable(true);
 		userEditSexComboBox.setBounds(128, 252, 142, 23);
 		userEditPanel.add(userEditSexComboBox);
 		

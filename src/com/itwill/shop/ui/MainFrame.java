@@ -23,6 +23,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.SwingConstants;
+import javax.swing.ListSelectionModel;
 
 public class MainFrame extends JFrame {
 
@@ -65,6 +67,7 @@ public class MainFrame extends JFrame {
 	private JTable table;
 	private JTextField orderPayNameTF;
 	private JTextField orderPayPhoneTF;
+	private JTextField productCategoryTF;
 
 	/**
 	 * Launch the application.
@@ -123,50 +126,54 @@ public class MainFrame extends JFrame {
 		userLoginPanel.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(133, 66, 116, 21);
+		textField.setBounds(150, 43, 116, 21);
 		userLoginPanel.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_7 = new JLabel("아이디");
-		lblNewLabel_7.setBounds(64, 69, 57, 15);
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7.setBounds(50, 46, 57, 15);
 		userLoginPanel.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("비밀번호");
-		lblNewLabel_8.setBounds(50, 113, 57, 15);
+		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_8.setBounds(50, 97, 57, 15);
 		userLoginPanel.add(lblNewLabel_8);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(133, 251, 116, 21);
+		textField_2.setBounds(150, 231, 116, 21);
 		userLoginPanel.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(133, 300, 116, 21);
+		textField_3.setBounds(150, 277, 116, 21);
 		userLoginPanel.add(textField_3);
 		textField_3.setColumns(10);
 		
 		JLabel lblNewLabel_9 = new JLabel("이름");
-		lblNewLabel_9.setBounds(50, 254, 57, 15);
+		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_9.setBounds(50, 234, 57, 15);
 		userLoginPanel.add(lblNewLabel_9);
 		
 		JLabel lblNewLabel_10 = new JLabel("휴대전화");
-		lblNewLabel_10.setBounds(50, 303, 57, 15);
+		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_10.setBounds(50, 280, 57, 15);
 		userLoginPanel.add(lblNewLabel_10);
 		
 		JButton btnNewButton = new JButton("로그인");
-		btnNewButton.setBounds(116, 152, 97, 23);
+		btnNewButton.setBounds(120, 135, 97, 23);
 		userLoginPanel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("비회원 로그인");
-		btnNewButton_1.setBounds(116, 331, 133, 23);
+		btnNewButton_1.setBounds(102, 321, 133, 23);
 		userLoginPanel.add(btnNewButton_1);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(133, 110, 116, 21);
+		passwordField.setBounds(150, 94, 116, 21);
 		userLoginPanel.add(passwordField);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(12, 200, 330, 21);
+		separator.setBounds(12, 181, 330, 15);
 		userLoginPanel.add(separator);
 		
 		JPanel userSignUpPanel = new JPanel();
@@ -351,7 +358,6 @@ public class MainFrame extends JFrame {
 		userFindPanel.add(btnNewButton_2);
 		
 		userFindidTF = new JTextField();
-		userFindidTF.setText("당신의 아이디는");
 		userFindidTF.setEditable(false);
 		userFindidTF.setBounds(77, 143, 195, 21);
 		userFindPanel.add(userFindidTF);
@@ -359,10 +365,17 @@ public class MainFrame extends JFrame {
 		
 		userFindPwTF = new JTextField();
 		userFindPwTF.setEditable(false);
-		userFindPwTF.setText("당신의 비밀번호는");
 		userFindPwTF.setBounds(77, 206, 195, 21);
 		userFindPanel.add(userFindPwTF);
 		userFindPwTF.setColumns(10);
+		
+		JLabel lblNewLabel_25 = new JLabel("당신의 아이디는...");
+		lblNewLabel_25.setBounds(77, 118, 143, 15);
+		userFindPanel.add(lblNewLabel_25);
+		
+		JLabel lblNewLabel_26 = new JLabel("당신의 비밀번호는...");
+		lblNewLabel_26.setBounds(77, 181, 133, 15);
+		userFindPanel.add(lblNewLabel_26);
 		
 		JPanel productTabPannel = new JPanel();
 		tabbedPane.addTab("제품", null, productTabPannel, null);
@@ -386,16 +399,20 @@ public class MainFrame extends JFrame {
 		productMainPanel.add(btnNewButton_3);
 		
 		JLabel lblNewLabel_12 = new JLabel("수공예");
-		lblNewLabel_12.setBounds(56, 100, 57, 15);
+		lblNewLabel_12.setBounds(56, 130, 57, 15);
 		productMainPanel.add(lblNewLabel_12);
 		
 		JLabel lblNewLabel_13 = new JLabel("요리");
-		lblNewLabel_13.setBounds(56, 195, 57, 15);
+		lblNewLabel_13.setBounds(244, 130, 57, 15);
 		productMainPanel.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("미술");
 		lblNewLabel_14.setBounds(56, 290, 57, 15);
 		productMainPanel.add(lblNewLabel_14);
+		
+		JLabel lblNewLabel_27 = new JLabel("스포츠");
+		lblNewLabel_27.setBounds(244, 290, 57, 15);
+		productMainPanel.add(lblNewLabel_27);
 		
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
@@ -417,43 +434,53 @@ public class MainFrame extends JFrame {
 		tabbedPane_4.addTab("미술", null, panel_9, null);
 		panel_9.setLayout(null);
 		
+		JPanel panel = new JPanel();
+		tabbedPane_4.addTab("스포츠", null, panel, null);
+		panel.setLayout(null);
+		
 		JPanel productDetailPanel = new JPanel();
 		tabbedPane_2.addTab("제품상세", null, productDetailPanel, null);
 		productDetailPanel.setLayout(null);
 		
 		productNameTF = new JTextField();
+		productNameTF.setEditable(false);
 		productNameTF.setText("제품이름");
-		productNameTF.setBounds(201, 23, 116, 21);
+		productNameTF.setBounds(201, 45, 116, 21);
 		productDetailPanel.add(productNameTF);
 		productNameTF.setColumns(10);
 		
 		productPriceTF = new JTextField();
+		productPriceTF.setEditable(false);
 		productPriceTF.setText("제품가격");
-		productPriceTF.setBounds(201, 54, 116, 21);
+		productPriceTF.setBounds(201, 76, 116, 21);
 		productDetailPanel.add(productPriceTF);
 		productPriceTF.setColumns(10);
 		
 		productReadCountTF = new JTextField();
+		productReadCountTF.setEditable(false);
 		productReadCountTF.setText("조회수");
-		productReadCountTF.setBounds(201, 85, 116, 21);
+		productReadCountTF.setBounds(201, 107, 116, 21);
 		productDetailPanel.add(productReadCountTF);
 		productReadCountTF.setColumns(10);
 		
 		productDetailTF = new JTextField();
+		productDetailTF.setEditable(false);
 		productDetailTF.setText("상세설명");
 		productDetailTF.setBounds(201, 169, 116, 124);
 		productDetailPanel.add(productDetailTF);
 		productDetailTF.setColumns(10);
 		
 		productDateTF = new JTextField();
+		productDateTF.setEditable(false);
 		productDateTF.setText("날짜");
-		productDateTF.setBounds(201, 116, 116, 21);
+		productDateTF.setBounds(201, 138, 116, 21);
 		productDetailPanel.add(productDateTF);
 		productDateTF.setColumns(10);
 		
 		JLabel productImageLabel = new JLabel("");
+		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/images/nothing.jpg")));
-		productImageLabel.setBounds(65, 68, 76, 114);
+		productImageLabel.setBounds(12, 14, 158, 218);
 		productDetailPanel.add(productImageLabel);
 		
 		JComboBox productQtyComboBox = new JComboBox();
@@ -468,6 +495,13 @@ public class MainFrame extends JFrame {
 		JButton productPayButton = new JButton("주문하기");
 		productPayButton.setBounds(201, 339, 116, 23);
 		productDetailPanel.add(productPayButton);
+		
+		productCategoryTF = new JTextField();
+		productCategoryTF.setText("카테고리");
+		productCategoryTF.setEditable(false);
+		productCategoryTF.setBounds(201, 14, 116, 21);
+		productDetailPanel.add(productCategoryTF);
+		productCategoryTF.setColumns(10);
 		
 		JPanel orderTabPannel = new JPanel();
 		tabbedPane.addTab("주문", null, orderTabPannel, null);
@@ -486,6 +520,7 @@ public class MainFrame extends JFrame {
 		orderCartPanel.add(orderCartScrollPane);
 		
 		orderCartTable = new JTable();
+		orderCartTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		orderCartTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},
@@ -516,58 +551,66 @@ public class MainFrame extends JFrame {
 		
 		orderCartNameTF = new JTextField();
 		orderCartNameTF.setEditable(false);
-		orderCartNameTF.setBounds(102, 215, 215, 21);
+		orderCartNameTF.setBounds(102, 208, 215, 21);
 		orderCartPanel.add(orderCartNameTF);
 		orderCartNameTF.setColumns(10);
 		
 		orderCartDetailTF = new JTextField();
 		orderCartDetailTF.setEditable(false);
-		orderCartDetailTF.setBounds(102, 246, 215, 21);
+		orderCartDetailTF.setBounds(102, 239, 215, 21);
 		orderCartPanel.add(orderCartDetailTF);
 		orderCartDetailTF.setColumns(10);
 		
 		orderCartDateTF = new JTextField();
 		orderCartDateTF.setEditable(false);
-		orderCartDateTF.setBounds(102, 277, 215, 21);
+		orderCartDateTF.setBounds(102, 270, 215, 21);
 		orderCartPanel.add(orderCartDateTF);
 		orderCartDateTF.setColumns(10);
 		
 		JLabel lblNewLabel_18 = new JLabel("강의명 :");
-		lblNewLabel_18.setBounds(33, 218, 57, 15);
+		lblNewLabel_18.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_18.setBounds(33, 211, 57, 15);
 		orderCartPanel.add(lblNewLabel_18);
 		
 		JLabel lblNewLabel_19 = new JLabel("강의상세 :");
-		lblNewLabel_19.setBounds(33, 249, 57, 15);
+		lblNewLabel_19.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_19.setBounds(33, 242, 57, 15);
 		orderCartPanel.add(lblNewLabel_19);
 		
 		JLabel lblNewLabel_20 = new JLabel("강의일자 :");
-		lblNewLabel_20.setBounds(33, 280, 57, 15);
+		lblNewLabel_20.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_20.setBounds(33, 273, 57, 15);
 		orderCartPanel.add(lblNewLabel_20);
 		
 		JComboBox orderCartQtyComboBox = new JComboBox();
 		orderCartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		orderCartQtyComboBox.setBounds(153, 317, 113, 23);
+		orderCartQtyComboBox.setBounds(153, 301, 113, 23);
 		orderCartPanel.add(orderCartQtyComboBox);
 		
 		JLabel lblNewLabel_21 = new JLabel("수강인원 :");
-		lblNewLabel_21.setBounds(33, 321, 70, 15);
+		lblNewLabel_21.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_21.setBounds(20, 305, 70, 15);
 		orderCartPanel.add(lblNewLabel_21);
 		
 		JButton orderCartQtyMinusButton = new JButton("-");
-		orderCartQtyMinusButton.setBounds(102, 317, 39, 23);
+		orderCartQtyMinusButton.setBounds(102, 301, 39, 23);
 		orderCartPanel.add(orderCartQtyMinusButton);
 		
 		JButton orderCartQtyPlusButton = new JButton("+");
-		orderCartQtyPlusButton.setBounds(278, 317, 39, 23);
+		orderCartQtyPlusButton.setBounds(278, 301, 39, 23);
 		orderCartPanel.add(orderCartQtyPlusButton);
 		
 		JButton orderCartEditButton = new JButton("주문 수정");
-		orderCartEditButton.setBounds(63, 350, 97, 23);
+		orderCartEditButton.setBounds(30, 330, 97, 23);
 		orderCartPanel.add(orderCartEditButton);
 		
 		JButton orderCartDeleteButton = new JButton("주문 삭제");
-		orderCartDeleteButton.setBounds(201, 350, 97, 23);
+		orderCartDeleteButton.setBounds(136, 330, 97, 23);
 		orderCartPanel.add(orderCartDeleteButton);
+		
+		JButton orderCartPayButton = new JButton("결제하기");
+		orderCartPayButton.setBounds(245, 330, 97, 23);
+		orderCartPanel.add(orderCartPayButton);
 		
 		JPanel orderPayPanel = new JPanel();
 		orderPayPanel.setLayout(null);
@@ -578,6 +621,7 @@ public class MainFrame extends JFrame {
 		orderPayPanel.add(orderPayScrollPane);
 		
 		table = new JTable();
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},

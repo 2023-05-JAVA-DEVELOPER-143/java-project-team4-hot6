@@ -4,8 +4,10 @@ public class UserService {
 	
 	private UserDao userDao;
 
+
 	public UserService() throws Exception {
 		userDao=new UserDao();
+		
 	}
 	/*
 	 * 회원가입
@@ -74,8 +76,8 @@ public class UserService {
 	/*
 	 * 로그아웃 하기
 	 */
-	public void logout() {
-		
+	public String logout(String user) {
+		return user = null;
 	}
 	
 	/*

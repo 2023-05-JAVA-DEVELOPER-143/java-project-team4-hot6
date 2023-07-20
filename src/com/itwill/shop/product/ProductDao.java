@@ -116,10 +116,10 @@ public class ProductDao {
 	 * updateByReadCount
 	 */
 
-	public void updateByReadCount(int product_no) throws Exception{
+	public int updateByReadCount(int product_no) throws Exception{
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+		int readCount = 0;
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(ProductSQL.PRODUCT_UPDATE_READ_COUNT);
@@ -129,7 +129,7 @@ public class ProductDao {
 			e.printStackTrace();
 		}
 		
-		
+		return readCount;
 	}
 			
 

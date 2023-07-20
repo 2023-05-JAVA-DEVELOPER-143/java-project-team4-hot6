@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 --guard1 멤버한사람의  카트에 제품번호 존재여부
 select count(*)  as p_count from cart c join userinfo u on c.userid=u.userid where u.userid='guard1' and c.p_no=1;
 
@@ -50,6 +49,22 @@ delete from order_item where o_no in(select o_no from orders where userid='guard
 delete from orders where userid='guard1';
 
 --rollback;
+---------------------------------------------------
+--메인페이지
+--select
+--1. 키워드 검색
+select * from product where product_name like '%크림마들렌%';
+
+--2. select 조건
+select * from product where product_no=3;
+
+--카테고리별 표시
+select product_category from product where product_category='요리';
+
+
+--update
+--1. 조회수 증가
+update product set product_read_count=product_read_count+1 where product_no=1;
 
 
 

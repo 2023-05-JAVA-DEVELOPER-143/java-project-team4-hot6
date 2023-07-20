@@ -1,6 +1,6 @@
 --update pk
 
-update user set 
+update userinfo set 
     user_pw='2872',
     user_pw_check='2872',
     user_name='신짱구', 
@@ -11,7 +11,7 @@ update user set
 where user_id='guard2';
 
 
-update user set 
+update userinfo set 
     user_pw='1717',
     user_pw_check='1717',
     user_name='맹구', 
@@ -21,7 +21,7 @@ update user set
     
 where user_id='user4';
 
-update user set 
+update userinfo set 
     user_pw='9090',
     user_pw_check='9090',
     user_name='유리', 
@@ -32,7 +32,7 @@ update user set
 where user_id='user2';
 
 
-update user set 
+update userinfo set 
     user_pw='9090',
     user_pw_check='9090',
     user_name='유리', 
@@ -43,7 +43,7 @@ update user set
 where user_id='user10';
 
 
-update user set 
+update userinfo set 
     user_pw='1111',
     user_pw_check='1111',
     user_name='옥지', 
@@ -53,7 +53,7 @@ update user set
     
 where user_id='user9';
 
-update user set 
+update userinfo set 
     user_pw='4343',
     user_pw_check='4343',
     user_name='빵빵이', 
@@ -68,17 +68,17 @@ where user_id='user6';
 
 
 --delete pk
-delete from user where user_id='guard2';
-delete from user where user_id='user1';
+delete from userinfo where user_id='guard2';
+delete from userinfo where user_id='user1';
 
 
 --select pk
-select user_id, user_pw, user_pw_check, user_name, user_email, user_email_send, user_jumin, user_phone, user_gender from user where user_id='장희주';
+select user_id, user_pw, user_pw_check, user_name, user_email, user_email_send, user_jumin, user_phone, user_gender from userinfo where user_id='장희주';
 
 --select All
-select user_id, user_pw, user_pw_check, user_name, user_email, user_email_send, user_jumin, user_phone, user_gender  from user;
+select user_id, user_pw, user_pw_check, user_name, user_email, user_email_send, user_jumin, user_phone, user_gender  from userinfo;
 
 
 commit;
 
-desc user;
+desc userinfo;

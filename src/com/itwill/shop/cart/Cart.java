@@ -1,28 +1,36 @@
 package com.itwill.shop.cart;
+
+import com.itwill.shop.product.Product;
+import com.itwill.shop.userinfo.User;
+
 /*
-이름         널?       유형         
----------- -------- ---------- 
-CART_NO    NOT NULL NUMBER(10) 
-CART_QTY            NUMBER(10) 
-USER_NO             NUMBER(10) FK
-PRODUCT_NO          NUMBER(10) FK
+이름         널?       유형            
+---------- -------- ------------- 
+CART_NO    NOT NULL NUMBER(10)    PK
+CART_QTY            NUMBER(10)    
+USER_ID             VARCHAR2(100) FK
+PRODUCT_NO          NUMBER(10)    FK
 */
 public class Cart {
 	private int cart_no;
 	private int cart_qty;
-	private int user_no;
+	private String user_id;
 	private int product_no;
+	private User user;
+	private Product product;
 	
 	public Cart() {
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public Cart(int cart_no, int cart_qty, int user_no, int product_no) {
+	public Cart(int cart_no, int cart_qty, String user_id, int product_no, User user, Product product) {
 		super();
 		this.cart_no = cart_no;
 		this.cart_qty = cart_qty;
-		this.user_no = user_no;
+		this.user_id = user_id;
 		this.product_no = product_no;
+		this.user = user;
+		this.product = product;
 	}
 
 	public int getCart_no() {
@@ -41,12 +49,12 @@ public class Cart {
 		this.cart_qty = cart_qty;
 	}
 
-	public int getUser_no() {
-		return user_no;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public void setUser_no(int user_no) {
-		this.user_no = user_no;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public int getProduct_no() {
@@ -57,12 +65,26 @@ public class Cart {
 		this.product_no = product_no;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	@Override
 	public String toString() {
-		return "Cart [cart_no=" + cart_no + ", cart_qty=" + cart_qty + ", user_no=" + user_no + ", product_no="
-				+ product_no + "]";
+		return "Cart [cart_no=" + cart_no + ", cart_qty=" + cart_qty + ", user_id=" + user_id + ", product_no="
+				+ product_no + ", user=" + user + ", product=" + product + "]";
 	}
-	
-			
 	
 }

@@ -297,7 +297,7 @@ public class MainFrame extends JFrame {
 						idCheckMsgLabel.setText("");
 					}
 					
-					User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone, sex)
+					User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone, sex);
 					
 					
 					

@@ -32,6 +32,7 @@ public class ProductDao {
 							rs.getDate("product_start_date"),
 							rs.getString("product_category"),
 							rs.getString("product_name"),
+							rs.getInt("product_price"),
 							rs.getString("product_detail"),
 							rs.getString("product_image"),
 							rs.getInt("product_read_count"));
@@ -39,6 +40,7 @@ public class ProductDao {
 		}
 		return productList;
 	}
+							
 	
 	/*
 	 * selectByPk
@@ -55,6 +57,7 @@ public class ProductDao {
 			 							  rs.getDate("product_start_date"),
 							              rs.getString("product_category"),
 							              rs.getString("product_name"),
+							              rs.getInt("product_price"),
 							              rs.getString("product_detail"),
 							              rs.getString("product_image"),
 							              rs.getInt("product_read_count"));
@@ -78,6 +81,7 @@ public class ProductDao {
 							              rs.getDate("product_start_date"),
 				                          rs.getString("product_category"),
 				                          rs.getString("product_name"),
+				                          rs.getInt("product_price"),
 				                          rs.getString("product_detail"),
 				                          rs.getString("product_image"),
 				                          rs.getInt("product_read_count"));
@@ -102,6 +106,7 @@ public class ProductDao {
 							  			  rs.getDate("product_start_date"),
 							  			  rs.getString("product_category"),
 							  			  rs.getString("product_name"),
+							  			  rs.getInt("product_price"),
 							  			  rs.getString("product_detail"),
 							  			  rs.getString("product_image"),
 							  			  rs.getInt("product_read_count"));

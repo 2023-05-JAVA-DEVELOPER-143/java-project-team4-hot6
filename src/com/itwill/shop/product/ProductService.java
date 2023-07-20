@@ -19,25 +19,25 @@ public class ProductService {
 	/*
 	 *  product 번호에 따른 출력
 	 */
-	public Product findByPrimaryKey() throws Exception{
-		return productDao.findByPrimaryKey(0);
+	public Product findByPrimaryKey(int product_no) throws Exception{
+		return productDao.findByPrimaryKey(product_no);
 	}
 	/*
 	 *  product 이름에 따른 검색
 	 */
-	public Product findByKeyword() throws Exception{
-		return productDao.findByKeyword(null);
+	public Product findByKeyword(String product_name) throws Exception{
+		return productDao.findByKeyword(product_name);
 	}
 	/*
 	 *  product 카테고리에 따른 검색
 	 */
-	public Product findByCategory() throws Exception{
-		return productDao.findByCategory(null);
+	public Product findByCategory(String product_category) throws Exception{
+		return productDao.findByCategory(product_category);
 	}
 	/*
 	 *  product 조회수 증가 기능
 	 */
-	public Product updateByReadCount() throws Exception{
-		//return pro
+	public int updateByReadCount(int product_read_count) throws Exception{
+		return productDao.updateByReadCount(product_read_count);
 	}
 }

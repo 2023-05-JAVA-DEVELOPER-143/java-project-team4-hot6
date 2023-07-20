@@ -32,6 +32,7 @@ public class ProductDao {
 							rs.getDate("product_start_date"),
 							rs.getString("product_category"),
 							rs.getString("product_name"),
+							rs.getInt("product_price"),
 							rs.getString("product_detail"),
 							rs.getString("product_image"),
 							rs.getInt("product_read_count"));
@@ -39,6 +40,7 @@ public class ProductDao {
 		}
 		return productList;
 	}
+							
 	
 	/*
 	 * selectByPk
@@ -55,6 +57,7 @@ public class ProductDao {
 			 							  rs.getDate("product_start_date"),
 							              rs.getString("product_category"),
 							              rs.getString("product_name"),
+							              rs.getInt("product_price"),
 							              rs.getString("product_detail"),
 							              rs.getString("product_image"),
 							              rs.getInt("product_read_count"));
@@ -72,12 +75,14 @@ public class ProductDao {
 		Product product = null;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_NAME);
+		pstmt.setString(1, product_name);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
 			 		product = new Product(rs.getInt("product_no"),
 							              rs.getDate("product_start_date"),
 				                          rs.getString("product_category"),
 				                          rs.getString("product_name"),
+				                          rs.getInt("product_price"),
 				                          rs.getString("product_detail"),
 				                          rs.getString("product_image"),
 				                          rs.getInt("product_read_count"));
@@ -102,6 +107,7 @@ public class ProductDao {
 							  			  rs.getDate("product_start_date"),
 							  			  rs.getString("product_category"),
 							  			  rs.getString("product_name"),
+							  			  rs.getInt("product_price"),
 							  			  rs.getString("product_detail"),
 							  			  rs.getString("product_image"),
 							  			  rs.getInt("product_read_count"));
@@ -121,7 +127,6 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 
 		int readCount=0;
-		
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(ProductSQL.PRODUCT_UPDATE_READ_COUNT);
@@ -130,7 +135,6 @@ public class ProductDao {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		return readCount;
 	}
 	

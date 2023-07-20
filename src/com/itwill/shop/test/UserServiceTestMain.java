@@ -20,12 +20,12 @@ public class UserServiceTestMain {
 		System.out.println("실패: " + result);
 		
 		System.out.println("3.비회원 로그인");
-		result = userService.noUserLogin("01012345678");
-		System.out.println(result);
+		userService.noUserLogin("010-1234-5678");
+		
 		
 		System.out.println("4.수정");
-		result = userService.UpdateUser(new User("user11", "9999","9999","강수지","suzikang@naver.com", "F", "990811", "010-9999-9999","여성"));
-		System.out.println("수정완료: " + userService.findUser("user11"));
+		result = userService.UpdateUser(new User("user8", "9999","9999","강수지","suzikang@naver.com", "F", "990811", "010-9999-9999","여성"));
+		System.out.println("수정완료: " + userService.findUser("user8"));
 		System.out.println("성공: "+ result);
 	
 		System.out.println("5.삭제");

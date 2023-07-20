@@ -75,9 +75,23 @@ public class UserService {
 	 */
 	public int UpdateUser(User user) throws Exception {
 		return userDao.update(user);
-		
 	}
 	
-	
+	/*
+	 * 아이디 중복체크
+	 */
+	public boolean isDuplicatedId(String userId) throws Exception {
+		if(userDao.countByUserId(userId)>=1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	/*
+	 * 회원탈퇴
+	 */
+	public int remove(String userId) throws Exception {
+		return userDao.delete(userId);
+	}
 	
 }

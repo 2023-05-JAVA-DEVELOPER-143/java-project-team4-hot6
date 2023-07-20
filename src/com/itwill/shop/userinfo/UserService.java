@@ -1,18 +1,33 @@
 package com.itwill.shop.userinfo;
 
-import java.util.List;
-
 public class UserService {
 	
 	private UserDao userDao;
-	
+
 	public UserService() throws Exception {
-		userDao = new UserDao();
+		userDao=new UserDao();
 	}
 	/*
 	 * 회원가입
 	 */
+	public boolean addUser(User newUser) throws Exception {
+		boolean isSuccess=false;
+
+	/*
+	 * 아이디존재여부 
+	 */
+	User findUser=userDao.findByUserId(newUser.getUserId());
+	if(findUser==null) {
+		int rowCount=userDao.insert(newUser);
+		isSuccess=true;//아이디 중복 안될시에 
+		
+	}else {
+		isSuccess=false;
+	}
 	
+		return isSuccess;
+		
+	}
 	
 	/*
 	 * 로그인하기
@@ -77,6 +92,7 @@ public class UserService {
 		return userDao.update(user);
 	}
 	
+
 	/*
 	 * 아이디 중복체크
 	 */
@@ -95,3 +111,4 @@ public class UserService {
 	}
 	
 }
+

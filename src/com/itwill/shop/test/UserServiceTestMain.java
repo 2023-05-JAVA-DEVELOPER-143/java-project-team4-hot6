@@ -1,5 +1,6 @@
 package com.itwill.shop.test;
 
+import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
 
 public class UserServiceTestMain {
@@ -7,6 +8,8 @@ public class UserServiceTestMain {
 		
 		UserService userService = new UserService();
 		System.out.println("1.회원가입");
+		boolean isAdd =userService.addUser(new User("user12", "2323","2222","배수지","suzi@naver.com", "F", "990811", "010-9999-9999","여성"));
+		System.out.println("회원가입 성공: " + isAdd);
 		
 		System.out.println("2.로그인");
 		
@@ -21,7 +24,13 @@ public class UserServiceTestMain {
 		System.out.println(result);
 		
 		System.out.println("4.수정");
+		result = userService.UpdateUser(new User("user11", "9999","9999","강수지","suzikang@naver.com", "F", "990811", "010-9999-9999","여성"));
+		System.out.println("수정완료: " + userService.findUser("user11"));
+		System.out.println("성공: "+ result);
+	
 		System.out.println("5.삭제");
+		result = userService.remove("user11");
+		System.out.println("성공: "+ result);
 		
 	}
 }

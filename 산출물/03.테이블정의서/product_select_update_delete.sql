@@ -61,7 +61,7 @@ select product_category from product where product_category='요리';
 
 --update
 --1. 조회수 증가
-update product set product_read_count=product_read_count+1 where product_no=1;
+
 
 
 

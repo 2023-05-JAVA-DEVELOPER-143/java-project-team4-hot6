@@ -40,11 +40,6 @@ public class ProductService {
 		return productDao.findByCategory(product_category);
 	}
 	
-
-	public Product findByCategory(String product_category) throws Exception{
-		return productDao.findByCategory(product_category);
-	}
-
 	/*
 	 *  product 조회수 증가 기능
 	 */

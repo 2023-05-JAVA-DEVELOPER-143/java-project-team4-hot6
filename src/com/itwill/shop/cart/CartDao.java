@@ -38,16 +38,16 @@ public class CartDao {
 	}
 	
 	//update
-	public int updateQtyUp(Cart cart) throws Exception {
+	//카트리스트 수정
+	public int updateByCartNo(int cart_no,int cart_qty) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
-		int rowCount=0;	
+		int rowCount=0;
 		try {
 			con=dataSource.getConnection();
-			pstmt=con.prepareStatement(CartSQL.CART_UPDATE_QTY_UP);
-			pstmt.setInt(1, cart.getCart_qty());
-			pstmt.setString(2, cart.getUser_id());
-			pstmt.setInt(3, cart.getProduct().getProduct_no());
+			pstmt=con.prepareStatement(CartSQL.CART_UPDATE_BY_CARTNO);
+			pstmt.setInt(1, cart_qty);
+			pstmt.setInt(2, cart_no);
 			rowCount=pstmt.executeUpdate();
 		}finally {
 			if(con!=null) {
@@ -57,16 +57,32 @@ public class CartDao {
 		return rowCount;
 	}
 	
-	public int updateQtyDown(Cart cart) throws Exception {
+	//카트 수량 증가		
+	public int updateQtyUp(int cart_no) throws Exception {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rowCount=0;	
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_UPDATE_QTY_UP);
+			pstmt.setInt(1, cart_no);
+			rowCount=pstmt.executeUpdate();
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return rowCount;
+	}
+	//카트 수량 감소
+	public int updateQtyDown(int cart_no) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		int rowCount=0;	
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(CartSQL.CART_UPDATE_QTY_DOWN);
-			pstmt.setInt(1, cart.getCart_qty());
-			pstmt.setString(2, cart.getUser_id());
-			pstmt.setInt(3, cart.getProduct().getProduct_no());
+			pstmt.setInt(1, cart_no);
 			rowCount=pstmt.executeUpdate();
 		}finally {
 			if(con!=null) {
@@ -96,6 +112,7 @@ public class CartDao {
 													rs.getDate("product_start_date"),
 													rs.getString("product_category"),
 													rs.getString("product_name"),
+													rs.getInt("product_price"),
 													rs.getString("product_detail"),
 													rs.getString("product_image"),
 													rs.getInt("product_read_count"))
@@ -130,6 +147,7 @@ public class CartDao {
 									rs.getDate("product_start_date"),
 									rs.getString("product_category"),
 									rs.getString("product_name"),
+									rs.getInt("product_price"),
 									rs.getString("product_detail"),
 									rs.getString("product_image"),
 									rs.getInt("product_read_count"))
@@ -171,7 +189,7 @@ public class CartDao {
 		int deleteRowCount=0;
 		try {
 			con=dataSource.getConnection();
-			pstmt=con.prepareStatement(CartSQL.CART_DELETE_BY_CART_NO);
+			pstmt=con.prepareStatement(CartSQL.CART_DELETE_BY_USERID);
 			pstmt.setString(1, user_id);
 			deleteRowCount=pstmt.executeUpdate();
 		}finally {

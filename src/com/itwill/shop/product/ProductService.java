@@ -11,7 +11,7 @@ public class ProductService {
 	/*
 	 * product 전체출력
 	 */
-	public List<Product> productList() throws Exception{
+	//public List<Product> productList() throws Exception{
 		
 	}
 	/*
@@ -30,4 +30,3 @@ public class ProductService {
 	 *  product 조회수 증가 기능
 	 */
 	
-}

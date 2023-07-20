@@ -225,6 +225,24 @@ public class MainFrameUser extends JFrame {
 		userLoginPanel.add(separator);
 		
 		JButton btnNewButton_4 = new JButton("중복확인");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Boolean isUser = true;
+				try {
+					isUser = userService.isDuplicatedId(userIdTF.getText());
+					if(isUser == true) {
+						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다.");
+						userIdTF.setText("");
+						userIdTF.requestFocus();
+					}else {
+						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnNewButton_4.setFont(new Font("굴림", Font.PLAIN, 12));
 		btnNewButton_4.setBounds(247, 42, 95, 23);
 		userLoginPanel.add(btnNewButton_4);
@@ -832,6 +850,14 @@ public class MainFrameUser extends JFrame {
 			}
 		));
 		orderListScrollPane.setViewportView(orderListTable);
+		
+		try {
+			userService = new UserService();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 	}
 	public void loginProcess(User loginUser){
 		this.loginUser = loginUser;

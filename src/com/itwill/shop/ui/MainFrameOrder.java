@@ -24,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.shop.cart.CartService;
 import com.itwill.shop.userinfo.User;
 
 import javax.swing.SwingConstants;
@@ -35,6 +36,7 @@ import java.awt.Color;
 
 public class MainFrameOrder extends JFrame {
 
+	private CartService cartService;
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
 	private JTextField userSignupNameTF;
@@ -95,8 +97,9 @@ public class MainFrameOrder extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public MainFrameOrder() {
+	public MainFrameOrder() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 380, 495);
 		
@@ -690,8 +693,18 @@ public class MainFrameOrder extends JFrame {
 		orderCartDeleteButton.setBounds(136, 330, 97, 23);
 		orderCartDeleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-			}
+				int selectedRow=orderCartTable.getSelectedRow();
+				int selectedId=(Integer)orderCartTable.getValueAt(selectedRow, 0);
+				System.out.println(selectedRow);
+				System.out.println(selectedId);
+				try {
+					cartService.deleteCartItemByCartNo(selectedId);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
+				}
+		
 		});
 		orderCartPanel.add(orderCartDeleteButton);
 		
@@ -796,5 +809,7 @@ public class MainFrameOrder extends JFrame {
 			}
 		));
 		orderListScrollPane.setViewportView(orderListTable);
+		cartService = new CartService();
 	}
+	
 }

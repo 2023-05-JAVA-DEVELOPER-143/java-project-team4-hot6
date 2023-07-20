@@ -37,7 +37,7 @@ public class ProductDao {
 		return productList;
 	}
 /*
- *  product 번호에 따른 출력
+ *  product 번호에 따른 검색
  */
 	public Product findByProductNo(int product_no) throws Exception{
 		Product product=null;

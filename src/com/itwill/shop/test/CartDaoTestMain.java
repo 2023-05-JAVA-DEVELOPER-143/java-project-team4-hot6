@@ -33,7 +33,13 @@ public class CartDaoTestMain {
 		rowCount=cartDao.updateByCartNo(9, 2);
 		System.out.println(">> "+rowCount);
 		
+		System.out.println("2.updateByCartNo");
+		rowCount=cartDao.updateQtyUp(9);
+		System.out.println(">> "+rowCount);
 		
+		System.out.println("2.updateByCartNo");
+		rowCount=cartDao.updateQtyDown(9);
+		System.out.println(">> "+rowCount);
 		
 	}
 }

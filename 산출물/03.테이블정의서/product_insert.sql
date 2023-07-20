@@ -8,14 +8,14 @@ insert into product(product_no, product_category, product_name, product_image, p
 			
 <<<<<<< HEAD
 insert into product(product_no, product_category, product_name, product_image, product_read_count)
-			values(product_no_SEQ.nextval, '플라워', '[종로/인사동] 나만의 작은 정원 테라리움 원데이클래스', 'images/nothing.jpg', 0);
+			values(product_product_no_SEQ.nextval, '플라워', '[종로/인사동] 나만의 작은 정원 테라리움 원데이클래스', 'images/nothing.jpg', 0);
 insert into product(product_no, product_category, product_name, product_image, product_read_count)
-			values(product_no_SEQ.nextval, '플라워', '[망원] 새벽정원 화병꽂이 클래스(화병포함)', 'images/nothing.jpg', 0);
+			values(product_product_no_SEQ.nextval, '플라워', '[망원] 새벽정원 화병꽂이 클래스(화병포함)', 'images/nothing.jpg', 0);
 insert into product(product_no, product_category, product_name, product_image, product_read_count)
-			values(product_no_SEQ.nextval, '플라워', '[송파] 초보자들도 쉽게 배울 수 있는 꽃다발, 미니 플라워 바구니 원데이클래스', 'images/nothing.jpg', 0);			
+			values(product_product_no_SEQ.nextval, '플라워', '[송파] 초보자들도 쉽게 배울 수 있는 꽃다발, 미니 플라워 바구니 원데이클래스', 'images/nothing.jpg', 0);			
 =======
---insert into product(product_no, product_start_date, product_category, product_name, product_detail, product_image, product_read_count)
---			values(product_no_SEQ.nextval, sysdate, '요리', '[종로/서촌] 고급재료 듬뿍 피낭시에 구움과자','피낭시에가 아주 맛있씁니다.' ,'images/nothing.jpg', 0);
+insert into product(product_no, product_start_date, product_category, product_name, product_detail, product_image, product_read_count)
+			values(product_no_SEQ.nextval, sysdate, '요리', '[종로/서촌] 고급재료 듬뿍 피낭시에 구움과자','피낭시에가 아주 맛있씁니다.' ,'images/nothing.jpg', 0);
 --insert into product(product_no, product_start_date, product_category, product_name, product_detail, product_image, product_read_count)
 --			values(product_no_SEQ.nextval, sysdate, '요리', '[망원] 다양한 베이킹', '빵만들기입니다.','images/nothing.jpg', 0);
 --insert into product(product_no, product_start_date, product_category, product_name, product_detail, product_image, product_read_count)

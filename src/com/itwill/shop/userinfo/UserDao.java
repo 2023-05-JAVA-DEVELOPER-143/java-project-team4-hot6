@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 
 import com.itwill.shop.common.DataSource;
+import com.itwill.shop.user.UserSQL;
 
 public class UserDao {
 
@@ -119,5 +120,16 @@ public class UserDao {
 					 );
 		}
 		return userList;
+	}
+	
+	public int countByUserId(String userId) throws Exception {
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_SELECT_BY_NO_COUNT);
+		pstmt.setString(1, userId);
+		ResultSet rs=pstmt.executeQuery();
+		rs.next();
+		int userCount = rs.getInt(1);
+		return userCount;
+		
 	}
 }

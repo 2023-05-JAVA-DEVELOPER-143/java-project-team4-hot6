@@ -31,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
 
+
 public class MainFrameUser extends JFrame {
 
 	private JPanel contentPane;
@@ -468,6 +469,17 @@ public class MainFrameUser extends JFrame {
 		userEditPanel.add(userEditEmailCheckBox);
 		
 		JButton userEditButton = new JButton("회원정보 수정");
+		userEditButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String id = userEditIDTF.getText();
+				String password = new String(userEditPwTF.getPassword());
+				String name = userEditNameTF.getText();
+				String email = userEditEmailTF.getText();
+				String jumin = userEditBDTF.getText();
+				String phone = userEditPhoneTF.getText();
+				
+			}
+		});
 		userEditButton.setBounds(110, 305, 131, 23);
 		userEditPanel.add(userEditButton);
 		
@@ -864,7 +876,18 @@ public class MainFrameUser extends JFrame {
 	public void loginProcess(User loginUser){
 		this.loginUser = loginUser;
 		setTitle(loginUser.getUserId() + " 님 로그인");
+	}
 		
+		private void displayUserInfo(User user) {
+			/****로그인한 회원상세데이타 보여주기*****/
+			userEditIDTF.setText(user.getUserId());
+			userEditPwTF.setText(user.getUserPw());
+			userEditPwTF.setText(user.getUserPwCheck());
+			userEditEmailTF.setText(user.getUserEmail());
+			userEditBDTF.setText(user.getUserJumin());
+			userEditPhoneTF.setText(user.getUserPhone());
+			//userEditSexComboBox.setSelectedItem(user.getUserGender());
+			
 		
 	}
 }

@@ -10,7 +10,7 @@ public class UserService {
 	/*
 	 * 회원가입
 	 */
-	public boolean addUser(User newUser) {
+	public boolean addUser(User newUser) throws Exception {
 		boolean isSuccess=false;
 
 	/*
@@ -27,5 +27,8 @@ public class UserService {
 	
 		return isSuccess;
 		
-	}	
+	}
+
 	
+}
+

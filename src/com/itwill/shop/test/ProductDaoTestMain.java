@@ -17,6 +17,8 @@ public class ProductDaoTestMain {
 	System.out.println("5.updateByReadCount");
 	//productDao.updateByReadCount(0);
 	System.out.println(productDao.updateByReadCount(0));
+	System.out.println("6.selectByMaxReadCount");
+	System.out.println(productDao.selectByMaxReadCount(1));
 	}
 	
 	

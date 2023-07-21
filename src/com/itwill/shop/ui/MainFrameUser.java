@@ -28,8 +28,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JToolBar;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JScrollBar;
+import java.awt.Component;
+import java.awt.SystemColor;
 
 
 public class MainFrameUser extends JFrame {
@@ -83,6 +91,7 @@ public class MainFrameUser extends JFrame {
 	private User loginUser = null;
 	private JLabel userIdTextLabel;
 	private JLabel userPwTextLabel;
+	private JComboBox userEditSexComboBox;
 	/**
 	 * Launch the application.
 	 */
@@ -222,14 +231,6 @@ public class MainFrameUser extends JFrame {
 		separator.setBounds(12, 181, 330, 15);
 		userLoginPanel.add(separator);
 		
-<<<<<<< HEAD
-		JButton btnNewButton_4 = new JButton("중복확인");
-		btnNewButton_4.setFont(new Font("굴림", Font.PLAIN, 12));
-		btnNewButton_4.setBounds(247, 42, 95, 23);
-		userLoginPanel.add(btnNewButton_4);
-		
-=======
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6.git
 		userIdTextLabel = new JLabel("");
 		userIdTextLabel.setForeground(Color.RED);
 		userIdTextLabel.setBounds(119, 69, 151, 15);
@@ -253,69 +254,69 @@ public class MainFrameUser extends JFrame {
 		userSignUpPanel.setLayout(null);
 		
 		userSignUpIdTF = new JTextField();
-		userSignUpIdTF.setBounds(128, 25, 142, 21);
+		userSignUpIdTF.setBounds(128, 40, 142, 21);
 		userSignUpPanel.add(userSignUpIdTF);
 		userSignUpIdTF.setColumns(10);
 		
 		userSignupNameTF = new JTextField();
-		userSignupNameTF.setBounds(128, 147, 142, 21);
+		userSignupNameTF.setBounds(128, 131, 142, 21);
 		userSignUpPanel.add(userSignupNameTF);
 		userSignupNameTF.setColumns(10);
 		
 		userSignupEmailTF = new JTextField();
-		userSignupEmailTF.setBounds(128, 178, 142, 21);
+		userSignupEmailTF.setBounds(128, 162, 142, 21);
 		userSignUpPanel.add(userSignupEmailTF);
 		userSignupEmailTF.setColumns(10);
 		
 		userSignupBDTF = new JTextField();
-		userSignupBDTF.setBounds(128, 231, 142, 21);
+		userSignupBDTF.setBounds(128, 215, 142, 21);
 		userSignUpPanel.add(userSignupBDTF);
 		userSignupBDTF.setColumns(10);
 		
 		userSignupPhoneTF = new JTextField();
-		userSignupPhoneTF.setBounds(128, 262, 142, 21);
+		userSignupPhoneTF.setBounds(128, 246, 142, 21);
 		userSignUpPanel.add(userSignupPhoneTF);
 		userSignupPhoneTF.setColumns(10);
 		
 		JComboBox userSignupSexComboBox = new JComboBox();
-		userSignupSexComboBox.setModel(new DefaultComboBoxModel(new String[] {"남자", "여자"}));
-		userSignupSexComboBox.setBounds(128, 293, 142, 23);
+		userSignupSexComboBox.setModel(new DefaultComboBoxModel(new String[] {"여성", "남성"}));
+		userSignupSexComboBox.setBounds(128, 277, 142, 23);
 		userSignUpPanel.add(userSignupSexComboBox);
 		
 		JLabel lblNewLabel = new JLabel("아이디");
-		lblNewLabel.setBounds(58, 28, 57, 15);
+		lblNewLabel.setBounds(58, 43, 57, 15);
 		userSignUpPanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
-		lblNewLabel_1.setBounds(58, 88, 57, 15);
+		lblNewLabel_1.setBounds(58, 72, 57, 15);
 		userSignUpPanel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("비밀번호 확인");
-		lblNewLabel_1_1.setBounds(29, 119, 86, 15);
+		lblNewLabel_1_1.setBounds(28, 103, 86, 15);
 		userSignUpPanel.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("이름");
-		lblNewLabel_2.setBounds(66, 150, 57, 15);
+		lblNewLabel_2.setBounds(66, 134, 57, 15);
 		userSignUpPanel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("이메일");
-		lblNewLabel_3.setBounds(53, 184, 57, 15);
+		lblNewLabel_3.setBounds(53, 168, 57, 15);
 		userSignUpPanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("생년월일");
-		lblNewLabel_4.setBounds(53, 234, 57, 15);
+		lblNewLabel_4.setBounds(53, 218, 57, 15);
 		userSignUpPanel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("휴대전화");
-		lblNewLabel_5.setBounds(53, 265, 57, 15);
+		lblNewLabel_5.setBounds(53, 249, 57, 15);
 		userSignUpPanel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("성별");
-		lblNewLabel_6.setBounds(59, 297, 57, 15);
+		lblNewLabel_6.setBounds(59, 281, 57, 15);
 		userSignUpPanel.add(lblNewLabel_6);
 		
 		JCheckBox userSignUpEmailCheckBox = new JCheckBox("이메일 수신 동의");
-		userSignUpEmailCheckBox.setBounds(128, 202, 142, 23);
+		userSignUpEmailCheckBox.setBounds(128, 186, 142, 23);
 		userSignUpPanel.add(userSignUpEmailCheckBox);
 		
 		JButton userSignUpButton = new JButton("회원가입");
@@ -326,6 +327,12 @@ public class MainFrameUser extends JFrame {
 					String id = userSignUpIdTF.getText();
 					String password = new String(userSignUpPwTF.getPassword());
 					String passwordCheck = new String(userSignUpPwCheckTF.getPassword());
+					if(passwordCheck.equals(password)) {
+						return;
+					}else {
+						JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.");
+						userSignUpPwCheckTF.requestFocus();
+					}
 					String name = userSignupNameTF.getText();
 					String email = userSignupEmailTF.getText();
 					String emailSend = "";
@@ -347,7 +354,7 @@ public class MainFrameUser extends JFrame {
 					}
 					
 					if(password.equals("")) {
-						idCheckMsgLabel.setText("패스워드를 입력하세요.");
+						idCheckMsgLabel.setText("비밀번호를 입력하세요.");
 						userSignUpPwTF.requestFocus();
 						return;
 					} else {
@@ -369,24 +376,24 @@ public class MainFrameUser extends JFrame {
 		userSignUpPanel.add(userSignUpButton);
 		
 		userSignUpPwTF = new JPasswordField();
-		userSignUpPwTF.setBounds(128, 85, 142, 21);
+		userSignUpPwTF.setBounds(128, 69, 142, 21);
 		userSignUpPanel.add(userSignUpPwTF);
 		
 		userSignUpPwCheckTF = new JPasswordField();
-		userSignUpPwCheckTF.setBounds(128, 116, 143, 21);
+		userSignUpPwCheckTF.setBounds(127, 100, 143, 21);
 		userSignUpPanel.add(userSignUpPwCheckTF);
 		
 		JButton btnNewButton_41 = new JButton("중복");
 		btnNewButton_41.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/***************/
-				Boolean isUser = true;
+				boolean isUser = true;
 				try {
-					isUser = userService.isDuplicatedId(userIdTF.getText());
-					if(isUser == true) {
+					isUser = userService.isDuplicatedId(userSignUpIdTF.getText());
+					if(isUser==true) {
 						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다.");
-						userIdTF.setText("");
-						userIdTF.requestFocus();
+						userSignUpIdTF.setText("");
+						userSignUpIdTF.requestFocus();
 					}else {
 						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
 					}
@@ -396,9 +403,9 @@ public class MainFrameUser extends JFrame {
 				}
 			}
 		});
-			
 		
-		btnNewButton_41.setBounds(282, 24, 60, 23);
+		
+		btnNewButton_41.setBounds(282, 39, 60, 23);
 		userSignUpPanel.add(btnNewButton_41);
 		
 		idCheckMsgLabel = new JLabel("");
@@ -407,85 +414,113 @@ public class MainFrameUser extends JFrame {
 		userSignUpPanel.add(idCheckMsgLabel);
 		
 		JPanel userEditPanel = new JPanel();
+		userEditPanel.setBackground(SystemColor.inactiveCaption);
+		userEditPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				/************회원정보 불러오기************/
+				displayUserInfo(loginUser);
+				
+			}
+		});
 		userEditPanel.setLayout(null);
 		tabbedPane_1.addTab("회원정보", null, userEditPanel, null);
 		
 		userEditIDTF = new JTextField();
-		userEditIDTF.setEditable(false);
 		userEditIDTF.setColumns(10);
-		userEditIDTF.setBounds(128, 10, 142, 21);
+		userEditIDTF.setBounds(153, 20, 142, 21);
 		userEditPanel.add(userEditIDTF);
 		
 		userEditNameTF = new JTextField();
 		userEditNameTF.setColumns(10);
-		userEditNameTF.setBounds(128, 103, 142, 21);
+		userEditNameTF.setBounds(153, 113, 142, 21);
 		userEditPanel.add(userEditNameTF);
 		
 		userEditEmailTF = new JTextField();
 		userEditEmailTF.setColumns(10);
-		userEditEmailTF.setBounds(128, 134, 142, 21);
+		userEditEmailTF.setBounds(153, 144, 142, 21);
 		userEditPanel.add(userEditEmailTF);
 		
 		userEditBDTF = new JTextField();
 		userEditBDTF.setColumns(10);
-		userEditBDTF.setBounds(128, 190, 142, 21);
+		userEditBDTF.setBounds(153, 200, 142, 21);
 		userEditPanel.add(userEditBDTF);
 		
 		userEditPhoneTF = new JTextField();
 		userEditPhoneTF.setColumns(10);
-		userEditPhoneTF.setBounds(128, 221, 142, 21);
+		userEditPhoneTF.setBounds(153, 231, 142, 21);
 		userEditPanel.add(userEditPhoneTF);
 		
-		JComboBox userEditSexComboBox = new JComboBox();
+		userEditSexComboBox = new JComboBox();
+		userEditSexComboBox.setModel(new DefaultComboBoxModel(new String[] {"여성", "남성"}));
 		userEditSexComboBox.setEditable(true);
-		userEditSexComboBox.setBounds(128, 252, 142, 23);
+		userEditSexComboBox.setBounds(153, 262, 142, 23);
 		userEditPanel.add(userEditSexComboBox);
 		
 		JLabel lblNewLabel_11 = new JLabel("아이디");
-		lblNewLabel_11.setBounds(66, 13, 57, 15);
+		lblNewLabel_11.setBounds(78, 23, 57, 15);
 		userEditPanel.add(lblNewLabel_11);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("비밀번호");
-		lblNewLabel_1_2.setBounds(53, 41, 57, 15);
+		lblNewLabel_1_2.setBounds(67, 54, 57, 15);
 		userEditPanel.add(lblNewLabel_1_2);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("비밀번호 확인");
-		lblNewLabel_1_1_1.setBounds(30, 75, 86, 15);
+		lblNewLabel_1_1_1.setBounds(36, 85, 86, 15);
 		userEditPanel.add(lblNewLabel_1_1_1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("이름");
-		lblNewLabel_2_1.setBounds(66, 106, 57, 15);
+		lblNewLabel_2_1.setBounds(84, 116, 57, 15);
 		userEditPanel.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("이메일");
-		lblNewLabel_3_1.setBounds(59, 137, 57, 15);
+		lblNewLabel_3_1.setBounds(78, 147, 57, 15);
 		userEditPanel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("생년월일");
-		lblNewLabel_4_1.setBounds(53, 193, 57, 15);
+		lblNewLabel_4_1.setBounds(67, 203, 57, 15);
 		userEditPanel.add(lblNewLabel_4_1);
 		
 		JLabel lblNewLabel_5_1 = new JLabel("휴대전화");
-		lblNewLabel_5_1.setBounds(53, 224, 57, 15);
+		lblNewLabel_5_1.setBounds(67, 234, 57, 15);
 		userEditPanel.add(lblNewLabel_5_1);
 		
 		JLabel lblNewLabel_6_1 = new JLabel("성별");
-		lblNewLabel_6_1.setBounds(59, 256, 57, 15);
+		lblNewLabel_6_1.setBounds(84, 266, 57, 15);
 		userEditPanel.add(lblNewLabel_6_1);
 		
 		JCheckBox userEditEmailCheckBox = new JCheckBox("이메일 수신 동의");
-		userEditEmailCheckBox.setBounds(128, 161, 142, 23);
+		userEditEmailCheckBox.setBounds(153, 171, 142, 23);
 		userEditPanel.add(userEditEmailCheckBox);
 		
 		JButton userEditButton = new JButton("회원정보 수정");
 		userEditButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*********수정폼 활성화*********/
+//				userEditIDTF.setEditable(true);
+//				userEditPwTF.setEnabled(true);
+//				userEditPwCheckTF.setEnabled(true);
+//				userEditNameTF.setEnabled(true);
+//				userEditEmailTF.setEnabled(true);
+//				userEditEmailCheckBox.setEnabled(true);
+//				userEditBDTF.setEnabled(true);
+//				userEditPhoneTF.setEnabled(true);
+//				userEditSexComboBox.setEnabled(true);
+				
+				/***********수정 가능**********/
 				String id = userEditIDTF.getText();
 				String password = new String(userEditPwTF.getPassword());
 				String name = userEditNameTF.getText();
 				String email = userEditEmailTF.getText();
+				String emailSend = "";
+				if(userEditEmailCheckBox.isSelected()) {
+					emailSend = "T";
+				} else {
+					emailSend = "F";
+				}
 				String jumin = userEditBDTF.getText();
 				String phone = userEditPhoneTF.getText();
+				String sex = (String)userSignupSexComboBox.getSelectedItem();
 				
 			}
 		});
@@ -493,14 +528,26 @@ public class MainFrameUser extends JFrame {
 		userEditPanel.add(userEditButton);
 		
 		userEditPwTF = new JPasswordField();
-		userEditPwTF.setBounds(128, 41, 142, 21);
+		userEditPwTF.setBounds(153, 51, 142, 21);
 		userEditPanel.add(userEditPwTF);
 		
 		userEditPwCheckTF = new JPasswordField();
-		userEditPwCheckTF.setBounds(127, 72, 143, 21);
+		userEditPwCheckTF.setBounds(152, 82, 143, 21);
 		userEditPanel.add(userEditPwCheckTF);
 		
 		JButton userEditQuitButton = new JButton("회원탈퇴");
+		userEditQuitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/************회원 탈퇴************/
+				try {
+					userService.remove(loginUser.getUserId());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		userEditQuitButton.setBounds(130, 338, 97, 23);
 		userEditPanel.add(userEditQuitButton);
 		
@@ -544,35 +591,6 @@ public class MainFrameUser extends JFrame {
 		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_2.setBounds(0, 0, 359, 423);
 		productTabPannel.add(tabbedPane_2);
-		
-		JPanel productMainPanel = new JPanel();
-		tabbedPane_2.addTab("메인", null, productMainPanel, null);
-		productMainPanel.setLayout(null);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(117, 10, 116, 21);
-		productMainPanel.add(textField_4);
-		textField_4.setColumns(10);
-		
-		JButton btnNewButton_3 = new JButton("취미찾기");
-		btnNewButton_3.setBounds(245, 9, 97, 23);
-		productMainPanel.add(btnNewButton_3);
-		
-		JLabel lblNewLabel_12 = new JLabel("수공예");
-		lblNewLabel_12.setBounds(56, 130, 57, 15);
-		productMainPanel.add(lblNewLabel_12);
-		
-		JLabel lblNewLabel_13 = new JLabel("요리");
-		lblNewLabel_13.setBounds(244, 130, 57, 15);
-		productMainPanel.add(lblNewLabel_13);
-		
-		JLabel lblNewLabel_14 = new JLabel("미술");
-		lblNewLabel_14.setBounds(56, 290, 57, 15);
-		productMainPanel.add(lblNewLabel_14);
-		
-		JLabel lblNewLabel_27 = new JLabel("스포츠");
-		lblNewLabel_27.setBounds(244, 290, 57, 15);
-		productMainPanel.add(lblNewLabel_27);
 		
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
@@ -662,6 +680,35 @@ public class MainFrameUser extends JFrame {
 		productCategoryTF.setBounds(201, 14, 116, 21);
 		productDetailPanel.add(productCategoryTF);
 		productCategoryTF.setColumns(10);
+		
+		JPanel productMainPanel = new JPanel();
+		tabbedPane_2.addTab("메인", null, productMainPanel, null);
+		productMainPanel.setLayout(null);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(117, 10, 116, 21);
+		productMainPanel.add(textField_4);
+		textField_4.setColumns(10);
+		
+		JButton btnNewButton_3 = new JButton("취미찾기");
+		btnNewButton_3.setBounds(245, 9, 97, 23);
+		productMainPanel.add(btnNewButton_3);
+		
+		JLabel lblNewLabel_12 = new JLabel("수공예");
+		lblNewLabel_12.setBounds(56, 130, 57, 15);
+		productMainPanel.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_13 = new JLabel("요리");
+		lblNewLabel_13.setBounds(244, 130, 57, 15);
+		productMainPanel.add(lblNewLabel_13);
+		
+		JLabel lblNewLabel_14 = new JLabel("미술");
+		lblNewLabel_14.setBounds(56, 290, 57, 15);
+		productMainPanel.add(lblNewLabel_14);
+		
+		JLabel lblNewLabel_27 = new JLabel("스포츠");
+		lblNewLabel_27.setBounds(244, 290, 57, 15);
+		productMainPanel.add(lblNewLabel_27);
 		
 		JPanel orderTabPannel = new JPanel();
 		tabbedPane.addTab("주문", null, orderTabPannel, null);
@@ -887,8 +934,15 @@ public class MainFrameUser extends JFrame {
 			userEditEmailTF.setText(user.getUserEmail());
 			userEditBDTF.setText(user.getUserJumin());
 			userEditPhoneTF.setText(user.getUserPhone());
-			//userEditSexComboBox.setSelectedItem(user.getUserGender());
+			userEditSexComboBox.setSelectedItem(user.getUserGender());
 			
+			/*******2.Service 객체생성***********/
+			try {
+				userService = new UserService();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
-	}
+	}//생성자
 }

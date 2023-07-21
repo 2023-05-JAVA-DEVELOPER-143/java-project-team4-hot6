@@ -1121,7 +1121,7 @@ public class MainFrameProduct extends JFrame {
 //			productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
 			productCategoryTF.setText(product.getProduct_category());
 			productNameTF.setText(product.getProduct_name());
-			productPriceTF.setText(String.valueOf(product.getProduct_price()));
+			productPriceTF.setText(String.valueOf(product.getProduct_price()));//이 줄 위에다 read_count 증가시길것
 			productReadCountTF.setText(String.valueOf(product.getProduct_read_count()));
 			productDateTF.setText(String.valueOf(product.getProduct_start_date()));
 			productDetailTF.setText(product.getProduct_detail());

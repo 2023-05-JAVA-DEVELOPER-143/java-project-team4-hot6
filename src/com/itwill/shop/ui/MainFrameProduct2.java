@@ -524,7 +524,7 @@ public class MainFrameProduct2 extends JFrame {
 		
 		JLabel productMainHandCraftLabel = new JLabel("");
 		panel.add(productMainHandCraftLabel);
-		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_handcraft (1).png")));
+		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_main_handcraft (1).png")));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(190, 41, 111, 93);
@@ -532,7 +532,7 @@ public class MainFrameProduct2 extends JFrame {
 		
 		JLabel productMainCookingLabel = new JLabel("");
 		panel_1.add(productMainCookingLabel);
-		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_cooking (1).png")));
+		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_main_cooking (1).png")));
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(23, 187, 111, 93);
@@ -540,7 +540,7 @@ public class MainFrameProduct2 extends JFrame {
 		
 		JLabel productMainDrawingLabel = new JLabel("");
 		panel_2.add(productMainDrawingLabel);
-		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_drawing (1).png")));
+		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_main_drawing (1).png")));
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(190, 189, 111, 93);
@@ -548,7 +548,7 @@ public class MainFrameProduct2 extends JFrame {
 		
 		JLabel productMainFlowerLabel = new JLabel("");
 		panel_3.add(productMainFlowerLabel);
-		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_flower-bouquet (1) (1).png")));
+		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_main_flower-bouquet (1) (1).png")));
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(23, 309, 319, 63);
@@ -589,7 +589,7 @@ public class MainFrameProduct2 extends JFrame {
 			}//1
 		});
 		/********************************************************/
-		product_handcraft_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(1).jpg")));
+		product_handcraft_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_handcraft(1).jpg")));
 		handcraftPannel1.add(product_handcraft_image1);
 		
 		JPanel product_handcraft_pannel2_1 = new JPanel();
@@ -615,7 +615,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_handcraft_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(2).jpg")));
+		product_handcraft_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_handcraft(2).jpg")));
 		product_handcraft_pannel2_1.add(product_handcraft_image2);
 		
 		JLabel product_handcraft_info1 = new JLabel("New label");
@@ -649,7 +649,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_handcraft_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(3).jpg")));
+		product_handcraft_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_handcraft(3).jpg")));
 		product_handcraft_pannel3_1.add(product_handcraft_image3);
 		
 		JPanel product_handcraft_pannel4_1 = new JPanel();
@@ -675,7 +675,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_handcraft_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(4).jpg")));
+		product_handcraft_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_handcraft(4).jpg")));
 		product_handcraft_pannel4_1.add(product_handcraft_image4);
 		
 		JLabel product_handcraft_info3 = new JLabel("New label");
@@ -718,7 +718,7 @@ public class MainFrameProduct2 extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		product_cooking_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_cooking(1).jpg")));
+		product_cooking_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_cooking(1).jpg")));
 		product_handcraft_pannel1_1_1.add(product_cooking_image1);
 		
 		JPanel product_handcraft_pannel2_1_1 = new JPanel();
@@ -744,7 +744,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_cooking_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_cooking(2).jpg")));
+		product_cooking_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_cooking(2).jpg")));
 		product_handcraft_pannel2_1_1.add(product_cooking_image2);
 		
 		JLabel product_cooking_info1 = new JLabel("New label");
@@ -778,7 +778,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_cooking_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_cooking(3).jpg")));
+		product_cooking_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_cooking(3).jpg")));
 		product_handcraft_pannel3_1_1.add(product_cooking_image3);
 		
 		JPanel product_handcraft_pannel4_1_1 = new JPanel();
@@ -804,7 +804,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_cooking_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_cooking(4).jpg")));
+		product_cooking_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_cooking(4).jpg")));
 		product_handcraft_pannel4_1_1.add(product_cooking_image4);
 		
 		JLabel product_cooking_info3 = new JLabel("New label");
@@ -842,7 +842,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_drawing_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_drawing(1).jpg")));
+		product_drawing_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_drawing(1).jpg")));
 		product_handcraft_pannel1_1_2.add(product_drawing_image1);
 		
 		JPanel product_handcraft_pannel2_1_2 = new JPanel();
@@ -868,7 +868,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_drawing_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_drawing(2).jpg")));
+		product_drawing_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_drawing(2).jpg")));
 		product_handcraft_pannel2_1_2.add(product_drawing_image2);
 		
 		JLabel product_drawing_info1 = new JLabel("New label");
@@ -902,7 +902,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_drawing_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_drawing(3).jpg")));
+		product_drawing_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_drawing(3).jpg")));
 		product_handcraft_pannel3_1_2.add(product_drawing_image3);
 		
 		JPanel product_handcraft_pannel4_1_2 = new JPanel();
@@ -928,7 +928,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_drawing_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_drawing(4).jpg")));
+		product_drawing_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_drawing(4).jpg")));
 		product_handcraft_pannel4_1_2.add(product_drawing_image4);
 		
 		JLabel product_drawing_info3 = new JLabel("New label");
@@ -966,7 +966,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_flower_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_flower(1).jpg")));
+		product_flower_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_flower(1).jpg")));
 		product_handcraft_pannel1.add(product_flower_image1);
 		
 		JPanel product_handcraft_pannel2 = new JPanel();
@@ -992,7 +992,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_flower_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_flower(2).jpg")));
+		product_flower_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_flower(2).jpg")));
 		product_handcraft_pannel2.add(product_flower_image2);
 		
 		JPanel product_handcraft_pannel3 = new JPanel();
@@ -1018,7 +1018,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_flower_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_flower(3).jpg")));
+		product_flower_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_flower(3).jpg")));
 		product_handcraft_pannel3.add(product_flower_image3);
 		
 		JPanel product_handcraft_pannel4 = new JPanel();
@@ -1044,7 +1044,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		});
 		/********************************************************/
-		product_flower_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_flower(4).jpg")));
+		product_flower_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_flower(4).jpg")));
 		product_handcraft_pannel4.add(product_flower_image4);
 		
 		JLabel product_flower_info1 = new JLabel("New label");

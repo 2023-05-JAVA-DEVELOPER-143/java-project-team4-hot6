@@ -549,6 +549,10 @@ public class MainFrameProduct2 extends JFrame {
 		JLabel productMainFlowerLabel = new JLabel("");
 		panel_3.add(productMainFlowerLabel);
 		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_flower-bouquet (1) (1).png")));
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(23, 309, 319, 63);
+		productMainPanel.add(panel_4);
 
 		
 		JPanel productCategoryPanel = new JPanel();
@@ -1354,7 +1358,6 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		}*/
 	} // 생성자 끝
-	
 		public void showView(Product product) {
 			productCategoryTF.setText(product.getProduct_category());
 			productNameTF.setText(product.getProduct_name());

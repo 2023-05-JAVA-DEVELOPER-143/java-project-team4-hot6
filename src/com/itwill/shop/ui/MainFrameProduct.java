@@ -504,21 +504,149 @@ public class MainFrameProduct extends JFrame {
 		tabbedPane_4.setBounds(-1, 1, 354, 391);
 		productCategoryPanel.add(tabbedPane_4);
 		
-		JPanel panel_7 = new JPanel();
-		tabbedPane_4.addTab("수공예", null, panel_7, null);
-		panel_7.setLayout(null);
+		JPanel product_flower_panel = new JPanel();
+		tabbedPane_4.addTab("플라워", null, product_flower_panel, null);
+		product_flower_panel.setLayout(null);
 		
-		JPanel panel_8 = new JPanel();
-		tabbedPane_4.addTab("요리", null, panel_8, null);
-		panel_8.setLayout(null);
+		JPanel product_handcraft_pannel1 = new JPanel();
+		product_handcraft_pannel1.setBounds(35, 24, 128, 125);
+		product_flower_panel.add(product_handcraft_pannel1);
 		
-		JPanel panel_9 = new JPanel();
-		tabbedPane_4.addTab("미술", null, panel_9, null);
-		panel_9.setLayout(null);
+		JPanel product_handcraft_pannel2 = new JPanel();
+		product_handcraft_pannel2.setBounds(190, 24, 128, 125);
+		product_flower_panel.add(product_handcraft_pannel2);
 		
-		JPanel panel = new JPanel();
-		tabbedPane_4.addTab("스포츠", null, panel, null);
-		panel.setLayout(null);
+		JPanel product_handcraft_pannel3 = new JPanel();
+		product_handcraft_pannel3.setBounds(35, 184, 128, 125);
+		product_flower_panel.add(product_handcraft_pannel3);
+		
+		JPanel product_handcraft_pannel4 = new JPanel();
+		product_handcraft_pannel4.setBounds(190, 184, 128, 125);
+		product_flower_panel.add(product_handcraft_pannel4);
+		
+		JLabel lblNewLabel_28 = new JLabel("New label");
+		lblNewLabel_28.setBounds(35, 149, 128, 25);
+		product_flower_panel.add(lblNewLabel_28);
+		
+		JLabel lblNewLabel_28_1 = new JLabel("New label");
+		lblNewLabel_28_1.setBounds(190, 149, 128, 25);
+		product_flower_panel.add(lblNewLabel_28_1);
+		
+		JLabel lblNewLabel_28_3 = new JLabel("New label");
+		lblNewLabel_28_3.setBounds(190, 308, 128, 25);
+		product_flower_panel.add(lblNewLabel_28_3);
+		
+		JLabel lblNewLabel_28_2 = new JLabel("New label");
+		lblNewLabel_28_2.setBounds(35, 308, 128, 25);
+		product_flower_panel.add(lblNewLabel_28_2);
+		
+		JPanel product_handcraft_panel = new JPanel();
+		tabbedPane_4.addTab("수공예", null, product_handcraft_panel, null);
+		product_handcraft_panel.setLayout(null);
+		
+		JPanel product_handcraft_pannel1_1 = new JPanel();
+		product_handcraft_pannel1_1.setBounds(34, 24, 128, 125);
+		product_handcraft_panel.add(product_handcraft_pannel1_1);
+		
+		JPanel product_handcraft_pannel2_1 = new JPanel();
+		product_handcraft_pannel2_1.setBounds(189, 24, 128, 125);
+		product_handcraft_panel.add(product_handcraft_pannel2_1);
+		
+		JLabel lblNewLabel_28_4 = new JLabel("New label");
+		lblNewLabel_28_4.setBounds(34, 149, 128, 25);
+		product_handcraft_panel.add(lblNewLabel_28_4);
+		
+		JLabel lblNewLabel_28_1_1 = new JLabel("New label");
+		lblNewLabel_28_1_1.setBounds(189, 149, 128, 25);
+		product_handcraft_panel.add(lblNewLabel_28_1_1);
+		
+		JPanel product_handcraft_pannel3_1 = new JPanel();
+		product_handcraft_pannel3_1.setBounds(34, 184, 128, 125);
+		product_handcraft_panel.add(product_handcraft_pannel3_1);
+		
+		JPanel product_handcraft_pannel4_1 = new JPanel();
+		product_handcraft_pannel4_1.setBounds(189, 184, 128, 125);
+		product_handcraft_panel.add(product_handcraft_pannel4_1);
+		
+		JLabel lblNewLabel_28_2_1 = new JLabel("New label");
+		lblNewLabel_28_2_1.setBounds(34, 308, 128, 25);
+		product_handcraft_panel.add(lblNewLabel_28_2_1);
+		
+		JLabel lblNewLabel_28_3_1 = new JLabel("New label");
+		lblNewLabel_28_3_1.setBounds(189, 308, 128, 25);
+		product_handcraft_panel.add(lblNewLabel_28_3_1);
+		
+		JPanel product_cooking_panel = new JPanel();
+		tabbedPane_4.addTab("요리", null, product_cooking_panel, null);
+		product_cooking_panel.setLayout(null);
+		
+		JPanel product_handcraft_pannel1_1_1 = new JPanel();
+		product_handcraft_pannel1_1_1.setBounds(37, 22, 128, 125);
+		product_cooking_panel.add(product_handcraft_pannel1_1_1);
+		
+		JPanel product_handcraft_pannel2_1_1 = new JPanel();
+		product_handcraft_pannel2_1_1.setBounds(192, 22, 128, 125);
+		product_cooking_panel.add(product_handcraft_pannel2_1_1);
+		
+		JLabel lblNewLabel_28_4_1 = new JLabel("New label");
+		lblNewLabel_28_4_1.setBounds(37, 147, 128, 25);
+		product_cooking_panel.add(lblNewLabel_28_4_1);
+		
+		JLabel lblNewLabel_28_1_1_1 = new JLabel("New label");
+		lblNewLabel_28_1_1_1.setBounds(192, 147, 128, 25);
+		product_cooking_panel.add(lblNewLabel_28_1_1_1);
+		
+		JPanel product_handcraft_pannel3_1_1 = new JPanel();
+		product_handcraft_pannel3_1_1.setBounds(37, 182, 128, 125);
+		product_cooking_panel.add(product_handcraft_pannel3_1_1);
+		
+		JPanel product_handcraft_pannel4_1_1 = new JPanel();
+		product_handcraft_pannel4_1_1.setBounds(192, 182, 128, 125);
+		product_cooking_panel.add(product_handcraft_pannel4_1_1);
+		
+		JLabel lblNewLabel_28_2_1_1 = new JLabel("New label");
+		lblNewLabel_28_2_1_1.setBounds(37, 306, 128, 25);
+		product_cooking_panel.add(lblNewLabel_28_2_1_1);
+		
+		JLabel lblNewLabel_28_3_1_1 = new JLabel("New label");
+		lblNewLabel_28_3_1_1.setBounds(192, 306, 128, 25);
+		product_cooking_panel.add(lblNewLabel_28_3_1_1);
+		
+		JPanel productrr_drawing_panel = new JPanel();
+		tabbedPane_4.addTab("미술", null, productrr_drawing_panel, null);
+		productrr_drawing_panel.setLayout(null);
+		
+		JPanel product_handcraft_pannel1_1_2 = new JPanel();
+		product_handcraft_pannel1_1_2.setBounds(34, 23, 128, 125);
+		productrr_drawing_panel.add(product_handcraft_pannel1_1_2);
+		
+		JPanel product_handcraft_pannel2_1_2 = new JPanel();
+		product_handcraft_pannel2_1_2.setBounds(189, 23, 128, 125);
+		productrr_drawing_panel.add(product_handcraft_pannel2_1_2);
+		
+		JLabel lblNewLabel_28_4_2 = new JLabel("New label");
+		lblNewLabel_28_4_2.setBounds(34, 148, 128, 25);
+		productrr_drawing_panel.add(lblNewLabel_28_4_2);
+		
+		JLabel lblNewLabel_28_1_1_2 = new JLabel("New label");
+		lblNewLabel_28_1_1_2.setBounds(189, 148, 128, 25);
+		productrr_drawing_panel.add(lblNewLabel_28_1_1_2);
+		
+		JPanel product_handcraft_pannel3_1_2 = new JPanel();
+		product_handcraft_pannel3_1_2.setBounds(34, 183, 128, 125);
+		productrr_drawing_panel.add(product_handcraft_pannel3_1_2);
+		
+		JPanel product_handcraft_pannel4_1_2 = new JPanel();
+		product_handcraft_pannel4_1_2.setBounds(189, 183, 128, 125);
+		productrr_drawing_panel.add(product_handcraft_pannel4_1_2);
+		
+		JLabel lblNewLabel_28_2_1_2 = new JLabel("New label");
+		lblNewLabel_28_2_1_2.setBounds(34, 307, 128, 25);
+		productrr_drawing_panel.add(lblNewLabel_28_2_1_2);
+		
+		JLabel lblNewLabel_28_3_1_2 = new JLabel("New label");
+		lblNewLabel_28_3_1_2.setBounds(189, 307, 128, 25);
+		productrr_drawing_panel.add(lblNewLabel_28_3_1_2);
 		
 		JPanel productDetailPanel = new JPanel();
 		tabbedPane_2.addTab("제품상세", null, productDetailPanel, null);

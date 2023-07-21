@@ -91,5 +91,5 @@ ALTER TABLE orders ADD CONSTRAINT IDX_orders_FK0 FOREIGN KEY (user_id) REFERENCE
 
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_PK PRIMARY KEY (oi_no);
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK0 FOREIGN KEY (product_no) REFERENCES product (product_no);
-ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK1 FOREIGN KEY (order_no) REFERENCES orders (order_no);
+ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK1 FOREIGN KEY (order_no) REFERENCES orders (order_no) ON DELETE CASCADE;
 

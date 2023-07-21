@@ -27,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.itwill.shop.cart.CartService;
 import com.itwill.shop.order.Order;
+import com.itwill.shop.order.OrderItem;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
@@ -55,7 +56,7 @@ public class MainFrame extends JFrame {
 	private CartService cartService;
 	
 	private User loginUser = null;
-
+	
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
 	private JTextField userSignupNameTF;
@@ -97,6 +98,12 @@ public class MainFrame extends JFrame {
 	private JTextField orderPayPhoneTF;
 	private JTextField productCategoryTF;
 	private JLabel idCheckMsgLabel;
+	private JComboBox orderPayPaymentComboBox;
+	private JTabbedPane tabbedPane_3;
+	private JTabbedPane tabbedPane_1;
+	private JTabbedPane tabbedPane;
+	private JTabbedPane tabbedPane_2;
+	private JTabbedPane tabbedPane_4;
 
 	/**
 	 * Launch the application.
@@ -143,7 +150,7 @@ public class MainFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(0, 0, 364, 452);
 		contentPane.add(tabbedPane);
 		
@@ -151,7 +158,7 @@ public class MainFrame extends JFrame {
 		tabbedPane.addTab("회원", null, userTabPannel, null);
 		userTabPannel.setLayout(null);
 		
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_1.setBounds(0, 0, 359, 423);
 		userTabPannel.add(tabbedPane_1);
 		
@@ -482,7 +489,7 @@ public class MainFrame extends JFrame {
 		tabbedPane.addTab("제품", null, productTabPannel, null);
 		productTabPannel.setLayout(null);
 		
-		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_2.setBounds(0, 0, 359, 423);
 		productTabPannel.add(tabbedPane_2);
 		
@@ -519,7 +526,7 @@ public class MainFrame extends JFrame {
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
 		
-		JTabbedPane tabbedPane_4 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_4 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_4.setBounds(-1, 1, 354, 391);
 		productCategoryPanel.add(tabbedPane_4);
 		
@@ -608,12 +615,27 @@ public class MainFrame extends JFrame {
 		tabbedPane.addTab("주문", null, orderTabPannel, null);
 		orderTabPannel.setLayout(null);
 		
-		JTabbedPane tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_3.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				int selectedIndex = tabbedPane.getSelectedIndex();
                 if (selectedIndex == 2) {
-                    // 원하는 동작을 수행합니다.
+                	// 임시 테스트용
+                	try {
+                		loginUser = userService.findUser("user10");
+                	} catch (Exception e1) {
+                		e1.printStackTrace();
+                	}
+                	
+                	// 카트 to 결제
+                	orderPayPriceTF.setText("5000");
+                	orderPayNameTF.setText(loginUser.getUserName());
+                	orderPayPhoneTF.setText(loginUser.getUserPhone());
+                	
+                	
+                	// 결제내용 로딩
+    				orderListIdTF.setText(loginUser.getUserId());
+    				displayOrderList(loginUser);
                 }
 			}
 		});
@@ -760,13 +782,21 @@ public class MainFrame extends JFrame {
 		orderPayPanel.add(lblNewLabel_17_1);
 		
 		JButton orderPayPayButton = new JButton("결제");
+		orderPayPayButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, orderPayPaymentComboBox.getSelectedItem() + "로 결제합니다.");
+				tabbedPane_3.setSelectedIndex(2);
+			}
+		});
 		orderPayPayButton.setBounds(123, 335, 97, 23);
 		orderPayPanel.add(orderPayPayButton);
 		
-		JComboBox orderPayPaymentComboBox = new JComboBox();
+		orderPayPaymentComboBox = new JComboBox();
 		orderPayPaymentComboBox.setModel(new DefaultComboBoxModel(new String[] {"신용카드", "무통장입금", "현장결제"}));
 		orderPayPaymentComboBox.setBounds(109, 290, 200, 23);
 		orderPayPanel.add(orderPayPaymentComboBox);
+		
+		
 		
 		JLabel lblNewLabel_22 = new JLabel("결제수단 :");
 		lblNewLabel_22.setBounds(26, 294, 57, 15);
@@ -791,6 +821,12 @@ public class MainFrame extends JFrame {
 		orderPayPanel.add(lblNewLabel_24);
 		
 		JPanel orderListPanel = new JPanel();
+		orderListPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		
 		tabbedPane_3.addTab("주문내역", null, orderListPanel, null);
 		orderListPanel.setLayout(null);
@@ -834,51 +870,54 @@ public class MainFrame extends JFrame {
 			e1.printStackTrace();
 		}
 		
-		//임시 테스트용
-		try {
-			loginUser = userService.findUser("user10");
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		
-		displayOrderList(loginUser);
 		
 	}//생성자
 		
+	public void changeUserTabPanel(int userPanelNo) {
+		tabbedPane.setSelectedIndex(0);
+	    tabbedPane_1.setSelectedIndex(userPanelNo);
+	}
+	public void changeProductTabPanel(int productPanelNo,int productCategoryPanelNo) {
+		tabbedPane.setSelectedIndex(1);
+		tabbedPane_2.setSelectedIndex(productPanelNo);
+		tabbedPane_4.setSelectedIndex(productCategoryPanelNo);
+	}
+	public void changeOrderTabPanel(int orderPaneNo) {
+		tabbedPane.setSelectedIndex(2);
+		tabbedPane_3.setSelectedIndex(orderPaneNo);
+	}
 	
 	private void displayOrderList(User loginUser) {
 		try {
 			/***************회원리스트보기[JTable]************/
-			List<Order> orderList = orderService.list(loginUser.getUserId());
-			
-			System.out.println(loginUser);
-			System.out.println(orderList.get(0).getOrderDate());
+//			List<Order> orderList = orderService.list(loginUser.getUserId());
+			List<OrderItem> orderList = orderService.oiList(loginUser.getUserId());
 			
 			Vector columVector = new Vector();
-			columVector.add("주문일자");
+			columVector.add("순번");
 			columVector.add("강의명");
 			columVector.add("수량");
 			columVector.add("금액");
-			Vector tableVector = new Vector();
 			
-			for (Order order : orderList) {
+			Vector tableVector = new Vector();
+//			for (Order order : orderList) {
+//			for (int i = 0; i < orderList.size(); i++) {
+//				Vector rowVector = new Vector();
+//				rowVector.add(orderList.get(i).getOrderDate());
+//				rowVector.add(orderList.get(i).getOrderItemList().get(i).getProduct().getProduct_name());
+//				rowVector.add(orderList.get(i).getOrderItemList().get(i).getOiQty());
+//				rowVector.add(orderList.get(i).getOrderItemList().get(i).getOiQty() * orderList.get(i).getOrderItemList().get(0).getProduct().getProduct_price());
+//				tableVector.add(rowVector);
+//			}
+			for (int i = 0; i < orderList.size(); i++) {
 				Vector rowVector = new Vector();
-				rowVector.add(order.getOrderDate());
-				rowVector.add(order.getOrderItemList().get(0).getProduct().getProduct_name());
-				rowVector.add(order.getOrderItemList().get(0).getOiQty());
-				rowVector.add(order.getOrderItemList().get(0).getOiQty() * order.getOrderItemList().get(0).getProduct().getProduct_price());
+				rowVector.add(i+1);
+				rowVector.add(orderList.get(i).getProduct().getProduct_name());
+				rowVector.add(orderList.get(i).getOiQty());
+				rowVector.add(orderList.get(i).getOiQty() * orderList.get(i).getProduct().getProduct_price());
 				tableVector.add(rowVector);
 			}
-			
-//			for (int i = 0; i < orderList.size(); i++) {
-//			Vector rowVector = new Vector();
-//			rowVector.add(orderList.get(i).getOrderDate());
-//			rowVector.add(orderList.get(i).getOrderItemList().get(i).getProduct().getProduct_name());
-//			rowVector.add(orderList.get(i).getOrderItemList().get(i).getOiQty());
-//			rowVector.add(orderList.get(i).getOrderItemList().get(i).getOiQty() * orderList.get(i).getOrderItemList().get(0).getProduct().getProduct_price());
-//			tableVector.add(rowVector);
-//			}
 			
 			DefaultTableModel tableModel = new DefaultTableModel(tableVector, columVector);
 			orderListTable.setModel(tableModel);
@@ -889,21 +928,7 @@ public class MainFrame extends JFrame {
 		}
 	}
 	
-	private void cartToOrder() {
-		List<String> name = new ArrayList<String>();
-		List<Integer> qty = new ArrayList<Integer>();
-		List<Integer> price = new ArrayList<Integer>();
-		
-		for (int i = 0; i < orderCartTable.getRowCount(); i++) {
-
-			
-			
-			
-		}
-		orderCartTable.getValueAt(ERROR, ABORT);
-		
-		
-	}
+	
 		
 	
 }

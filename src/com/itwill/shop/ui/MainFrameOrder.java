@@ -97,6 +97,14 @@ public class MainFrameOrder extends JFrame {
 	private JTextField productCategoryTF;
 	private JLabel idCheckMsgLabel;
 	private JTextField cartByProductQtyTF;
+	private JPanel userTabPannel;
+	private JPanel productTabPannel;
+	private JPanel orderTabPannel;
+	private JTabbedPane tabbedPane_1;
+	private JTabbedPane tabbedPane;
+	private JTabbedPane tabbedPane_2;
+	private JTabbedPane tabbedPane_3;
+	private JTabbedPane tabbedPane_4;
 	
 
 	
@@ -141,15 +149,15 @@ public class MainFrameOrder extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(0, 0, 364, 452);
 		contentPane.add(tabbedPane);
 		
-		JPanel userTabPannel = new JPanel();
+		userTabPannel = new JPanel();
 		tabbedPane.addTab("회원", null, userTabPannel, null);
 		userTabPannel.setLayout(null);
 		
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_1.setBounds(0, 0, 359, 423);
 		userTabPannel.add(tabbedPane_1);
 		
@@ -470,11 +478,11 @@ public class MainFrameOrder extends JFrame {
 		lblNewLabel_26.setBounds(77, 181, 133, 15);
 		userFindPanel.add(lblNewLabel_26);
 		
-		JPanel productTabPannel = new JPanel();
+		productTabPannel = new JPanel();
 		tabbedPane.addTab("제품", null, productTabPannel, null);
 		productTabPannel.setLayout(null);
 		
-		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_2.setBounds(0, 0, 359, 423);
 		productTabPannel.add(tabbedPane_2);
 		
@@ -511,7 +519,7 @@ public class MainFrameOrder extends JFrame {
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
 		
-		JTabbedPane tabbedPane_4 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_4 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_4.setBounds(-1, 1, 354, 391);
 		productCategoryPanel.add(tabbedPane_4);
 		
@@ -596,11 +604,11 @@ public class MainFrameOrder extends JFrame {
 		productDetailPanel.add(productCategoryTF);
 		productCategoryTF.setColumns(10);
 		
-		JPanel orderTabPannel = new JPanel();
+		orderTabPannel = new JPanel();
 		tabbedPane.addTab("주문", null, orderTabPannel, null);
 		orderTabPannel.setLayout(null);
 		
-		JTabbedPane tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_3.setBounds(0, 0, 359, 423);
 		orderTabPannel.add(tabbedPane_3);
 		
@@ -619,7 +627,9 @@ public class MainFrameOrder extends JFrame {
 				int selectedRow = orderCartTable.getSelectedRow();
 				Integer selectedNo = (Integer)orderCartTable.getValueAt(selectedRow,0);
 				String selectedName = (String)orderCartTable.getValueAt(selectedRow, 1);
+				Integer selectedQty = (Integer)orderCartTable.getValueAt(selectedRow, 2);
 				orderCartNameTF.setText(selectedName);
+				cartByProductQtyTF.setText(selectedQty+"");
 				try {
 					orderCartDetailTF.setText(cartService.getCartItemByCartNo(selectedNo).getProduct().getProduct_detail());
 				} catch (Exception e1) {
@@ -751,13 +761,21 @@ public class MainFrameOrder extends JFrame {
 					}
 				}
 			});
-		orderCartQtyPlusButton.setBounds(260, 301, 57, 23);
+		orderCartQtyPlusButton.setBounds(255, 301, 57, 23);
 		orderCartPanel.add(orderCartQtyPlusButton);
 		
 		JButton orderCartEditButton = new JButton("주문 수정");
 		orderCartEditButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					int selectedRow=orderCartTable.getSelectedRow();
+					int selectedNo=(Integer)orderCartTable.getValueAt(selectedRow, 0);
+					cartService.updateCart(selectedNo, Integer.parseInt(cartByProductQtyTF.getText()));
+					displayCartList(loginUser);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		orderCartEditButton.setBounds(33, 348, 97, 23);
@@ -782,17 +800,17 @@ public class MainFrameOrder extends JFrame {
 		orderCartPanel.add(orderCartDeleteButton);
 		
 		JButton orderCartPayButton = new JButton("결제하기");
+		orderCartPayButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				changeOrderTabPanel(1);
+			}
+		});
 		orderCartPayButton.setBounds(245, 348, 97, 23);
 		orderCartPanel.add(orderCartPayButton);
 		
 		cartByProductQtyTF = new JTextField();
 		cartByProductQtyTF.setEnabled(false);
 		cartByProductQtyTF.setHorizontalAlignment(SwingConstants.CENTER);
-		cartByProductQtyTF.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				productQtyComboBox.getSelectedIndex();
-			}
-		});
 		cartByProductQtyTF.setBounds(160, 302, 75, 21);
 		orderCartPanel.add(cartByProductQtyTF);
 		cartByProductQtyTF.setColumns(10);
@@ -915,6 +933,20 @@ public class MainFrameOrder extends JFrame {
 		
 		displayCartList(loginUser);
 	}
+	public void changeUserTabPanel(int userPanelNo) {
+	      tabbedPane.setSelectedIndex(0);
+	       tabbedPane_1.setSelectedIndex(userPanelNo);
+	   }
+	   public void changeProductTabPanel(int productPanelNo,int productCategoryPanelNo) {
+	      tabbedPane.setSelectedIndex(1);
+	      tabbedPane_2.setSelectedIndex(productPanelNo);
+	      tabbedPane_4.setSelectedIndex(productCategoryPanelNo);
+	   }
+	   public void changeOrderTabPanel(int orderPaneNo) {
+	      tabbedPane.setSelectedIndex(2);
+	      tabbedPane_3.setSelectedIndex(orderPaneNo);
+	   }
+	
 	private void displayCartList(User loginUser) {
 		try {
 			List<Cart> cartList=cartService.getCartItemByUserId(loginUser.getUserId());

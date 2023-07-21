@@ -495,7 +495,7 @@ public class MainFrameProduct extends JFrame {
 					
 					tabbedPane_2.setSelectedIndex(2);
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "찾으시는 상품이 없습니다.");;
 				}
 				
 				
@@ -1116,7 +1116,9 @@ public class MainFrameProduct extends JFrame {
 	} // 생성자 끝
 		
 		public void showView(Product product) {
-			productImageLabel.setText(product.getProduct_image());
+			String imageStr = product.getProduct_image();
+			productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/" + imageStr)));
+//			productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
 			productCategoryTF.setText(product.getProduct_category());
 			productNameTF.setText(product.getProduct_name());
 			productPriceTF.setText(String.valueOf(product.getProduct_price()));

@@ -487,6 +487,7 @@ public class MainFrameProduct2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					productService.productSearch(productSearchTF.getText());
+					tabbedPane_2.setSelectedIndex(2);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

@@ -2,6 +2,7 @@ package com.itwill.shop.ui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -230,7 +231,18 @@ public class MainFrameUser extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(12, 181, 330, 15);
 		userLoginPanel.add(separator);
+<<<<<<< HEAD
 		
+
+		JButton btnNewButton_4 = new JButton("중복확인");
+		btnNewButton_4.setFont(new Font("굴림", Font.PLAIN, 12));
+		btnNewButton_4.setBounds(247, 42, 95, 23);
+		userLoginPanel.add(btnNewButton_4);
+		
+
+=======
+		
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6
 		userIdTextLabel = new JLabel("");
 		userIdTextLabel.setForeground(Color.RED);
 		userIdTextLabel.setBounds(119, 69, 151, 15);

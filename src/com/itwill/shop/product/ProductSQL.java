@@ -11,7 +11,7 @@ public class ProductSQL {
 	public final static String PRODUCT_SELECT_BY_CATEGORY = "select * from product where product_category=?";
 	//product 조회수 증가 기능
 	public final static String PRODUCT_UPDATE_READ_COUNT = "update product set product_read_count=product_read_count+1 where product_no=?";	
-	  //product 중 최대 조회수 값 가진 로우 출력
-	   public final static String PRODUCT_SELECT_MAX_READ_COUNT="select * from product where product_read_count = (select max(product_read_count) from product)";
+	//product 중 최대 조회수 값 가진 로우 출력
+	public final static String PRODUCT_SELECT_MAX_READ_COUNT="select * from product where product_read_count = (select max(product_read_count) from product)";
 	
 }

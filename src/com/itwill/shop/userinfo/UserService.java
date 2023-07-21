@@ -97,13 +97,6 @@ public class UserService {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	/*
 	 * 로그아웃 하기
 	 */

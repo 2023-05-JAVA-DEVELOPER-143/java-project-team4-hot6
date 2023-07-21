@@ -28,6 +28,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.shop.cart.CartService;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
@@ -42,6 +43,7 @@ public class MainFrameProduct extends JFrame {
 	private ProductService productService;
 	private UserService userService;
 	private OrderService orderService;
+	private CartService cartService;
 	
 	private User loginUser = null;
 	
@@ -964,6 +966,7 @@ public class MainFrameProduct extends JFrame {
 			orderService = new OrderService();
 			productService = new ProductService();
 			userService = new UserService();
+			cartService = new CartService();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

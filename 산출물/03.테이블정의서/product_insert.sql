@@ -12,7 +12,7 @@ insert into product(product_no, product_start_date, product_category, product_na
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
          values(product_product_no_SEQ.nextval, '2023-08-05', '수공예', '[연남] 감각적인 시그니처 향수 제작 A Class 퍼퓸', 100000,  '상상속에 존재하는 나만의 시그니처 향수 만들기','images/product_handcraft(2).jpg', 0);
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
-         values(product_product_no_SEQ.nextval, '2023-08-10', '수공예', '[연남] 가죽 공예 데일리 카드 지갑 만들기 원데이 클래스', 110000,  '나만의 이니셜 각인도 해드려요!', 'images/product_handcraft(3).jpg', 0);
+         values(product_product_no_SEQ.nextval, '2023-08-10', '수공예', '[연남] 가죽 공예 데일리 카드 지갑 만들기 원데이 클래스', 110000,  '나만의 이니셜 각인도 해드려요!', 'images/product/product_handcraft(3).jpg', 0);
 insert into product(product_no, product_start_date, product_category, product_name, product_price, product_detail, product_image, product_read_count)
          values(product_product_no_SEQ.nextval, '2023-08-23', '수공예', '[부산]미니어처 소파 제작 원데이클래스', 50000,  '미니어처 소파를 만들어요', 'images/product_handcraft(4).jpg', 0);
       

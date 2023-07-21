@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.DefaultComboBoxModel;
@@ -95,6 +97,7 @@ public class MainFrameProduct extends JFrame {
 	private JPanel product_category_handcraft_panel;
 	private JTabbedPane categoryPane;
 	private JTabbedPane tabbedPane_2;
+	private JLabel productImageLabel;
 
 	/**
 	 * Launch the application.
@@ -486,11 +489,11 @@ public class MainFrameProduct extends JFrame {
 		productSearchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					productService.productSearch(productSearchTF.getText());
-					if(productSearchTF.getText()=="") {
-						
-					}
-				tabbedPane_2.setSelectedIndex(2);
+					List<Product> productList = productService.productSearch(productSearchTF.getText());
+					Product tempProduct = productList.get(0); 
+					showView(tempProduct);
+					
+					tabbedPane_2.setSelectedIndex(2);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -510,17 +513,17 @@ public class MainFrameProduct extends JFrame {
 		productMainPanel.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("미술");
-		lblNewLabel_14.setBounds(56, 290, 57, 15);
+		lblNewLabel_14.setBounds(56, 272, 57, 15);
 		productMainPanel.add(lblNewLabel_14);
 		
 		JLabel lblNewLabel_27 = new JLabel("플라워");
-		lblNewLabel_27.setBounds(231, 290, 57, 15);
+		lblNewLabel_27.setBounds(231, 272, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
 		
-		JPanel panel = new JPanel();
-
-		panel.setBounds(23, 41, 111, 93);
-		productMainPanel.add(panel);
+		JPanel productMainHandCraftPanel = new JPanel();
+		
+		productMainHandCraftPanel.setBounds(23, 41, 111, 93);
+		productMainPanel.add(productMainHandCraftPanel);
 		
 		JLabel productMainHandCraftLabel = new JLabel("");
 		productMainHandCraftLabel.addMouseListener(new MouseAdapter() {
@@ -531,32 +534,32 @@ public class MainFrameProduct extends JFrame {
 				//tabbedPane_2.setSelectedIndex(1);
 			}
 		});
-		panel.add(productMainHandCraftLabel);
-		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product/product_main_handcraft (1).png")));
+		productMainHandCraftPanel.add(productMainHandCraftLabel);
+		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_handcraft (1).png")));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(190, 41, 111, 93);
-		productMainPanel.add(panel_1);
+		JPanel productMainCookingPanel = new JPanel();
+		productMainCookingPanel.setBounds(190, 41, 111, 93);
+		productMainPanel.add(productMainCookingPanel);
 		
 		JLabel productMainCookingLabel = new JLabel("");
-		panel_1.add(productMainCookingLabel);
-		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product/product_main_cooking (1).png")));
+		productMainCookingPanel.add(productMainCookingLabel);
+		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_cooking (1).png")));
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(23, 187, 111, 93);
-		productMainPanel.add(panel_2);
+		JPanel productMainDrawingPanel = new JPanel();
+		productMainDrawingPanel.setBounds(23, 169, 111, 93);
+		productMainPanel.add(productMainDrawingPanel);
 		
 		JLabel productMainDrawingLabel = new JLabel("");
-		panel_2.add(productMainDrawingLabel);
-		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product/product_main_drawing (1).png")));
+		productMainDrawingPanel.add(productMainDrawingLabel);
+		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_drawing (1).png")));
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(190, 189, 111, 93);
-		productMainPanel.add(panel_3);
+		JPanel productMainFlowerPanel = new JPanel();
+		productMainFlowerPanel.setBounds(190, 169, 111, 93);
+		productMainPanel.add(productMainFlowerPanel);
 		
 		JLabel productMainFlowerLabel = new JLabel("");
-		panel_3.add(productMainFlowerLabel);
-		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product/product_main_flower-bouquet (1) (1).png")));
+		productMainFlowerPanel.add(productMainFlowerLabel);
+		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_flower-bouquet (1) (1).png")));
 
 		
 		JPanel productCategoryPanel = new JPanel();
@@ -855,7 +858,7 @@ public class MainFrameProduct extends JFrame {
 		productDetailPanel1.add(productDateTF);
 		productDateTF.setColumns(10);
 		
-		JLabel productImageLabel = new JLabel("");
+		productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
 		productImageLabel.setBounds(31, 14, 158, 218);
@@ -1110,6 +1113,17 @@ public class MainFrameProduct extends JFrame {
 				
 			}
 		}*/
+	} // 생성자 끝
 		
-	}
+		public void showView(Product product) {
+			productImageLabel.setText(product.getProduct_image());
+			productCategoryTF.setText(product.getProduct_category());
+			productNameTF.setText(product.getProduct_name());
+			productPriceTF.setText(String.valueOf(product.getProduct_price()));
+			productReadCountTF.setText(String.valueOf(product.getProduct_read_count()));
+			productDateTF.setText(String.valueOf(product.getProduct_start_date()));
+			productDetailTF.setText(product.getProduct_detail());
+			
+		}
+		
 }

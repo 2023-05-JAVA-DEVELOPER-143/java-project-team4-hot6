@@ -367,7 +367,8 @@ public class MainFrameUser extends JFrame {
 								sex);
 						boolean isAdd = userService.addUser(user);
 						if (isAdd) {
-							tabbedPane.setSelectedIndex(0);
+							//로그인 화면으로 이동
+							tabbedPane_1.setSelectedIndex(0);
 						} else {
 							JOptionPane.showMessageDialog(null, id + "당신의 가입은 실패하였습니다.");
 						}

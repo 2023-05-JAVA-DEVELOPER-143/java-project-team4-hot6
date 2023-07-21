@@ -28,14 +28,24 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.shop.cart.CartService;
+import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
+import com.itwill.shop.userinfo.UserService;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainFrameProduct extends JFrame {
 	
 	//서비스 객체 멤버변수 선언
 	private ProductService productService;
+	private UserService userService;
+	private OrderService orderService;
+	private CartService cartService;
 	
+	private User loginUser = null;
 	
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
@@ -461,7 +471,7 @@ public class MainFrameProduct extends JFrame {
 		productMainPanel.setLayout(null);
 		
 		productSearchTF = new JTextField();
-		productSearchTF.setBounds(117, 10, 116, 21);
+		productSearchTF.setBounds(102, 10, 116, 21);
 		productMainPanel.add(productSearchTF);
 		productSearchTF.setColumns(10);
 		
@@ -477,24 +487,40 @@ public class MainFrameProduct extends JFrame {
 				
 			}
 		});
-		productSearchButton.setBounds(245, 9, 97, 23);
+		productSearchButton.setBounds(230, 9, 97, 23);
 		productMainPanel.add(productSearchButton);
 		
 		JLabel lblNewLabel_12 = new JLabel("수공예");
-		lblNewLabel_12.setBounds(56, 130, 57, 15);
+		lblNewLabel_12.setBounds(55, 143, 57, 15);
 		productMainPanel.add(lblNewLabel_12);
 		
 		JLabel lblNewLabel_13 = new JLabel("요리");
-		lblNewLabel_13.setBounds(244, 130, 57, 15);
+		lblNewLabel_13.setBounds(243, 143, 57, 15);
 		productMainPanel.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("미술");
-		lblNewLabel_14.setBounds(56, 290, 57, 15);
+		lblNewLabel_14.setBounds(55, 279, 57, 15);
 		productMainPanel.add(lblNewLabel_14);
 		
-		JLabel lblNewLabel_27 = new JLabel("스포츠");
-		lblNewLabel_27.setBounds(244, 290, 57, 15);
+		JLabel lblNewLabel_27 = new JLabel("플라워");
+		lblNewLabel_27.setBounds(243, 279, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
+		
+		JLabel lblNewLabel_30 = new JLabel("안녕");
+		lblNewLabel_30.setBounds(12, 41, 100, 92);
+		productMainPanel.add(lblNewLabel_30);
+		
+		JLabel lblNewLabel_30_1 = new JLabel("안녕");
+		lblNewLabel_30_1.setBounds(200, 41, 100, 92);
+		productMainPanel.add(lblNewLabel_30_1);
+		
+		JLabel lblNewLabel_30_2 = new JLabel("안녕");
+		lblNewLabel_30_2.setBounds(12, 168, 100, 92);
+		productMainPanel.add(lblNewLabel_30_2);
+		
+		JLabel lblNewLabel_30_3 = new JLabel("안녕");
+		lblNewLabel_30_3.setBounds(200, 168, 100, 92);
+		productMainPanel.add(lblNewLabel_30_3);
 		
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
@@ -509,7 +535,14 @@ public class MainFrameProduct extends JFrame {
 		product_flower_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1 = new JPanel();
-		product_handcraft_pannel1.setBounds(35, 24, 125, 125);
+
+		product_handcraft_pannel1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		product_handcraft_pannel1.setBounds(35, 24, 128, 125);
+
 		product_flower_panel.add(product_handcraft_pannel1);
 		
 		JLabel lblNewLabel_29 = new JLabel("New label");
@@ -927,5 +960,17 @@ public class MainFrameProduct extends JFrame {
 			}
 		));
 		orderListScrollPane.setViewportView(orderListTable);
+		
+		
+		try {
+			orderService = new OrderService();
+			productService = new ProductService();
+			userService = new UserService();
+			cartService = new CartService();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		
 	}
 }

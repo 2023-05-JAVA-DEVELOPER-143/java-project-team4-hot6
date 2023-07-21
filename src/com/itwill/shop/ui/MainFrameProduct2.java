@@ -513,6 +513,19 @@ public class MainFrameProduct2 extends JFrame {
 		lblNewLabel_27.setBounds(244, 290, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(31, 38, 82, 90);
+		productMainPanel.add(panel);
+		
+		JLabel lblNewLabel_28 = new JLabel("New label");
+		lblNewLabel_28.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(1);
+			}
+		});
+		panel.add(lblNewLabel_28);
+		
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
@@ -530,6 +543,7 @@ public class MainFrameProduct2 extends JFrame {
 		product_category_handcraft_panel.add(handcraftPannel1);
 		
 		product_handcraft_image1 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
 		product_handcraft_image1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -538,6 +552,7 @@ public class MainFrameProduct2 extends JFrame {
 				
 			}
 		});
+		/********************************************************/
 		product_handcraft_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(1).jpg")));
 		handcraftPannel1.add(product_handcraft_image1);
 		
@@ -545,7 +560,16 @@ public class MainFrameProduct2 extends JFrame {
 		product_handcraft_pannel2_1.setBounds(189, 24, 125, 125);
 		product_category_handcraft_panel.add(product_handcraft_pannel2_1);
 		
-		JLabel product_handcraft_image2 = new JLabel("");
+		JLabel product_handcraft_image2 = new JLabel("");		
+		/******************* 상세페널로 이동 *******************/
+		product_handcraft_image2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "누름");
+				tabbedPane_2.setSelectedIndex(2);
+			}
+		});
+		/********************************************************/
 		product_handcraft_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(2).jpg")));
 		product_handcraft_pannel2_1.add(product_handcraft_image2);
 		
@@ -562,6 +586,14 @@ public class MainFrameProduct2 extends JFrame {
 		product_category_handcraft_panel.add(product_handcraft_pannel3_1);
 		
 		JLabel product_handcraft_image3 = new JLabel("");
+		
+		product_handcraft_image3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2);
+			}
+			
+		});
 		product_handcraft_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(3).jpg")));
 		product_handcraft_pannel3_1.add(product_handcraft_image3);
 		
@@ -1047,22 +1079,4 @@ public class MainFrameProduct2 extends JFrame {
 		}*/
 		
 	}
-/*	public Product displayChage(int no){
-		if (no == 3) {
-			//디테일
-			
-			categoryPane.setSelectedIndex(1);
-			tabbedPane_2.setSelectedIndex(2);
-			
-			
-			
-			return p;
-		}
-		return null;
-	}
-	
-	public void setDetail(Product product) {
-		productNameTF.setText(product.getProduct_name());
-	}*/
-	
 }

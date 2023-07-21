@@ -46,6 +46,14 @@ public class ProductService {
 	public int productReadCount(int product_no) throws Exception{
 		return productDao.updateByReadCount(product_no);
 
-	
+
 	}
+	
+	/*
+	 *  product 최대 조회수 로우 출력 기능
+	 */
+	public Product productMaxReadCount(int product_read_count) throws Exception{
+		return productDao.selectByMaxReadCount(product_read_count);
+	}
+
 }

@@ -108,8 +108,9 @@ public class UserService {
 	 * 로그인한 회원정보 보기
 	 */
 	public User findUser(String userId) throws Exception {
-		User userInfo = userDao.findByUserId(userId);
-		return userInfo;
+		//User userInfo = userDao.findByUserId(userId);
+		//return userInfo;
+		return userDao.findByUserId(userId);
 	}
 	
 	

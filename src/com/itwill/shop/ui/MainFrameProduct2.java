@@ -31,7 +31,7 @@ import javax.swing.table.DefaultTableModel;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 
-public class MainFrameProduct extends JFrame {
+public class MainFrameProduct2 extends JFrame {
 	
 	//서비스 객체 멤버변수 선언
 	private ProductService productService;
@@ -86,7 +86,7 @@ public class MainFrameProduct extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrameProduct frame = new MainFrameProduct();
+					MainFrameProduct2 frame = new MainFrameProduct2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -98,7 +98,7 @@ public class MainFrameProduct extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrameProduct() {
+	public MainFrameProduct2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 380, 495);
 		
@@ -693,7 +693,7 @@ public class MainFrameProduct extends JFrame {
 		
 		JLabel productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
+		productImageLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/nothing.jpg")));
 		productImageLabel.setBounds(12, 14, 158, 218);
 		productDetailPanel.add(productImageLabel);
 		

@@ -30,6 +30,8 @@ import javax.swing.table.DefaultTableModel;
 
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainFrameProduct extends JFrame {
 	
@@ -509,6 +511,11 @@ public class MainFrameProduct extends JFrame {
 		product_flower_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1 = new JPanel();
+		product_handcraft_pannel1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		product_handcraft_pannel1.setBounds(35, 24, 128, 125);
 		product_flower_panel.add(product_handcraft_pannel1);
 		

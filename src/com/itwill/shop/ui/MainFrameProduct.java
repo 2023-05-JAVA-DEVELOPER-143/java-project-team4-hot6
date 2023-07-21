@@ -509,19 +509,23 @@ public class MainFrameProduct extends JFrame {
 		product_flower_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1 = new JPanel();
-		product_handcraft_pannel1.setBounds(35, 24, 128, 125);
+		product_handcraft_pannel1.setBounds(35, 24, 125, 125);
 		product_flower_panel.add(product_handcraft_pannel1);
 		
+		JLabel lblNewLabel_29 = new JLabel("New label");
+		lblNewLabel_29.setIcon(null);
+		product_handcraft_pannel1.add(lblNewLabel_29);
+		
 		JPanel product_handcraft_pannel2 = new JPanel();
-		product_handcraft_pannel2.setBounds(190, 24, 128, 125);
+		product_handcraft_pannel2.setBounds(190, 24, 125, 125);
 		product_flower_panel.add(product_handcraft_pannel2);
 		
 		JPanel product_handcraft_pannel3 = new JPanel();
-		product_handcraft_pannel3.setBounds(35, 184, 128, 125);
+		product_handcraft_pannel3.setBounds(35, 184, 125, 125);
 		product_flower_panel.add(product_handcraft_pannel3);
 		
 		JPanel product_handcraft_pannel4 = new JPanel();
-		product_handcraft_pannel4.setBounds(190, 184, 128, 125);
+		product_handcraft_pannel4.setBounds(190, 184, 125, 125);
 		product_flower_panel.add(product_handcraft_pannel4);
 		
 		JLabel lblNewLabel_28 = new JLabel("New label");
@@ -545,11 +549,11 @@ public class MainFrameProduct extends JFrame {
 		product_handcraft_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1_1 = new JPanel();
-		product_handcraft_pannel1_1.setBounds(34, 24, 128, 125);
+		product_handcraft_pannel1_1.setBounds(34, 24, 125, 125);
 		product_handcraft_panel.add(product_handcraft_pannel1_1);
 		
 		JPanel product_handcraft_pannel2_1 = new JPanel();
-		product_handcraft_pannel2_1.setBounds(189, 24, 128, 125);
+		product_handcraft_pannel2_1.setBounds(189, 24, 125, 125);
 		product_handcraft_panel.add(product_handcraft_pannel2_1);
 		
 		JLabel lblNewLabel_28_4 = new JLabel("New label");
@@ -561,11 +565,11 @@ public class MainFrameProduct extends JFrame {
 		product_handcraft_panel.add(lblNewLabel_28_1_1);
 		
 		JPanel product_handcraft_pannel3_1 = new JPanel();
-		product_handcraft_pannel3_1.setBounds(34, 184, 128, 125);
+		product_handcraft_pannel3_1.setBounds(34, 184, 125, 125);
 		product_handcraft_panel.add(product_handcraft_pannel3_1);
 		
 		JPanel product_handcraft_pannel4_1 = new JPanel();
-		product_handcraft_pannel4_1.setBounds(189, 184, 128, 125);
+		product_handcraft_pannel4_1.setBounds(189, 184, 125, 125);
 		product_handcraft_panel.add(product_handcraft_pannel4_1);
 		
 		JLabel lblNewLabel_28_2_1 = new JLabel("New label");
@@ -581,11 +585,11 @@ public class MainFrameProduct extends JFrame {
 		product_cooking_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1_1_1 = new JPanel();
-		product_handcraft_pannel1_1_1.setBounds(37, 22, 128, 125);
+		product_handcraft_pannel1_1_1.setBounds(37, 22, 125, 125);
 		product_cooking_panel.add(product_handcraft_pannel1_1_1);
 		
 		JPanel product_handcraft_pannel2_1_1 = new JPanel();
-		product_handcraft_pannel2_1_1.setBounds(192, 22, 128, 125);
+		product_handcraft_pannel2_1_1.setBounds(192, 22, 125, 125);
 		product_cooking_panel.add(product_handcraft_pannel2_1_1);
 		
 		JLabel lblNewLabel_28_4_1 = new JLabel("New label");

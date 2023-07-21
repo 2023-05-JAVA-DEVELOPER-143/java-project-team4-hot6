@@ -15,6 +15,8 @@ public class ProductServiceTestMain {
 		System.out.println("4.findByCategory");
 		System.out.println(productService.productCategorySearch("미술"));
 		System.out.println("5.updateByReadCount");
-		System.out.println(productService.productReadCount(2)); 
+		System.out.println(productService.productReadCount(2));
+		System.out.println("6.selectByMaxReadCount");
+		System.out.println(productService.productMaxReadCount(0));
 	}
 }

@@ -205,7 +205,7 @@ public class MainFrameUser2 extends JFrame {
 				try {
 
 					int result = userService.login(userId, userPassword);
-					System.out.println(result);
+					//System.out.println(result);
 					if (result == 1) {
 						// 로그인 성공
 						User loginUser = userService.findUser(userId);
@@ -251,33 +251,40 @@ public class MainFrameUser2 extends JFrame {
 					return;
 				}
 
-			}
-		});
+		try {
+
+		     int result = userService.noUserLogin(userName, userPhone);
+			
+			if (result == 1) {
+	
+				setTitle(userName+ " 님 로그인");
+				tabbedPane_1.setEnabledAt(0, false);
+				tabbedPane_1.setEnabledAt(1, false);
+				tabbedPane_1.setEnabledAt(2, true);
+				tabbedPane_1.setSelectedIndex(2);
+
+				
+
+
+			} else if (result == 0) {
+				// 로그인 실패
+				// JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인하세요.");
+				userLoginPhoneMessageLabel.setText("올바른 휴대전화 형식이 아닙니다.");
+				
+				userPhoneTF.requestFocus();
+				userPhoneTF.setSelectionStart(0);
+				userPhoneTF.setSelectionEnd(userPhone.length());
+		}
+		} catch (Exception e1) {
+
+		e1.printStackTrace();
+		}
+	}
+
+       });
+
 		
 		
-		
-//		try {
-//
-//			int result = userService.noUserlogin(userName, userPhone);
-//			System.out.println(result);
-//			if (result == 1) {
-//				// 로그인 성공
-//				User loginUser = userService.findUser(userId);
-//				loginProcess(loginUser);
-//
-//			} else if (result == 0) {
-//				// 로그인 실패
-//				// JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인하세요.");
-//				userLoginIdMessageLabel.setText("아이디또는비밀번호가 일치하지않습니다.");
-//				userIdTF.requestFocus();
-//				userIdTF.setSelectionStart(0);
-//				userIdTF.setSelectionEnd(userId.length());
-//			}
-//		} catch (Exception e1) {
-//
-//			e1.printStackTrace();
-//		}
-//	}
 
 
 		
@@ -321,14 +328,6 @@ public class MainFrameUser2 extends JFrame {
 				tabbedPane_1.setSelectedIndex(1);
 			}
 		});
-		/**************************************************************/
-//		JButton userLoginButton = new JButton("로그인");
-//		userLoginButton.addActionListener(new ActionListener() {
-//			/******** 로그인버튼클릭시 *********/
-//			// 1.입력유효성체크
-//			public void actionPerformed(ActionEvent e) {
-//				String userId = userIdTF.getText();
-//				String userPassword = userPasswordTF.getText();
 
 		userLoginJoinButton.setBounds(185, 148, 97, 23);
 		userLoginPanel.add(userLoginJoinButton);
@@ -338,7 +337,7 @@ public class MainFrameUser2 extends JFrame {
 		userLoginPanel.add(userLoginNameMessageLabel);
 
 		userLoginPhoneMessageLabel = new JLabel("");
-		userLoginPhoneMessageLabel.setBounds(119, 308, 151, 15);
+		userLoginPhoneMessageLabel.setBounds(119, 308, 223, 15);
 		userLoginPanel.add(userLoginPhoneMessageLabel);
 
 		JPanel userSignUpPanel = new JPanel();

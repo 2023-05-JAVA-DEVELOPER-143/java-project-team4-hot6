@@ -51,10 +51,8 @@ import java.util.Vector;
 import java.awt.Dimension;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
-public class MainFrame extends JFrame {
+public class MainFrame_Original extends JFrame {
 	private UserService userService;
 	private ProductService productService;
 	private OrderService orderService;
@@ -118,7 +116,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					MainFrame_Original frame = new MainFrame_Original();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -130,7 +128,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
+	public MainFrame_Original() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 380, 495);
 		
@@ -593,7 +591,7 @@ public class MainFrame extends JFrame {
 		
 		JLabel productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		productImageLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/images/nothing.jpg")));
+		productImageLabel.setIcon(new ImageIcon(MainFrame_Original.class.getResource("/images/nothing.jpg")));
 		productImageLabel.setBounds(12, 14, 158, 218);
 		productDetailPanel.add(productImageLabel);
 		
@@ -633,9 +631,6 @@ public class MainFrame extends JFrame {
                 		e1.printStackTrace();
                 	}
                 	
-                	// 장바구니 로딩
-                	displayCartList(loginUser);
-                	
                 	// 카트 to 결제
                 	orderPayPriceTF.setText("5000");
                 	orderPayNameTF.setText(loginUser.getUserName());
@@ -660,32 +655,6 @@ public class MainFrame extends JFrame {
 		orderCartPanel.add(orderCartScrollPane);
 		
 		orderCartTable = new JTable();
-		orderCartTable.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int selectedRow = orderCartTable.getSelectedRow();
-				Integer selectedNo = (Integer)orderCartTable.getValueAt(selectedRow,0);
-				String selectedName = (String)orderCartTable.getValueAt(selectedRow, 1);
-				Integer selectedQty = (Integer)orderCartTable.getValueAt(selectedRow, 2);
-				orderCartNameTF.setText(selectedName);
-				cartByProductQtyTF.setText(selectedQty+"");
-				try {
-					orderCartDetailTF.setText(cartService.getCartItemByCartNo(selectedNo).getProduct().getProduct_detail());
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				Date findDate;
-				try {
-					findDate = cartService.getCartItemByCartNo(selectedNo).getProduct().getProduct_start_date();
-					String d =new SimpleDateFormat("yyyy/MM/dd").format(findDate);
-					orderCartDateTF.setText(d);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
 		orderCartTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		orderCartTable.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -702,10 +671,8 @@ public class MainFrame extends JFrame {
 		orderCartScrollPane.setViewportView(orderCartTable);
 		
 		orderCartPriceTF = new JTextField();
-		orderCartPriceTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		orderCartPriceTF.setEditable(false);
 		orderCartPriceTF.setBounds(201, 177, 116, 21);
-		orderCartPanel.add(orderCartPriceTF);
 		orderCartPriceTF.setColumns(10);
 		
 		JLabel lblNewLabel_16 = new JLabel("총 결제금액 :");
@@ -755,91 +722,31 @@ public class MainFrame extends JFrame {
 		orderCartPanel.add(lblNewLabel_21);
 		
 		JButton orderCartQtyMinusButton = new JButton("-");
-		orderCartQtyMinusButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					int qtyMinus=Integer.parseInt(cartByProductQtyTF.getText());
-					if(qtyMinus>1) {
-					cartByProductQtyTF.setText(String.valueOf(--qtyMinus));
-					} else {
-						JOptionPane.showMessageDialog(null, "1명 이상 선택해야합니다.");
-					}
-				} catch(NumberFormatException ex) {
-					cartByProductQtyTF.setText("1");
-					}
-				}
-			});
-		orderCartQtyMinusButton.setBounds(102, 301, 53, 23);
+		orderCartQtyMinusButton.setBounds(102, 301, 39, 23);
 		orderCartPanel.add(orderCartQtyMinusButton);
 		
 		JButton orderCartQtyPlusButton = new JButton("+");
-		orderCartQtyPlusButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) { 
-				try {
-					int qtyPlus=Integer.parseInt(cartByProductQtyTF.getText());
-					if(qtyPlus<8) {
-						cartByProductQtyTF.setText(String.valueOf(++qtyPlus));
-					} else {
-						JOptionPane.showMessageDialog(null, "최대 인원수 8명입니다.");
-					}
-				} catch(NumberFormatException ex) {
-					cartByProductQtyTF.setText("1");
-					}
-				}
-			});
-		orderCartQtyPlusButton.setBounds(264, 301, 53, 23);
+		orderCartQtyPlusButton.setBounds(278, 301, 39, 23);
 		orderCartPanel.add(orderCartQtyPlusButton);
 		
 		JButton orderCartEditButton = new JButton("주문 수정");
-		orderCartEditButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					int selectedRow=orderCartTable.getSelectedRow();
-					int selectedNo=(Integer)orderCartTable.getValueAt(selectedRow, 0);
-					cartService.updateCart(selectedNo, Integer.parseInt(cartByProductQtyTF.getText()));
-					displayCartList(loginUser);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
 		orderCartEditButton.setBounds(30, 330, 97, 23);
 		orderCartPanel.add(orderCartEditButton);
 		
 		JButton orderCartDeleteButton = new JButton("주문 삭제");
-		orderCartDeleteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					int selectedRow=orderCartTable.getSelectedRow();
-					int selectedNo=(Integer)orderCartTable.getValueAt(selectedRow, 0);
-					cartService.deleteCartItemByCartNo(selectedNo);
-					displayCartList(loginUser);
-				}catch(Exception e1) {
-					e1.printStackTrace();
-				}
-				
-				
-			}
-		});
 		orderCartDeleteButton.setBounds(136, 330, 97, 23);
 		orderCartPanel.add(orderCartDeleteButton);
 		
 		JButton orderCartPayButton = new JButton("결제하기");
-		orderCartPayButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				changeOrderTabPanel(1);
-			}
-		});
 		orderCartPayButton.setBounds(245, 330, 97, 23);
 		orderCartPanel.add(orderCartPayButton);
 		
 		cartByProductQtyTF = new JTextField();
 		cartByProductQtyTF.setEditable(false);
 		cartByProductQtyTF.setHorizontalAlignment(SwingConstants.CENTER);
+		cartByProductQtyTF.setColumns(10);
 		cartByProductQtyTF.setBounds(167, 302, 75, 21);
 		orderCartPanel.add(cartByProductQtyTF);
-		cartByProductQtyTF.setColumns(10);
 		
 		JPanel orderPayPanel = new JPanel();
 		orderPayPanel.setLayout(null);
@@ -968,6 +875,8 @@ public class MainFrame extends JFrame {
 			e1.printStackTrace();
 		}
 		
+		
+		
 	}//생성자
 		
 	public void changeUserTabPanel(int userPanelNo) {
@@ -1010,7 +919,10 @@ public class MainFrame extends JFrame {
 				
 				
 			}
+			System.out.println(price);
+			
 			orderCartPriceTF.setText(String.valueOf(price));
+			
 			
 			DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
 			orderCartTable.setModel(tableModel);

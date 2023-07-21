@@ -567,15 +567,22 @@ public class MainFrameProduct2 extends JFrame {
 		handcraftPannel1.setBounds(34, 24, 125, 125);
 		product_category_handcraft_panel.add(handcraftPannel1);
 		
-		product_handcraft_image1 = new JLabel("");
+		product_handcraft_image1 = new JLabel("1");
 		/******************* 상세페널로 이동 *******************/
 		product_handcraft_image1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				JOptionPane.showMessageDialog(null, "누름");
 				tabbedPane_2.setSelectedIndex(2);
-				
-			}
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(1);
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}//1
 		});
 		/********************************************************/
 		product_handcraft_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(1).jpg")));
@@ -1102,6 +1109,12 @@ public class MainFrameProduct2 extends JFrame {
 				
 			}
 		}*/
+	} // 생성자 끝
+	
+		public void showView(Product product) {
+			productNameTF.setText(product.getProduct_name());
+			productPriceTF.setText(String.valueOf(product.getProduct_price()));
+			productReadCountTF.setText(String.valueOf(product.getProduct_read_count()));
+		}//2
 		
-	}
 }

@@ -498,20 +498,40 @@ public class MainFrameProduct2 extends JFrame {
 		productMainPanel.add(productSearchButton);
 		
 		JLabel lblNewLabel_12 = new JLabel("수공예");
-		lblNewLabel_12.setBounds(56, 130, 57, 15);
+		lblNewLabel_12.setBounds(56, 144, 57, 15);
 		productMainPanel.add(lblNewLabel_12);
 		
 		JLabel lblNewLabel_13 = new JLabel("요리");
-		lblNewLabel_13.setBounds(244, 130, 57, 15);
+		lblNewLabel_13.setBounds(231, 144, 57, 15);
 		productMainPanel.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("미술");
 		lblNewLabel_14.setBounds(56, 290, 57, 15);
 		productMainPanel.add(lblNewLabel_14);
 		
-		JLabel lblNewLabel_27 = new JLabel("스포츠");
-		lblNewLabel_27.setBounds(244, 290, 57, 15);
+		JLabel lblNewLabel_27 = new JLabel("플라워");
+		lblNewLabel_27.setBounds(231, 290, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
+		
+		JLabel productMainHandCraftLabel = new JLabel("");
+		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_handcraft (1).png")));
+		productMainHandCraftLabel.setBounds(34, 41, 100, 92);
+		productMainPanel.add(productMainHandCraftLabel);
+		
+		JLabel productMainHandCraftLabel_1 = new JLabel("");
+		productMainHandCraftLabel_1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_cooking (1).png")));
+		productMainHandCraftLabel_1.setBounds(201, 41, 100, 92);
+		productMainPanel.add(productMainHandCraftLabel_1);
+		
+		JLabel productMainHandCraftLabel_2 = new JLabel("");
+		productMainHandCraftLabel_2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_drawing (1).png")));
+		productMainHandCraftLabel_2.setBounds(34, 189, 100, 92);
+		productMainPanel.add(productMainHandCraftLabel_2);
+		
+		JLabel productMainHandCraftLabel_3 = new JLabel("");
+		productMainHandCraftLabel_3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_flower-bouquet (1) (1).png")));
+		productMainHandCraftLabel_3.setBounds(201, 189, 100, 92);
+		productMainPanel.add(productMainHandCraftLabel_3);
 		
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
@@ -1047,22 +1067,4 @@ public class MainFrameProduct2 extends JFrame {
 		}*/
 		
 	}
-/*	public Product displayChage(int no){
-		if (no == 3) {
-			//디테일
-			
-			categoryPane.setSelectedIndex(1);
-			tabbedPane_2.setSelectedIndex(2);
-			
-			
-			
-			return p;
-		}
-		return null;
-	}
-	
-	public void setDetail(Product product) {
-		productNameTF.setText(product.getProduct_name());
-	}*/
-	
 }

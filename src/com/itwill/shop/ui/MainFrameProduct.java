@@ -520,6 +520,14 @@ public class MainFrameProduct extends JFrame {
 		productMainPanel.add(panel);
 		
 		JLabel productMainHandCraftLabel = new JLabel("");
+		productMainHandCraftLabel.addMouseListener(new MouseAdapter() {
+			/*************메인에서 카테고리화면 이동이 구현안됨**********/
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//categoryPane.setSelectedIndex(1);
+				//tabbedPane_2.setSelectedIndex(1);
+			}
+		});
 		panel.add(productMainHandCraftLabel);
 		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product/product_main_handcraft (1).png")));
 		

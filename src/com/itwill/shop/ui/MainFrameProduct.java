@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -95,8 +96,8 @@ public class MainFrameProduct extends JFrame {
 	private JLabel productMainHandCraftLabel;
 	private JPanel product_flower_panel;
 	private JPanel productDetailPanel;
+	private JTabbedPane productProductPane;
 	private JTabbedPane productCategoryPane;
-	private JTabbedPane productDetailPane;
 
 	/**
 	 * Launch the application.
@@ -471,12 +472,12 @@ public class MainFrameProduct extends JFrame {
 		tabbedPane.addTab("제품", null, productTabPannel, null);
 		productTabPannel.setLayout(null);
 		
-		productDetailPane = new JTabbedPane(JTabbedPane.TOP);
-		productDetailPane.setBounds(0, 0, 359, 423);
-		productTabPannel.add(productDetailPane);
+		productProductPane = new JTabbedPane(JTabbedPane.TOP);
+		productProductPane.setBounds(0, 0, 359, 423);
+		productTabPannel.add(productProductPane);
 		
 		productMainPanel = new JPanel();
-		productDetailPane.addTab("메인", null, productMainPanel, null);
+		productProductPane.addTab("메인", null, productMainPanel, null);
 		productMainPanel.setLayout(null);
 		
 		productSearchTF = new JTextField();
@@ -519,7 +520,8 @@ public class MainFrameProduct extends JFrame {
 		productMainHandCraftLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				changePanel(1);
+				
+				productProductPane.setSelectedIndex(0);
 				System.out.println("눌러짐");
 			}
 		});
@@ -543,7 +545,7 @@ public class MainFrameProduct extends JFrame {
 		productMainPanel.add(productMainFlowerLabel);
 		
 		productCategoryPanel = new JPanel();
-		productDetailPane.addTab("카테고리별", null, productCategoryPanel, null);
+		productProductPane.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
 		
 		productCategoryPane = new JTabbedPane(JTabbedPane.TOP);
@@ -701,7 +703,7 @@ public class MainFrameProduct extends JFrame {
 		productrr_drawing_panel.add(lblNewLabel_28_3_1_2);
 		
 		productDetailPanel = new JPanel();
-		productDetailPane.addTab("제품상세", null, productDetailPanel, null);
+		productProductPane.addTab("제품상세", null, productDetailPanel, null);
 		productDetailPanel.setLayout(null);
 		
 		productNameTF = new JTextField();
@@ -986,21 +988,10 @@ public class MainFrameProduct extends JFrame {
 			e1.printStackTrace();
 			}
 		}
-		
-		public void changePanel(int no) {
-			
-			if(no==1) {
-				productCategoryPane.setSelectedIndex(1);
-				
-			}else if(no==2) {
-				productDetailPane.setSelectedIndex(2);
-			}
-
-				
-			
+	
 		
 		
 	
 	}
 	
-}
+

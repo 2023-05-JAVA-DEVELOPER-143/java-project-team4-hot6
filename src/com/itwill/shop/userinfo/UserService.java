@@ -59,26 +59,28 @@ public class UserService {
 		return result;
 	}
 	
-	
-	
 	/*
 	 * 비회원 로그인하기
 	 */
 
-	public void noUserLogin(String name, String phoneNo) {
+	public int noUserLogin(String name, String phoneNo) {
 		/*
 		 * true: 1
 		 * false: 0
 		 */
 		
 		String pattern2="";
+		int result=0;
 		pattern2 = "^\\d{3}-\\d{3,4}-\\d{4}$";
+		
 		if(Pattern.matches(pattern2, phoneNo)) {
 		    System.out.println("로그인 성공 ");
+		    result=1;
 		} else {            
 		    System.out.println("올바른 휴대전화 형식이 아닙니다.");
+		   
 		}
-		
+		return result;
 	}
 		/*
 		 * 비회원 가입하기

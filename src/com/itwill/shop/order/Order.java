@@ -103,7 +103,7 @@ public class Order {
 	public String toString() {
 		return "Order [orderNo=" + orderNo + ", orderName=" + orderName + ", orderPhone=" + orderPhone + ", orderPrice="
 				+ orderPrice + ", orderDate=" + orderDate + ", userId=" + userId + ", orderItemList=" + orderItemList
-				+ "]";
+				+ "]\n";
 	}
 	
 	

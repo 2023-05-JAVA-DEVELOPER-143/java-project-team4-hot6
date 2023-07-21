@@ -513,25 +513,37 @@ public class MainFrameProduct2 extends JFrame {
 		lblNewLabel_27.setBounds(231, 290, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(23, 41, 111, 93);
+		productMainPanel.add(panel);
+		
 		JLabel productMainHandCraftLabel = new JLabel("");
+		panel.add(productMainHandCraftLabel);
 		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_handcraft (1).png")));
-		productMainHandCraftLabel.setBounds(34, 41, 100, 92);
-		productMainPanel.add(productMainHandCraftLabel);
 		
-		JLabel productMainHandCraftLabel_1 = new JLabel("");
-		productMainHandCraftLabel_1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_cooking (1).png")));
-		productMainHandCraftLabel_1.setBounds(201, 41, 100, 92);
-		productMainPanel.add(productMainHandCraftLabel_1);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(190, 41, 111, 93);
+		productMainPanel.add(panel_1);
 		
-		JLabel productMainHandCraftLabel_2 = new JLabel("");
-		productMainHandCraftLabel_2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_drawing (1).png")));
-		productMainHandCraftLabel_2.setBounds(34, 189, 100, 92);
-		productMainPanel.add(productMainHandCraftLabel_2);
+		JLabel productMainCookingLabel = new JLabel("");
+		panel_1.add(productMainCookingLabel);
+		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_cooking (1).png")));
 		
-		JLabel productMainHandCraftLabel_3 = new JLabel("");
-		productMainHandCraftLabel_3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_flower-bouquet (1) (1).png")));
-		productMainHandCraftLabel_3.setBounds(201, 189, 100, 92);
-		productMainPanel.add(productMainHandCraftLabel_3);
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(23, 187, 111, 93);
+		productMainPanel.add(panel_2);
+		
+		JLabel productMainDrawingLabel = new JLabel("");
+		panel_2.add(productMainDrawingLabel);
+		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_drawing (1).png")));
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(190, 189, 111, 93);
+		productMainPanel.add(panel_3);
+		
+		JLabel productMainFlowerLabel = new JLabel("");
+		panel_3.add(productMainFlowerLabel);
+		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_main_flower-bouquet (1) (1).png")));
 		
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);

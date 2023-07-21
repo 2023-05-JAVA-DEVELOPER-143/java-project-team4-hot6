@@ -254,69 +254,69 @@ public class MainFrameUser extends JFrame {
 		userSignUpPanel.setLayout(null);
 		
 		userSignUpIdTF = new JTextField();
-		userSignUpIdTF.setBounds(128, 40, 142, 21);
+		userSignUpIdTF.setBounds(128, 24, 142, 21);
 		userSignUpPanel.add(userSignUpIdTF);
 		userSignUpIdTF.setColumns(10);
 		
 		userSignupNameTF = new JTextField();
-		userSignupNameTF.setBounds(128, 131, 142, 21);
+		userSignupNameTF.setBounds(128, 149, 142, 21);
 		userSignUpPanel.add(userSignupNameTF);
 		userSignupNameTF.setColumns(10);
 		
 		userSignupEmailTF = new JTextField();
-		userSignupEmailTF.setBounds(128, 162, 142, 21);
+		userSignupEmailTF.setBounds(128, 180, 142, 21);
 		userSignUpPanel.add(userSignupEmailTF);
 		userSignupEmailTF.setColumns(10);
 		
 		userSignupBDTF = new JTextField();
-		userSignupBDTF.setBounds(128, 215, 142, 21);
+		userSignupBDTF.setBounds(128, 233, 142, 21);
 		userSignUpPanel.add(userSignupBDTF);
 		userSignupBDTF.setColumns(10);
 		
 		userSignupPhoneTF = new JTextField();
-		userSignupPhoneTF.setBounds(128, 246, 142, 21);
+		userSignupPhoneTF.setBounds(128, 264, 142, 21);
 		userSignUpPanel.add(userSignupPhoneTF);
 		userSignupPhoneTF.setColumns(10);
 		
 		JComboBox userSignupSexComboBox = new JComboBox();
 		userSignupSexComboBox.setModel(new DefaultComboBoxModel(new String[] {"여성", "남성"}));
-		userSignupSexComboBox.setBounds(128, 277, 142, 23);
+		userSignupSexComboBox.setBounds(128, 295, 142, 23);
 		userSignUpPanel.add(userSignupSexComboBox);
 		
 		JLabel lblNewLabel = new JLabel("아이디");
-		lblNewLabel.setBounds(58, 43, 57, 15);
+		lblNewLabel.setBounds(59, 27, 57, 15);
 		userSignUpPanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
-		lblNewLabel_1.setBounds(58, 72, 57, 15);
+		lblNewLabel_1.setBounds(58, 74, 57, 15);
 		userSignUpPanel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("비밀번호 확인");
-		lblNewLabel_1_1.setBounds(28, 103, 86, 15);
+		lblNewLabel_1_1.setBounds(28, 121, 86, 15);
 		userSignUpPanel.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("이름");
-		lblNewLabel_2.setBounds(66, 134, 57, 15);
+		lblNewLabel_2.setBounds(66, 152, 57, 15);
 		userSignUpPanel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("이메일");
-		lblNewLabel_3.setBounds(53, 168, 57, 15);
+		lblNewLabel_3.setBounds(53, 186, 57, 15);
 		userSignUpPanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("생년월일");
-		lblNewLabel_4.setBounds(53, 218, 57, 15);
+		lblNewLabel_4.setBounds(53, 236, 57, 15);
 		userSignUpPanel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("휴대전화");
-		lblNewLabel_5.setBounds(53, 249, 57, 15);
+		lblNewLabel_5.setBounds(53, 267, 57, 15);
 		userSignUpPanel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("성별");
-		lblNewLabel_6.setBounds(59, 281, 57, 15);
+		lblNewLabel_6.setBounds(59, 299, 57, 15);
 		userSignUpPanel.add(lblNewLabel_6);
 		
 		JCheckBox userSignUpEmailCheckBox = new JCheckBox("이메일 수신 동의");
-		userSignUpEmailCheckBox.setBounds(128, 186, 142, 23);
+		userSignUpEmailCheckBox.setBounds(128, 204, 142, 23);
 		userSignUpPanel.add(userSignUpEmailCheckBox);
 		
 		JButton userSignUpButton = new JButton("회원가입");
@@ -372,15 +372,16 @@ public class MainFrameUser extends JFrame {
 				//아이디 유효성 체크
 			}
 		});
+		
 		userSignUpButton.setBounds(109, 339, 97, 23);
 		userSignUpPanel.add(userSignUpButton);
 		
 		userSignUpPwTF = new JPasswordField();
-		userSignUpPwTF.setBounds(128, 69, 142, 21);
+		userSignUpPwTF.setBounds(128, 71, 142, 21);
 		userSignUpPanel.add(userSignUpPwTF);
 		
 		userSignUpPwCheckTF = new JPasswordField();
-		userSignUpPwCheckTF.setBounds(127, 100, 143, 21);
+		userSignUpPwCheckTF.setBounds(127, 118, 143, 21);
 		userSignUpPanel.add(userSignUpPwCheckTF);
 		
 		JButton btnNewButton_41 = new JButton("중복");
@@ -388,6 +389,12 @@ public class MainFrameUser extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				/***************/
 				boolean isUser = true;
+				try {
+					userService = new UserService();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				try {
 					isUser = userService.isDuplicatedId(userSignUpIdTF.getText());
 					if(isUser==true) {
@@ -405,12 +412,12 @@ public class MainFrameUser extends JFrame {
 		});
 		
 		
-		btnNewButton_41.setBounds(282, 39, 60, 23);
+		btnNewButton_41.setBounds(282, 23, 60, 23);
 		userSignUpPanel.add(btnNewButton_41);
 		
 		idCheckMsgLabel = new JLabel("");
 		idCheckMsgLabel.setForeground(new Color(255, 0, 0));
-		idCheckMsgLabel.setBounds(68, 60, 240, 15);
+		idCheckMsgLabel.setBounds(69, 52, 240, 15);
 		userSignUpPanel.add(idCheckMsgLabel);
 		
 		JPanel userEditPanel = new JPanel();

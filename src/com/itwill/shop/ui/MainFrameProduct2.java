@@ -572,7 +572,7 @@ public class MainFrameProduct2 extends JFrame {
 		product_handcraft_image1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "누름");
+				JOptionPane.showMessageDialog(null, "제품 상세페이지로 이동합니다");
 				tabbedPane_2.setSelectedIndex(2);
 				Product tempProduct;
 				try {
@@ -597,8 +597,17 @@ public class MainFrameProduct2 extends JFrame {
 		product_handcraft_image2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "누름");
-				tabbedPane_2.setSelectedIndex(2);
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(2);
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		/********************************************************/
@@ -618,14 +627,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_category_handcraft_panel.add(product_handcraft_pannel3_1);
 		
 		JLabel product_handcraft_image3 = new JLabel("");
-		
+		/******************* 상세페널로 이동 *******************/
 		product_handcraft_image3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				tabbedPane_2.setSelectedIndex(2);
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(3); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-			
 		});
+		/********************************************************/
 		product_handcraft_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(3).jpg")));
 		product_handcraft_pannel3_1.add(product_handcraft_image3);
 		
@@ -634,6 +653,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_category_handcraft_panel.add(product_handcraft_pannel4_1);
 		
 		JLabel product_handcraft_image4 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_handcraft_image4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(4); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_handcraft_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_handcraft(4).jpg")));
 		product_handcraft_pannel4_1.add(product_handcraft_image4);
 		
@@ -654,6 +691,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_category_cooking_panel.add(product_handcraft_pannel1_1_1);
 		
 		JLabel product_cooking_image1 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_cooking_image1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(9); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_cooking_image1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -667,6 +722,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_category_cooking_panel.add(product_handcraft_pannel2_1_1);
 		
 		JLabel product_cooking_image2 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_cooking_image2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(10); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_cooking_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_cooking(2).jpg")));
 		product_handcraft_pannel2_1_1.add(product_cooking_image2);
 		
@@ -683,6 +756,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_category_cooking_panel.add(product_handcraft_pannel3_1_1);
 		
 		JLabel product_cooking_image3 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_cooking_image3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(11); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_cooking_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_cooking(3).jpg")));
 		product_handcraft_pannel3_1_1.add(product_cooking_image3);
 		
@@ -691,6 +782,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_category_cooking_panel.add(product_handcraft_pannel4_1_1);
 		
 		JLabel product_cooking_image4 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_cooking_image4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(12); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_cooking_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_cooking(4).jpg")));
 		product_handcraft_pannel4_1_1.add(product_cooking_image4);
 		
@@ -711,6 +820,24 @@ public class MainFrameProduct2 extends JFrame {
 		productrr_category_drawing_panel.add(product_handcraft_pannel1_1_2);
 		
 		JLabel product_drawing_image1 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_drawing_image1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(13); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_drawing_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_drawing(1).jpg")));
 		product_handcraft_pannel1_1_2.add(product_drawing_image1);
 		
@@ -719,6 +846,24 @@ public class MainFrameProduct2 extends JFrame {
 		productrr_category_drawing_panel.add(product_handcraft_pannel2_1_2);
 		
 		JLabel product_drawing_image2 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_drawing_image2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(14); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_drawing_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_drawing(2).jpg")));
 		product_handcraft_pannel2_1_2.add(product_drawing_image2);
 		
@@ -735,6 +880,24 @@ public class MainFrameProduct2 extends JFrame {
 		productrr_category_drawing_panel.add(product_handcraft_pannel3_1_2);
 		
 		JLabel product_drawing_image3 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_drawing_image3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(15); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_drawing_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_drawing(3).jpg")));
 		product_handcraft_pannel3_1_2.add(product_drawing_image3);
 		
@@ -743,6 +906,24 @@ public class MainFrameProduct2 extends JFrame {
 		productrr_category_drawing_panel.add(product_handcraft_pannel4_1_2);
 		
 		JLabel product_drawing_image4 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_drawing_image4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(16); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_drawing_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_drawing(4).jpg")));
 		product_handcraft_pannel4_1_2.add(product_drawing_image4);
 		
@@ -763,15 +944,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_flower_panel.add(product_handcraft_pannel1);
 		
 		JLabel product_flower_image1 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
 		product_flower_image1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				/***** 사진 클릭시 제품 상세페이지 보여주기 *******/
-				//productDetailPanel.setvisible(true);
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(1); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-		
 		});
+		/********************************************************/
 		product_flower_image1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_flower(1).jpg")));
 		product_handcraft_pannel1.add(product_flower_image1);
 		
@@ -780,6 +970,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_flower_panel.add(product_handcraft_pannel2);
 		
 		JLabel product_flower_image2 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_flower_image2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(2); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_flower_image2.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_flower(2).jpg")));
 		product_handcraft_pannel2.add(product_flower_image2);
 		
@@ -788,6 +996,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_flower_panel.add(product_handcraft_pannel3);
 		
 		JLabel product_flower_image3 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_flower_image3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(3); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_flower_image3.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_flower(3).jpg")));
 		product_handcraft_pannel3.add(product_flower_image3);
 		
@@ -796,6 +1022,24 @@ public class MainFrameProduct2 extends JFrame {
 		product_flower_panel.add(product_handcraft_pannel4);
 		
 		JLabel product_flower_image4 = new JLabel("");
+		/******************* 상세페널로 이동 *******************/
+		product_flower_image4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane_2.setSelectedIndex(2); // 이동
+		/********************************************************/
+		/******************* 상데데이터 출력 *******************/
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(4); //인자:제품번호
+					showView(tempProduct);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		product_flower_image4.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product/product_flower(4).jpg")));
 		product_handcraft_pannel4.add(product_flower_image4);
 		
@@ -1112,9 +1356,13 @@ public class MainFrameProduct2 extends JFrame {
 	} // 생성자 끝
 	
 		public void showView(Product product) {
+			productCategoryTF.setText(product.getProduct_category());
 			productNameTF.setText(product.getProduct_name());
 			productPriceTF.setText(String.valueOf(product.getProduct_price()));
 			productReadCountTF.setText(String.valueOf(product.getProduct_read_count()));
+			productDateTF.setText(String.valueOf(product.getProduct_start_date()));
+			productDetailTF.setText(product.getProduct_detail());
+			
 		}//2
 		
 }

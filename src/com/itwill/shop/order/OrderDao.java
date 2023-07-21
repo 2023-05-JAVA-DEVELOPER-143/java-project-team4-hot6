@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.shop.common.DataSource;
 import com.itwill.shop.product.Product;
+import com.itwill.shop.product.ProductDao;
 
 public class OrderDao {
 	private DataSource dataSource;
@@ -69,20 +71,29 @@ public class OrderDao {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+		ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(OrderSQL.ORDER_SELECT_BY_USERID);
 			pstmt.setString(1,selectUserId);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
+				orderItemList.add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"),
+						new Product(rs.getInt("product_no"),
+								rs.getDate("product_start_date"),
+								rs.getString("product_category"),
+								rs.getString("product_name"),
+								rs.getInt("product_price"),
+								rs.getString("product_detail"),
+								rs.getString("product_image"),
+								rs.getInt("product_read_count")), rs.getInt("order_no")));
 				orderList.add(new Order(rs.getInt("order_no"),
-										rs.getString("order_name"),
-								       rs.getString("order_phone"),
-								       rs.getInt("order_price"),
-								       rs.getDate("order_date"),
-								       rs.getString("user_id"),
-								       null));
+						rs.getString("order_name"),
+				       rs.getString("order_phone"),
+				       rs.getInt("order_price"),
+				       rs.getDate("order_date"),
+				       rs.getString("user_id"),
+				       orderItemList));
 			}
 		}finally {
 			if(con != null) {
@@ -92,15 +103,14 @@ public class OrderDao {
 		return orderList;
 	}
 	
-		public Order findByOrderNo(String sUserId,int o_no)throws Exception{
+		public Order findOrderProduct(String sUserId)throws Exception{
 		Order order=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		con=dataSource.getConnection();
-		pstmt=con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_PRODUCT_BY_USERID);
+		pstmt=con.prepareStatement("select * from orders o join order_item oi on o.order_no=oi.order_no join product p on oi.product_no=p.product_no where o.user_id=?");
 		pstmt.setString(1,sUserId);
-		pstmt.setInt(2,o_no);
 		rs=pstmt.executeQuery();
 		if(rs.next()) {
 			order=new Order(rs.getInt("order_no"), 
@@ -130,5 +140,7 @@ public class OrderDao {
 		
 		return order;
 	}
+		
+		
 	
 }

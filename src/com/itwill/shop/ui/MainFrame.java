@@ -25,6 +25,10 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.shop.cart.CartService;
+import com.itwill.shop.order.Order;
+import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
 
@@ -34,9 +38,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import java.awt.Dimension;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class MainFrame extends JFrame {
 	private UserService userService;
+	private ProductService productService;
+	private OrderService orderService;
+	private CartService cartService;
+	
+	private User loginUser = null;
 
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
@@ -113,6 +131,11 @@ public class MainFrame extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("종료");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -586,6 +609,14 @@ public class MainFrame extends JFrame {
 		orderTabPannel.setLayout(null);
 		
 		JTabbedPane tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane_3.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				int selectedIndex = tabbedPane.getSelectedIndex();
+                if (selectedIndex == 2) {
+                    // 원하는 동작을 수행합니다.
+                }
+			}
+		});
 		tabbedPane_3.setBounds(0, 0, 359, 423);
 		orderTabPannel.add(tabbedPane_3);
 		
@@ -760,6 +791,7 @@ public class MainFrame extends JFrame {
 		orderPayPanel.add(lblNewLabel_24);
 		
 		JPanel orderListPanel = new JPanel();
+		
 		tabbedPane_3.addTab("주문내역", null, orderListPanel, null);
 		orderListPanel.setLayout(null);
 		
@@ -794,11 +826,84 @@ public class MainFrame extends JFrame {
 		
 		try {
 			userService = new UserService();
+			productService = new ProductService();
+			orderService = new OrderService();
+			cartService = new CartService();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		//생성자
+		
+		//임시 테스트용
+		try {
+			loginUser = userService.findUser("user10");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		displayOrderList(loginUser);
+		
+	}//생성자
+		
+	
+	private void displayOrderList(User loginUser) {
+		try {
+			/***************회원리스트보기[JTable]************/
+			List<Order> orderList = orderService.list(loginUser.getUserId());
+			
+			System.out.println(loginUser);
+			System.out.println(orderList.get(0).getOrderDate());
+			
+			Vector columVector = new Vector();
+			columVector.add("주문일자");
+			columVector.add("강의명");
+			columVector.add("수량");
+			columVector.add("금액");
+			Vector tableVector = new Vector();
+			
+			for (Order order : orderList) {
+				Vector rowVector = new Vector();
+				rowVector.add(order.getOrderDate());
+				rowVector.add(order.getOrderItemList().get(0).getProduct().getProduct_name());
+				rowVector.add(order.getOrderItemList().get(0).getOiQty());
+				rowVector.add(order.getOrderItemList().get(0).getOiQty() * order.getOrderItemList().get(0).getProduct().getProduct_price());
+				tableVector.add(rowVector);
+			}
+			
+//			for (int i = 0; i < orderList.size(); i++) {
+//			Vector rowVector = new Vector();
+//			rowVector.add(orderList.get(i).getOrderDate());
+//			rowVector.add(orderList.get(i).getOrderItemList().get(i).getProduct().getProduct_name());
+//			rowVector.add(orderList.get(i).getOrderItemList().get(i).getOiQty());
+//			rowVector.add(orderList.get(i).getOrderItemList().get(i).getOiQty() * orderList.get(i).getOrderItemList().get(0).getProduct().getProduct_price());
+//			tableVector.add(rowVector);
+//			}
+			
+			DefaultTableModel tableModel = new DefaultTableModel(tableVector, columVector);
+			orderListTable.setModel(tableModel);
+			
+		}catch(Exception e1) {
+			System.out.println("회원리스트보기에러-->"+e1.getMessage());
+			
+		}
+	}
+	
+	private void cartToOrder() {
+		List<String> name = new ArrayList<String>();
+		List<Integer> qty = new ArrayList<Integer>();
+		List<Integer> price = new ArrayList<Integer>();
+		
+		for (int i = 0; i < orderCartTable.getRowCount(); i++) {
+
+			
+			
+			
+		}
+		orderCartTable.getValueAt(ERROR, ABORT);
+		
 		
 	}
+		
+	
 }

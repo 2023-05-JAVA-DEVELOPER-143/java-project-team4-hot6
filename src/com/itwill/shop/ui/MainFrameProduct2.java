@@ -28,13 +28,19 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
+import com.itwill.shop.userinfo.UserService;
 
 public class MainFrameProduct2 extends JFrame {
 	
 	//서비스 객체 멤버변수 선언
 	private ProductService productService;
+	private UserService userService;
+	private OrderService orderService;
+	
+	private User loginUser=null;
 	
 	
 	private JPanel contentPane;
@@ -512,9 +518,9 @@ public class MainFrameProduct2 extends JFrame {
 		product_handcraft_pannel1.setBounds(35, 24, 125, 125);
 		product_flower_panel.add(product_handcraft_pannel1);
 		
-		JLabel lblNewLabel_29 = new JLabel("New label");
-		lblNewLabel_29.setIcon(null);
-		product_handcraft_pannel1.add(lblNewLabel_29);
+		JLabel lblNewLabel1 = new JLabel("New label");
+		lblNewLabel1.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_cooking(1).jpg")));
+		product_handcraft_pannel1.add(lblNewLabel1);
 		
 		JPanel product_handcraft_pannel2 = new JPanel();
 		product_handcraft_pannel2.setBounds(190, 24, 125, 125);
@@ -927,5 +933,17 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		));
 		orderListScrollPane.setViewportView(orderListTable);
+		
+		try {
+			orderService = new OrderService();
+			productService = new ProductService();
+			userService = new UserService();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		
 	}
 }

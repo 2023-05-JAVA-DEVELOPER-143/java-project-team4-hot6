@@ -25,6 +25,9 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.member.Member;
+import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
 
@@ -34,9 +37,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+import java.util.Vector;
 
 public class MainFrame extends JFrame {
 	private UserService userService;
+	private ProductService productService;
+	private OrderService orderService;
+	
+	private User loginUser = null;
 
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
@@ -113,6 +124,11 @@ public class MainFrame extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("종료");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -794,11 +810,50 @@ public class MainFrame extends JFrame {
 		
 		try {
 			userService = new UserService();
+			productService = new ProductService();
+			orderService = new OrderService();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		//생성자
+		
+		private void displayOrderList() {
+			try {
+				/***************회원리스트보기[JTable]************/
+				List<Order> orderList = orderService.list(getName());
+				
+				Vector columVector = new Vector();
+				columVector.add("아이디");
+				columVector.add("패스워드");
+				columVector.add("이름");
+				columVector.add("주소");
+				columVector.add("나이");
+				columVector.add("결혼");
+				columVector.add("가입일");
+				Vector tableVector = new Vector();
+				
+				for(Member member:memberList) {
+				Vector rowVector = new Vector();
+				rowVector.add(member.getMemberId());
+				rowVector.add(member.getMemberPassword());
+				rowVector.add(member.getMemberName());
+				rowVector.add(member.getMemberAddress());
+				rowVector.add(member.getMemberAge());
+				rowVector.add(member.getMemberMarried());
+				rowVector.add(member.getMemberRegdate());
+				tableVector.add(rowVector);
+				}
+				
+				DefaultTableModel tableModel = new DefaultTableModel(tableVector, columVector);
+				adminMemberListTable.setModel(tableModel);
+				memberDeleteBtn.setEnabled(false);
+				
+			}catch(Exception e1) {
+				System.out.println("회원리스트보기에러-->"+e1.getMessage());
+				
+			}
+		}
 		
 	}
 }

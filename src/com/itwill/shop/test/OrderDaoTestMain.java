@@ -25,14 +25,12 @@ public class OrderDaoTestMain {
 		
 //		orderDao.deleteByUserId("user10");
 		
-		newOrder = orderDao.findByOrderNo("user10", 6);
-		System.out.println(newOrder);
 		
-//		ArrayList<Order> orderList = new ArrayList<Order>();
-//		orderList = orderDao.findByUserId("user10");
-//		for (Order order : orderList) {
-//			System.out.println(order.getOrderItemList());
-//		}
+		ArrayList<Order> orderList = new ArrayList<Order>();
+		orderList = orderDao.findByUserId("user10");
+		for (Order order : orderList) {
+			System.out.println(order.getOrderItemList());
+		}
 		
 		
 		

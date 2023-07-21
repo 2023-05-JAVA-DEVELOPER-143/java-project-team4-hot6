@@ -18,6 +18,7 @@ import javax.swing.JSeparator;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -39,6 +40,8 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -96,7 +99,6 @@ public class MainFrameOrder extends JFrame {
 	private JTextField cartByProductQtyTF;
 	
 
-	
 	
 	/**
 	 * Launch the application.
@@ -614,14 +616,38 @@ public class MainFrameOrder extends JFrame {
 		orderCartTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			
-				int selectedRow=orderCartTable.getSelectedRow();
-				String selectedId=(String)orderCartTable.getValueAt(selectedRow, 0);
-				System.out.println(selectedRow);
-				System.out.println(selectedId);
-				
+				int selectedRow = orderCartTable.getSelectedRow();
+				Integer selectedNo = (Integer)orderCartTable.getValueAt(selectedRow,0);
+				String selectedName = (String)orderCartTable.getValueAt(selectedRow, 1);
+				orderCartNameTF.setText(selectedName);
+				try {
+					orderCartDetailTF.setText(cartService.getCartItemByCartNo(selectedNo).getProduct().getProduct_detail());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				Date findDate;
+				try {
+					findDate = cartService.getCartItemByCartNo(selectedNo).getProduct().getProduct_start_date();
+					String d =new SimpleDateFormat("yyyy/MM/dd").format(findDate);
+					orderCartDateTF.setText(d);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
+//		orderCartTable.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//			
+//				int selectedRow=orderCartTable.getSelectedRow();
+//				String selectedId=(String)orderCartTable.getValueAt(selectedRow, 0);
+//				System.out.println(selectedRow);
+//				System.out.println(selectedId);
+//				
+//			}
+//		});
 		orderCartTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		orderCartTable.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -638,13 +664,15 @@ public class MainFrameOrder extends JFrame {
 		orderCartScrollPane.setViewportView(orderCartTable);
 		
 		orderCartPriceTF = new JTextField();
+		orderCartPriceTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		orderCartPriceTF.setEditable(false);
-		orderCartPriceTF.setBounds(201, 177, 116, 21);
+		orderCartPriceTF.setBounds(255, 177, 62, 21);
 		orderCartPanel.add(orderCartPriceTF);
 		orderCartPriceTF.setColumns(10);
 		
-		JLabel lblNewLabel_16 = new JLabel("총 결제금액 :");
-		lblNewLabel_16.setBounds(122, 180, 90, 15);
+		
+		JLabel lblNewLabel_16 = new JLabel("총 결제금액:");
+		lblNewLabel_16.setBounds(178, 180, 75, 15);
 		orderCartPanel.add(lblNewLabel_16);
 		
 		JLabel lblNewLabel_17 = new JLabel("원");
@@ -653,40 +681,41 @@ public class MainFrameOrder extends JFrame {
 		
 		orderCartNameTF = new JTextField();
 		orderCartNameTF.setEditable(false);
-		orderCartNameTF.setBounds(102, 208, 215, 21);
+		orderCartNameTF.setBounds(81, 208, 236, 21);
 		orderCartPanel.add(orderCartNameTF);
 		orderCartNameTF.setColumns(10);
 		
+		
 		orderCartDetailTF = new JTextField();
 		orderCartDetailTF.setEditable(false);
-		orderCartDetailTF.setBounds(102, 239, 215, 21);
+		orderCartDetailTF.setBounds(81, 239, 236, 21);
 		orderCartPanel.add(orderCartDetailTF);
 		orderCartDetailTF.setColumns(10);
 		
 		orderCartDateTF = new JTextField();
 		orderCartDateTF.setEditable(false);
-		orderCartDateTF.setBounds(102, 270, 215, 21);
+		orderCartDateTF.setBounds(81, 270, 236, 21);
 		orderCartPanel.add(orderCartDateTF);
 		orderCartDateTF.setColumns(10);
 		
 		JLabel lblNewLabel_18 = new JLabel("강의명 :");
-		lblNewLabel_18.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_18.setBounds(33, 211, 57, 15);
+		lblNewLabel_18.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_18.setBounds(12, 211, 57, 15);
 		orderCartPanel.add(lblNewLabel_18);
 		
 		JLabel lblNewLabel_19 = new JLabel("강의상세 :");
-		lblNewLabel_19.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_19.setBounds(33, 242, 57, 15);
+		lblNewLabel_19.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_19.setBounds(12, 242, 62, 15);
 		orderCartPanel.add(lblNewLabel_19);
 		
 		JLabel lblNewLabel_20 = new JLabel("강의일자 :");
-		lblNewLabel_20.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_20.setBounds(33, 273, 57, 15);
+		lblNewLabel_20.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_20.setBounds(12, 273, 68, 15);
 		orderCartPanel.add(lblNewLabel_20);
 		
 		JLabel lblNewLabel_21 = new JLabel("수강인원 :");
-		lblNewLabel_21.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_21.setBounds(20, 305, 70, 15);
+		lblNewLabel_21.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_21.setBounds(12, 305, 62, 15);
 		orderCartPanel.add(lblNewLabel_21);
 		
 		JButton orderCartQtyMinusButton = new JButton("-");
@@ -694,13 +723,17 @@ public class MainFrameOrder extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int qtyMinus=Integer.parseInt(cartByProductQtyTF.getText());
+					if(qtyMinus>1) {
 					cartByProductQtyTF.setText(String.valueOf(--qtyMinus));
+					} else {
+						JOptionPane.showMessageDialog(null, "1명 이상 선택해야합니다.");
+					}
 				} catch(NumberFormatException ex) {
 					cartByProductQtyTF.setText("1");
 					}
 				}
 			});
-		orderCartQtyMinusButton.setBounds(112, 301, 57, 23);
+		orderCartQtyMinusButton.setBounds(91, 301, 57, 23);
 		orderCartPanel.add(orderCartQtyMinusButton);
 		
 		JButton orderCartQtyPlusButton = new JButton("+");
@@ -708,21 +741,26 @@ public class MainFrameOrder extends JFrame {
 			public void actionPerformed(ActionEvent e) { 
 				try {
 					int qtyPlus=Integer.parseInt(cartByProductQtyTF.getText());
-					cartByProductQtyTF.setText(String.valueOf(++qtyPlus));
+					if(qtyPlus<8) {
+						cartByProductQtyTF.setText(String.valueOf(++qtyPlus));
+					} else {
+						JOptionPane.showMessageDialog(null, "최대 인원수 8명입니다.");
+					}
 				} catch(NumberFormatException ex) {
 					cartByProductQtyTF.setText("1");
 					}
 				}
 			});
-		orderCartQtyPlusButton.setBounds(237, 301, 57, 23);
+		orderCartQtyPlusButton.setBounds(260, 301, 57, 23);
 		orderCartPanel.add(orderCartQtyPlusButton);
 		
 		JButton orderCartEditButton = new JButton("주문 수정");
 		orderCartEditButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
-		orderCartEditButton.setBounds(30, 330, 97, 23);
+		orderCartEditButton.setBounds(33, 348, 97, 23);
 		orderCartPanel.add(orderCartEditButton);
 		
 		JButton orderCartDeleteButton = new JButton("주문 삭제");
@@ -732,18 +770,19 @@ public class MainFrameOrder extends JFrame {
 					int selectedRow=orderCartTable.getSelectedRow();
 					int selectedNo=(Integer)orderCartTable.getValueAt(selectedRow, 0);
 					cartService.deleteCartItemByCartNo(selectedNo);
+					displayCartList(loginUser);
 				}catch(Exception e1) {
-					System.out.println("주문삭제에러-->"+e1.getMessage());
+					e1.printStackTrace();
 				}
 				
 				
 			}
 		});
-		orderCartDeleteButton.setBounds(136, 330, 97, 23);
+		orderCartDeleteButton.setBounds(138, 348, 97, 23);
 		orderCartPanel.add(orderCartDeleteButton);
 		
 		JButton orderCartPayButton = new JButton("결제하기");
-		orderCartPayButton.setBounds(245, 330, 97, 23);
+		orderCartPayButton.setBounds(245, 348, 97, 23);
 		orderCartPanel.add(orderCartPayButton);
 		
 		cartByProductQtyTF = new JTextField();
@@ -754,7 +793,7 @@ public class MainFrameOrder extends JFrame {
 				productQtyComboBox.getSelectedIndex();
 			}
 		});
-		cartByProductQtyTF.setBounds(177, 302, 48, 21);
+		cartByProductQtyTF.setBounds(160, 302, 75, 21);
 		orderCartPanel.add(cartByProductQtyTF);
 		cartByProductQtyTF.setColumns(10);
 		
@@ -873,12 +912,13 @@ public class MainFrameOrder extends JFrame {
 		
 		//테스트
 		loginUser = userService.findUser("user10");
-		displayCartList(loginUser);
 		
+		displayCartList(loginUser);
 	}
 	private void displayCartList(User loginUser) {
 		try {
 			List<Cart> cartList=cartService.getCartItemByUserId(loginUser.getUserId());
+			int price = 0;
 			
 			Vector columVector=new Vector();
 			columVector.add("번호");
@@ -890,26 +930,29 @@ public class MainFrameOrder extends JFrame {
 			Vector tableVector=new Vector();
 			for (Cart cart : cartList) {
 				Vector rowVector=new Vector();
-				rowVector.add(1);
-				rowVector.add(1);
-				rowVector.add(1);
-				rowVector.add(1);
-				rowVector.add(1);
+				rowVector.add(cart.getCart_no());
+				rowVector.add(cart.getProduct().getProduct_name());
+				rowVector.add(cart.getCart_qty());
+				rowVector.add(cart.getProduct().getProduct_price());
+				rowVector.add(cart.getCart_qty()*cart.getProduct().getProduct_price());
 				tableVector.add(rowVector);
-//				rowVector.add(cart.getCart_no());
-//				rowVector.add(cart.getProduct().getProduct_name());
-//				rowVector.add(cart.getCart_qty());
-//				rowVector.add(cart.getProduct().getProduct_price());
-//				rowVector.add(cart.getCart_qty()*cart.getProduct().getProduct_price());
-//				tableVector.add(rowVector);
-				DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
-				orderCartTable.setModel(tableModel);
+
+				price = price + cart.getCart_qty()*cart.getProduct().getProduct_price();
+				
 				
 			}
+			System.out.println(price);
+			
+			orderCartPriceTF.setText(String.valueOf(price));
+			
+			
+			DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
+			orderCartTable.setModel(tableModel);
 		}catch (Exception e1) {
 			System.out.println("카트리스트보기에러-->"+e1.getMessage());
 		}
 		
 	}
+	
 	
 }

@@ -35,6 +35,7 @@ import javax.swing.table.DefaultTableModel;
 import com.itwill.shop.cart.CartService;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.Product;
+import com.itwill.shop.product.ProductDao;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
@@ -510,11 +511,11 @@ public class MainFrameProduct2 extends JFrame {
 		productMainPanel.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("미술");
-		lblNewLabel_14.setBounds(56, 290, 57, 15);
+		lblNewLabel_14.setBounds(56, 270, 57, 15);
 		productMainPanel.add(lblNewLabel_14);
 		
 		JLabel lblNewLabel_27 = new JLabel("플라워");
-		lblNewLabel_27.setBounds(231, 290, 57, 15);
+		lblNewLabel_27.setBounds(231, 270, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
 		
 		JPanel panel = new JPanel();
@@ -535,7 +536,7 @@ public class MainFrameProduct2 extends JFrame {
 		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_main_cooking (1).png")));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(23, 187, 111, 93);
+		panel_2.setBounds(23, 168, 111, 93);
 		productMainPanel.add(panel_2);
 		
 		JLabel productMainDrawingLabel = new JLabel("");
@@ -543,7 +544,7 @@ public class MainFrameProduct2 extends JFrame {
 		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_main_drawing (1).png")));
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(190, 189, 111, 93);
+		panel_3.setBounds(190, 168, 111, 93);
 		productMainPanel.add(panel_3);
 		
 		JLabel productMainFlowerLabel = new JLabel("");
@@ -553,6 +554,11 @@ public class MainFrameProduct2 extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(23, 309, 319, 63);
 		productMainPanel.add(panel_4);
+		panel_4.setLayout(null);
+		
+		JLabel lblNewLabel_28 = new JLabel("New label");
+		lblNewLabel_28.setBounds(0, 0, 136, 63);
+		panel_4.add(lblNewLabel_28);
 
 		
 		JPanel productCategoryPanel = new JPanel();
@@ -582,6 +588,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(1);
 					showView(tempProduct);
+					productReadCount(productReadCount(1));
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -1358,6 +1365,7 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		}*/
 	} // 생성자 끝
+	/****************** 상세페이지에 제품정보 표시 ******************/
 		public void showView(Product product) {
 			productCategoryTF.setText(product.getProduct_category());
 			productNameTF.setText(product.getProduct_name());
@@ -1367,5 +1375,10 @@ public class MainFrameProduct2 extends JFrame {
 			productDetailTF.setText(product.getProduct_detail());
 			
 		}//2
-		
+	/*****************************************************************/
+	/****************** 제품 조회수 증가 ******************/
+		 public int productReadCount(int product_no) throws Exception{
+			 return productService.productReadCount(product_no);
+		 }
+	/******************************************************/
 }

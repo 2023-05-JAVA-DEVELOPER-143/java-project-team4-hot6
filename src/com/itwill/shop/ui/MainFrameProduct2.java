@@ -615,6 +615,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(2);
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -649,6 +650,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(3); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -675,6 +677,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(4); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -713,6 +716,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(9); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -744,6 +748,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(10); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -778,6 +783,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(11); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -804,6 +810,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(12); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -842,6 +849,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(13); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -868,6 +876,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(14); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -902,6 +911,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(15); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -928,6 +938,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(16); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -966,6 +977,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(1); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -992,6 +1004,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(2); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -1018,6 +1031,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(3); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -1044,6 +1058,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(4); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

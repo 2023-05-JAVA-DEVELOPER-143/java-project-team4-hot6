@@ -98,6 +98,7 @@ public class MainFrameProduct extends JFrame {
 	private JTabbedPane categoryPane;
 	private JTabbedPane tabbedPane_2;
 	private JLabel productImageLabel;
+	private JPanel productCategoryPanel;
 
 	/**
 	 * Launch the application.
@@ -527,11 +528,11 @@ public class MainFrameProduct extends JFrame {
 		
 		JLabel productMainHandCraftLabel = new JLabel("");
 		productMainHandCraftLabel.addMouseListener(new MouseAdapter() {
-			/*************메인에서 카테고리화면 이동이 구현안됨**********/
+			/*************메인에서 categorypane 이동이 구현안됨 Design 수정 필요**********/
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//categoryPane.setSelectedIndex(1);
-				//tabbedPane_2.setSelectedIndex(1);
+				categoryPane.setSelectedIndex(1);
+				
 			}
 		});
 		productMainHandCraftPanel.add(productMainHandCraftLabel);
@@ -562,7 +563,7 @@ public class MainFrameProduct extends JFrame {
 		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_flower-bouquet (1) (1).png")));
 
 		
-		JPanel productCategoryPanel = new JPanel();
+		productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
 		

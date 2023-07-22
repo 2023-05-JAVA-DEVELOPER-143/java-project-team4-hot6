@@ -56,7 +56,7 @@ public class MainFrameProduct2 extends JFrame {
 	private JTextField userSignupEmailTF;
 	private JTextField userSignupBDTF;
 	private JTextField userSignupPhoneTF;
-	private JTextField textField;
+
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JPasswordField passwordField;

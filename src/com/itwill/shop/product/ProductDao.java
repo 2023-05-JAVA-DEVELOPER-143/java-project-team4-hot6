@@ -10,7 +10,7 @@ import com.itwill.shop.common.DataSource;
 
 
 public class ProductDao {
-//핫식스가즈아
+
 	private DataSource dataSource;
 	public ProductDao() throws Exception {
 		dataSource = new DataSource();

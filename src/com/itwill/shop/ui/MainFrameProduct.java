@@ -7,9 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -40,8 +38,6 @@ import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 public class MainFrameProduct extends JFrame {
 	
@@ -492,6 +488,7 @@ public class MainFrameProduct extends JFrame {
 			}
 			
 		});
+		
 		productSearchTF.setBounds(38, 11, 169, 21);
 		productMainPanel.add(productSearchTF);
 		productSearchTF.setColumns(10);
@@ -610,7 +607,7 @@ public class MainFrameProduct extends JFrame {
 		productCategoryPanel.setLayout(null);
 		
 		categoryPane = new JTabbedPane(JTabbedPane.TOP);
-		categoryPane.setBounds(-1, 1, 354, 391);
+		categoryPane.setBounds(-1, 0, 354, 392);
 		productCategoryPanel.add(categoryPane);
 		
 		product_category_handcraft_panel = new JPanel();
@@ -652,11 +649,13 @@ public class MainFrameProduct extends JFrame {
 		product_handcraft_image2.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_handcraft(2).jpg")));
 		product_handcraft_pannel2_1.add(product_handcraft_image2);
 		
-		JLabel product_handcraft_info1 = new JLabel("New label");
+		JLabel product_handcraft_info1 = new JLabel("[성수] 물레 도자기 만들기");
+		product_handcraft_info1.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_handcraft_info1.setBounds(34, 149, 128, 25);
 		product_category_handcraft_panel.add(product_handcraft_info1);
 		
-		JLabel product_handcraft_info2 = new JLabel("New label");
+		JLabel product_handcraft_info2 = new JLabel("[연남] 시그니처 향수제작");
+		product_handcraft_info2.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_handcraft_info2.setBounds(189, 149, 128, 25);
 		product_category_handcraft_panel.add(product_handcraft_info2);
 		
@@ -684,11 +683,13 @@ public class MainFrameProduct extends JFrame {
 		product_handcraft_image4.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_handcraft(4).jpg")));
 		product_handcraft_pannel4_1.add(product_handcraft_image4);
 		
-		JLabel product_handcraft_info3 = new JLabel("New label");
+		JLabel product_handcraft_info3 = new JLabel("[연남] 가죽공예 카드지갑");
+		product_handcraft_info3.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_handcraft_info3.setBounds(34, 308, 128, 25);
 		product_category_handcraft_panel.add(product_handcraft_info3);
 		
-		JLabel product_handcraft_info4 = new JLabel("New label");
+		JLabel product_handcraft_info4 = new JLabel("[부산] 미니어처 소파제작");
+		product_handcraft_info4.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_handcraft_info4.setBounds(189, 308, 128, 25);
 		product_category_handcraft_panel.add(product_handcraft_info4);
 		
@@ -720,11 +721,13 @@ public class MainFrameProduct extends JFrame {
 		product_cooking_image2.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_cooking(2).jpg")));
 		product_handcraft_pannel2_1_1.add(product_cooking_image2);
 		
-		JLabel product_cooking_info1 = new JLabel("New label");
+		JLabel product_cooking_info1 = new JLabel("[서촌] 피낭시에 만들기");
+		product_cooking_info1.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_cooking_info1.setBounds(37, 147, 128, 25);
 		product_category_cooking_panel.add(product_cooking_info1);
 		
-		JLabel product_cooking_info2 = new JLabel("New label");
+		JLabel product_cooking_info2 = new JLabel("[망원] 레몬케이크 만들기");
+		product_cooking_info2.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_cooking_info2.setBounds(192, 147, 128, 25);
 		product_category_cooking_panel.add(product_cooking_info2);
 		
@@ -744,11 +747,13 @@ public class MainFrameProduct extends JFrame {
 		product_cooking_image4.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_cooking(4).jpg")));
 		product_handcraft_pannel4_1_1.add(product_cooking_image4);
 		
-		JLabel product_cooking_info3 = new JLabel("New label");
+		JLabel product_cooking_info3 = new JLabel("[마포] 크림마들렌 만들기");
+		product_cooking_info3.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_cooking_info3.setBounds(37, 306, 128, 25);
 		product_category_cooking_panel.add(product_cooking_info3);
 		
-		JLabel product_cooking_info4 = new JLabel("New label");
+		JLabel product_cooking_info4 = new JLabel("[하남] 말랑쿠키 만들기");
+		product_cooking_info4.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_cooking_info4.setBounds(192, 306, 128, 25);
 		product_category_cooking_panel.add(product_cooking_info4);
 		
@@ -772,11 +777,13 @@ public class MainFrameProduct extends JFrame {
 		product_drawing_image2.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_drawing(2).jpg")));
 		product_handcraft_pannel2_1_2.add(product_drawing_image2);
 		
-		JLabel product_drawing_info1 = new JLabel("New label");
+		JLabel product_drawing_info1 = new JLabel("[마포] 브릭베어 아크릴화");
+		product_drawing_info1.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_drawing_info1.setBounds(34, 148, 128, 25);
 		productrr_category_drawing_panel.add(product_drawing_info1);
 		
-		JLabel product_drawing_info2 = new JLabel("New label");
+		JLabel product_drawing_info2 = new JLabel("[중구] 이모티콘 제작판매");
+		product_drawing_info2.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_drawing_info2.setBounds(189, 148, 128, 25);
 		productrr_category_drawing_panel.add(product_drawing_info2);
 		
@@ -796,11 +803,13 @@ public class MainFrameProduct extends JFrame {
 		product_drawing_image4.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_drawing(4).jpg")));
 		product_handcraft_pannel4_1_2.add(product_drawing_image4);
 		
-		JLabel product_drawing_info3 = new JLabel("New label");
+		JLabel product_drawing_info3 = new JLabel("[합정] 나이프화 아크릴화");
+		product_drawing_info3.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_drawing_info3.setBounds(34, 307, 128, 25);
 		productrr_category_drawing_panel.add(product_drawing_info3);
 		
-		JLabel product_drawing_info4 = new JLabel("New label");
+		JLabel product_drawing_info4 = new JLabel("[홍대] 오일파스텔 체험");
+		product_drawing_info4.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_drawing_info4.setBounds(189, 307, 128, 25);
 		productrr_category_drawing_panel.add(product_drawing_info4);
 		
@@ -849,19 +858,23 @@ public class MainFrameProduct extends JFrame {
 		product_flower_image4.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_flower(4).jpg")));
 		product_handcraft_pannel4.add(product_flower_image4);
 		
-		JLabel product_flower_info1 = new JLabel("New label");
+		JLabel product_flower_info1 = new JLabel("[종로] 나만의 작은정원");
+		product_flower_info1.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_flower_info1.setBounds(35, 149, 128, 25);
 		product_flower_panel.add(product_flower_info1);
 		
-		JLabel product_flower_info2 = new JLabel("New label");
+		JLabel product_flower_info2 = new JLabel("[망원] 화병꽂이 만들기");
+		product_flower_info2.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_flower_info2.setBounds(190, 149, 128, 25);
 		product_flower_panel.add(product_flower_info2);
 		
-		JLabel product_flower_info4 = new JLabel("New label");
+		JLabel product_flower_info4 = new JLabel("[마포] 이벤트 새벽정원");
+		product_flower_info4.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_flower_info4.setBounds(190, 308, 128, 25);
 		product_flower_panel.add(product_flower_info4);
 		
-		JLabel product_flower_info3 = new JLabel("New label");
+		JLabel product_flower_info3 = new JLabel("[송파] 미니 플라워 바구니");
+		product_flower_info3.setFont(new Font("굴림", Font.PLAIN, 11));
 		product_flower_info3.setBounds(35, 308, 128, 25);
 		product_flower_panel.add(product_flower_info3);
 		
@@ -893,7 +906,7 @@ public class MainFrameProduct extends JFrame {
 		productDetailTF = new JTextField();
 		productDetailTF.setEditable(false);
 		productDetailTF.setText("상세설명");
-		productDetailTF.setBounds(201, 169, 116, 124);
+		productDetailTF.setBounds(31, 169, 286, 124);
 		productDetailPanel1.add(productDetailTF);
 		productDetailTF.setColumns(10);
 		
@@ -907,7 +920,7 @@ public class MainFrameProduct extends JFrame {
 		productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
-		productImageLabel.setBounds(31, 14, 158, 218);
+		productImageLabel.setBounds(31, 14, 158, 145);
 		productDetailPanel1.add(productImageLabel);
 		
 		JComboBox productQtyComboBox = new JComboBox();

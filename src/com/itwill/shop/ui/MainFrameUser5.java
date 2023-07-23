@@ -457,23 +457,7 @@ public class MainFrameUser5 extends JFrame {
 			}
 		});
 
-//
-//					if (password.equals("")) {
-//						idCheckMsgLabel.setText("패스워드를 입력하세요.");
-//						userSignUpPwTF.requestFocus();
-//						return;
-//					} else {
-//						idCheckMsgLabel.setText("");
-//					}
-//
-//					User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone, sex);
-//
-//				} catch (Exception e1) {
-//					System.out.println("회원가입에러 --> " + e1.getMessage());
-//				}
-//				// 아이디 유효성 체크
-//			}
-//		});
+				
 		userSignUpButton.setBounds(109, 339, 97, 23);
 		userSignUpPanel.add(userSignUpButton);
 
@@ -489,22 +473,7 @@ public class MainFrameUser5 extends JFrame {
 		btnNewButton_41.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-//				Boolean isUser = true;
-//				try {
-//					isUser = userService.isDuplicatedId(userIdTF.getText());
-//					if (isUser == true) {
-//						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다.");
-//						userIdTF.setText("");
-//						userIdTF.requestFocus();
-//					} else {
-//						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
-//					}
-//				} catch (Exception e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//			}
-//		});
+
 				boolean isUser = false;
 				try {
 					userService = new UserService();
@@ -629,47 +598,57 @@ public class MainFrameUser5 extends JFrame {
 		JCheckBox userEditEmailCheckBox = new JCheckBox("이메일 수신 동의");
 		userEditEmailCheckBox.setBounds(128, 161, 142, 23);
 		userEditPanel.add(userEditEmailCheckBox);
-
+		
+		/******************************************************************************************/
+		
 		JButton userEditButton = new JButton("회원정보 수정");
 		userEditButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				String id = userEditIDTF.getText();
-//				String password = new String(userEditPwTF.getPassword());
-//				String name = userEditNameTF.getText();
-//				String email = userEditEmailTF.getText();
-//				String jumin = userEditBDTF.getText();
-//				String phone = userEditPhoneTF.getText();
-//
-//			}
-//		});
-				
-				
-				/*********** 수정 가능 **********/
-				
-						try {
-							/******TextField로 부터 데이타얻기*****/
-							String id = userEditIDTF.getText();
-							String password = new String(userEditPwTF.getPassword());
-							String name = userEditNameTF.getText();
-							String email = userEditEmailTF.getText();
-							String emailSend = "";
-							if (userEditEmailCheckBox.isSelected()) {
-								emailSend = "T";
-							} else {
-								emailSend = "F";
-							}
-							String jumin = userEditBDTF.getText();
-							String phone = userEditPhoneTF.getText();
-							String sex = (String) userSignupSexComboBox.getSelectedItem();
-
-						
-						
-						}catch (Exception e1) {
-							System.out.println("회원수정에러-->"+e1.getMessage());
-							
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                // 정보 수정 기능 구현
+	            	String password = new String(userEditPwTF.getPassword());
+	            	String passwordCheck = new String(userEditPwCheckTF.getPassword());
+                    String name = userNameTF.getText();
+                    String email=userEditEmailTF.getText();
+                    //String emailCheck=userEditEmailCheckBox.getActionCommand();
+                    //String birth=userEditBDTF.getText();
+                    String phone=userEditPhoneTF.getText();
+                    String gender=userEditSexComboBox.getActionCommand();
+                    	               
+                    if (password.equals(passwordCheck)) {
+	                  //비번일치시 실행
+	                    loginUser.setUserName(name);
+	                    loginUser.setUserEmail(email);
+	                    String eSend = "";
+						if (userEditEmailCheckBox.isSelected()) {
+							eSend = "T";
+						} else {
+							eSend = "F";
 						}
-					}
-				});
+						loginUser.setUserEmailSend(eSend);
+	                    loginUser.setUserGender(gender);
+
+	                    try {
+	                        userService.UpdateUser(loginUser);
+	                        JOptionPane.showMessageDialog(null, "회원 정보가 수정되었습니다.");
+	                        
+	                    } catch (Exception e1) {
+	                        e1.printStackTrace();
+	                        JOptionPane.showMessageDialog(null, "회원 정보 수정에 실패했습니다.");
+	                    }
+	                } else {
+	                    JOptionPane.showMessageDialog(null, "비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+	                }
+	            }
+	        });
+
+		
+		
+		
+		
+		
+		
+		
 		
 		userEditButton.setBounds(113, 298, 131, 23);
 		userEditPanel.add(userEditButton);
@@ -1084,7 +1063,6 @@ public class MainFrameUser5 extends JFrame {
 			new String[] { "\uC8FC\uBB38\uC77C\uC790", "\uAC15\uC758\uBA85", "\uC218\uB7C9", "\uAE08\uC561" }));
 		orderListScrollPane.setViewportView(orderListTable);
 
-		// userService = new UserService();
 
 		/******* 2.Service 객체생성 ***********/
 

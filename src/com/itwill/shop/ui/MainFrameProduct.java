@@ -32,6 +32,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.shop.cart.Cart;
 import com.itwill.shop.cart.CartService;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.Product;
@@ -95,7 +96,7 @@ public class MainFrameProduct extends JFrame {
 	private JTabbedPane tabbedPane_2;
 	private JLabel productImageLabel;
 	private JPanel productDetailPanel1;
-	private JTextField productPeopleLeftCountTF;
+	private JTextField productSeatLeftCountTF;
 	private JPanel productMainPanel;
 	private JPanel product_category_cooking_panel;
 	private JPanel productrr_category_drawing_panel;
@@ -934,6 +935,22 @@ public class MainFrameProduct extends JFrame {
 		productDetailPanel1.add(productQtyComboBox);
 		
 		JButton productCartButton = new JButton("장바구니 담기");
+		//테스트중 제품 파트 됐다 나이스!!!!!!!!ㅜㅜ
+		productCartButton.addActionListener(new ActionListener() {
+			
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				Product tempProduct;
+				try {
+					tempProduct = productService.productDetail(1);
+					showCartNameView(tempProduct);
+					JOptionPane.showMessageDialog(null, "장바구니에 상품이 담겼습니다!");
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+		});
 		productCartButton.setBounds(201, 303, 116, 23);
 		productDetailPanel1.add(productCartButton);
 		
@@ -948,12 +965,12 @@ public class MainFrameProduct extends JFrame {
 		productDetailPanel1.add(productCategoryTF);
 		productCategoryTF.setColumns(10);
 		
-		productPeopleLeftCountTF = new JTextField();
-		productPeopleLeftCountTF.setEditable(false);
-		productPeopleLeftCountTF.setText("남은 인원수");
-		productPeopleLeftCountTF.setBounds(31, 303, 127, 21);
-		productDetailPanel1.add(productPeopleLeftCountTF);
-		productPeopleLeftCountTF.setColumns(10);
+		productSeatLeftCountTF = new JTextField();
+		productSeatLeftCountTF.setEditable(false);
+		productSeatLeftCountTF.setText("남은 인원수");
+		productSeatLeftCountTF.setBounds(31, 303, 127, 21);
+		productDetailPanel1.add(productSeatLeftCountTF);
+		productSeatLeftCountTF.setColumns(10);
 		
 		JPanel orderTabPannel = new JPanel();
 		tabbedPane.addTab("주문", null, orderTabPannel, null);
@@ -1196,6 +1213,13 @@ public class MainFrameProduct extends JFrame {
 			productReadCountTF.setText(String.valueOf(product.getProduct_read_count()));
 			productDateTF.setText(String.valueOf(product.getProduct_start_date()));
 			productDetailTF.setText(product.getProduct_detail());
+			productSeatLeftCountTF.setText("모집중\t"+String.valueOf(product.getProduct_seatLeft_count())+"/8명");
 			
+			
+		}
+		
+		//제품 상세페이지 장바구니 담기 버튼 메소드 TEST
+		public void showCartNameView(Product product) {
+			orderCartNameTF.setText(product.getProduct_name());
 		}
 }

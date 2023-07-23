@@ -56,4 +56,10 @@ public class ProductService {
 		return productDao.selectByMaxReadCount(product_read_count);
 	}
 
+	/*
+	 * product 남은 인원수(좌석수) 업데이트 기능
+	 */
+	public int productSeatLeftCount(int product_no) throws Exception{
+		return productDao.updateBySeatLeftCount(product_no);
+	}
 }

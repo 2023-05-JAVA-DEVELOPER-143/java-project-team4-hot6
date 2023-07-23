@@ -601,6 +601,11 @@ public class MainFrame_Original extends JFrame {
 		productDetailPanel.add(productQtyComboBox);
 		
 		JButton productCartButton = new JButton("장바구니 담기");
+		productCartButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tabbedPane_3.setSelectedIndex(2);
+			}
+		});
 		productCartButton.setBounds(201, 303, 116, 23);
 		productDetailPanel.add(productCartButton);
 		

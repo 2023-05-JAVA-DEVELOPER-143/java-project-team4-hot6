@@ -24,6 +24,9 @@ insert into userinfo(user_id,user_pw,user_pw_check,user_name, user_email, user_e
             values('user9', '9999','9999','송혜교','user9@naver.com', 'F', '890317', '010-9999-9999','여성');
 insert into userinfo(user_id,user_pw,user_pw_check,user_name, user_email, user_email_send, user_jumin, user_phone, user_gender)
             values('user10', '0000','0000','이효리','user10@naver.com', 'T', '701225', '010-0000-0000','여성');
-               
+            
 
+            
+insert into userinfo(user_id,user_pw,user_pw_check,user_name, user_email, user_email_send, user_jumin, user_phone, user_gender)
+            values('dummy', NULL,NULL,NULL, NULL, NULL,NULL,NULL,NULL);
 

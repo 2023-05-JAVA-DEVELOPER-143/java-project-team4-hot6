@@ -43,7 +43,7 @@ public class User {
 		this.userPhone = userPhone;
 		this.userGender = userGender;
 	}
-
+	
 	public String getUserId() {
 		return userId;
 	}

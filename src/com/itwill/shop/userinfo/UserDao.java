@@ -34,6 +34,9 @@ public class UserDao {
 		return insertRowCount;
 		
 	}
+	/*
+	 * 비회원은 바로 db에 이름과 번호만 저장되게,,
+	 */
 	
 	public int insert1(User nonuser) throws Exception {
 		Connection con = dataSource.getConnection();
@@ -50,8 +53,25 @@ public class UserDao {
 		int insertRowCount=pstmt.executeUpdate();
 		return insertRowCount;
 	}
+	/***********************************************************************/
+	public int insert1(String name,String phone) throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_INSERT);
+		pstmt.setString(1,"dummy");
+		pstmt.setString(2,null);
+		pstmt.setString(3,null);
+		pstmt.setString(4,name);
+		pstmt.setString(5,null);
+		pstmt.setString(6,null);
+		pstmt.setString(7,null);
+		pstmt.setString(8,phone);
+		pstmt.setString(9,null);
+		int insertRowCount=pstmt.executeUpdate();
+		System.out.println(insertRowCount);
+		return insertRowCount;
+	}
 	
-	
+	/***************************************************************************/
 	/*
 	 * update(회원)
 	 */

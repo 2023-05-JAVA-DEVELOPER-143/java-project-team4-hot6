@@ -92,10 +92,15 @@ public class MainFrameProduct extends JFrame {
 	private JLabel idCheckMsgLabel;
 	private JLabel product_handcraft_image1;
 	private JPanel product_category_handcraft_panel;
-	private JTabbedPane categoryPane;
 	private JTabbedPane tabbedPane_2;
 	private JLabel productImageLabel;
 	private JPanel productDetailPanel1;
+	private JTextField productPeopleLeftCountTF;
+	private JPanel productMainPanel;
+	private JPanel product_category_cooking_panel;
+	private JPanel productrr_category_drawing_panel;
+	private JPanel product_flower_panel;
+	private JPanel productTabPannel;
 
 	/**
 	 * Launch the application.
@@ -467,7 +472,7 @@ public class MainFrameProduct extends JFrame {
 		lblNewLabel_26.setBounds(77, 181, 133, 15);
 		userFindPanel.add(lblNewLabel_26);
 		
-		JPanel productTabPannel = new JPanel();
+		productTabPannel = new JPanel();
 		tabbedPane.addTab("제품", null, productTabPannel, null);
 		productTabPannel.setLayout(null);
 		
@@ -475,7 +480,7 @@ public class MainFrameProduct extends JFrame {
 		tabbedPane_2.setBounds(0, 0, 359, 423);
 		productTabPannel.add(tabbedPane_2);
 		
-		JPanel productMainPanel = new JPanel();
+		productMainPanel = new JPanel();
 		tabbedPane_2.addTab("메인", null, productMainPanel, null);
 		productMainPanel.setLayout(null);
 		
@@ -496,14 +501,18 @@ public class MainFrameProduct extends JFrame {
 		JButton productSearchButton = new JButton("취미찾기");
 		productSearchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				//검색기능
 				try {
 					List<Product> productList = productService.productSearch(productSearchTF.getText());
 					Product tempProduct = productList.get(0); 
 					showView(tempProduct);
-					tabbedPane_2.setSelectedIndex(2);
+					//상품상세페이지 활성화
+					tabbedPane_2.setEnabledAt(5, true);
+					tabbedPane_2.setSelectedIndex(5);
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "찾으시는 상품이 없습니다.");;
+					//상품상세페이지 불활성화
+					tabbedPane_2.setEnabledAt(5, false);
 					tabbedPane_2.setSelectedIndex(0);
 					
 				}
@@ -539,11 +548,15 @@ public class MainFrameProduct extends JFrame {
 		productMainHandCraftLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/* 메인에서 카테고리별(수공예)categoryPane 이동기능 구현불가 
-				 * Design 수정 필요
+				/* 메인에서 3번째 하위탭 카테고리별(수공예) 이동기능 구현불가 
+				 * 
+				 * Design 수정 
+				 * 
+				 * 카테고리탭 삭제후 탭페인 2단으로 UI 수정완료
 				 */
-				
-				categoryPane.setSelectedIndex(0);
+				tabbedPane_2.setSelectedIndex(1);
+				//선택 카테고리탭 활성화
+				tabbedPane_2.setEnabledAt(1, true);
 			}
 		});
 		productMainHandCraftPanel.add(productMainHandCraftLabel);
@@ -557,11 +570,15 @@ public class MainFrameProduct extends JFrame {
 		productMainCookingLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/* 메인에서 카테고리별(요리)categoryPane 이동기능 구현불가 
-				 * Design 수정 필요
+				/* 메인에서 3번째 하위탭 카테고리별(수공예) 이동기능 구현불가 
+				 * 
+				 * Design 수정 
+				 * 
+				 * 카테고리탭 삭제후 탭페인 2단으로 UI 수정완료
 				 */
-				
-				categoryPane.setSelectedIndex(1);
+				tabbedPane_2.setSelectedIndex(2);
+				//선택 카테고리탭 활성화
+				tabbedPane_2.setEnabledAt(2, true);
 			}
 		});
 		productMainCookingPanel.add(productMainCookingLabel);
@@ -575,11 +592,15 @@ public class MainFrameProduct extends JFrame {
 		productMainDrawingLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/* 메인에서 카테고리별(미술)categoryPane 이동기능 구현불가 
-				 * Design 수정 필요
+				/* 메인에서 3번째 하위탭 카테고리별(수공예) 이동기능 구현불가 
+				 * 
+				 * Design 수정 
+				 * 
+				 * 카테고리탭 삭제후 탭페인 2단으로 UI 수정완료
 				 */
-				
-				categoryPane.setSelectedIndex(2);
+				tabbedPane_2.setSelectedIndex(3);
+				//선택 카테고리탭 활성화
+				tabbedPane_2.setEnabledAt(3, true);
 			}
 		});
 		productMainDrawingPanel.add(productMainDrawingLabel);
@@ -593,25 +614,28 @@ public class MainFrameProduct extends JFrame {
 		productMainFlowerLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/* 메인에서 카테고리별(플라워)categoryPane 이동기능 구현불가 
-				 * Design 수정 필요
+				/* 메인에서 3번째 하위탭 카테고리별(수공예) 이동기능 구현불가 
+				 * 
+				 * Design 수정 
+				 * 
+				 * 카테고리탭 삭제후 탭페인 2단으로 UI 수정완료
 				 */
-				categoryPane.setSelectedIndex(3);
+				tabbedPane_2.setSelectedIndex(4);
+				//선택 카테고리탭 활성화
+				tabbedPane_2.setEnabledAt(4, true);
 			}
 		});
 		productMainFlowerPanel.add(productMainFlowerLabel);
 		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_flower-bouquet (1) (1).png")));
-		
-		JPanel productCategoryPanel = new JPanel();
-		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
-		productCategoryPanel.setLayout(null);
-		
-		categoryPane = new JTabbedPane(JTabbedPane.TOP);
-		categoryPane.setBounds(-1, 0, 354, 392);
-		productCategoryPanel.add(categoryPane);
+		/******************* 상세페널로 이동 *******************/
+		/********************************************************/
+		/******************* 상세페널로 이동 *******************/
+		/********************************************************/
 		
 		product_category_handcraft_panel = new JPanel();
-		categoryPane.addTab("수공예", null, product_category_handcraft_panel, null);
+		tabbedPane_2.addTab("수공예", null, product_category_handcraft_panel, null);
+		//메인 페이지 카테고리 선택하면 활성화(기본상태 불활성화) 
+		tabbedPane_2.setEnabledAt(1, false);
 		product_category_handcraft_panel.setLayout(null);
 		
 		JPanel handcraftPannel1 = new JPanel();
@@ -619,16 +643,6 @@ public class MainFrameProduct extends JFrame {
 		product_category_handcraft_panel.add(handcraftPannel1);
 		
 		product_handcraft_image1 = new JLabel("");
-		/******************* 상세페널로 이동 *******************/
-		product_handcraft_image1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "누름");
-				tabbedPane_2.setSelectedIndex(2);
-				
-			}
-		});
-		/********************************************************/
 		product_handcraft_image1.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_handcraft(1).jpg")));
 		handcraftPannel1.add(product_handcraft_image1);
 		
@@ -637,15 +651,6 @@ public class MainFrameProduct extends JFrame {
 		product_category_handcraft_panel.add(product_handcraft_pannel2_1);
 		
 		JLabel product_handcraft_image2 = new JLabel("");		
-		/******************* 상세페널로 이동 *******************/
-		product_handcraft_image2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "누름");
-				tabbedPane_2.setSelectedIndex(2);
-			}
-		});
-		/********************************************************/
 		product_handcraft_image2.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_handcraft(2).jpg")));
 		product_handcraft_pannel2_1.add(product_handcraft_image2);
 		
@@ -664,14 +669,6 @@ public class MainFrameProduct extends JFrame {
 		product_category_handcraft_panel.add(product_handcraft_pannel3_1);
 		
 		JLabel product_handcraft_image3 = new JLabel("");
-		
-		product_handcraft_image3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				tabbedPane_2.setSelectedIndex(2);
-			}
-			
-		});
 		product_handcraft_image3.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_handcraft(3).jpg")));
 		product_handcraft_pannel3_1.add(product_handcraft_image3);
 		
@@ -693,8 +690,10 @@ public class MainFrameProduct extends JFrame {
 		product_handcraft_info4.setBounds(189, 308, 128, 25);
 		product_category_handcraft_panel.add(product_handcraft_info4);
 		
-		JPanel product_category_cooking_panel = new JPanel();
-		categoryPane.addTab("요리", null, product_category_cooking_panel, null);
+		product_category_cooking_panel = new JPanel();
+		tabbedPane_2.addTab("요리", null, product_category_cooking_panel, null);
+		//메인 페이지 카테고리 선택하면 활성화(기본상태 불활성화) 
+		tabbedPane_2.setEnabledAt(2, false);
 		product_category_cooking_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1_1_1 = new JPanel();
@@ -711,7 +710,7 @@ public class MainFrameProduct extends JFrame {
 		product_handcraft_pannel1_1_1.add(product_cooking_image1);
 		
 		JPanel product_handcraft_pannel2_1_1 = new JPanel();
-		product_handcraft_pannel2_1_1.setBounds(192, 22, 125, 125);
+		product_handcraft_pannel2_1_1.setBounds(195, 35, 125, 102);
 		product_category_cooking_panel.add(product_handcraft_pannel2_1_1);
 		
 		JLabel product_cooking_image2 = new JLabel("");
@@ -740,7 +739,7 @@ public class MainFrameProduct extends JFrame {
 		product_handcraft_pannel3_1_1.add(product_cooking_image3);
 		
 		JPanel product_handcraft_pannel4_1_1 = new JPanel();
-		product_handcraft_pannel4_1_1.setBounds(192, 182, 128, 125);
+		product_handcraft_pannel4_1_1.setBounds(192, 194, 128, 102);
 		product_category_cooking_panel.add(product_handcraft_pannel4_1_1);
 		
 		JLabel product_cooking_image4 = new JLabel("");
@@ -757,12 +756,14 @@ public class MainFrameProduct extends JFrame {
 		product_cooking_info4.setBounds(192, 306, 128, 25);
 		product_category_cooking_panel.add(product_cooking_info4);
 		
-		JPanel productrr_category_drawing_panel = new JPanel();
-		categoryPane.addTab("미술", null, productrr_category_drawing_panel, null);
+		productrr_category_drawing_panel = new JPanel();
+		tabbedPane_2.addTab("미술", null, productrr_category_drawing_panel, null);
+		//메인 페이지 카테고리 선택하면 활성화(기본상태 불활성화) 
+		tabbedPane_2.setEnabledAt(3, false);
 		productrr_category_drawing_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1_1_2 = new JPanel();
-		product_handcraft_pannel1_1_2.setBounds(34, 23, 128, 125);
+		product_handcraft_pannel1_1_2.setBounds(34, 23, 128, 116);
 		productrr_category_drawing_panel.add(product_handcraft_pannel1_1_2);
 		
 		JLabel product_drawing_image1 = new JLabel("");
@@ -770,7 +771,7 @@ public class MainFrameProduct extends JFrame {
 		product_handcraft_pannel1_1_2.add(product_drawing_image1);
 		
 		JPanel product_handcraft_pannel2_1_2 = new JPanel();
-		product_handcraft_pannel2_1_2.setBounds(189, 23, 128, 125);
+		product_handcraft_pannel2_1_2.setBounds(189, 37, 128, 92);
 		productrr_category_drawing_panel.add(product_handcraft_pannel2_1_2);
 		
 		JLabel product_drawing_image2 = new JLabel("");
@@ -813,8 +814,10 @@ public class MainFrameProduct extends JFrame {
 		product_drawing_info4.setBounds(189, 307, 128, 25);
 		productrr_category_drawing_panel.add(product_drawing_info4);
 		
-		JPanel product_flower_panel = new JPanel();
-		categoryPane.addTab("플라워", null, product_flower_panel, null);
+		product_flower_panel = new JPanel();
+		tabbedPane_2.addTab("플라워", null, product_flower_panel, null);
+		//메인 페이지 카테고리 선택하면 활성화(기본상태 불활성화) 
+		tabbedPane_2.setEnabledAt(4, false);
 		product_flower_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1 = new JPanel();
@@ -880,6 +883,8 @@ public class MainFrameProduct extends JFrame {
 		
 		productDetailPanel1 = new JPanel();
 		tabbedPane_2.addTab("제품상세", null, productDetailPanel1, null);
+		//상품 선택하면 활성화(기본상태 불활성화) 
+		tabbedPane_2.setEnabledAt(5, false);
 		productDetailPanel1.setLayout(null);
 		
 		productNameTF = new JTextField();
@@ -924,8 +929,8 @@ public class MainFrameProduct extends JFrame {
 		productDetailPanel1.add(productImageLabel);
 		
 		JComboBox productQtyComboBox = new JComboBox();
-		productQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		productQtyComboBox.setBounds(37, 303, 127, 23);
+		productQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8"}));
+		productQtyComboBox.setBounds(31, 339, 127, 23);
 		productDetailPanel1.add(productQtyComboBox);
 		
 		JButton productCartButton = new JButton("장바구니 담기");
@@ -942,6 +947,13 @@ public class MainFrameProduct extends JFrame {
 		productCategoryTF.setBounds(201, 14, 116, 21);
 		productDetailPanel1.add(productCategoryTF);
 		productCategoryTF.setColumns(10);
+		
+		productPeopleLeftCountTF = new JTextField();
+		productPeopleLeftCountTF.setEditable(false);
+		productPeopleLeftCountTF.setText("남은 인원수");
+		productPeopleLeftCountTF.setBounds(31, 303, 127, 21);
+		productDetailPanel1.add(productPeopleLeftCountTF);
+		productPeopleLeftCountTF.setColumns(10);
 		
 		JPanel orderTabPannel = new JPanel();
 		tabbedPane.addTab("주문", null, orderTabPannel, null);

@@ -560,7 +560,7 @@ public class MainFrameProduct2 extends JFrame {
 		JLabel product_maxReadCountImage = new JLabel("New label");
 		product_maxReadCountImage.setBounds(0, 0, 136, 63);
 		product_maxReadCount_pane.add(product_maxReadCountImage);
-
+		
 		
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
@@ -1397,4 +1397,18 @@ public class MainFrameProduct2 extends JFrame {
 			 return productService.productReadCount(product_no);
 		 }
 	/******************************************************/
+	/****************** 최대 조회수 상품 출력 ******************/
+		 public Product showMaxReadCountProduct(int product_read_count) throws Exception{
+			return productService.productMaxReadCount(product_read_count);
+	/*****************************************************************/
+			 
+		 }
+		 
+		   /*
+		 	public void changeProductTabPanel(int productPanelNo,int productCategoryPanelNo) {
+			      tabbedPane.setSelectedIndex(1);
+			      tabbedPane_2.setSelectedIndex(productPanelNo);
+			      tabbedPane_4.setSelectedIndex(productCategoryPanelNo);
+			   }
+		    */
 }

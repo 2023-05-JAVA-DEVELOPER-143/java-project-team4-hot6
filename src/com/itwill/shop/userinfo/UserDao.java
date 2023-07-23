@@ -34,6 +34,9 @@ public class UserDao {
 		return insertRowCount;
 		
 	}
+	/*
+	 * 비회원은 바로 db에 이름과 번호만 저장되게,,
+	 */
 	
 	public int insert1(User nonuser) throws Exception {
 		Connection con = dataSource.getConnection();
@@ -50,8 +53,25 @@ public class UserDao {
 		int insertRowCount=pstmt.executeUpdate();
 		return insertRowCount;
 	}
+	/***********************************************************************/
+	public int insert1(String name,String phone) throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_INSERT);
+		pstmt.setString(1,"dummy");
+		pstmt.setString(2,null);
+		pstmt.setString(3,null);
+		pstmt.setString(4,name);
+		pstmt.setString(5,null);
+		pstmt.setString(6,null);
+		pstmt.setString(7,null);
+		pstmt.setString(8,phone);
+		pstmt.setString(9,null);
+		int insertRowCount=pstmt.executeUpdate();
+		System.out.println(insertRowCount);
+		return insertRowCount;
+	}
 	
-	
+	/***************************************************************************/
 	/*
 	 * update(회원)
 	 */
@@ -171,4 +191,29 @@ public class UserDao {
 		return userCount;
 		
 	}
+	
+	
+	
+	/*
+	 * 전화번호로 아이디 비번 알아내기
+	 */
+	 public User getUserByPhone(String userPhone) throws Exception {
+	        String query = "SELECT user_id, user_pw FROM userinfo WHERE user_phone = ?";
+	        try (Connection conn = dataSource.getConnection();
+	             PreparedStatement pstmt = conn.prepareStatement(query)) {
+	            pstmt.setString(1, userPhone);
+	            try (ResultSet rs = pstmt.executeQuery()) {
+	                if (rs.next()) {
+	                	String id=rs.getString("user_id");
+						String password=rs.getString("user_pw");
+					
+	                	return new User(id, password);
+
+	                    
+	                } else {
+	                    return null; // 회원 정보가 없으면 null 반환
+	                }
+	            }
+	        }
+	    }
 }

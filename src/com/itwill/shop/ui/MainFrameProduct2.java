@@ -56,7 +56,7 @@ public class MainFrameProduct2 extends JFrame {
 	private JTextField userSignupEmailTF;
 	private JTextField userSignupBDTF;
 	private JTextField userSignupPhoneTF;
-	private JTextField textField;
+
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JPasswordField passwordField;
@@ -96,7 +96,7 @@ public class MainFrameProduct2 extends JFrame {
 	private JPanel product_category_handcraft_panel;
 	private JTabbedPane categoryPane;
 	private JTabbedPane tabbedPane_2;
-	private ImageIcon productImageLabel;
+	private JLabel productImageLabel;
 
 	/**
 	 * Launch the application.
@@ -154,7 +154,7 @@ public class MainFrameProduct2 extends JFrame {
 		tabbedPane_1.addTab("로그인", null, userLoginPanel, null);
 		userLoginPanel.setLayout(null);
 		
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		textField.setBounds(119, 43, 116, 21);
 		userLoginPanel.add(textField);
 		textField.setColumns(10);
@@ -1125,7 +1125,7 @@ public class MainFrameProduct2 extends JFrame {
 		productDetailPanel1.add(productDateTF);
 		productDateTF.setColumns(10);
 		
-		JLabel productImageLabel = new JLabel("");
+		productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/nothing.jpg")));
 		productImageLabel.setBounds(31, 14, 158, 218);
@@ -1383,6 +1383,11 @@ public class MainFrameProduct2 extends JFrame {
 	} // 생성자 끝
 	/****************** 상세페이지에 제품정보 표시 ******************/
 		public void showView(Product product) {
+			
+			//제품상세 화면에서 이미지 보기
+			String imageStr = product.getProduct_image();
+			productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/" + imageStr)));
+//			productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
 			productCategoryTF.setText(product.getProduct_category());
 			productNameTF.setText(product.getProduct_name());
 			productPriceTF.setText(String.valueOf(product.getProduct_price()));
@@ -1412,3 +1417,5 @@ public class MainFrameProduct2 extends JFrame {
 			   }
 		    */
 }
+			
+			

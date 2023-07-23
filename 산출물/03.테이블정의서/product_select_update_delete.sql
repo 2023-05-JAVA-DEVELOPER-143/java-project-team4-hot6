@@ -61,10 +61,7 @@ select product_category from product where product_category='요리';
 
 --update
 --1. 조회수 증가
-
-
-select * from product where product_name like '%플라워%';
-
+update product set product_read_count=product_read_count+1 where product_no=1; 
 
 
 
@@ -72,7 +69,9 @@ select * from product where product_name like '%플라워%';
 
 
 
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6
+
+
+
 
 
 

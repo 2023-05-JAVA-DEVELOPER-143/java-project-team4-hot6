@@ -191,4 +191,29 @@ public class UserDao {
 		return userCount;
 		
 	}
+	
+	
+	
+	/*
+	 * 전화번호로 아이디 비번 알아내기
+	 */
+	 public User getUserByPhone(String userPhone) throws Exception {
+	        String query = "SELECT user_id, user_pw FROM userinfo WHERE user_phone = ?";
+	        try (Connection conn = dataSource.getConnection();
+	             PreparedStatement pstmt = conn.prepareStatement(query)) {
+	            pstmt.setString(1, userPhone);
+	            try (ResultSet rs = pstmt.executeQuery()) {
+	                if (rs.next()) {
+	                	String id=rs.getString("user_id");
+						String password=rs.getString("user_pw");
+					
+	                	return new User(id, password);
+
+	                    
+	                } else {
+	                    return null; // 회원 정보가 없으면 null 반환
+	                }
+	            }
+	        }
+	    }
 }

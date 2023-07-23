@@ -1,6 +1,7 @@
 package com.itwill.shop.ui;
 
 import com.itwill.shop.userinfo.User;
+import com.itwill.shop.userinfo.UserDao;
 import com.itwill.shop.userinfo.UserService;
 
 import javax.swing.*;
@@ -73,6 +74,7 @@ public class MainFrameUser5 extends JFrame {
 	private JTabbedPane productCategoryTabPanel;
 	private JTabbedPane orderTabPanel;
 	private JComboBox userEditSexComboBox;
+	private UserDao userDao;
 
 	/**
 	 * Launch the application.
@@ -640,24 +642,35 @@ public class MainFrameUser5 extends JFrame {
 //
 //			}
 //		});
+				
+				
 				/*********** 수정 가능 **********/
-				String id = userEditIDTF.getText();
-				String password = new String(userEditPwTF.getPassword());
-				String name = userEditNameTF.getText();
-				String email = userEditEmailTF.getText();
-				String emailSend = "";
-				if (userEditEmailCheckBox.isSelected()) {
-					emailSend = "T";
-				} else {
-					emailSend = "F";
-				}
-				String jumin = userEditBDTF.getText();
-				String phone = userEditPhoneTF.getText();
-				String sex = (String) userSignupSexComboBox.getSelectedItem();
+				
+						try {
+							/******TextField로 부터 데이타얻기*****/
+							String id = userEditIDTF.getText();
+							String password = new String(userEditPwTF.getPassword());
+							String name = userEditNameTF.getText();
+							String email = userEditEmailTF.getText();
+							String emailSend = "";
+							if (userEditEmailCheckBox.isSelected()) {
+								emailSend = "T";
+							} else {
+								emailSend = "F";
+							}
+							String jumin = userEditBDTF.getText();
+							String phone = userEditPhoneTF.getText();
+							String sex = (String) userSignupSexComboBox.getSelectedItem();
 
-			}
-		});
-
+						
+						
+						}catch (Exception e1) {
+							System.out.println("회원수정에러-->"+e1.getMessage());
+							
+						}
+					}
+				});
+		
 		userEditButton.setBounds(113, 298, 131, 23);
 		userEditPanel.add(userEditButton);
 
@@ -669,11 +682,7 @@ public class MainFrameUser5 extends JFrame {
 		userEditPwCheckTF.setBounds(127, 72, 143, 21);
 		userEditPanel.add(userEditPwCheckTF);
 
-//		JButton userEditQuitButton = new JButton("로그아웃");
-//		userEditQuitButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//			}
-//		});
+
 		JButton userEditQuitButton = new JButton("회원탈퇴");
 		userEditQuitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -717,7 +726,24 @@ public class MainFrameUser5 extends JFrame {
 		userFindPanel.add(textField_1);
 		textField_1.setColumns(10);
 
+		//전화번호 입력시 아이디와 비번 알려주는거 구현완료!
+		
 		JButton btnNewButton_2 = new JButton("조회");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				User newUser=new User();
+			String userPhone=textField_1.getText();
+			try {
+			   newUser=userDao.getUserByPhone(userPhone);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+				userFindidTF.setText(newUser.getUserId());
+				userFindPwTF.setText(newUser.getUserPw());
+				
+			}
+		});
 		btnNewButton_2.setBounds(222, 50, 97, 23);
 		userFindPanel.add(btnNewButton_2);
 
@@ -1063,7 +1089,7 @@ public class MainFrameUser5 extends JFrame {
 		/******* 2.Service 객체생성 ***********/
 
 		userService = new UserService();
-
+        userDao=new UserDao();
 
 	}// 생성자 끝
 

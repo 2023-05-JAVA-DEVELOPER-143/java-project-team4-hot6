@@ -44,6 +44,14 @@ public class User {
 		this.userGender = userGender;
 	}
 	
+	
+	/*************************************/
+	public User(String userId, String userPw) {
+		this.userId=userId;
+		this.userPw=userPw;
+	}
+	/*************************************/
+	
 	public String getUserId() {
 		return userId;
 	}

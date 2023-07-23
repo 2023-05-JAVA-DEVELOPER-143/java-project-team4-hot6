@@ -35,6 +35,7 @@ import javax.swing.table.DefaultTableModel;
 import com.itwill.shop.cart.CartService;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.Product;
+import com.itwill.shop.product.ProductDao;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
@@ -55,7 +56,7 @@ public class MainFrameProduct2 extends JFrame {
 	private JTextField userSignupEmailTF;
 	private JTextField userSignupBDTF;
 	private JTextField userSignupPhoneTF;
-	private JTextField textField;
+
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JPasswordField passwordField;
@@ -95,6 +96,7 @@ public class MainFrameProduct2 extends JFrame {
 	private JPanel product_category_handcraft_panel;
 	private JTabbedPane categoryPane;
 	private JTabbedPane tabbedPane_2;
+	private JLabel productImageLabel;
 
 	/**
 	 * Launch the application.
@@ -152,7 +154,7 @@ public class MainFrameProduct2 extends JFrame {
 		tabbedPane_1.addTab("로그인", null, userLoginPanel, null);
 		userLoginPanel.setLayout(null);
 		
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		textField.setBounds(119, 43, 116, 21);
 		userLoginPanel.add(textField);
 		textField.setColumns(10);
@@ -510,11 +512,11 @@ public class MainFrameProduct2 extends JFrame {
 		productMainPanel.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("미술");
-		lblNewLabel_14.setBounds(56, 290, 57, 15);
+		lblNewLabel_14.setBounds(56, 270, 57, 15);
 		productMainPanel.add(lblNewLabel_14);
 		
 		JLabel lblNewLabel_27 = new JLabel("플라워");
-		lblNewLabel_27.setBounds(231, 290, 57, 15);
+		lblNewLabel_27.setBounds(231, 270, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
 		
 		JPanel panel = new JPanel();
@@ -535,7 +537,7 @@ public class MainFrameProduct2 extends JFrame {
 		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_main_cooking (1).png")));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(23, 187, 111, 93);
+		panel_2.setBounds(23, 168, 111, 93);
 		productMainPanel.add(panel_2);
 		
 		JLabel productMainDrawingLabel = new JLabel("");
@@ -543,16 +545,21 @@ public class MainFrameProduct2 extends JFrame {
 		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_main_drawing (1).png")));
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(190, 189, 111, 93);
+		panel_3.setBounds(190, 168, 111, 93);
 		productMainPanel.add(panel_3);
 		
 		JLabel productMainFlowerLabel = new JLabel("");
 		panel_3.add(productMainFlowerLabel);
 		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/product_main_flower-bouquet (1) (1).png")));
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(23, 309, 319, 63);
-		productMainPanel.add(panel_4);
+		JPanel product_maxReadCount_pane = new JPanel();
+		product_maxReadCount_pane.setBounds(23, 309, 319, 63);
+		productMainPanel.add(product_maxReadCount_pane);
+		product_maxReadCount_pane.setLayout(null);
+		
+		JLabel product_maxReadCountImage = new JLabel("New label");
+		product_maxReadCountImage.setBounds(0, 0, 136, 63);
+		product_maxReadCount_pane.add(product_maxReadCountImage);
 
 		
 		JPanel productCategoryPanel = new JPanel();
@@ -580,8 +587,9 @@ public class MainFrameProduct2 extends JFrame {
 				tabbedPane_2.setSelectedIndex(2);
 				Product tempProduct;
 				try {
-					tempProduct = productService.productDetail(1);
+					tempProduct = productService.productDetail(1); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1)); // 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -606,8 +614,9 @@ public class MainFrameProduct2 extends JFrame {
 		/******************* 상데데이터 출력 *******************/
 				Product tempProduct;
 				try {
-					tempProduct = productService.productDetail(2);
+					tempProduct = productService.productDetail(2); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(2));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -642,6 +651,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(3); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(3));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -668,6 +678,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(4); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(4));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -706,6 +717,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(9); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(9));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -737,6 +749,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(10); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(10));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -771,6 +784,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(11); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(11));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -797,6 +811,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(12); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(12));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -835,6 +850,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(13); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(13));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -861,6 +877,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(14); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(14));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -895,6 +912,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(15); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(15));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -921,6 +939,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(16); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(16));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -959,6 +978,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(1); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(1));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -985,6 +1005,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(2); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(2));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -1011,6 +1032,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(3); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(3));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -1037,6 +1059,7 @@ public class MainFrameProduct2 extends JFrame {
 				try {
 					tempProduct = productService.productDetail(4); //인자:제품번호
 					showView(tempProduct);
+					productReadCount(productReadCount(4));// 조회수 증가(인자:제품번호)
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -1102,7 +1125,7 @@ public class MainFrameProduct2 extends JFrame {
 		productDetailPanel1.add(productDateTF);
 		productDateTF.setColumns(10);
 		
-		JLabel productImageLabel = new JLabel("");
+		productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setIcon(new ImageIcon(MainFrameProduct2.class.getResource("/images/nothing.jpg")));
 		productImageLabel.setBounds(31, 14, 158, 218);
@@ -1358,7 +1381,13 @@ public class MainFrameProduct2 extends JFrame {
 			}
 		}*/
 	} // 생성자 끝
+	/****************** 상세페이지에 제품정보 표시 ******************/
 		public void showView(Product product) {
+			
+			//제품상세 화면에서 이미지 보기
+			String imageStr = product.getProduct_image();
+			productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/" + imageStr)));
+//			productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
 			productCategoryTF.setText(product.getProduct_category());
 			productNameTF.setText(product.getProduct_name());
 			productPriceTF.setText(String.valueOf(product.getProduct_price()));
@@ -1367,5 +1396,13 @@ public class MainFrameProduct2 extends JFrame {
 			productDetailTF.setText(product.getProduct_detail());
 			
 		}//2
-		
+		/*****************************************************************/
+		/****************** 제품 조회수 증가 ******************/
+		public int productReadCount(int product_no) throws Exception{
+			return productService.productReadCount(product_no);
+		}
+		/******************************************************/
 }
+
+			
+			

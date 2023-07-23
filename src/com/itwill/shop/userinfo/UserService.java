@@ -2,6 +2,8 @@ package com.itwill.shop.userinfo;
 
 import java.util.regex.Pattern;
 
+
+
 public class UserService {
 	
 	private UserDao userDao;
@@ -14,24 +16,54 @@ public class UserService {
 	/*
 	 * 회원가입
 	 */
-	public boolean addUser(User newUser) throws Exception {
-		boolean isSuccess=false;
-
+	public int addUser(User newUser) throws Exception {
+		int rowCount=userDao.insert(newUser);
+		return rowCount;
+	}
 	
-	 //아이디존재여부 
-	 
-		User findUser=userDao.findByUserId(newUser.getUserId());
-		if(findUser==null) {
-			int rowCount=userDao.insert(newUser);
-			isSuccess=true;//아이디 중복 안될시에 
-			
-		}else {
-			isSuccess=false;
-		}
+//		
+//		public int create(User user) throws Exception{
+//			//1.아이디중복체크
+//			if(userDao.countByUserId(user.getUserId())>=1) {
+//				//중복
+//				return -1;
+//			}else {
+//				//가입
+//				int rowCount=userDao.insert(user);
+//				return rowCount;
+//			}
+//		}	
 		
-			return isSuccess;
-			
-		}
+		
+		
+	 //아이디존재여부 
+//	 public boolean findByUserId(newUser.getUserId() {
+//		User findUser=userDao.findByUserId(newUser.getUserId());
+//		if(findUser==null) {
+//			int rowCount=userDao.insert(newUser);
+//			isSuccess=true;//아이디 중복 안될시에 
+//			
+//		}else {
+//			isSuccess=false;
+//		}
+//		
+//			return isSuccess;
+//			
+//		
+//	 )
+//	 }
+//	User findUser=userDao.findByUserId(newUser.getUserId());
+//	if(findUser==null) {
+//		int rowCount=userDao.insert(newUser);
+//		isSuccess=true;//아이디 중복 안될시에 
+//		
+//	}else {
+//		isSuccess=false;
+//	}
+//	
+//	return isSuccess;
+//	
+//}
 	
 	/*
 	 * 로그인하기
@@ -90,11 +122,22 @@ public class UserService {
 		       return rowCount;
 
 	}
+	/**********************************************************************/
+	public int noUserInsert(String name,String phone) throws Exception {
+		int rowCount=userDao.insert1(name, phone);
+		return rowCount;
+		
+	}
+	/************************************************************************8/
+	
+	
+	
+	
 	/*
 	 * 비회원 정보 업데이트 
 	 */
-	public int noUserUpdate(User newUser) throws Exception {
-		int rowCount=userDao.update1(newUser);
+	public int noUserUpdate(User noUser) throws Exception {
+		int rowCount=userDao.update1(noUser);
 		return rowCount;
 	}
 	
@@ -140,6 +183,6 @@ public class UserService {
 	public int remove(String userId) throws Exception {
 		return userDao.delete(userId);
 	}
-	
+
 }
 

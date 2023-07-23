@@ -18,6 +18,7 @@ select * from product where product_name like '%*test%'
 
 select * from product order by product_read_count desc;
 
+
 --장바구니로의 이동
 
 <<<<<<< HEAD
@@ -63,7 +64,9 @@ select product_category from product where product_category='요리';
 --1. 조회수 증가
 update product set product_read_count=product_read_count+1 where product_no=1; 
 
+--2.제품(강의) 남은 인원수(좌석수) 제공
 
+update product set product_seatLeft_count=product_seatLeft_count-1 where product_no=1;
 
 
 

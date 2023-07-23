@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -95,7 +96,7 @@ public class MainFrameProduct extends JFrame {
 	private JTabbedPane tabbedPane_2;
 	private JLabel productImageLabel;
 	private JPanel productDetailPanel1;
-	private JTextField productPeopleLeftCountTF;
+	private JTextField productSeatLeftCountTF;
 	private JPanel productMainPanel;
 	private JPanel product_category_cooking_panel;
 	private JPanel productrr_category_drawing_panel;
@@ -948,12 +949,12 @@ public class MainFrameProduct extends JFrame {
 		productDetailPanel1.add(productCategoryTF);
 		productCategoryTF.setColumns(10);
 		
-		productPeopleLeftCountTF = new JTextField();
-		productPeopleLeftCountTF.setEditable(false);
-		productPeopleLeftCountTF.setText("남은 인원수");
-		productPeopleLeftCountTF.setBounds(31, 303, 127, 21);
-		productDetailPanel1.add(productPeopleLeftCountTF);
-		productPeopleLeftCountTF.setColumns(10);
+		productSeatLeftCountTF = new JTextField();
+		productSeatLeftCountTF.setEditable(false);
+		productSeatLeftCountTF.setText("남은 인원수");
+		productSeatLeftCountTF.setBounds(31, 303, 127, 21);
+		productDetailPanel1.add(productSeatLeftCountTF);
+		productSeatLeftCountTF.setColumns(10);
 		
 		JPanel orderTabPannel = new JPanel();
 		tabbedPane.addTab("주문", null, orderTabPannel, null);
@@ -1196,6 +1197,8 @@ public class MainFrameProduct extends JFrame {
 			productReadCountTF.setText(String.valueOf(product.getProduct_read_count()));
 			productDateTF.setText(String.valueOf(product.getProduct_start_date()));
 			productDetailTF.setText(product.getProduct_detail());
+			productSeatLeftCountTF.setText("모집중\t"+String.valueOf(product.getProduct_seatLeft_count())+"/8명");
+			
 			
 		}
 }

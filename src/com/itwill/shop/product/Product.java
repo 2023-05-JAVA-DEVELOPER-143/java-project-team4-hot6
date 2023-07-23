@@ -22,12 +22,14 @@ public class Product {
 	private String product_detail;
 	private String product_image;
 	private int product_read_count;
+	private int product_seatLeft_count;
 	
 	public Product() {
 	}
-
+	
 	public Product(int product_no, Date product_start_date, String product_category, String product_name,
-			int product_price, String product_detail, String product_image, int product_read_count) {
+			int product_price, String product_detail, String product_image, int product_read_count,
+			int product_seatLeft_count) {
 		super();
 		this.product_no = product_no;
 		this.product_start_date = product_start_date;
@@ -37,8 +39,11 @@ public class Product {
 		this.product_detail = product_detail;
 		this.product_image = product_image;
 		this.product_read_count = product_read_count;
+		this.product_seatLeft_count = product_seatLeft_count;
 	}
 
+	
+	
 	public int getProduct_no() {
 		return product_no;
 	}
@@ -103,13 +108,24 @@ public class Product {
 		this.product_read_count = product_read_count;
 	}
 
+	public int getProduct_seatLeft_count() {
+		return product_seatLeft_count;
+	}
+
+	public void setProduct_seatLeft_count(int product_seatLeft_count) {
+		this.product_seatLeft_count = product_seatLeft_count;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [product_no=" + product_no + ", product_start_date=" + product_start_date
 				+ ", product_category=" + product_category + ", product_name=" + product_name + ", product_price="
 				+ product_price + ", product_detail=" + product_detail + ", product_image=" + product_image
-				+ ", product_read_count=" + product_read_count + "]";
+				+ ", product_read_count=" + product_read_count + ", product_seatLeft_count=" + product_seatLeft_count
+				+ "]";
 	}
+
+	
 
 	
 }

@@ -32,7 +32,8 @@ public class ProductDao {
 							rs.getInt("product_price"),
 							rs.getString("product_detail"),
 							rs.getString("product_image"),
-							rs.getInt("product_read_count"));
+							rs.getInt("product_read_count"),
+							rs.getInt("product_seatLeft_count"));
 			productList.add(product);
 		}
 		return productList;
@@ -57,7 +58,8 @@ public class ProductDao {
 							              rs.getInt("product_price"),
 							              rs.getString("product_detail"),
 							              rs.getString("product_image"),
-							              rs.getInt("product_read_count"));
+							              rs.getInt("product_read_count"),
+							              rs.getInt("product_seatLeft_count"));
 		}
 		
 		return product;
@@ -82,7 +84,8 @@ public class ProductDao {
 				                          rs.getInt("product_price"),
 				                          rs.getString("product_detail"),
 				                          rs.getString("product_image"),
-				                          rs.getInt("product_read_count"));
+				                          rs.getInt("product_read_count"),
+				                          rs.getInt("product_seatLeft_count"));
 			 				productList.add(product);
 		}
 		
@@ -108,7 +111,8 @@ public class ProductDao {
 							  			  rs.getInt("product_price"),
 							  			  rs.getString("product_detail"),
 							  			  rs.getString("product_image"),
-							  			  rs.getInt("product_read_count"));
+							  			  rs.getInt("product_read_count"),
+							  			rs.getInt("product_seatLeft_count"));
 			 				productList.add(product);
 		}
 		
@@ -152,10 +156,29 @@ public class ProductDao {
 	                             rs.getInt("product_price"),
 	                             rs.getString("product_detail"),
 	                             rs.getString("product_image"),
-	                             rs.getInt("product_read_count"));
+	                             rs.getInt("product_read_count"),
+	                             rs.getInt("product_seatLeft_count"));
 	}
 
 	return product;
 	}
 
+	   /*
+	    * updateBySeatLeftCount
+	    */
+	   public int updateBySeatLeftCount(int product_no) throws Exception {
+		   Connection con = null;
+		   PreparedStatement pstmt = null;
+		   
+		   int seatLeftCount=0;
+		   try {
+			   con=dataSource.getConnection();
+			   pstmt=con.prepareStatement(ProductSQL.PRODUCT_UPDATE_SEATLEFT_COUNT);
+			   pstmt.setInt(1, product_no);
+			   pstmt.executeUpdate();
+		   } catch (Exception e) {
+			   e.printStackTrace();
+		   }
+		   return seatLeftCount;
+	   }
 }

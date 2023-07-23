@@ -40,6 +40,8 @@ import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class MainFrameProduct extends JFrame {
 	
@@ -482,11 +484,13 @@ public class MainFrameProduct extends JFrame {
 		productMainPanel.setLayout(null);
 		
 		productSearchTF = new JTextField("오늘은 오일파스텔 배우자!");
+		
 		productSearchTF.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				productSearchTF.setText("");
 			}
+			
 		});
 		productSearchTF.setBounds(38, 11, 169, 21);
 		productMainPanel.add(productSearchTF);
@@ -541,7 +545,7 @@ public class MainFrameProduct extends JFrame {
 				/* 메인에서 카테고리별(수공예)categoryPane 이동기능 구현불가 
 				 * Design 수정 필요
 				 */
-				categoryPane.setVisible(true);
+				
 				categoryPane.setSelectedIndex(0);
 			}
 		});

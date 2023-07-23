@@ -336,8 +336,8 @@ public class MainFrame extends JFrame {
 					
 					User user = new User(id, password,
 							passwordCheck, name, email, emailSend, birthdate, phone, sex);
-					Boolean isAdd = userService.addUser(user);
-					if(isAdd) {
+					int isAdd = userService.addUser(user);
+					if(isAdd == 1) {
 						tabbedPane.setSelectedIndex(0);
 					} else {
 						JOptionPane.showMessageDialog(null, id + "당신의 가입은 실패하였습니다.");

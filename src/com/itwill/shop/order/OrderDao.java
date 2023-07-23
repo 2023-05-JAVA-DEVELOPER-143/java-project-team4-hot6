@@ -86,7 +86,8 @@ public class OrderDao {
 								rs.getInt("product_price"),
 								rs.getString("product_detail"),
 								rs.getString("product_image"),
-								rs.getInt("product_read_count")), rs.getInt("order_no")));
+								rs.getInt("product_read_count"),
+								0), rs.getInt("order_no")));
 				orderList.add(new Order(rs.getInt("order_no"),
 						rs.getString("order_name"),
 				       rs.getString("order_phone"),
@@ -122,7 +123,8 @@ public class OrderDao {
 								rs.getInt("product_price"),
 								rs.getString("product_detail"),
 								rs.getString("product_image"),
-								rs.getInt("product_read_count")), rs.getInt("order_no")));
+								rs.getInt("product_read_count"),
+								0), rs.getInt("order_no")));
 			}
 		}finally {
 			if(con != null) {

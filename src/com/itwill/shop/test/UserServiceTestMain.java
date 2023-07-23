@@ -8,7 +8,7 @@ public class UserServiceTestMain {
 		
 		UserService userService = new UserService();
 		System.out.println("1.회원가입");
-		boolean isAdd =userService.addUser(new User("user12", "2323","2222","배수지","suzi@naver.com", "F", "990811", "010-9999-9999","여성"));
+		int isAdd =userService.addUser(new User("user12", "2323","2222","배수지","suzi@naver.com", "F", "990811", "010-9999-9999","여성"));
 		System.out.println("회원가입 성공: " + isAdd);
 		
 		System.out.println("2.로그인");

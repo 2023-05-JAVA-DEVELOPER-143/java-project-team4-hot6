@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.DefaultComboBoxModel;
@@ -39,6 +40,8 @@ import com.itwill.shop.product.ProductDao;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class MainFrameProduct2 extends JFrame {
 	
@@ -558,10 +561,51 @@ public class MainFrameProduct2 extends JFrame {
 		product_maxReadCount_pane.setLayout(null);
 		
 		JLabel product_maxReadCountImage = new JLabel("New label");
+		product_maxReadCountImage.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				JOptionPane.showMessageDialog(null, "제품 상세페이지로 이동합니다");
+				tabbedPane_2.setSelectedIndex(2);
+				Product tempProduct;
+				try {
+					tempProduct = productService.productMaxReadCount(1); //인자:제품번호
+					showView(tempProduct);
+					//상품상세페이지 활성화
+					tabbedPane_2.setEnabledAt(5, true);
+					tabbedPane_2.setSelectedIndex(5);
+					productReadCount(productReadCount(1)); // 조회수 증가(인자:제품번호)
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}//1
+		});				
+			/******************2*******************/
+	/*		productSearchButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//검색기능
+					try {
+						List<Product> productList = productService.productSearch(productSearchTF.getText());
+						Product tempProduct = productList.get(0); 
+						showView(tempProduct);
+						//상품상세페이지 활성화
+						tabbedPane_2.setEnabledAt(5, true);
+						tabbedPane_2.setSelectedIndex(5);
+					} catch (Exception e1) {
+						JOptionPane.showMessageDialog(null, "찾으시는 상품이 없습니다.");;
+						//상품상세페이지 불활성화
+						tabbedPane_2.setEnabledAt(5, false);
+						tabbedPane_2.setSelectedIndex(0);
+						
+					}
+					
+					
+				}
+			});				*/		
+			/******************2*******************/
 		product_maxReadCountImage.setBounds(0, 0, 136, 63);
 		product_maxReadCount_pane.add(product_maxReadCountImage);
-		
-		
+
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
@@ -1405,6 +1449,7 @@ public class MainFrameProduct2 extends JFrame {
 	/****************** 최대 조회수 상품 출력 ******************/
 		 public Product showMaxReadCountProduct(int product_read_count) throws Exception{
 			return productService.productMaxReadCount(product_read_count);
+					
 	/*****************************************************************/
 			 
 		 }

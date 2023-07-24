@@ -1819,6 +1819,13 @@ public class MainFrame extends JFrame {
 		}
 		
 		tabbedPane_1.setEnabledAt(2, false);
+<<<<<<< HEAD
+		tabbedPane_3.setEnabledAt(0, false);
+		tabbedPane_3.setEnabledAt(1, false);
+		tabbedPane_3.setEnabledAt(2, false);
+
+=======
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6.git
 		
 	}//생성자
 	

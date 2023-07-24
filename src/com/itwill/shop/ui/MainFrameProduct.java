@@ -41,7 +41,6 @@ import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
 
 public class MainFrameProduct extends JFrame {
-<<<<<<< HEAD
    
    //서비스 객체 멤버변수 선언
    private ProductService productService;
@@ -104,69 +103,6 @@ public class MainFrameProduct extends JFrame {
    private JPanel product_flower_panel;
    private JPanel productPannel;
    private JTabbedPane orderTabPanel;
-=======
-	
-	//서비스 객체 멤버변수 선언
-	private ProductService productService;
-	private UserService userService;
-	private OrderService orderService;
-	private CartService cartService;
-	private User loginUser=null;
-	
-	
-	private JPanel contentPane;
-	private JTextField userSignUpIdTF;
-	private JTextField userSignupNameTF;
-	private JTextField userSignupEmailTF;
-	private JTextField userSignupBDTF;
-	private JTextField userSignupPhoneTF;
-	private JTextField textField;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JPasswordField passwordField;
-	private JPasswordField userSignUpPwTF;
-	private JPasswordField userSignUpPwCheckTF;
-	private JTextField userEditIDTF;
-	private JTextField userEditNameTF;
-	private JTextField userEditEmailTF;
-	private JTextField userEditBDTF;
-	private JTextField userEditPhoneTF;
-	private JPasswordField userEditPwTF;
-	private JPasswordField userEditPwCheckTF;
-	private JTextField textField_1;
-	private JTextField userFindidTF;
-	private JTextField userFindPwTF;
-	private JTextField productSearchTF;
-	private JTextField productNameTF;
-	private JTextField productPriceTF;
-	private JTextField productReadCountTF;
-	private JTextField productDetailTF;
-	private JTextField productDateTF;
-	private JTextField orderListIdTF;
-	private JTable orderListTable;
-	private JTable orderCartTable;
-	private JTextField orderCartPriceTF;
-	private JTextField orderCartNameTF;
-	private JTextField orderCartDetailTF;
-	private JTextField orderCartDateTF;
-	private JTextField orderPayPriceTF;
-	private JTable table;
-	private JTextField orderPayNameTF;
-	private JTextField orderPayPhoneTF;
-	private JTextField productCategoryTF;
-	private JLabel idCheckMsgLabel;
-	private JLabel product_handcraft_image1;
-	private JPanel product_category_handcraft_panel;
-	private JTabbedPane tabbedPane_2;
-	private JLabel productImageLabel;
-	private JPanel productDetailPanel1;
-	private JTextField productSeatLeftCountTF;
-	private JPanel productMainPanel;
-	private JPanel product_category_cooking_panel;
-	private JPanel productrr_category_drawing_panel;
-	private JPanel product_flower_panel;
-	private JPanel productTabPannel;
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6.git
 
    /**
     * Launch the application.

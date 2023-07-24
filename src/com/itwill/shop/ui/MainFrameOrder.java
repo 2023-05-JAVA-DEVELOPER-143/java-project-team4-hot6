@@ -54,7 +54,7 @@ public class MainFrameOrder extends JFrame {
 	private OrderService orderService;
 	private UserService userService;
 	
-	private User loginUser= null;
+	private User loginUser = null;
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
 	private JTextField userSignupNameTF;
@@ -796,21 +796,18 @@ public class MainFrameOrder extends JFrame {
 				
 			}
 		});
-		orderCartDeleteButton.setBounds(138, 348, 97, 23);
+		orderCartDeleteButton.setBounds(142, 348, 97, 23);
 		orderCartPanel.add(orderCartDeleteButton);
 		
 		JButton orderCartPayButton = new JButton("결제하기");
-<<<<<<< HEAD
-		orderCartPayButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-=======
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6.git
 		orderCartPayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(loginUser==null) {
+					changeUserTabPanel(0);
+					JOptionPane.showMessageDialog(null, "로그인을 해주세요");
+				} else {
 				changeOrderTabPanel(1);
+				}
 			}
 		});
 		orderCartPayButton.setBounds(245, 348, 97, 23);
@@ -937,12 +934,12 @@ public class MainFrameOrder extends JFrame {
 		userService = new UserService();
 		
 		//테스트
-<<<<<<< HEAD
+
 //		loginUser = userService.findUser("user10");
-		loginUser = null;
-=======
-		loginUser = userService.findUser("user10");
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6.git
+//		loginUser = null;
+
+		loginUser = userService.findUser("user4");
+
 		
 		displayCartList(loginUser);
 	}

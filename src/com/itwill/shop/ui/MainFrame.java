@@ -302,6 +302,7 @@ public class MainFrame extends JFrame {
 						User noUser = new User();
 						noUser.setUserName(userName);
 						noUser.setUserPhone(userPhone);
+						noUser.setUserId(userName+userPhone.substring(9));
 
 						System.out.println("userName: " + userName);
 						System.out.println("userPhone: " + userPhone);
@@ -309,7 +310,7 @@ public class MainFrame extends JFrame {
 						//userService.noUserInsert(userName, userPhone);
 						int num = userService.noUserUpdate(noUser);
 						System.out.println("num: " + num);
-
+						loginUser = noUser;
 						setTitle(userName + " 님 로그인");
 						System.out.println("test");
 
@@ -620,6 +621,7 @@ public class MainFrame extends JFrame {
 		userEditPanel.add(lblNewLabel_6_1);
 		
 		JCheckBox userEditEmailCheckBox = new JCheckBox("이메일 수신 동의");
+		userEditEmailCheckBox.setBackground(SystemColor.inactiveCaption);
 		userEditEmailCheckBox.setBounds(128, 161, 142, 23);
 		userEditPanel.add(userEditEmailCheckBox);
 		
@@ -896,20 +898,22 @@ public class MainFrame extends JFrame {
 		tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_3.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
-				int selectedIndex = tabbedPane.getSelectedIndex();
-                if (selectedIndex == 2) {
-                	// 장바구니 로딩
-                	displayCartList(loginUser);
-                	
-                	// 카트 to 결제
-                	orderPayNameTF.setText(loginUser.getUserName());
-                	orderPayPhoneTF.setText(loginUser.getUserPhone());
-                	
-                	
-                	// 결제내용 로딩
-    				orderListIdTF.setText(loginUser.getUserId());
-    				displayOrderList(loginUser);
-                }
+				if(loginUser != null) {
+					int selectedIndex = tabbedPane.getSelectedIndex();
+	                if (selectedIndex == 2) {
+	                	// 장바구니 로딩
+	                	displayCartList(loginUser);
+	                	
+	                	// 카트 to 결제
+	                	orderPayNameTF.setText(loginUser.getUserName());
+	                	orderPayPhoneTF.setText(loginUser.getUserPhone());
+	                	
+	                	
+	                	// 결제내용 로딩
+	    				orderListIdTF.setText(loginUser.getUserId());
+	    				displayOrderList(loginUser);
+	                }
+				}
 			}
 		});
 		tabbedPane_3.setBounds(0, 0, 359, 423);
@@ -932,7 +936,11 @@ public class MainFrame extends JFrame {
 				String selectedName = (String)orderCartTable.getValueAt(selectedRow, 1);
 				Integer selectedQty = (Integer)orderCartTable.getValueAt(selectedRow, 2);
 				orderCartNameTF.setText(selectedName);
+				if(selectedQty == null) {
+					cartByProductQtyTF.setText("0");
+				} else {
 				cartByProductQtyTF.setText(selectedQty+"");
+				}
 				try {
 					orderCartDetailTF.setText(cartService.getCartItemByCartNo(selectedNo).getProduct().getProduct_detail());
 				} catch (Exception e1) {
@@ -1149,7 +1157,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, orderPayPaymentComboBox.getSelectedItem() + "로 결제합니다.");
 				try {
-					orderService.create(loginUser.getUserId());
+					cartToOrder(loginUser.getUserId());
 					displayCartList(loginUser);
 					displayOrderList(loginUser);
 				} catch (Exception e1) {
@@ -1197,6 +1205,7 @@ public class MainFrame extends JFrame {
 		orderListPanel.setLayout(null);
 		
 		orderListIdTF = new JTextField();
+		orderListIdTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		orderListIdTF.setEditable(false);
 		orderListIdTF.setBounds(47, 10, 116, 21);
 		orderListPanel.add(orderListIdTF);
@@ -1234,6 +1243,11 @@ public class MainFrame extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		tabbedPane_1.setEnabledAt(2, false);
+		tabbedPane_3.setEnabledAt(0, false);
+		tabbedPane_3.setEnabledAt(1, false);
+		tabbedPane_3.setEnabledAt(2, false);
 		
 	}//생성자
 	
@@ -1361,8 +1375,14 @@ public class MainFrame extends JFrame {
 		}
 	}
 	
-	
-	private void cartToOrder() {
-		
+	public void cartToOrder(String userId) throws Exception {
+		userId = loginUser.getUserId();
+		orderService.create(userId);
 	}
+	
+	public void cartToOrder(String userId, int productNo, int productQty) throws Exception {
+		userId = loginUser.getUserId();
+		orderService.create(userId, productNo, productQty);
+	}
+	
 }

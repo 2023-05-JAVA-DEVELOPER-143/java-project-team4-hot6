@@ -75,6 +75,7 @@ public class MainFrameUser5 extends JFrame {
 	private JTabbedPane orderTabPanel;
 	private JComboBox userEditSexComboBox;
 	private UserDao userDao;
+	private JLabel pwCheckMsglabel;
 
 	/**
 	 * Launch the application.
@@ -200,6 +201,7 @@ public class MainFrameUser5 extends JFrame {
 						// 로그인 성공
 						User loginUser = userService.findUser(userId);
 						loginProcess(loginUser);
+						displayUserInfo(loginUser);
 
 					} else if (result == 0) {
 						// 로그인 실패
@@ -369,7 +371,7 @@ public class MainFrameUser5 extends JFrame {
 		userSignUpPanel.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
-		lblNewLabel_1.setBounds(58, 88, 57, 15);
+		lblNewLabel_1.setBounds(58, 71, 57, 15);
 		userSignUpPanel.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("비밀번호 확인");
@@ -436,6 +438,15 @@ public class MainFrameUser5 extends JFrame {
 					} else {
 						idCheckMsgLabel.setText("");
 					}
+					
+					if (password.equals("")) {
+						pwCheckMsglabel.setText("비밀번호를 입력하세요.");
+						userSignUpPwTF.requestFocus();
+						return;
+					} else {
+						pwCheckMsglabel.setText("");
+					}
+					
 					if (passwordCheck.equals(password)) {
 						User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone,
 							sex);
@@ -462,7 +473,7 @@ public class MainFrameUser5 extends JFrame {
 		userSignUpPanel.add(userSignUpButton);
 
 		userSignUpPwTF = new JPasswordField();
-		userSignUpPwTF.setBounds(128, 85, 142, 21);
+		userSignUpPwTF.setBounds(128, 68, 142, 21);
 		userSignUpPanel.add(userSignUpPwTF);
 
 		userSignUpPwCheckTF = new JPasswordField();
@@ -503,8 +514,13 @@ public class MainFrameUser5 extends JFrame {
 
 		idCheckMsgLabel = new JLabel("");
 		idCheckMsgLabel.setForeground(new Color(255, 0, 0));
-		idCheckMsgLabel.setBounds(68, 60, 240, 15);
+		idCheckMsgLabel.setBounds(125, 45, 170, 15);
 		userSignUpPanel.add(idCheckMsgLabel);
+		
+		pwCheckMsglabel = new JLabel("");
+		pwCheckMsglabel.setForeground(Color.RED);
+		pwCheckMsglabel.setBounds(125, 91, 170, 15);
+		userSignUpPanel.add(pwCheckMsglabel);
 
 //		JPanel userEditPanel = new JPanel();
 //		userEditPanel.setLayout(null);
@@ -512,16 +528,7 @@ public class MainFrameUser5 extends JFrame {
 
 		JPanel userEditPanel = new JPanel();
 		userEditPanel.setBackground(SystemColor.inactiveCaption);
-		userEditPanel.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				displayUserInfo(loginUser);
-
-			}
-
-		});
+		
 
 		userEditPanel.setLayout(null);
 		userTabPanel.addTab("회원정보", null, userEditPanel, null);
@@ -1117,7 +1124,8 @@ public class MainFrameUser5 extends JFrame {
 		/**** 로그인한 회원상세데이타 보여주기 *****/
 		userEditIDTF.setText(user.getUserId());
 		userEditPwTF.setText(user.getUserPw());
-		userEditPwTF.setText(user.getUserPwCheck());
+		userEditPwCheckTF.setText(user.getUserPwCheck());
+		userEditNameTF.setText(user.getUserName());
 		userEditEmailTF.setText(user.getUserEmail());
 		userEditBDTF.setText(user.getUserJumin());
 		userEditPhoneTF.setText(user.getUserPhone());

@@ -86,7 +86,7 @@ public class ProductDao {
 				                          rs.getString("product_image"),
 				                          rs.getInt("product_read_count"),
 				                          rs.getInt("product_seatLeft_count"));
-			 				productList.add(product);
+			 	productList.add(product);
 		}
 		
 		return productList;
@@ -143,7 +143,7 @@ public class ProductDao {
 	   /*
 	    * selectByMaxReadCount
 	    */
-	   public Product selectByMaxReadCount(int product_read_count) throws Exception{
+	   public Product selectByMaxReadCount() throws Exception{
 	      Product product=null;
 	      Connection con=dataSource.getConnection();
 	      PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_SELECT_MAX_READ_COUNT);

@@ -60,7 +60,7 @@ import java.awt.event.ContainerEvent;
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 
-public class MainFrame extends JFrame {
+public class MainFrame_230724 extends JFrame {
 	private UserService userService;
 	private ProductService productService;
 	private OrderService orderService;
@@ -125,10 +125,6 @@ public class MainFrame extends JFrame {
 	private JLabel productImageLabel;
 	private JTextField productSeatLeftCountTF;
 	private JComboBox productQtyComboBox;
-	private JPanel product_maxReadCount_pane;
-	private JLabel product_maxReadCount_Image_label;
-	private JLabel product_maxReadCount_name_label;
-	private JLabel product_maxReadCount_readCount_label;
 
 	/**
 	 * Launch the application.
@@ -149,7 +145,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
+	public MainFrame_230724() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 380, 495);
 		
@@ -266,7 +262,7 @@ public class MainFrame extends JFrame {
 						User loginUser = userService.findUser(userId);
 						loginProcess(loginUser);
 						displayUserInfo(loginUser);
-						showMaxReadCountProduct();
+
 					} else if (result == 0) {
 						// 로그인 실패
 						// JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인하세요.");
@@ -779,17 +775,6 @@ public class MainFrame extends JFrame {
 		productTabPannel.setLayout(null);
 		
 		tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				try {
-					showMaxReadCountProduct();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
 		tabbedPane_2.setBounds(0, 0, 359, 423);
 		productTabPannel.add(tabbedPane_2);
 		
@@ -798,7 +783,6 @@ public class MainFrame extends JFrame {
 		productMainPanel.setLayout(null);
 		
 		productSearchTF = new JTextField();
-		productSearchTF.setHorizontalAlignment(SwingConstants.CENTER);
 		productSearchTF.setText("오늘은 오일파스텔 배우자!");
 		productSearchTF.addMouseListener(new MouseAdapter() {
 			@Override
@@ -819,7 +803,8 @@ public class MainFrame extends JFrame {
 					List<Product> productList = productService.productSearch(productSearchTF.getText());
 					Product tempProduct = productList.get(0); 
 					showView(tempProduct);
-					changeProductTabPanel(2, -1);
+					
+					tabbedPane_2.setSelectedIndex(5);
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "찾으시는 상품이 없습니다.");;
 				}
@@ -829,23 +814,23 @@ public class MainFrame extends JFrame {
 		productMainPanel.add(productSearchButton);
 		
 		JLabel lblNewLabel_12 = new JLabel("수공예");
-		lblNewLabel_12.setBounds(67, 143, 57, 15);
+		lblNewLabel_12.setBounds(70, 162, 57, 15);
 		productMainPanel.add(lblNewLabel_12);
 		
 		JLabel lblNewLabel_13 = new JLabel("요리");
-		lblNewLabel_13.setBounds(239, 143, 57, 15);
+		lblNewLabel_13.setBounds(242, 162, 57, 15);
 		productMainPanel.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("미술");
-		lblNewLabel_14.setBounds(70, 272, 57, 15);
+		lblNewLabel_14.setBounds(73, 315, 57, 15);
 		productMainPanel.add(lblNewLabel_14);
 		
 		JLabel lblNewLabel_27 = new JLabel("플라워");
-		lblNewLabel_27.setBounds(233, 269, 57, 15);
+		lblNewLabel_27.setBounds(236, 312, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
 		
 		JPanel productMainHandCraftPanel = new JPanel();
-		productMainHandCraftPanel.setBounds(33, 40, 111, 93);
+		productMainHandCraftPanel.setBounds(36, 59, 111, 93);
 		productMainPanel.add(productMainHandCraftPanel);
 		
 		JLabel productMainHandCraftLabel = new JLabel("");
@@ -856,10 +841,10 @@ public class MainFrame extends JFrame {
 			}
 		});
 		productMainHandCraftPanel.add(productMainHandCraftLabel);
-		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/images/product_main_handcraft (1).png")));
+		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrame_230724.class.getResource("/images/product_main_handcraft (1).png")));
 		
 		JPanel productMainCookingPanel = new JPanel();
-		productMainCookingPanel.setBounds(200, 41, 111, 93);
+		productMainCookingPanel.setBounds(203, 60, 111, 93);
 		productMainPanel.add(productMainCookingPanel);
 		
 		JLabel productMainCookingLabel = new JLabel("");
@@ -873,7 +858,7 @@ public class MainFrame extends JFrame {
 		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_main_cooking (1).png")));
 		
 		JPanel productMainDrawingPanel = new JPanel();
-		productMainDrawingPanel.setBounds(35, 165, 111, 93);
+		productMainDrawingPanel.setBounds(38, 208, 111, 93);
 		productMainPanel.add(productMainDrawingPanel);
 		
 		JLabel productMainDrawingLabel = new JLabel("");
@@ -887,7 +872,7 @@ public class MainFrame extends JFrame {
 		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_main_drawing (1).png")));
 		
 		JPanel productMainFlowerPanel = new JPanel();
-		productMainFlowerPanel.setBounds(202, 165, 111, 93);
+		productMainFlowerPanel.setBounds(205, 208, 111, 93);
 		productMainPanel.add(productMainFlowerPanel);
 		
 		JLabel productMainFlowerLabel = new JLabel("");
@@ -899,23 +884,6 @@ public class MainFrame extends JFrame {
 		});
 		productMainFlowerPanel.add(productMainFlowerLabel);
 		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_main_flower-bouquet (1) (1).png")));
-		
-		product_maxReadCount_pane = new JPanel();
-		product_maxReadCount_pane.setLayout(null);
-		product_maxReadCount_pane.setBounds(24, 308, 319, 63);
-		productMainPanel.add(product_maxReadCount_pane);
-		
-		product_maxReadCount_Image_label = new JLabel("");
-		product_maxReadCount_Image_label.setBounds(0, 0, 120, 63);
-		product_maxReadCount_pane.add(product_maxReadCount_Image_label);
-		
-		product_maxReadCount_name_label = new JLabel("");
-		product_maxReadCount_name_label.setBounds(132, 10, 175, 15);
-		product_maxReadCount_pane.add(product_maxReadCount_name_label);
-		
-		product_maxReadCount_readCount_label = new JLabel("");
-		product_maxReadCount_readCount_label.setBounds(132, 35, 175, 15);
-		product_maxReadCount_pane.add(product_maxReadCount_readCount_label);
 		/******************* 상세페널로 이동 *******************/
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
@@ -1875,13 +1843,13 @@ public class MainFrame extends JFrame {
 	}
 	
 	// 제품파트
-	public void showView(Product product) throws Exception {
+	public void showView(Product product) {
 		String imageStr = product.getProduct_image();
 		productImageLabel.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/" + imageStr)));
+//		productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
 		productCategoryTF.setText(product.getProduct_category());
 		productNameTF.setText(product.getProduct_name());
-		productPriceTF.setText(String.valueOf(product.getProduct_price()));
-		productService.productReadCount(product.getProduct_no());
+		productPriceTF.setText(String.valueOf(product.getProduct_price()));//이 줄 위에다 read_count 증가시길것
 		productReadCountTF.setText(String.valueOf(product.getProduct_read_count()));
 		productDateTF.setText(String.valueOf(product.getProduct_start_date()));
 		productDetailTF.setText(product.getProduct_detail());
@@ -1896,13 +1864,6 @@ public class MainFrame extends JFrame {
 		cartService.addCart(tempCart);
 	}
 	
-	public Product showMaxReadCountProduct() throws Exception{
-		 Product maxProduct = productService.productMaxReadCount();
-		 product_maxReadCount_Image_label.setIcon(new ImageIcon(MainFrameProduct2_REAL_FIANAL.class.getResource("/" + maxProduct.getProduct_image())));
-		 product_maxReadCount_name_label.setText(String.valueOf(maxProduct.getProduct_name()));
-		 product_maxReadCount_readCount_label.setText(String.valueOf(maxProduct.getProduct_read_count()));
-		return maxProduct;		 
-	 }
 	
 	// 주문파트
 	private void displayCartList(User loginUser) {
@@ -1976,16 +1937,7 @@ public class MainFrame extends JFrame {
 	
 	public void cartToOrder(String userId) throws Exception {
 		userId = loginUser.getUserId();
-		List<Cart> cartList = cartService.getCartItemByUserId(userId);
-		for (Cart cart : cartList) {
-			int times = cart.getCart_qty();
-			Product product = cart.getProduct();
-			for (int i = 1; i <= times; i++) {
-				productService.productSeatLeftCount(product.getProduct_no());
-			}
-		}
 		orderService.create(userId);
-		
 	}
 	
 	public void cartToOrder(String userId, int productNo, int productQty) throws Exception {

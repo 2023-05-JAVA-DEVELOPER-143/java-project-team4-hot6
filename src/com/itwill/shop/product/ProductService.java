@@ -52,8 +52,8 @@ public class ProductService {
 	/*
 	 *  product 최대 조회수 로우 출력 기능
 	 */
-	public Product productMaxReadCount(int product_read_count) throws Exception{
-		return productDao.selectByMaxReadCount(product_read_count);
+	public Product productMaxReadCount() throws Exception{
+		return productDao.selectByMaxReadCount();
 	}
 
 	/*

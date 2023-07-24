@@ -605,6 +605,14 @@ public class MainFrameOrder extends JFrame {
 		productCategoryTF.setColumns(10);
 		
 		orderTabPannel = new JPanel();
+		orderTabPannel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(loginUser==null) {
+					tabbedPane_1.setSelectedIndex(1);
+				}
+			}
+		});
 		tabbedPane.addTab("주문", null, orderTabPannel, null);
 		orderTabPannel.setLayout(null);
 		

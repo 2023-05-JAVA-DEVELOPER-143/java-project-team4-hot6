@@ -100,10 +100,10 @@ public class MainFrameOrder extends JFrame {
 	private JPanel userTabPannel;
 	private JPanel productTabPannel;
 	private JPanel orderTabPannel;
-	private JTabbedPane tabbedPane_1;
+	private JTabbedPane userPane;
 	private JTabbedPane tabbedPane;
-	private JTabbedPane tabbedPane_2;
-	private JTabbedPane tabbedPane_3;
+	private JTabbedPane productPane;
+	private JTabbedPane orderPane;
 	private JTabbedPane tabbedPane_4;
 	
 
@@ -157,12 +157,12 @@ public class MainFrameOrder extends JFrame {
 		tabbedPane.addTab("회원", null, userTabPannel, null);
 		userTabPannel.setLayout(null);
 		
-		tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(0, 0, 359, 423);
-		userTabPannel.add(tabbedPane_1);
+		userPane = new JTabbedPane(JTabbedPane.TOP);
+		userPane.setBounds(0, 0, 359, 423);
+		userTabPannel.add(userPane);
 		
 		JPanel userLoginPanel = new JPanel();
-		tabbedPane_1.addTab("로그인", null, userLoginPanel, null);
+		userPane.addTab("로그인", null, userLoginPanel, null);
 		userLoginPanel.setLayout(null);
 		
 		textField = new JTextField();
@@ -222,7 +222,7 @@ public class MainFrameOrder extends JFrame {
 		userLoginPanel.add(btnNewButton_4);
 		
 		JPanel userSignUpPanel = new JPanel();
-		tabbedPane_1.addTab("회원가입", null, userSignUpPanel, null);
+		userPane.addTab("회원가입", null, userSignUpPanel, null);
 		userSignUpPanel.setLayout(null);
 		
 		userSignUpIdTF = new JTextField();
@@ -360,7 +360,7 @@ public class MainFrameOrder extends JFrame {
 		
 		JPanel userEditPanel = new JPanel();
 		userEditPanel.setLayout(null);
-		tabbedPane_1.addTab("회원정보", null, userEditPanel, null);
+		userPane.addTab("회원정보", null, userEditPanel, null);
 		
 		userEditIDTF = new JTextField();
 		userEditIDTF.setEditable(false);
@@ -446,7 +446,7 @@ public class MainFrameOrder extends JFrame {
 		userEditPanel.add(userEditQuitButton);
 		
 		JPanel userFindPanel = new JPanel();
-		tabbedPane_1.addTab("ID/PW찾기", null, userFindPanel, null);
+		userPane.addTab("ID/PW찾기", null, userFindPanel, null);
 		userFindPanel.setLayout(null);
 		
 		textField_1 = new JTextField();
@@ -482,12 +482,12 @@ public class MainFrameOrder extends JFrame {
 		tabbedPane.addTab("제품", null, productTabPannel, null);
 		productTabPannel.setLayout(null);
 		
-		tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_2.setBounds(0, 0, 359, 423);
-		productTabPannel.add(tabbedPane_2);
+		productPane = new JTabbedPane(JTabbedPane.TOP);
+		productPane.setBounds(0, 0, 359, 423);
+		productTabPannel.add(productPane);
 		
 		JPanel productMainPanel = new JPanel();
-		tabbedPane_2.addTab("메인", null, productMainPanel, null);
+		productPane.addTab("메인", null, productMainPanel, null);
 		productMainPanel.setLayout(null);
 		
 		textField_4 = new JTextField();
@@ -516,7 +516,7 @@ public class MainFrameOrder extends JFrame {
 		productMainPanel.add(lblNewLabel_27);
 		
 		JPanel productCategoryPanel = new JPanel();
-		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
+		productPane.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
 		
 		tabbedPane_4 = new JTabbedPane(JTabbedPane.TOP);
@@ -540,7 +540,7 @@ public class MainFrameOrder extends JFrame {
 		panel.setLayout(null);
 		
 		JPanel productDetailPanel = new JPanel();
-		tabbedPane_2.addTab("제품상세", null, productDetailPanel, null);
+		productPane.addTab("제품상세", null, productDetailPanel, null);
 		productDetailPanel.setLayout(null);
 		
 		productNameTF = new JTextField();
@@ -608,16 +608,16 @@ public class MainFrameOrder extends JFrame {
 		tabbedPane.addTab("주문", null, orderTabPannel, null);
 		orderTabPannel.setLayout(null);
 		
-		tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_3.setBounds(0, 0, 359, 423);
-		orderTabPannel.add(tabbedPane_3);
+		orderPane = new JTabbedPane(JTabbedPane.TOP);
+		orderPane.setBounds(0, 0, 359, 423);
+		orderTabPannel.add(orderPane);
 		
 		JPanel orderCartPanel = new JPanel();
-		tabbedPane_3.addTab("장바구니", null, orderCartPanel, null);
+		orderPane.addTab("장바구니", null, orderCartPanel, null);
 		orderCartPanel.setLayout(null);
 		
 		JScrollPane orderCartScrollPane = new JScrollPane();
-		orderCartScrollPane.setBounds(12, 10, 330, 157);
+		orderCartScrollPane.setBounds(0, 10, 330, 157);
 		orderCartPanel.add(orderCartScrollPane);
 		
 		orderCartTable = new JTable();
@@ -800,9 +800,19 @@ public class MainFrameOrder extends JFrame {
 		orderCartPanel.add(orderCartDeleteButton);
 		
 		JButton orderCartPayButton = new JButton("결제하기");
+		orderCartPayButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		orderCartPayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(loginUser==null) {
+					changeUserTabPanel(0);
+					JOptionPane.showMessageDialog(null, "로그인을 해주세요");
+				}else {
 				changeOrderTabPanel(1);
+			}
 			}
 		});
 		orderCartPayButton.setBounds(245, 348, 97, 23);
@@ -814,10 +824,9 @@ public class MainFrameOrder extends JFrame {
 		cartByProductQtyTF.setBounds(160, 302, 75, 21);
 		orderCartPanel.add(cartByProductQtyTF);
 		cartByProductQtyTF.setColumns(10);
-		
 		JPanel orderPayPanel = new JPanel();
 		orderPayPanel.setLayout(null);
-		tabbedPane_3.addTab("결제", null, orderPayPanel, null);
+		orderPane.addTab("결제", null, orderPayPanel, null);
 		
 		JScrollPane orderPayScrollPane = new JScrollPane();
 		orderPayScrollPane.setBounds(12, 10, 330, 142);
@@ -890,7 +899,7 @@ public class MainFrameOrder extends JFrame {
 		orderPayPanel.add(lblNewLabel_24);
 		
 		JPanel orderListPanel = new JPanel();
-		tabbedPane_3.addTab("주문내역", null, orderListPanel, null);
+		orderPane.addTab("주문내역", null, orderListPanel, null);
 		orderListPanel.setLayout(null);
 		
 		orderListIdTF = new JTextField();
@@ -929,22 +938,23 @@ public class MainFrameOrder extends JFrame {
 		userService = new UserService();
 		
 		//테스트
-		loginUser = userService.findUser("user10");
+//		loginUser = userService.findUser("user10");
+		loginUser = null;
 		
 		displayCartList(loginUser);
 	}
 	public void changeUserTabPanel(int userPanelNo) {
 	      tabbedPane.setSelectedIndex(0);
-	       tabbedPane_1.setSelectedIndex(userPanelNo);
+	       userPane.setSelectedIndex(userPanelNo);
 	   }
 	   public void changeProductTabPanel(int productPanelNo,int productCategoryPanelNo) {
 	      tabbedPane.setSelectedIndex(1);
-	      tabbedPane_2.setSelectedIndex(productPanelNo);
+	      productPane.setSelectedIndex(productPanelNo);
 	      tabbedPane_4.setSelectedIndex(productCategoryPanelNo);
 	   }
 	   public void changeOrderTabPanel(int orderPaneNo) {
 	      tabbedPane.setSelectedIndex(2);
-	      tabbedPane_3.setSelectedIndex(orderPaneNo);
+	      orderPane.setSelectedIndex(orderPaneNo);
 	   }
 	
 	private void displayCartList(User loginUser) {

@@ -67,5 +67,9 @@ public class OrderService {
 		return orderDao.findByUserId(selectUserId);
 	}
 	
+	public ArrayList<OrderItem> oiList(String selectUserId) throws Exception{
+		return orderDao.orderItemList(selectUserId);
+	}
+	
 	
 }

@@ -32,7 +32,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import com.itwill.shop.cart.Cart;
 import com.itwill.shop.cart.CartService;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.Product;
@@ -508,13 +507,9 @@ public class MainFrameProduct extends JFrame {
 					List<Product> productList = productService.productSearch(productSearchTF.getText());
 					Product tempProduct = productList.get(0); 
 					showView(tempProduct);
-					//상품상세페이지 활성화
-					tabbedPane_2.setEnabledAt(5, true);
 					tabbedPane_2.setSelectedIndex(5);
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "찾으시는 상품이 없습니다.");;
-					//상품상세페이지 불활성화
-					tabbedPane_2.setEnabledAt(5, false);
 					tabbedPane_2.setSelectedIndex(0);
 					
 				}
@@ -550,15 +545,9 @@ public class MainFrameProduct extends JFrame {
 		productMainHandCraftLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/* 메인에서 3번째 하위탭 카테고리별(수공예) 이동기능 구현불가 
-				 * 
-				 * Design 수정 
-				 * 
-				 * 카테고리탭 삭제후 탭페인 2단으로 UI 수정완료
-				 */
+				
 				tabbedPane_2.setSelectedIndex(1);
-				//선택 카테고리탭 활성화
-				tabbedPane_2.setEnabledAt(1, true);
+				
 			}
 		});
 		productMainHandCraftPanel.add(productMainHandCraftLabel);
@@ -572,15 +561,9 @@ public class MainFrameProduct extends JFrame {
 		productMainCookingLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/* 메인에서 3번째 하위탭 카테고리별(수공예) 이동기능 구현불가 
-				 * 
-				 * Design 수정 
-				 * 
-				 * 카테고리탭 삭제후 탭페인 2단으로 UI 수정완료
-				 */
+				
 				tabbedPane_2.setSelectedIndex(2);
-				//선택 카테고리탭 활성화
-				tabbedPane_2.setEnabledAt(2, true);
+			
 			}
 		});
 		productMainCookingPanel.add(productMainCookingLabel);
@@ -594,15 +577,9 @@ public class MainFrameProduct extends JFrame {
 		productMainDrawingLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/* 메인에서 3번째 하위탭 카테고리별(수공예) 이동기능 구현불가 
-				 * 
-				 * Design 수정 
-				 * 
-				 * 카테고리탭 삭제후 탭페인 2단으로 UI 수정완료
-				 */
+				
 				tabbedPane_2.setSelectedIndex(3);
-				//선택 카테고리탭 활성화
-				tabbedPane_2.setEnabledAt(3, true);
+			
 			}
 		});
 		productMainDrawingPanel.add(productMainDrawingLabel);
@@ -616,15 +593,9 @@ public class MainFrameProduct extends JFrame {
 		productMainFlowerLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/* 메인에서 3번째 하위탭 카테고리별(수공예) 이동기능 구현불가 
-				 * 
-				 * Design 수정 
-				 * 
-				 * 카테고리탭 삭제후 탭페인 2단으로 UI 수정완료
-				 */
+			
 				tabbedPane_2.setSelectedIndex(4);
-				//선택 카테고리탭 활성화
-				tabbedPane_2.setEnabledAt(4, true);
+				
 			}
 		});
 		productMainFlowerPanel.add(productMainFlowerLabel);
@@ -636,8 +607,7 @@ public class MainFrameProduct extends JFrame {
 		
 		product_category_handcraft_panel = new JPanel();
 		tabbedPane_2.addTab("수공예", null, product_category_handcraft_panel, null);
-		//메인 페이지 카테고리 선택하면 활성화(기본상태 불활성화) 
-		tabbedPane_2.setEnabledAt(1, false);
+		tabbedPane_2.setEnabledAt(1, true);
 		product_category_handcraft_panel.setLayout(null);
 		
 		JPanel handcraftPannel1 = new JPanel();
@@ -766,8 +736,7 @@ public class MainFrameProduct extends JFrame {
 		
 		product_category_cooking_panel = new JPanel();
 		tabbedPane_2.addTab("요리", null, product_category_cooking_panel, null);
-		//메인 페이지 카테고리 선택하면 활성화(기본상태 불활성화) 
-		tabbedPane_2.setEnabledAt(2, false);
+		tabbedPane_2.setEnabledAt(2, true);
 		product_category_cooking_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1_1_1 = new JPanel();
@@ -899,8 +868,7 @@ public class MainFrameProduct extends JFrame {
 		
 		productrr_category_drawing_panel = new JPanel();
 		tabbedPane_2.addTab("미술", null, productrr_category_drawing_panel, null);
-		//메인 페이지 카테고리 선택하면 활성화(기본상태 불활성화) 
-		tabbedPane_2.setEnabledAt(3, false);
+		tabbedPane_2.setEnabledAt(3, true);
 		productrr_category_drawing_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1_1_2 = new JPanel();
@@ -1029,8 +997,7 @@ public class MainFrameProduct extends JFrame {
 		
 		product_flower_panel = new JPanel();
 		tabbedPane_2.addTab("플라워", null, product_flower_panel, null);
-		//메인 페이지 카테고리 선택하면 활성화(기본상태 불활성화) 
-		tabbedPane_2.setEnabledAt(4, false);
+		tabbedPane_2.setEnabledAt(4, true);
 		product_flower_panel.setLayout(null);
 		
 		JPanel product_handcraft_pannel1 = new JPanel();
@@ -1159,8 +1126,7 @@ public class MainFrameProduct extends JFrame {
 		
 		productDetailPanel1 = new JPanel();
 		tabbedPane_2.addTab("제품상세", null, productDetailPanel1, null);
-		//상품 선택하면 활성화(기본상태 불활성화) 
-		tabbedPane_2.setEnabledAt(5, false);
+		tabbedPane_2.setEnabledAt(5, true);
 		productDetailPanel1.setLayout(null);
 		
 		productNameTF = new JTextField();
@@ -1358,6 +1324,10 @@ public class MainFrameProduct extends JFrame {
 		orderCartPanel.add(orderCartDeleteButton);
 		
 		JButton orderCartPayButton = new JButton("결제하기");
+		orderCartPayButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		orderCartPayButton.setBounds(245, 330, 97, 23);
 		orderCartPanel.add(orderCartPayButton);
 		

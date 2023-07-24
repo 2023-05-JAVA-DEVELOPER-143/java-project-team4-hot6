@@ -5,10 +5,10 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
-import java.util.Map;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -36,12 +36,9 @@ import javax.swing.table.DefaultTableModel;
 import com.itwill.shop.cart.CartService;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.Product;
-import com.itwill.shop.product.ProductDao;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class MainFrameProduct2 extends JFrame {
 	

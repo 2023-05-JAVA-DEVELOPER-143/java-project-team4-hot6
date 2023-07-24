@@ -1637,7 +1637,12 @@ public class MainFrame extends JFrame {
 		JButton orderCartPayButton = new JButton("결제하기");
 		orderCartPayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(loginUser==null) {
+					changeUserTabPanel(0);
+					JOptionPane.showMessageDialog(null, "로그인을 해주세요");
+				} else {
 				changeOrderTabPanel(1);
+				}
 			}
 		});
 		orderCartPayButton.setBounds(245, 330, 97, 23);

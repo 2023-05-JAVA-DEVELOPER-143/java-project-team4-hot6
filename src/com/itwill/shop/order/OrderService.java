@@ -1,12 +1,15 @@
 package com.itwill.shop.order;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.shop.cart.Cart;
 import com.itwill.shop.cart.CartDao;
 import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductDao;
+import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserDao;
+import com.itwill.shop.userinfo.UserService;
 
 public class OrderService {
 	private OrderDao orderDao;
@@ -17,6 +20,7 @@ public class OrderService {
 	public OrderService() throws Exception {
 		orderDao=new OrderDao();
 		productDao = new ProductDao();
+		userDao = new UserDao();
 		cartDao = new CartDao();
 	}
 	
@@ -27,20 +31,19 @@ public class OrderService {
 	}
 
 	// 주문생성 (카트 -> 결제)
-	public int create(String sUserId, String[] cart_item_noStr_array) throws Exception {
+	public int create(String sUserId) throws Exception {
+		List<Cart> cartList=cartDao.findByUserId(sUserId);
 		ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
+		User cartUser = userDao.findByUserId(sUserId);
 		int o_tot_price=0;
-		for(int i =0;i<cart_item_noStr_array.length;i++) {
-			Cart cartItem = cartDao.findByCartNo(Integer.parseInt(cart_item_noStr_array[i]));
-			OrderItem orderItem=new OrderItem(0, cartItem.getCart_qty(),cartItem.getProduct(), 0);
+		for (Cart cart : cartList) {
+			OrderItem orderItem=new OrderItem(0, cart.getCart_qty(), cart.getProduct(), 0);
 			orderItemList.add(orderItem);
 			o_tot_price+=orderItem.getOiQty()*orderItem.getProduct().getProduct_price();
 		}
-		Order newOrder=new Order(0, sUserId, userDao.findByUserId(sUserId).getUserPhone(), o_tot_price, null, sUserId, orderItemList);
+		Order newOrder=new Order(0, cartUser.getUserName(), cartUser.getUserPhone(), o_tot_price, null, sUserId, orderItemList);
 		orderDao.insert(newOrder);
-		for(int i =0;i<cart_item_noStr_array.length;i++) {
-			cartDao.deleteByCartNo(Integer.parseInt(cart_item_noStr_array[i]));
-		}
+		cartDao.deleteByCartUserId(sUserId);
 		return 0;
 	}
 	
@@ -52,7 +55,7 @@ public class OrderService {
 		orderItemList.add(orderItem);
 		Order newOrder=
 				new Order(0,
-						sUserId, 
+						userDao.findByUserId(sUserId).getUserName(), 
 						userDao.findByUserId(sUserId).getUserPhone(),
 						orderItemList.get(0).getOiQty()*orderItemList.get(0).getProduct().getProduct_price(),
 						null,

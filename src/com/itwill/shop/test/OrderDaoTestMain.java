@@ -2,7 +2,10 @@ package com.itwill.shop.test;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
+import com.itwill.shop.cart.Cart;
+import com.itwill.shop.cart.CartDao;
 import com.itwill.shop.order.Order;
 import com.itwill.shop.order.OrderDao;
 import com.itwill.shop.order.OrderItem;
@@ -31,6 +34,8 @@ public class OrderDaoTestMain {
 		for (Order order : orderList) {
 			System.out.println(order.getOrderItemList());
 		}
+		
+		
 		
 		
 		

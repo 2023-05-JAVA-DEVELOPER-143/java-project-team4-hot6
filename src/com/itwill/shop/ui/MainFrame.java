@@ -257,6 +257,9 @@ public class MainFrame extends JFrame {
 						User loginUser = userService.findUser(userId);
 						loginProcess(loginUser);
 						displayUserInfo(loginUser);
+						tabbedPane_3.setEnabledAt(0, true);
+						tabbedPane_3.setEnabledAt(1, true);
+						tabbedPane_3.setEnabledAt(2, true);
 
 					} else if (result == 0) {
 						// 로그인 실패
@@ -312,6 +315,9 @@ public class MainFrame extends JFrame {
 						System.out.println("num: " + num);
 						loginUser = noUser;
 						setTitle(userName + " 님 로그인");
+						tabbedPane_3.setEnabledAt(0, true);
+						tabbedPane_3.setEnabledAt(1, true);
+						tabbedPane_3.setEnabledAt(2, true);
 						System.out.println("test");
 
 //				shopTabbedPane.setSelectedIndex(1);
@@ -1245,6 +1251,12 @@ public class MainFrame extends JFrame {
 		}
 		
 		tabbedPane_1.setEnabledAt(2, false);
+<<<<<<< HEAD
+=======
+		tabbedPane_3.setEnabledAt(0, false);
+		tabbedPane_3.setEnabledAt(1, false);
+		tabbedPane_3.setEnabledAt(2, false);
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6.git
 		
 	}//생성자
 	
@@ -1285,6 +1297,9 @@ public class MainFrame extends JFrame {
 		tabbedPane_1.setEnabledAt(1, true);
 		tabbedPane_1.setEnabledAt(2, false);
 		tabbedPane_1.setSelectedIndex(0);
+		tabbedPane_3.setEnabledAt(0, false);
+		tabbedPane_3.setEnabledAt(1, false);
+		tabbedPane_3.setEnabledAt(2, false);
 	}
 	
 	private void displayUserInfo(User user) {

@@ -128,7 +128,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					MainFrame_Original frame = new MainFrame_Original();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -873,7 +873,7 @@ public class MainFrame extends JFrame {
 		
 		JLabel productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		productImageLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/images/nothing.jpg")));
+		productImageLabel.setIcon(new ImageIcon(MainFrame_Original.class.getResource("/images/nothing.jpg")));
 		productImageLabel.setBounds(12, 14, 158, 218);
 		productDetailPanel.add(productImageLabel);
 		
@@ -1251,9 +1251,12 @@ public class MainFrame extends JFrame {
 		}
 		
 		tabbedPane_1.setEnabledAt(2, false);
+<<<<<<< HEAD
+=======
 		tabbedPane_3.setEnabledAt(0, false);
 		tabbedPane_3.setEnabledAt(1, false);
 		tabbedPane_3.setEnabledAt(2, false);
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6.git
 		
 	}//생성자
 	

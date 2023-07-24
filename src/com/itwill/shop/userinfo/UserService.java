@@ -1,5 +1,8 @@
 package com.itwill.shop.userinfo;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.regex.Pattern;
 
 
@@ -182,6 +185,10 @@ public class UserService {
 	 */
 	public int remove(String userId) throws Exception {
 		return userDao.delete(userId);
+	}
+	
+	public User findUserByPhone(String userPhone) throws Exception{
+		return userDao.getUserByPhone(userPhone);
 	}
 
 }

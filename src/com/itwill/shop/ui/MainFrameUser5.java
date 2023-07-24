@@ -1,17 +1,37 @@
 package com.itwill.shop.ui;
 
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserDao;
 import com.itwill.shop.userinfo.UserService;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class MainFrameUser5 extends JFrame {
 
@@ -142,7 +162,7 @@ public class MainFrameUser5 extends JFrame {
 
 		JLabel userIdLabel = new JLabel("아이디");
 		userIdLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		userIdLabel.setBounds(50, 46, 57, 15);
+		userIdLabel.setBounds(60, 46, 57, 15);
 		userLoginPanel.add(userIdLabel);
 
 		JLabel userPasswordLabel = new JLabel("비밀번호");
@@ -201,7 +221,11 @@ public class MainFrameUser5 extends JFrame {
 						// 로그인 성공
 						User loginUser = userService.findUser(userId);
 						loginProcess(loginUser);
+						userIdTF.setText("");
+						userPasswordTF.setText("");
 						displayUserInfo(loginUser);
+						
+						
 
 					} else if (result == 0) {
 						// 로그인 실패
@@ -615,13 +639,15 @@ public class MainFrameUser5 extends JFrame {
 	                // 정보 수정 기능 구현
 	            	String password = new String(userEditPwTF.getPassword());
 	            	String passwordCheck = new String(userEditPwCheckTF.getPassword());
-                    String name = userNameTF.getText();
+                    String name = userEditNameTF.getText();
                     String email=userEditEmailTF.getText();
                     //String emailCheck=userEditEmailCheckBox.getActionCommand();
-                    //String birth=userEditBDTF.getText();
+                    String birth=userEditBDTF.getText();
                     String phone=userEditPhoneTF.getText();
                     String gender=userEditSexComboBox.getActionCommand();
-                    	               
+                    	
+                 
+                    
                     if (password.equals(passwordCheck)) {
 	                  //비번일치시 실행
 	                    loginUser.setUserName(name);
@@ -634,6 +660,7 @@ public class MainFrameUser5 extends JFrame {
 						}
 						loginUser.setUserEmailSend(eSend);
 	                    loginUser.setUserGender(gender);
+	                    loginUser.setUserPhone(phone);
 
 	                    try {
 	                        userService.UpdateUser(loginUser);

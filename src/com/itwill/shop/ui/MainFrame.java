@@ -721,7 +721,11 @@ public class MainFrame extends JFrame {
 				User newUser=new User();
 				String userPhone=textField_1.getText();
 				try {
+					if(userService.findUserByPhone(userPhone) != null) {
 					newUser=userService.findUserByPhone(userPhone);
+					} else {
+						JOptionPane.showMessageDialog(null, "없는 번호입니다.");
+					}
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

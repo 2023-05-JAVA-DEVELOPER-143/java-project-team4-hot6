@@ -1117,7 +1117,8 @@ public class MainFrameUser5 extends JFrame {
 		/**** 로그인한 회원상세데이타 보여주기 *****/
 		userEditIDTF.setText(user.getUserId());
 		userEditPwTF.setText(user.getUserPw());
-		userEditPwTF.setText(user.getUserPwCheck());
+		userEditPwCheckTF.setText(user.getUserPwCheck());
+		userEditNameTF.setText(user.getUserName());
 		userEditEmailTF.setText(user.getUserEmail());
 		userEditBDTF.setText(user.getUserJumin());
 		userEditPhoneTF.setText(user.getUserPhone());

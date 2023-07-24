@@ -40,7 +40,7 @@ import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
 
-public class MainFrameProduct extends JFrame {
+public class MainFrameProduct3 extends JFrame {
 	
 	//서비스 객체 멤버변수 선언
 	private ProductService productService;
@@ -110,7 +110,7 @@ public class MainFrameProduct extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrameProduct frame = new MainFrameProduct();
+					MainFrameProduct3 frame = new MainFrameProduct3();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -122,7 +122,7 @@ public class MainFrameProduct extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrameProduct() {
+	public MainFrameProduct3() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 380, 495);
 		
@@ -552,7 +552,7 @@ public class MainFrameProduct extends JFrame {
 			}
 		});
 		productMainHandCraftPanel.add(productMainHandCraftLabel);
-		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_handcraft (1).png")));
+		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_main_handcraft (1).png")));
 		
 		JPanel productMainCookingPanel = new JPanel();
 		productMainCookingPanel.setBounds(205, 42, 111, 93);
@@ -568,7 +568,7 @@ public class MainFrameProduct extends JFrame {
 			}
 		});
 		productMainCookingPanel.add(productMainCookingLabel);
-		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_cooking (1).png")));
+		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_main_cooking (1).png")));
 		
 		JPanel productMainDrawingPanel = new JPanel();
 		productMainDrawingPanel.setBounds(38, 170, 111, 93);
@@ -584,7 +584,7 @@ public class MainFrameProduct extends JFrame {
 			}
 		});
 		productMainDrawingPanel.add(productMainDrawingLabel);
-		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_drawing (1).png")));
+		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_main_drawing (1).png")));
 		
 		JPanel productMainFlowerPanel = new JPanel();
 		productMainFlowerPanel.setBounds(205, 170, 111, 93);
@@ -600,7 +600,7 @@ public class MainFrameProduct extends JFrame {
 			}
 		});
 		productMainFlowerPanel.add(productMainFlowerLabel);
-		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_main_flower-bouquet (1) (1).png")));
+		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_main_flower-bouquet (1) (1).png")));
 		/******************* 상세페널로 이동 *******************/
 		/********************************************************/
 		/******************* 상세페널로 이동 *******************/
@@ -616,7 +616,7 @@ public class MainFrameProduct extends JFrame {
 		product_category_handcraft_panel.add(handcraftPannel1);
 		
 		product_handcraft_image1 = new JLabel("");
-		product_handcraft_image1.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_handcraft(1).jpg")));
+		product_handcraft_image1.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_handcraft(1).jpg")));
 		handcraftPannel1.add(product_handcraft_image1);
 		
 		JPanel product_handcraft_pannel2_1 = new JPanel();
@@ -624,7 +624,7 @@ public class MainFrameProduct extends JFrame {
 		product_category_handcraft_panel.add(product_handcraft_pannel2_1);
 		
 		JLabel product_handcraft_image2 = new JLabel("");		
-		product_handcraft_image2.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_handcraft(2).jpg")));
+		product_handcraft_image2.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_handcraft(2).jpg")));
 		product_handcraft_pannel2_1.add(product_handcraft_image2);
 		
 		JLabel product_handcraft_info1 = new JLabel("[성수] 물레 도자기 만들기");
@@ -642,7 +642,7 @@ public class MainFrameProduct extends JFrame {
 		product_category_handcraft_panel.add(product_handcraft_pannel3_1);
 		
 		JLabel product_handcraft_image3 = new JLabel("");
-		product_handcraft_image3.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_handcraft(3).jpg")));
+		product_handcraft_image3.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_handcraft(3).jpg")));
 		product_handcraft_pannel3_1.add(product_handcraft_image3);
 		
 		JPanel product_handcraft_pannel4_1 = new JPanel();
@@ -650,7 +650,7 @@ public class MainFrameProduct extends JFrame {
 		product_category_handcraft_panel.add(product_handcraft_pannel4_1);
 		
 		JLabel product_handcraft_image4 = new JLabel("");
-		product_handcraft_image4.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_handcraft(4).jpg")));
+		product_handcraft_image4.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_handcraft(4).jpg")));
 		product_handcraft_pannel4_1.add(product_handcraft_image4);
 		
 		JLabel product_handcraft_info3 = new JLabel("[연남] 가죽공예 카드지갑");
@@ -678,7 +678,7 @@ public class MainFrameProduct extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		product_cooking_image1.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_cooking(1).jpg")));
+		product_cooking_image1.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_cooking(1).jpg")));
 		product_handcraft_pannel1_1_1.add(product_cooking_image1);
 		
 		JPanel product_handcraft_pannel2_1_1 = new JPanel();
@@ -689,7 +689,7 @@ public class MainFrameProduct extends JFrame {
 		product_cooking_image2.addMouseListener(new MouseAdapter() {
 			
 		});
-		product_cooking_image2.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_cooking(2).jpg")));
+		product_cooking_image2.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_cooking(2).jpg")));
 		product_handcraft_pannel2_1_1.add(product_cooking_image2);
 		
 		JLabel product_cooking_info1 = new JLabel("[서촌] 피낭시에 만들기");
@@ -707,7 +707,7 @@ public class MainFrameProduct extends JFrame {
 		product_category_cooking_panel.add(product_handcraft_pannel3_1_1);
 		
 		JLabel product_cooking_image3 = new JLabel("");
-		product_cooking_image3.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_cooking(3).jpg")));
+		product_cooking_image3.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_cooking(3).jpg")));
 		product_handcraft_pannel3_1_1.add(product_cooking_image3);
 		
 		JPanel product_handcraft_pannel4_1_1 = new JPanel();
@@ -715,7 +715,7 @@ public class MainFrameProduct extends JFrame {
 		product_category_cooking_panel.add(product_handcraft_pannel4_1_1);
 		
 		JLabel product_cooking_image4 = new JLabel("");
-		product_cooking_image4.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_cooking(4).jpg")));
+		product_cooking_image4.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_cooking(4).jpg")));
 		product_handcraft_pannel4_1_1.add(product_cooking_image4);
 		
 		JLabel product_cooking_info3 = new JLabel("[마포] 크림마들렌 만들기");
@@ -738,7 +738,7 @@ public class MainFrameProduct extends JFrame {
 		productrr_category_drawing_panel.add(product_handcraft_pannel1_1_2);
 		
 		JLabel product_drawing_image1 = new JLabel("");
-		product_drawing_image1.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_drawing(1).jpg")));
+		product_drawing_image1.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_drawing(1).jpg")));
 		product_handcraft_pannel1_1_2.add(product_drawing_image1);
 		
 		JPanel product_handcraft_pannel2_1_2 = new JPanel();
@@ -746,7 +746,7 @@ public class MainFrameProduct extends JFrame {
 		productrr_category_drawing_panel.add(product_handcraft_pannel2_1_2);
 		
 		JLabel product_drawing_image2 = new JLabel("");
-		product_drawing_image2.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_drawing(2).jpg")));
+		product_drawing_image2.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_drawing(2).jpg")));
 		product_handcraft_pannel2_1_2.add(product_drawing_image2);
 		
 		JLabel product_drawing_info1 = new JLabel("[마포] 브릭베어 아크릴화");
@@ -764,7 +764,7 @@ public class MainFrameProduct extends JFrame {
 		productrr_category_drawing_panel.add(product_handcraft_pannel3_1_2);
 		
 		JLabel product_drawing_image3 = new JLabel("");
-		product_drawing_image3.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_drawing(3).jpg")));
+		product_drawing_image3.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_drawing(3).jpg")));
 		product_handcraft_pannel3_1_2.add(product_drawing_image3);
 		
 		JPanel product_handcraft_pannel4_1_2 = new JPanel();
@@ -772,7 +772,7 @@ public class MainFrameProduct extends JFrame {
 		productrr_category_drawing_panel.add(product_handcraft_pannel4_1_2);
 		
 		JLabel product_drawing_image4 = new JLabel("");
-		product_drawing_image4.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_drawing(4).jpg")));
+		product_drawing_image4.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_drawing(4).jpg")));
 		product_handcraft_pannel4_1_2.add(product_drawing_image4);
 		
 		JLabel product_drawing_info3 = new JLabel("[합정] 나이프화 아크릴화");
@@ -802,7 +802,7 @@ public class MainFrameProduct extends JFrame {
 			}
 		
 		});
-		product_flower_image1.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_flower(1).jpg")));
+		product_flower_image1.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_flower(1).jpg")));
 		product_handcraft_pannel1.add(product_flower_image1);
 		
 		JPanel product_handcraft_pannel2 = new JPanel();
@@ -810,7 +810,7 @@ public class MainFrameProduct extends JFrame {
 		product_flower_panel.add(product_handcraft_pannel2);
 		
 		JLabel product_flower_image2 = new JLabel("");
-		product_flower_image2.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_flower(2).jpg")));
+		product_flower_image2.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_flower(2).jpg")));
 		product_handcraft_pannel2.add(product_flower_image2);
 		
 		JPanel product_handcraft_pannel3 = new JPanel();
@@ -818,7 +818,7 @@ public class MainFrameProduct extends JFrame {
 		product_flower_panel.add(product_handcraft_pannel3);
 		
 		JLabel product_flower_image3 = new JLabel("");
-		product_flower_image3.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_flower(3).jpg")));
+		product_flower_image3.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_flower(3).jpg")));
 		product_handcraft_pannel3.add(product_flower_image3);
 		
 		JPanel product_handcraft_pannel4 = new JPanel();
@@ -826,7 +826,7 @@ public class MainFrameProduct extends JFrame {
 		product_flower_panel.add(product_handcraft_pannel4);
 		
 		JLabel product_flower_image4 = new JLabel("");
-		product_flower_image4.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/product_flower(4).jpg")));
+		product_flower_image4.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/product_flower(4).jpg")));
 		product_handcraft_pannel4.add(product_flower_image4);
 		
 		JLabel product_flower_info1 = new JLabel("[종로] 나만의 작은정원");
@@ -891,7 +891,7 @@ public class MainFrameProduct extends JFrame {
 		
 		productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
+		productImageLabel.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/images/nothing.jpg")));
 		productImageLabel.setBounds(31, 14, 158, 145);
 		productDetailPanel1.add(productImageLabel);
 		
@@ -1170,7 +1170,7 @@ public class MainFrameProduct extends JFrame {
 		
 		public void showView(Product product) {
 			String imageStr = product.getProduct_image();
-			productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/" + imageStr)));
+			productImageLabel.setIcon(new ImageIcon(MainFrameProduct3.class.getResource("/" + imageStr)));
 //			productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
 			productCategoryTF.setText(product.getProduct_category());
 			productNameTF.setText(product.getProduct_name());

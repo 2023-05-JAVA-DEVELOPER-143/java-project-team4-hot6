@@ -115,7 +115,7 @@ public class CartDao {
 													rs.getInt("product_price"),
 													rs.getString("product_detail"),
 													rs.getString("product_image"),
-													rs.getInt("product_read_count"))
+													rs.getInt("product_read_count"),0)
 						)
 					);
 			}
@@ -150,7 +150,7 @@ public class CartDao {
 									rs.getInt("product_price"),
 									rs.getString("product_detail"),
 									rs.getString("product_image"),
-									rs.getInt("product_read_count"))
+									rs.getInt("product_read_count"),0)
 						);
 	
 			}

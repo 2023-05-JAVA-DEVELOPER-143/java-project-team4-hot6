@@ -12,7 +12,7 @@ public class CartDaoTestMain {
 		CartDao cartDao=new CartDao();
 		System.out.println("1.insert");
 		Cart addCart=new Cart(0, 1, "guard3",
-				new Product(1, new Date(0), "공예", "축구수업", 5000, "재밌는 수업", "/images", 0));
+				new Product(1, new Date(0), "공예", "축구수업", 5000, "재밌는 수업", "/images", 0, 0));
 		
 		int rowCount = -999;
 		

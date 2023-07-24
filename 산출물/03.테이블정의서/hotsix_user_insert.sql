@@ -11,7 +11,7 @@ insert into userinfo(user_id,user_pw,user_pw_check,user_name, user_email, user_e
 insert into userinfo(user_id,user_pw,user_pw_check,user_name, user_email, user_email_send, user_jumin, user_phone, user_gender)
             values('user3', '3333','3333','이현승','user3@naver.com', 'T', '770811', '010-3333-3333','남성');
 insert into userinfo(user_id,user_pw,user_pw_check,user_name, user_email, user_email_send, user_jumin, user_phone, user_gender)
-            values('user4', '4444','4444','차경주','user4@naver.com', 'T', '901014', '010-4444-4444','남성');
+            values('user4', '4444','4444','차경진','user4@naver.com', 'T', '901014', '010-4444-4444','남성');
 insert into userinfo(user_id,user_pw,user_pw_check,user_name, user_email, user_email_send, user_jumin, user_phone, user_gender)
             values('user5', '5555','5555','이승규','user5@naver.com', 'F', '870522', '010-5555-5555','남성');
 insert into userinfo(user_id,user_pw,user_pw_check,user_name, user_email, user_email_send, user_jumin, user_phone, user_gender)

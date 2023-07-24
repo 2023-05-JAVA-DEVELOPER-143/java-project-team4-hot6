@@ -7,7 +7,10 @@ public class OrderServiceTestMain {
 	public static void main(String[] args) throws Exception {
 		OrderService orderService = new OrderService();
 		
-		System.out.println(orderService.list("guard1"));
+		
+		
+		
+		orderService.create("ss", 2, 3);
 		
 		
 		

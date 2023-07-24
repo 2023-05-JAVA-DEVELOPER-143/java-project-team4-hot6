@@ -2549,7 +2549,7 @@ public class MainFrameProduct extends JFrame {
 				
 			}
 		}*/
-	} // 생성자 끝
+	} // 생성자 끝//
 		
 		public void showView(Product product) {
 			String imageStr = product.getProduct_image();

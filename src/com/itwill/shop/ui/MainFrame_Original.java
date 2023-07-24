@@ -59,7 +59,7 @@ import java.awt.event.ContainerEvent;
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 
-public class MainFrame extends JFrame {
+public class MainFrame_Original extends JFrame {
 	private UserService userService;
 	private ProductService productService;
 	private OrderService orderService;
@@ -140,7 +140,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
+	public MainFrame_Original() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 380, 495);
 		

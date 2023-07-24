@@ -50,6 +50,7 @@ public class User {
 		this.userId=userId;
 		this.userPw=userPw;
 	}
+
 	/*************************************/
 	
 	public String getUserId() {

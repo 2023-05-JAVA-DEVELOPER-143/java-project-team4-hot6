@@ -618,7 +618,7 @@ public class MainFrameUser5 extends JFrame {
                     String name = userNameTF.getText();
                     String email=userEditEmailTF.getText();
                     //String emailCheck=userEditEmailCheckBox.getActionCommand();
-                    //String birth=userEditBDTF.getText();
+                    String birth=userEditBDTF.getText();
                     String phone=userEditPhoneTF.getText();
                     String gender=userEditSexComboBox.getActionCommand();
                     	               

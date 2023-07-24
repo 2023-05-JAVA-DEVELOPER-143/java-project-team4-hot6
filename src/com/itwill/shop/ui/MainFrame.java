@@ -103,7 +103,7 @@ public class MainFrame extends JFrame {
 	private JTextField orderCartDetailTF;
 	private JTextField orderCartDateTF;
 	private JTextField orderPayPriceTF;
-	private JTable table;
+	private JTable orderPayTable;
 	private JTextField orderPayNameTF;
 	private JTextField orderPayPhoneTF;
 	private JTextField productCategoryTF;
@@ -898,18 +898,10 @@ public class MainFrame extends JFrame {
 			public void stateChanged(ChangeEvent e) {
 				int selectedIndex = tabbedPane.getSelectedIndex();
                 if (selectedIndex == 2) {
-                	// 임시 테스트용
-                	try {
-                		loginUser = userService.findUser("user10");
-                	} catch (Exception e1) {
-                		e1.printStackTrace();
-                	}
-                	
                 	// 장바구니 로딩
                 	displayCartList(loginUser);
                 	
                 	// 카트 to 결제
-                	orderPayPriceTF.setText("5000");
                 	orderPayNameTF.setText(loginUser.getUserName());
                 	orderPayPhoneTF.setText(loginUser.getUserPhone());
                 	
@@ -974,6 +966,7 @@ public class MainFrame extends JFrame {
 		orderCartScrollPane.setViewportView(orderCartTable);
 		
 		orderCartPriceTF = new JTextField();
+		orderCartPriceTF.setText("0");
 		orderCartPriceTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		orderCartPriceTF.setEditable(false);
 		orderCartPriceTF.setBounds(201, 177, 116, 21);
@@ -1121,9 +1114,9 @@ public class MainFrame extends JFrame {
 		orderPayScrollPane.setBounds(12, 10, 330, 142);
 		orderPayPanel.add(orderPayScrollPane);
 		
-		table = new JTable();
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setModel(new DefaultTableModel(
+		orderPayTable = new JTable();
+		orderPayTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		orderPayTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},
 				{null, null, null, null, null},
@@ -1135,7 +1128,7 @@ public class MainFrame extends JFrame {
 				"\uBC88\uD638", "\uAC15\uC758\uBA85", "\uC778\uC6D0", "\uAC00\uACA9", "\uCD1D\uAE08\uC561"
 			}
 		));
-		orderPayScrollPane.setViewportView(table);
+		orderPayScrollPane.setViewportView(orderPayTable);
 		
 		orderPayPriceTF = new JTextField();
 		orderPayPriceTF.setEditable(false);
@@ -1155,6 +1148,14 @@ public class MainFrame extends JFrame {
 		orderPayPayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, orderPayPaymentComboBox.getSelectedItem() + "로 결제합니다.");
+				try {
+					orderService.create(loginUser.getUserId());
+					displayCartList(loginUser);
+					displayOrderList(loginUser);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				tabbedPane_3.setSelectedIndex(2);
 			}
 		});
@@ -1191,12 +1192,6 @@ public class MainFrame extends JFrame {
 		orderPayPanel.add(lblNewLabel_24);
 		
 		JPanel orderListPanel = new JPanel();
-		orderListPanel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-		});
 		
 		tabbedPane_3.addTab("주문내역", null, orderListPanel, null);
 		orderListPanel.setLayout(null);
@@ -1324,9 +1319,11 @@ public class MainFrame extends JFrame {
 				
 			}
 			orderCartPriceTF.setText(String.valueOf(price));
+			orderPayPriceTF.setText(String.valueOf(price));
 			
 			DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
 			orderCartTable.setModel(tableModel);
+			orderPayTable.setModel(tableModel);
 		}catch (Exception e1) {
 			System.out.println("카트리스트보기에러-->"+e1.getMessage());
 		}
@@ -1362,5 +1359,10 @@ public class MainFrame extends JFrame {
 			System.out.println("회원리스트보기에러-->"+e1.getMessage());
 			
 		}
+	}
+	
+	
+	private void cartToOrder() {
+		
 	}
 }

@@ -30,6 +30,7 @@ import com.itwill.shop.cart.CartService;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
+import com.itwill.shop.userinfo.UserDao;
 import com.itwill.shop.userinfo.UserService;
 
 import javax.swing.SwingConstants;
@@ -53,8 +54,7 @@ public class MainFrameOrder extends JFrame {
 	private OrderService orderService;
 	private UserService userService;
 	
-	private User loginUser = null;
-	
+	private User loginUser= null;
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
 	private JTextField userSignupNameTF;
@@ -800,6 +800,14 @@ public class MainFrameOrder extends JFrame {
 		orderCartPanel.add(orderCartDeleteButton);
 		
 		JButton orderCartPayButton = new JButton("결제하기");
+<<<<<<< HEAD
+		orderCartPayButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+=======
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6.git
 		orderCartPayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				changeOrderTabPanel(1);
@@ -929,7 +937,12 @@ public class MainFrameOrder extends JFrame {
 		userService = new UserService();
 		
 		//테스트
+<<<<<<< HEAD
+//		loginUser = userService.findUser("user10");
+		loginUser = null;
+=======
 		loginUser = userService.findUser("user10");
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team4-hot6.git
 		
 		displayCartList(loginUser);
 	}

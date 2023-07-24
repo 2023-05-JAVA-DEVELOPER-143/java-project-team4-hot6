@@ -2,8 +2,11 @@ package com.itwill.shop.ui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -82,9 +85,16 @@ public class MainFrameUser2 extends JFrame {
 	private User loginUser = null;
 	private JLabel userLoginIdMessageLabel;
 	private JLabel userLoginPasswordMessageLabel;
-	private JTabbedPane tabbedPane_1;
+	private JTabbedPane userTabPanel;
 	private JLabel userLoginNameMessageLabel;
 	private JLabel userLoginPhoneMessageLabel;
+	private JTabbedPane productTabPanel;
+	private JPanel productPanel;
+	private JTabbedPane shopTabbedPane;
+	private JPanel productCategoryPanel;
+	private JTabbedPane productCategoryTabPanel;
+	private JTabbedPane orderTabPanel;
+	private JComboBox userEditSexComboBox;
 
 	/**
 	 * Launch the application.
@@ -128,20 +138,20 @@ public class MainFrameUser2 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 364, 452);
-		contentPane.add(tabbedPane);
+		shopTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		shopTabbedPane.setBounds(0, 0, 364, 452);
+		contentPane.add(shopTabbedPane);
 
-		JPanel userTabPannel = new JPanel();
-		tabbedPane.addTab("회원", null, userTabPannel, null);
-		userTabPannel.setLayout(null);
+		JPanel userPanel = new JPanel();
+		shopTabbedPane.addTab("회원", null, userPanel, null);
+		userPanel.setLayout(null);
 
-		tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(0, 0, 359, 423);
-		userTabPannel.add(tabbedPane_1);
+		userTabPanel = new JTabbedPane(JTabbedPane.TOP);
+		userTabPanel.setBounds(0, 0, 359, 423);
+		userPanel.add(userTabPanel);
 
 		JPanel userLoginPanel = new JPanel();
-		tabbedPane_1.addTab("로그인", null, userLoginPanel, null);
+		userTabPanel.addTab("로그인", null, userLoginPanel, null);
 		userLoginPanel.setLayout(null);
 
 		userIdTF = new JTextField();
@@ -258,18 +268,19 @@ public class MainFrameUser2 extends JFrame {
 			if (result == 1) {
 	
 				setTitle(userName+ " 님 로그인");
-				tabbedPane_1.setEnabledAt(0, false);
-				tabbedPane_1.setEnabledAt(1, false);
-				tabbedPane_1.setEnabledAt(2, true);
-				tabbedPane_1.setSelectedIndex(2);
-
+				System.out.println("test");
+				changeProductTabPanel(0,-1);
+				userTabPanel.setEnabledAt(0, false);
+				userTabPanel.setEnabledAt(1, false);
+				userTabPanel.setEnabledAt(2, false);
+				userTabPanel.setEnabledAt(3, false);
 				
 
 
 			} else if (result == 0) {
 				// 로그인 실패
 				// JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인하세요.");
-				userLoginPhoneMessageLabel.setText("올바른 휴대전화 형식이 아닙니다.");
+				userLoginPhoneMessageLabel.setText("올바른 휴대전화 형식이 아닙니다.(010-XXXX-XXXX)");
 				
 				userPhoneTF.requestFocus();
 				userPhoneTF.setSelectionStart(0);
@@ -283,22 +294,7 @@ public class MainFrameUser2 extends JFrame {
 
        });
 
-		
-		
 
-
-		
-		
-		
-		
-		
-		
-		
-		  
-		
-		
-		
-		
 		noUserLoginButton.setBounds(88, 325, 182, 23);
 		userLoginPanel.add(noUserLoginButton);
 
@@ -325,7 +321,7 @@ public class MainFrameUser2 extends JFrame {
 		userLoginJoinButton.addActionListener(new ActionListener() {
 			/*************** 회원가입화면전환 *****************/
 			public void actionPerformed(ActionEvent e) {
-				tabbedPane_1.setSelectedIndex(1);
+				userTabPanel.setSelectedIndex(1);
 			}
 		});
 
@@ -337,11 +333,11 @@ public class MainFrameUser2 extends JFrame {
 		userLoginPanel.add(userLoginNameMessageLabel);
 
 		userLoginPhoneMessageLabel = new JLabel("");
-		userLoginPhoneMessageLabel.setBounds(119, 308, 223, 15);
+		userLoginPhoneMessageLabel.setBounds(12, 305, 358, 15);
 		userLoginPanel.add(userLoginPhoneMessageLabel);
 
 		JPanel userSignUpPanel = new JPanel();
-		tabbedPane_1.addTab("회원가입", null, userSignUpPanel, null);
+		userTabPanel.addTab("회원가입", null, userSignUpPanel, null);
 		userSignUpPanel.setLayout(null);
 
 		userSignUpIdTF = new JTextField();
@@ -418,6 +414,16 @@ public class MainFrameUser2 extends JFrame {
 					String id = userSignUpIdTF.getText();
 					String password = new String(userSignUpPwTF.getPassword());
 					String passwordCheck = new String(userSignUpPwCheckTF.getPassword());
+					/********************************************/
+					if (passwordCheck.equals(password)) {
+						passwordCheck = new String(userSignUpPwCheckTF.getPassword());
+					} else {
+						JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.");
+						userSignUpPwCheckTF.requestFocus();
+					}
+					/******************************************/
+					
+					
 					String name = userSignupNameTF.getText();
 					String email = userSignupEmailTF.getText();
 					String emailSend = "";
@@ -437,16 +443,19 @@ public class MainFrameUser2 extends JFrame {
 					} else {
 						idCheckMsgLabel.setText("");
 					}
+					if (passwordCheck.equals(password)) {
+						User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone,
+								sex);
+						boolean isAdd = userService.addUser(user);
+						if (isAdd) {
+							//로그인 화면으로 이동
+							userTabPanel.setSelectedIndex(0);
+						} else {
+							JOptionPane.showMessageDialog(null, id + "당신의 가입은 실패하였습니다.");
+						}
 
-					if (password.equals("")) {
-						idCheckMsgLabel.setText("패스워드를 입력하세요.");
-						userSignUpPwTF.requestFocus();
-						return;
-					} else {
-						idCheckMsgLabel.setText("");
+						System.out.println(user);
 					}
-
-					User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone, sex);
 
 				} catch (Exception e1) {
 					System.out.println("회원가입에러 --> " + e1.getMessage());
@@ -454,6 +463,29 @@ public class MainFrameUser2 extends JFrame {
 				// 아이디 유효성 체크
 			}
 		});
+					
+					
+					
+					
+					
+					
+//
+//					if (password.equals("")) {
+//						idCheckMsgLabel.setText("패스워드를 입력하세요.");
+//						userSignUpPwTF.requestFocus();
+//						return;
+//					} else {
+//						idCheckMsgLabel.setText("");
+//					}
+//
+//					User user = new User(id, password, passwordCheck, name, email, emailSend, birthdate, phone, sex);
+//
+//				} catch (Exception e1) {
+//					System.out.println("회원가입에러 --> " + e1.getMessage());
+//				}
+//				// 아이디 유효성 체크
+//			}
+//		});
 		userSignUpButton.setBounds(109, 339, 97, 23);
 		userSignUpPanel.add(userSignUpButton);
 
@@ -468,14 +500,37 @@ public class MainFrameUser2 extends JFrame {
 		JButton btnNewButton_41 = new JButton("중복");
 		btnNewButton_41.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/***************/
-				Boolean isUser = true;
+				
+//				Boolean isUser = true;
+//				try {
+//					isUser = userService.isDuplicatedId(userIdTF.getText());
+//					if (isUser == true) {
+//						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다.");
+//						userIdTF.setText("");
+//						userIdTF.requestFocus();
+//					} else {
+//						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
+//					}
+//				} catch (Exception e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//			}
+//		});
+				boolean isUser = true;
 				try {
-					isUser = userService.isDuplicatedId(userIdTF.getText());
+					userService = new UserService();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					isUser = userService.isDuplicatedId(userSignUpIdTF.getText());
 					if (isUser == true) {
 						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다.");
-						userIdTF.setText("");
-						userIdTF.requestFocus();
+						userSignUpIdTF.setText("");
+						userSignUpIdTF.requestFocus();
+						return;
 					} else {
 						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
 					}
@@ -484,7 +539,9 @@ public class MainFrameUser2 extends JFrame {
 					e1.printStackTrace();
 				}
 			}
-		});
+		});		
+				
+				
 
 		btnNewButton_41.setBounds(282, 24, 60, 23);
 		userSignUpPanel.add(btnNewButton_41);
@@ -494,10 +551,27 @@ public class MainFrameUser2 extends JFrame {
 		idCheckMsgLabel.setBounds(68, 60, 240, 15);
 		userSignUpPanel.add(idCheckMsgLabel);
 
-		JPanel userEditPanel = new JPanel();
-		userEditPanel.setLayout(null);
-		tabbedPane_1.addTab("회원정보", null, userEditPanel, null);
+//		JPanel userEditPanel = new JPanel();
+//		userEditPanel.setLayout(null);
+//		userTabPanel.addTab("회원정보", null, userEditPanel, null);
 
+		JPanel userEditPanel = new JPanel();
+		userEditPanel.setBackground(SystemColor.inactiveCaption);
+		userEditPanel.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				displayUserInfo(loginUser);
+				
+			}
+			
+		});
+		
+		userEditPanel.setLayout(null);
+		userTabPanel.addTab("회원정보", null, userEditPanel, null);
+		
+		
 		userEditIDTF = new JTextField();
 		userEditIDTF.setEditable(false);
 		userEditIDTF.setColumns(10);
@@ -524,11 +598,18 @@ public class MainFrameUser2 extends JFrame {
 		userEditPhoneTF.setBounds(128, 221, 142, 21);
 		userEditPanel.add(userEditPhoneTF);
 
-		JComboBox userEditSexComboBox = new JComboBox();
-		userEditSexComboBox.setEditable(true);
-		userEditSexComboBox.setBounds(128, 252, 142, 23);
-		userEditPanel.add(userEditSexComboBox);
+//		JComboBox userEditSexComboBox = new JComboBox();
+//		userEditSexComboBox.setEditable(true);
+//		userEditSexComboBox.setBounds(128, 252, 142, 23);
+//		userEditPanel.add(userEditSexComboBox);
 
+		
+		userEditSexComboBox = new JComboBox();
+		userEditSexComboBox.setModel(new DefaultComboBoxModel(new String[] { "여성", "남성" }));
+		userEditSexComboBox.setEditable(true);
+		userEditSexComboBox.setBounds(153, 262, 142, 23);
+		userEditPanel.add(userEditSexComboBox);
+		
 		JLabel lblNewLabel_11 = new JLabel("아이디");
 		lblNewLabel_11.setBounds(66, 13, 57, 15);
 		userEditPanel.add(lblNewLabel_11);
@@ -568,15 +649,36 @@ public class MainFrameUser2 extends JFrame {
 		JButton userEditButton = new JButton("회원정보 수정");
 		userEditButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+//				String id = userEditIDTF.getText();
+//				String password = new String(userEditPwTF.getPassword());
+//				String name = userEditNameTF.getText();
+//				String email = userEditEmailTF.getText();
+//				String jumin = userEditBDTF.getText();
+//				String phone = userEditPhoneTF.getText();
+//
+//			}
+//		});
+				/*********** 수정 가능 **********/
 				String id = userEditIDTF.getText();
 				String password = new String(userEditPwTF.getPassword());
 				String name = userEditNameTF.getText();
 				String email = userEditEmailTF.getText();
+				String emailSend = "";
+				if (userEditEmailCheckBox.isSelected()) {
+					emailSend = "T";
+				} else {
+					emailSend = "F";
+				}
 				String jumin = userEditBDTF.getText();
 				String phone = userEditPhoneTF.getText();
+				String sex = (String) userSignupSexComboBox.getSelectedItem();
 
 			}
-		});
+		});		
+				
+				
+				
+				
 		userEditButton.setBounds(110, 305, 131, 23);
 		userEditPanel.add(userEditButton);
 
@@ -588,16 +690,33 @@ public class MainFrameUser2 extends JFrame {
 		userEditPwCheckTF.setBounds(127, 72, 143, 21);
 		userEditPanel.add(userEditPwCheckTF);
 
-		JButton userEditQuitButton = new JButton("로그아웃");
+//		JButton userEditQuitButton = new JButton("로그아웃");
+//		userEditQuitButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+		JButton userEditQuitButton = new JButton("회원탈퇴");
 		userEditQuitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/************ 회원 탈퇴 ************/
+				try {
+					userService.remove(loginUser.getUserId());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 			}
 		});
+		
+		
+		
+		
 		userEditQuitButton.setBounds(130, 338, 97, 23);
 		userEditPanel.add(userEditQuitButton);
 
 		JPanel userFindPanel = new JPanel();
-		tabbedPane_1.addTab("ID/PW찾기", null, userFindPanel, null);
+		userTabPanel.addTab("ID/PW찾기", null, userFindPanel, null);
 		userFindPanel.setLayout(null);
 
 		textField_1 = new JTextField();
@@ -629,16 +748,16 @@ public class MainFrameUser2 extends JFrame {
 		lblNewLabel_26.setBounds(77, 181, 133, 15);
 		userFindPanel.add(lblNewLabel_26);
 
-		JPanel productTabPannel = new JPanel();
-		tabbedPane.addTab("제품", null, productTabPannel, null);
-		productTabPannel.setLayout(null);
+		productPanel = new JPanel();
+		shopTabbedPane.addTab("제품", null, productPanel, null);
+		productPanel.setLayout(null);
 
-		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_2.setBounds(0, 0, 359, 423);
-		productTabPannel.add(tabbedPane_2);
+		productTabPanel = new JTabbedPane(JTabbedPane.TOP);
+		productTabPanel.setBounds(0, 0, 359, 423);
+		productPanel.add(productTabPanel);
 
 		JPanel productMainPanel = new JPanel();
-		tabbedPane_2.addTab("메인", null, productMainPanel, null);
+		productTabPanel.addTab("메인", null, productMainPanel, null);
 		productMainPanel.setLayout(null);
 
 		textField_4 = new JTextField();
@@ -666,32 +785,32 @@ public class MainFrameUser2 extends JFrame {
 		lblNewLabel_27.setBounds(244, 290, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
 
-		JPanel productCategoryPanel = new JPanel();
-		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
+		productCategoryPanel = new JPanel();
+		productTabPanel.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
 
-		JTabbedPane tabbedPane_4 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_4.setBounds(-1, 1, 354, 391);
-		productCategoryPanel.add(tabbedPane_4);
+		productCategoryTabPanel = new JTabbedPane(JTabbedPane.TOP);
+		productCategoryTabPanel.setBounds(-1, 1, 354, 391);
+		productCategoryPanel.add(productCategoryTabPanel);
 
 		JPanel panel_7 = new JPanel();
-		tabbedPane_4.addTab("수공예", null, panel_7, null);
+		productCategoryTabPanel.addTab("수공예", null, panel_7, null);
 		panel_7.setLayout(null);
 
 		JPanel panel_8 = new JPanel();
-		tabbedPane_4.addTab("요리", null, panel_8, null);
+		productCategoryTabPanel.addTab("요리", null, panel_8, null);
 		panel_8.setLayout(null);
 
 		JPanel panel_9 = new JPanel();
-		tabbedPane_4.addTab("미술", null, panel_9, null);
+		productCategoryTabPanel.addTab("미술", null, panel_9, null);
 		panel_9.setLayout(null);
 
 		JPanel panel = new JPanel();
-		tabbedPane_4.addTab("스포츠", null, panel, null);
+		productCategoryTabPanel.addTab("스포츠", null, panel, null);
 		panel.setLayout(null);
 
 		JPanel productDetailPanel = new JPanel();
-		tabbedPane_2.addTab("제품상세", null, productDetailPanel, null);
+		productTabPanel.addTab("제품상세", null, productDetailPanel, null);
 		productDetailPanel.setLayout(null);
 
 		productNameTF = new JTextField();
@@ -755,16 +874,16 @@ public class MainFrameUser2 extends JFrame {
 		productDetailPanel.add(productCategoryTF);
 		productCategoryTF.setColumns(10);
 
-		JPanel orderTabPannel = new JPanel();
-		tabbedPane.addTab("주문", null, orderTabPannel, null);
-		orderTabPannel.setLayout(null);
+		JPanel orderPanel = new JPanel();
+		shopTabbedPane.addTab("주문", null, orderPanel, null);
+		orderPanel.setLayout(null);
 
-		JTabbedPane tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_3.setBounds(0, 0, 359, 423);
-		orderTabPannel.add(tabbedPane_3);
+		orderTabPanel = new JTabbedPane(JTabbedPane.TOP);
+		orderTabPanel.setBounds(0, 0, 359, 423);
+		orderPanel.add(orderTabPanel);
 
 		JPanel orderCartPanel = new JPanel();
-		tabbedPane_3.addTab("장바구니", null, orderCartPanel, null);
+		orderTabPanel.addTab("장바구니", null, orderCartPanel, null);
 		orderCartPanel.setLayout(null);
 
 		JScrollPane orderCartScrollPane = new JScrollPane();
@@ -860,7 +979,7 @@ public class MainFrameUser2 extends JFrame {
 
 		JPanel orderPayPanel = new JPanel();
 		orderPayPanel.setLayout(null);
-		tabbedPane_3.addTab("결제", null, orderPayPanel, null);
+		orderTabPanel.addTab("결제", null, orderPayPanel, null);
 
 		JScrollPane orderPayScrollPane = new JScrollPane();
 		orderPayScrollPane.setBounds(12, 10, 330, 142);
@@ -922,7 +1041,7 @@ public class MainFrameUser2 extends JFrame {
 		orderPayPanel.add(lblNewLabel_24);
 
 		JPanel orderListPanel = new JPanel();
-		tabbedPane_3.addTab("주문내역", null, orderListPanel, null);
+		orderTabPanel.addTab("주문내역", null, orderListPanel, null);
 		orderListPanel.setLayout(null);
 
 		orderListIdTF = new JTextField();
@@ -950,14 +1069,29 @@ public class MainFrameUser2 extends JFrame {
 
 	}// 생성자 끝
 
+	public void changeUserTabPanel(int userPanelNo) {
+		shopTabbedPane.setSelectedIndex(0);
+		userTabPanel.setSelectedIndex(userPanelNo);
+	}
+	public void changeProductTabPanel(int productPanelNo,int productCategoryPanelNo) {
+		shopTabbedPane.setSelectedIndex(1);
+		productTabPanel.setSelectedIndex(productPanelNo);
+		productCategoryTabPanel.setSelectedIndex(productCategoryPanelNo);
+	}
+	public void changeOrderTabPanel(int orderPaneNo) {
+		shopTabbedPane.setSelectedIndex(2);
+		orderTabPanel.setSelectedIndex(orderPaneNo);
+	}
+	
+	
 	public void loginProcess(User loginUser) {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getUserId() + " 님 로그인");
 
-		tabbedPane_1.setEnabledAt(0, false);
-		tabbedPane_1.setEnabledAt(1, false);
-		tabbedPane_1.setEnabledAt(2, true);
-		tabbedPane_1.setSelectedIndex(2);
+		userTabPanel.setEnabledAt(0, false);
+		userTabPanel.setEnabledAt(1, false);
+		userTabPanel.setEnabledAt(2, true);
+		userTabPanel.setSelectedIndex(2);
 
 	}
 
@@ -969,7 +1103,7 @@ public class MainFrameUser2 extends JFrame {
 		userEditEmailTF.setText(user.getUserEmail());
 		userEditBDTF.setText(user.getUserJumin());
 		userEditPhoneTF.setText(user.getUserPhone());
-		// userEditSexComboBox.setSelectedItem(user.getUserGender());
+		userEditSexComboBox.setSelectedItem(user.getUserGender());
 
 	}
 }

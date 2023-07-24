@@ -68,6 +68,7 @@ public class MainFrame extends JFrame {
 	
 	private User loginUser = null;
 	private Product productEx = null;
+	private Product maxProductView = null;
 	
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
@@ -266,7 +267,7 @@ public class MainFrame extends JFrame {
 						User loginUser = userService.findUser(userId);
 						loginProcess(loginUser);
 						displayUserInfo(loginUser);
-						showMaxReadCountProduct();
+						maxProductView = showMaxReadCountProduct();
 					} else if (result == 0) {
 						// 로그인 실패
 						// JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인하세요.");
@@ -783,7 +784,7 @@ public class MainFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					showMaxReadCountProduct();
+					maxProductView = showMaxReadCountProduct();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -906,6 +907,18 @@ public class MainFrame extends JFrame {
 		productMainPanel.add(product_maxReadCount_pane);
 		
 		product_maxReadCount_Image_label = new JLabel("");
+		product_maxReadCount_Image_label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					showView(maxProductView);
+					changeProductTabPanel(2, -1);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		product_maxReadCount_Image_label.setBounds(0, 0, 120, 63);
 		product_maxReadCount_pane.add(product_maxReadCount_Image_label);
 		

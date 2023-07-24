@@ -200,6 +200,7 @@ public class MainFrameUser5 extends JFrame {
 						// 로그인 성공
 						User loginUser = userService.findUser(userId);
 						loginProcess(loginUser);
+						displayUserInfo(loginUser);
 
 					} else if (result == 0) {
 						// 로그인 실패
@@ -512,16 +513,7 @@ public class MainFrameUser5 extends JFrame {
 
 		JPanel userEditPanel = new JPanel();
 		userEditPanel.setBackground(SystemColor.inactiveCaption);
-		userEditPanel.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				displayUserInfo(loginUser);
-
-			}
-
-		});
+		
 
 		userEditPanel.setLayout(null);
 		userTabPanel.addTab("회원정보", null, userEditPanel, null);

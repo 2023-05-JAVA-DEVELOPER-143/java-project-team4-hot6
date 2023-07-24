@@ -221,7 +221,11 @@ public class MainFrameUser5 extends JFrame {
 						// 로그인 성공
 						User loginUser = userService.findUser(userId);
 						loginProcess(loginUser);
+						userIdTF.setText("");
+						userPasswordTF.setText("");
 						displayUserInfo(loginUser);
+						
+						
 
 					} else if (result == 0) {
 						// 로그인 실패

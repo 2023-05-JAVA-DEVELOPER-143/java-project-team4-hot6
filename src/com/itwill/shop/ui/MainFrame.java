@@ -30,6 +30,7 @@ import com.itwill.shop.cart.CartService;
 import com.itwill.shop.order.Order;
 import com.itwill.shop.order.OrderItem;
 import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.userinfo.User;
 import com.itwill.shop.userinfo.UserService;
@@ -66,6 +67,7 @@ public class MainFrame extends JFrame {
 	private CartService cartService;
 	
 	private User loginUser = null;
+	private Product productEx = null;
 	
 	private JPanel contentPane;
 	private JTextField userSignUpIdTF;
@@ -89,7 +91,7 @@ public class MainFrame extends JFrame {
 	private JTextField textField_1;
 	private JTextField userFindidTF;
 	private JTextField userFindPwTF;
-	private JTextField textField_4;
+	private JTextField productSearchTF;
 	private JTextField productNameTF;
 	private JTextField productPriceTF;
 	private JTextField productReadCountTF;
@@ -120,6 +122,9 @@ public class MainFrame extends JFrame {
 	private JLabel userLoginPasswordMessageLabel;
 	private JLabel userLoginNameMessageLabel;
 	private JLabel userLoginPhoneMessageLabel;
+	private JLabel productImageLabel;
+	private JTextField productSeatLeftCountTF;
+	private JComboBox productQtyComboBox;
 
 	/**
 	 * Launch the application.
@@ -257,9 +262,6 @@ public class MainFrame extends JFrame {
 						User loginUser = userService.findUser(userId);
 						loginProcess(loginUser);
 						displayUserInfo(loginUser);
-						tabbedPane_3.setEnabledAt(0, true);
-						tabbedPane_3.setEnabledAt(1, true);
-						tabbedPane_3.setEnabledAt(2, true);
 
 					} else if (result == 0) {
 						// 로그인 실패
@@ -315,9 +317,6 @@ public class MainFrame extends JFrame {
 						System.out.println("num: " + num);
 						loginUser = noUser;
 						setTitle(userName + " 님 로그인");
-						tabbedPane_3.setEnabledAt(0, true);
-						tabbedPane_3.setEnabledAt(1, true);
-						tabbedPane_3.setEnabledAt(2, true);
 						System.out.println("test");
 
 //				shopTabbedPane.setSelectedIndex(1);
@@ -783,31 +782,109 @@ public class MainFrame extends JFrame {
 		tabbedPane_2.addTab("메인", null, productMainPanel, null);
 		productMainPanel.setLayout(null);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(117, 10, 116, 21);
-		productMainPanel.add(textField_4);
-		textField_4.setColumns(10);
+		productSearchTF = new JTextField();
+		productSearchTF.setText("오늘은 오일파스텔 배우자!");
+		productSearchTF.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				productSearchTF.setText("");
+			}
+			
+		});
+		productSearchTF.setBounds(38, 10, 195, 21);
+		productMainPanel.add(productSearchTF);
+		productSearchTF.setColumns(10);
 		
-		JButton btnNewButton_3 = new JButton("취미찾기");
-		btnNewButton_3.setBounds(245, 9, 97, 23);
-		productMainPanel.add(btnNewButton_3);
+		JButton productSearchButton = new JButton("취미찾기");
+		productSearchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//검색기능
+				try {
+					List<Product> productList = productService.productSearch(productSearchTF.getText());
+					Product tempProduct = productList.get(0); 
+					showView(tempProduct);
+					
+					tabbedPane_2.setSelectedIndex(5);
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(null, "찾으시는 상품이 없습니다.");;
+				}
+			}
+		});
+		productSearchButton.setBounds(245, 9, 97, 23);
+		productMainPanel.add(productSearchButton);
 		
 		JLabel lblNewLabel_12 = new JLabel("수공예");
-		lblNewLabel_12.setBounds(56, 130, 57, 15);
+		lblNewLabel_12.setBounds(70, 162, 57, 15);
 		productMainPanel.add(lblNewLabel_12);
 		
 		JLabel lblNewLabel_13 = new JLabel("요리");
-		lblNewLabel_13.setBounds(244, 130, 57, 15);
+		lblNewLabel_13.setBounds(242, 162, 57, 15);
 		productMainPanel.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("미술");
-		lblNewLabel_14.setBounds(56, 290, 57, 15);
+		lblNewLabel_14.setBounds(73, 315, 57, 15);
 		productMainPanel.add(lblNewLabel_14);
 		
-		JLabel lblNewLabel_27 = new JLabel("스포츠");
-		lblNewLabel_27.setBounds(244, 290, 57, 15);
+		JLabel lblNewLabel_27 = new JLabel("플라워");
+		lblNewLabel_27.setBounds(236, 312, 57, 15);
 		productMainPanel.add(lblNewLabel_27);
 		
+		JPanel productMainHandCraftPanel = new JPanel();
+		productMainHandCraftPanel.setBounds(36, 59, 111, 93);
+		productMainPanel.add(productMainHandCraftPanel);
+		
+		JLabel productMainHandCraftLabel = new JLabel("");
+		productMainHandCraftLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				changeProductTabPanel(1, 0);
+			}
+		});
+		productMainHandCraftPanel.add(productMainHandCraftLabel);
+		productMainHandCraftLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/images/product_main_handcraft (1).png")));
+		
+		JPanel productMainCookingPanel = new JPanel();
+		productMainCookingPanel.setBounds(203, 60, 111, 93);
+		productMainPanel.add(productMainCookingPanel);
+		
+		JLabel productMainCookingLabel = new JLabel("");
+		productMainCookingLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				changeProductTabPanel(1, 1);
+			}
+		});
+		productMainCookingPanel.add(productMainCookingLabel);
+		productMainCookingLabel.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_main_cooking (1).png")));
+		
+		JPanel productMainDrawingPanel = new JPanel();
+		productMainDrawingPanel.setBounds(38, 208, 111, 93);
+		productMainPanel.add(productMainDrawingPanel);
+		
+		JLabel productMainDrawingLabel = new JLabel("");
+		productMainDrawingLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				changeProductTabPanel(1, 2);
+			}
+		});
+		productMainDrawingPanel.add(productMainDrawingLabel);
+		productMainDrawingLabel.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_main_drawing (1).png")));
+		
+		JPanel productMainFlowerPanel = new JPanel();
+		productMainFlowerPanel.setBounds(205, 208, 111, 93);
+		productMainPanel.add(productMainFlowerPanel);
+		
+		JLabel productMainFlowerLabel = new JLabel("");
+		productMainFlowerLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				changeProductTabPanel(1, 3);
+			}
+		});
+		productMainFlowerPanel.add(productMainFlowerLabel);
+		productMainFlowerLabel.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_main_flower-bouquet (1) (1).png")));
+		/******************* 상세페널로 이동 *******************/
 		JPanel productCategoryPanel = new JPanel();
 		tabbedPane_2.addTab("카테고리별", null, productCategoryPanel, null);
 		productCategoryPanel.setLayout(null);
@@ -816,21 +893,441 @@ public class MainFrame extends JFrame {
 		tabbedPane_4.setBounds(-1, 1, 354, 391);
 		productCategoryPanel.add(tabbedPane_4);
 		
-		JPanel panel_7 = new JPanel();
-		tabbedPane_4.addTab("수공예", null, panel_7, null);
-		panel_7.setLayout(null);
+		JPanel product_category_handcraft_panel = new JPanel();
+		tabbedPane_4.addTab("수공예", null, product_category_handcraft_panel, null);
+		product_category_handcraft_panel.setLayout(null);
 		
-		JPanel panel_8 = new JPanel();
-		tabbedPane_4.addTab("요리", null, panel_8, null);
-		panel_8.setLayout(null);
+		JPanel handcraftPannel1 = new JPanel();
+		handcraftPannel1.setBounds(34, 24, 125, 125);
+		product_category_handcraft_panel.add(handcraftPannel1);
 		
-		JPanel panel_9 = new JPanel();
-		tabbedPane_4.addTab("미술", null, panel_9, null);
-		panel_9.setLayout(null);
+		JLabel product_handcraft_image1 = new JLabel("");
+		product_handcraft_image1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(5);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_handcraft_image1.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_handcraft(1).jpg")));
+		handcraftPannel1.add(product_handcraft_image1);
 		
-		JPanel panel = new JPanel();
-		tabbedPane_4.addTab("스포츠", null, panel, null);
-		panel.setLayout(null);
+		JPanel product_handcraft_pannel2_1 = new JPanel();
+		product_handcraft_pannel2_1.setBounds(189, 24, 125, 125);
+		product_category_handcraft_panel.add(product_handcraft_pannel2_1);
+		
+		JLabel product_handcraft_image2 = new JLabel("");		
+		product_handcraft_image2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(6);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_handcraft_image2.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_handcraft(2).jpg")));
+		product_handcraft_pannel2_1.add(product_handcraft_image2);
+		
+		JLabel product_handcraft_info1 = new JLabel("[성수] 물레 도자기 만들기");
+		product_handcraft_info1.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_handcraft_info1.setBounds(34, 149, 128, 25);
+		product_category_handcraft_panel.add(product_handcraft_info1);
+		
+		JLabel product_handcraft_info2 = new JLabel("[연남] 시그니처 향수제작");
+		product_handcraft_info2.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_handcraft_info2.setBounds(189, 149, 128, 25);
+		product_category_handcraft_panel.add(product_handcraft_info2);
+		
+		JPanel product_handcraft_pannel3_1 = new JPanel();
+		product_handcraft_pannel3_1.setBounds(34, 184, 125, 125);
+		product_category_handcraft_panel.add(product_handcraft_pannel3_1);
+		
+		JLabel product_handcraft_image3 = new JLabel("");
+		product_handcraft_image3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(7);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_handcraft_image3.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_handcraft(3).jpg")));
+		product_handcraft_pannel3_1.add(product_handcraft_image3);
+		
+		JPanel product_handcraft_pannel4_1 = new JPanel();
+		product_handcraft_pannel4_1.setBounds(189, 184, 125, 125);
+		product_category_handcraft_panel.add(product_handcraft_pannel4_1);
+		
+		JLabel product_handcraft_image4 = new JLabel("");
+		product_handcraft_image4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(8);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_handcraft_image4.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_handcraft(4).jpg")));
+		product_handcraft_pannel4_1.add(product_handcraft_image4);
+		
+		JLabel product_handcraft_info3 = new JLabel("[연남] 가죽공예 카드지갑");
+		product_handcraft_info3.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_handcraft_info3.setBounds(34, 308, 128, 25);
+		product_category_handcraft_panel.add(product_handcraft_info3);
+		
+		JLabel product_handcraft_info4 = new JLabel("[부산] 미니어처 소파제작");
+		product_handcraft_info4.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_handcraft_info4.setBounds(189, 308, 128, 25);
+		product_category_handcraft_panel.add(product_handcraft_info4);
+		
+		
+		JPanel product_category_cooking_panel = new JPanel();
+		tabbedPane_4.addTab("요리", null, product_category_cooking_panel, null);
+		product_category_cooking_panel.setLayout(null);
+		
+		JPanel product_handcraft_pannel1_1_1 = new JPanel();
+		product_handcraft_pannel1_1_1.setBounds(37, 22, 125, 125);
+		product_category_cooking_panel.add(product_handcraft_pannel1_1_1);
+		
+		JLabel product_cooking_image1 = new JLabel("");
+		product_cooking_image1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(9);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_cooking_image1.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_cooking(1).jpg")));
+		product_handcraft_pannel1_1_1.add(product_cooking_image1);
+		
+		JPanel product_handcraft_pannel2_1_1 = new JPanel();
+		product_handcraft_pannel2_1_1.setBounds(195, 35, 125, 102);
+		product_category_cooking_panel.add(product_handcraft_pannel2_1_1);
+		
+		JLabel product_cooking_image2 = new JLabel("");
+		product_cooking_image2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(10);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_cooking_image2.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_cooking(2).jpg")));
+		product_handcraft_pannel2_1_1.add(product_cooking_image2);
+		
+		JLabel product_cooking_info1 = new JLabel("[서촌] 피낭시에 만들기");
+		product_cooking_info1.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_cooking_info1.setBounds(37, 147, 128, 25);
+		product_category_cooking_panel.add(product_cooking_info1);
+		
+		JLabel product_cooking_info2 = new JLabel("[망원] 레몬케이크 만들기");
+		product_cooking_info2.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_cooking_info2.setBounds(192, 147, 128, 25);
+		product_category_cooking_panel.add(product_cooking_info2);
+		
+		JPanel product_handcraft_pannel3_1_1 = new JPanel();
+		product_handcraft_pannel3_1_1.setBounds(37, 182, 128, 125);
+		product_category_cooking_panel.add(product_handcraft_pannel3_1_1);
+		
+		JLabel product_cooking_image3 = new JLabel("");
+		product_cooking_image3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(11);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_cooking_image3.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_cooking(3).jpg")));
+		product_handcraft_pannel3_1_1.add(product_cooking_image3);
+		
+		JPanel product_handcraft_pannel4_1_1 = new JPanel();
+		product_handcraft_pannel4_1_1.setBounds(192, 194, 128, 102);
+		product_category_cooking_panel.add(product_handcraft_pannel4_1_1);
+		
+		JLabel product_cooking_image4 = new JLabel("");
+		product_cooking_image4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(12);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_cooking_image4.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_cooking(4).jpg")));
+		product_handcraft_pannel4_1_1.add(product_cooking_image4);
+		
+		JLabel product_cooking_info3 = new JLabel("[마포] 크림마들렌 만들기");
+		product_cooking_info3.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_cooking_info3.setBounds(37, 306, 128, 25);
+		product_category_cooking_panel.add(product_cooking_info3);
+		
+		JLabel product_cooking_info4 = new JLabel("[하남] 말랑쿠키 만들기");
+		product_cooking_info4.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_cooking_info4.setBounds(192, 306, 128, 25);
+		product_category_cooking_panel.add(product_cooking_info4);
+		
+		JPanel productrr_category_drawing_panel = new JPanel();
+		tabbedPane_4.addTab("미술", null, productrr_category_drawing_panel, null);
+		productrr_category_drawing_panel.setLayout(null);
+		
+		JPanel product_handcraft_pannel1_1_2 = new JPanel();
+		product_handcraft_pannel1_1_2.setBounds(34, 23, 128, 116);
+		productrr_category_drawing_panel.add(product_handcraft_pannel1_1_2);
+		
+		JLabel product_drawing_image1 = new JLabel("");
+		product_drawing_image1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(13);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_drawing_image1.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_drawing(1).jpg")));
+		product_handcraft_pannel1_1_2.add(product_drawing_image1);
+		
+		JPanel product_handcraft_pannel2_1_2 = new JPanel();
+		product_handcraft_pannel2_1_2.setBounds(189, 37, 128, 92);
+		productrr_category_drawing_panel.add(product_handcraft_pannel2_1_2);
+		
+		JLabel product_drawing_image2 = new JLabel("");
+		product_drawing_image2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(14);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_drawing_image2.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_drawing(2).jpg")));
+		product_handcraft_pannel2_1_2.add(product_drawing_image2);
+		
+		JLabel product_drawing_info1 = new JLabel("[마포] 브릭베어 아크릴화");
+		product_drawing_info1.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_drawing_info1.setBounds(34, 148, 128, 25);
+		productrr_category_drawing_panel.add(product_drawing_info1);
+
+		JLabel product_drawing_info2 = new JLabel("[중구] 이모티콘 제작판매");
+		product_drawing_info2.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_drawing_info2.setBounds(189, 148, 128, 25);
+		productrr_category_drawing_panel.add(product_drawing_info2);
+		
+		JPanel product_handcraft_pannel3_1_2 = new JPanel();
+		product_handcraft_pannel3_1_2.setBounds(34, 183, 128, 125);
+		productrr_category_drawing_panel.add(product_handcraft_pannel3_1_2);
+		
+		JLabel product_drawing_image3 = new JLabel("");
+		product_drawing_image3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(15);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_drawing_image3.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_drawing(3).jpg")));
+		product_handcraft_pannel3_1_2.add(product_drawing_image3);
+		
+		JPanel product_handcraft_pannel4_1_2 = new JPanel();
+		product_handcraft_pannel4_1_2.setBounds(189, 183, 128, 125);
+		productrr_category_drawing_panel.add(product_handcraft_pannel4_1_2);
+		
+		JLabel product_drawing_image4 = new JLabel("");
+		product_drawing_image4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(16);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_drawing_image4.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_drawing(4).jpg")));
+		product_handcraft_pannel4_1_2.add(product_drawing_image4);
+		
+		JLabel product_drawing_info3 = new JLabel("[합정] 나이프화 아크릴화");
+		product_drawing_info3.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_drawing_info3.setBounds(34, 307, 128, 25);
+		productrr_category_drawing_panel.add(product_drawing_info3);
+		
+		JLabel product_drawing_info4 = new JLabel("[홍대] 오일파스텔 체험");
+		product_drawing_info4.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_drawing_info4.setBounds(189, 307, 128, 25);
+		productrr_category_drawing_panel.add(product_drawing_info4);
+		
+		JPanel product_flower_panel = new JPanel();
+		tabbedPane_4.addTab("플라워", null, product_flower_panel, null);
+		product_flower_panel.setLayout(null);
+		
+		JPanel product_handcraft_pannel1 = new JPanel();
+		product_handcraft_pannel1.setBounds(35, 24, 125, 125);
+		product_flower_panel.add(product_handcraft_pannel1);
+		
+		JLabel product_flower_image1 = new JLabel("");
+		product_flower_image1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(1);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		
+		});
+		
+		product_flower_image1.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_flower(1).jpg")));
+		product_handcraft_pannel1.add(product_flower_image1);
+		
+		JPanel product_handcraft_pannel2 = new JPanel();
+		product_handcraft_pannel2.setBounds(190, 24, 125, 125);
+		product_flower_panel.add(product_handcraft_pannel2);
+		
+		JLabel product_flower_image2 = new JLabel("");
+		product_flower_image2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(2);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_flower_image2.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_flower(2).jpg")));
+		product_handcraft_pannel2.add(product_flower_image2);
+		
+		JPanel product_handcraft_pannel3 = new JPanel();
+		product_handcraft_pannel3.setBounds(35, 184, 125, 125);
+		product_flower_panel.add(product_handcraft_pannel3);
+		
+		JLabel product_flower_image3 = new JLabel("");
+		product_flower_image3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(3);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_flower_image3.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_flower(3).jpg")));
+		product_handcraft_pannel3.add(product_flower_image3);
+		
+		JPanel product_handcraft_pannel4 = new JPanel();
+		product_handcraft_pannel4.setBounds(190, 184, 125, 125);
+		product_flower_panel.add(product_handcraft_pannel4);
+		
+		JLabel product_flower_image4 = new JLabel("");
+		product_flower_image4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Product product = productService.productDetail(4);
+					showView(product);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				changeProductTabPanel(2, -1);
+			}
+		});
+		product_flower_image4.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/images/product_flower(4).jpg")));
+		product_handcraft_pannel4.add(product_flower_image4);
+		
+		JLabel product_flower_info1 = new JLabel("[종로] 나만의 작은정원");
+		product_flower_info1.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_flower_info1.setBounds(35, 149, 128, 25);
+		product_flower_panel.add(product_flower_info1);
+		
+		JLabel product_flower_info2 = new JLabel("[망원] 화병꽂이 만들기");
+		product_flower_info2.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_flower_info2.setBounds(190, 149, 128, 25);
+		product_flower_panel.add(product_flower_info2);
+		
+		JLabel product_flower_info4 = new JLabel("[마포] 이벤트 새벽정원");
+		product_flower_info4.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_flower_info4.setBounds(190, 308, 128, 25);
+		product_flower_panel.add(product_flower_info4);
+		
+		JLabel product_flower_info3 = new JLabel("[송파] 미니 플라워 바구니");
+		product_flower_info3.setFont(new Font("굴림", Font.PLAIN, 11));
+		product_flower_info3.setBounds(35, 308, 128, 25);
+		product_flower_panel.add(product_flower_info3);
+		
 		
 		JPanel productDetailPanel = new JPanel();
 		tabbedPane_2.addTab("제품상세", null, productDetailPanel, null);
@@ -860,7 +1357,7 @@ public class MainFrame extends JFrame {
 		productDetailTF = new JTextField();
 		productDetailTF.setEditable(false);
 		productDetailTF.setText("상세설명");
-		productDetailTF.setBounds(201, 169, 116, 124);
+		productDetailTF.setBounds(37, 169, 280, 124);
 		productDetailPanel.add(productDetailTF);
 		productDetailTF.setColumns(10);
 		
@@ -871,22 +1368,48 @@ public class MainFrame extends JFrame {
 		productDetailPanel.add(productDateTF);
 		productDateTF.setColumns(10);
 		
-		JLabel productImageLabel = new JLabel("");
+		productImageLabel = new JLabel("");
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setIcon(new ImageIcon(MainFrame_Original.class.getResource("/images/nothing.jpg")));
-		productImageLabel.setBounds(12, 14, 158, 218);
+		productImageLabel.setBounds(12, 14, 158, 149);
 		productDetailPanel.add(productImageLabel);
 		
-		JComboBox productQtyComboBox = new JComboBox();
+		productQtyComboBox = new JComboBox();
 		productQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		productQtyComboBox.setBounds(37, 303, 127, 23);
+		productQtyComboBox.setBounds(37, 339, 127, 23);
 		productDetailPanel.add(productQtyComboBox);
 		
 		JButton productCartButton = new JButton("장바구니 담기");
+		productCartButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Product tempProduct;
+				try {
+					tempProduct = productEx;
+					showCartNameView(tempProduct);
+					JOptionPane.showMessageDialog(null, "장바구니에 상품이 담겼습니다!");
+					changeOrderTabPanel(0);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+		});
 		productCartButton.setBounds(201, 303, 116, 23);
 		productDetailPanel.add(productCartButton);
 		
 		JButton productPayButton = new JButton("주문하기");
+		productPayButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Product tempProduct;
+				try {
+					tempProduct = productEx;
+					showCartNameView(tempProduct);
+					JOptionPane.showMessageDialog(null, "장바구니에 상품이 담겼습니다!");
+					changeOrderTabPanel(1);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+		});
 		productPayButton.setBounds(201, 339, 116, 23);
 		productDetailPanel.add(productPayButton);
 		
@@ -896,6 +1419,13 @@ public class MainFrame extends JFrame {
 		productCategoryTF.setBounds(201, 14, 116, 21);
 		productDetailPanel.add(productCategoryTF);
 		productCategoryTF.setColumns(10);
+		
+		productSeatLeftCountTF = new JTextField();
+		productSeatLeftCountTF.setText("남은 인원수");
+		productSeatLeftCountTF.setEditable(false);
+		productSeatLeftCountTF.setColumns(10);
+		productSeatLeftCountTF.setBounds(37, 303, 127, 21);
+		productDetailPanel.add(productSeatLeftCountTF);
 		
 		JPanel orderTabPannel = new JPanel();
 		tabbedPane.addTab("주문", null, orderTabPannel, null);
@@ -1251,9 +1781,6 @@ public class MainFrame extends JFrame {
 		}
 		
 		tabbedPane_1.setEnabledAt(2, false);
-		tabbedPane_3.setEnabledAt(0, false);
-		tabbedPane_3.setEnabledAt(1, false);
-		tabbedPane_3.setEnabledAt(2, false);
 		
 	}//생성자
 	
@@ -1294,9 +1821,6 @@ public class MainFrame extends JFrame {
 		tabbedPane_1.setEnabledAt(1, true);
 		tabbedPane_1.setEnabledAt(2, false);
 		tabbedPane_1.setSelectedIndex(0);
-		tabbedPane_3.setEnabledAt(0, false);
-		tabbedPane_3.setEnabledAt(1, false);
-		tabbedPane_3.setEnabledAt(2, false);
 	}
 	
 	private void displayUserInfo(User user) {
@@ -1313,6 +1837,27 @@ public class MainFrame extends JFrame {
 	}
 	
 	// 제품파트
+	public void showView(Product product) {
+		String imageStr = product.getProduct_image();
+		productImageLabel.setIcon(new ImageIcon(MainFrameProduct_FINAL.class.getResource("/" + imageStr)));
+//		productImageLabel.setIcon(new ImageIcon(MainFrameProduct.class.getResource("/images/nothing.jpg")));
+		productCategoryTF.setText(product.getProduct_category());
+		productNameTF.setText(product.getProduct_name());
+		productPriceTF.setText(String.valueOf(product.getProduct_price()));//이 줄 위에다 read_count 증가시길것
+		productReadCountTF.setText(String.valueOf(product.getProduct_read_count()));
+		productDateTF.setText(String.valueOf(product.getProduct_start_date()));
+		productDetailTF.setText(product.getProduct_detail());
+		productSeatLeftCountTF.setText("모집중\t"+String.valueOf(product.getProduct_seatLeft_count())+"/8명");
+		productEx = product;
+		
+	}
+	
+	//제품 상세페이지 장바구니 담기 버튼 메소드 TEST
+	public void showCartNameView(Product product) throws Exception{
+		Cart tempCart = new Cart(0, Integer.parseInt((String)productQtyComboBox.getSelectedItem()), loginUser.getUserId(), product);
+		cartService.addCart(tempCart);
+	}
+	
 	
 	// 주문파트
 	private void displayCartList(User loginUser) {
@@ -1393,5 +1938,4 @@ public class MainFrame extends JFrame {
 		userId = loginUser.getUserId();
 		orderService.create(userId, productNo, productQty);
 	}
-	
 }

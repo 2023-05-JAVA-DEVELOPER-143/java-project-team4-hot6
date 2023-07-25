@@ -1,4 +1,4 @@
-package com.itwill.shop.ui;
+package ui_team_test;
 
 import java.awt.Color;
 import java.awt.EventQueue;

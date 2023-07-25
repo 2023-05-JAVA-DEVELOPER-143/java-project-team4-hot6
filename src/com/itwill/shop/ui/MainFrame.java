@@ -138,7 +138,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame_Original frame = new MainFrame_Original();
+					MainFrame frame = new MainFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -309,7 +309,7 @@ public class MainFrame extends JFrame {
 					int result = userService.noUserLogin(userName, userPhone);
 
 					if (result == 1) {
-						User noUser = new User();
+						User noUser = userService.findUser("dummy");
 						noUser.setUserName(userName);
 						noUser.setUserPhone(userPhone);
 						noUser.setUserId(userName+userPhone.substring(9));

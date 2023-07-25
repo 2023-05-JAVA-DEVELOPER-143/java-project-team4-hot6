@@ -128,7 +128,7 @@ public class MainFrame_Original extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					MainFrame_Original frame = new MainFrame_Original();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
